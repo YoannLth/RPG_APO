@@ -1,16 +1,16 @@
 /*
  *  Projet - APO Creation d'un RPG
  *  Decembre 2015
- *  Gaetan MARTIN & Jensen JOYMANGUL
+ *  Gaetan MARTIN & Jensen Joymangul
  */
 package rpg;
 
 /**
- * Item class : represents an item / object of the game
+ * Class representing an Item
  *
  * @author p1509413
  */
-public class Item
+public class Collectable
 {
 
 }

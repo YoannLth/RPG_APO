@@ -6,11 +6,15 @@
 package rpg;
 
 /**
- * Item class : represents an item / object of the game
+ * Enum representing all the stats
  *
  * @author p1509413
  */
-public class Item
+public enum Ability
 {
 
+    STRENGTH,
+    DEXTERITY,
+    HEALTH,
+    DEFENSE;
 }
