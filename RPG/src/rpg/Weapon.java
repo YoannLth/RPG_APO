@@ -6,11 +6,21 @@
 package rpg;
 
 /**
- * Represents a weapon (speciality of Collectable)
+ * Represents a weapon
  *
  * @author p1509413
  */
-public class Weapon extends Collectable
+public class Weapon extends Item
 {
+    /**
+     * Constructor
+     * 
+     * @param name the name of the weapon
+     * @param w the weight of the weapon
+     */
+    public Weapon(String name, int w)
+    {
+        super(name, w);
+    }
 
 }
