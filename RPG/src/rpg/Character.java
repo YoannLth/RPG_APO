@@ -6,6 +6,7 @@
 package rpg;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Map;
 public class Character
 {
     // -------------- Attributes
-    
+
     /**
      * Name of the character
      */
@@ -26,29 +27,33 @@ public class Character
      * Stats of the character
      */
     private Map<Ability, Integer> abilities;
-    
+
     /**
      * Current level of the character
      */
     private int level = 1;
-    
+
     /**
      * Max weight of carriable items
      */
     private int maxWeight = 100;
-    
+
     /**
      * Max Health reachable by the character
      */
     private int maxHealth;
-    
+
     /**
      * Max Dexterity reachable by the character
      */
     private int maxDexterity;
 
+    /**
+     * Inventory of the characters
+     */
+    private List<Item> inventory;
+
     // -------------- Constructors
-    
     /**
      * Default constructor
      */
@@ -58,7 +63,6 @@ public class Character
     }
 
     // -------------- Getters And Setters
-    
     public String getName()
     {
         return name;
@@ -118,22 +122,106 @@ public class Character
     {
         this.maxDexterity = maxDexterity;
     }
-    
+
     // -------------- Methods
-    
-    // TODO uncomment methods and write doc
-    
-    // public void applyEffect(Effect e){}
-    // public void equipWeapon(Weapon w){}
-    // public void equipArmor(Armor a){}
+    /**
+     * Apply an effect onto the character
+     *
+     * @param e : The effect to apply
+     */
+    public void applyEffect(Effect e)
+    {
+        Ability a = e.getAbility();
+        int newValue = this.abilities.get(a) + e.getValue();
+        this.abilities.put(a, newValue);
+    }
+
+    /**
+     * Equip a weapon, the effect is applied if there is enough room in the
+     * inventory
+     *
+     * @param w
+     */
+    public void equipWeapon(Weapon w)
+    {
+        try
+        {
+            this.checkInventory(w);
+            this.applyEffect(w.getEffect());
+        } catch (MaxInventoryException ex)
+        {
+            System.out.println(ex.getMessage());
+            // TODO : Replace with log system
+        }
+    }
+
+    /**
+     * Equip an armor, the effect is applied if there is enough room in the
+     * inventory
+     *
+     * @param a
+     */
+    public void equipArmor(Armor a)
+    {
+        try
+        {
+            this.checkInventory(a);
+            this.applyEffect(a.getEffect());
+        } catch (MaxInventoryException ex)
+        {
+            System.out.println(ex.getMessage());
+            // TODO : Replace with log system
+        }
+    }
+
+    /**
+     * Get the current weight of the inventory
+     *
+     * @return the weight of the inventory
+     */
     public int getInventoryWeight()
     {
-        return 100; // TODO implement method
+        int sum = 0;
+        for (Item item : inventory)
+        {
+            sum += item.getWeight();
+        }
+        return sum;
     }
-    //public void removeItem(Item i){}
-    //public void addItem(Item i){}
-    //public void incrementLevel(){}
-    
+
+    /**
+     * Remove an item from the inventory
+     *
+     * @param i
+     */
+    public void removeItem(Item i)
+    {
+        this.inventory.remove(i);
+    }
+
+    /**
+     * Add an item in the inventory
+     *
+     * @param i
+     */
+    public void addItem(Item i)
+    {
+        this.inventory.add(i);
+    }
+
+    /**
+     * Increment the level
+     */
+    public void incrementLevel()
+    {
+        this.level++;
+    }
+
+    /**
+     * Calculate the sum of the abilities
+     *
+     * @return the sum of the abilities
+     */
     public int sumAbilities()
     {
         int sum = 0;
@@ -141,28 +229,45 @@ public class Character
         {
             Ability ability = map.getKey();
             Integer value = map.getValue();
-            sum += value;            
+            sum += value;
         }
         return sum;
     }
-    
+
+    /**
+     * Return the value of the given ability
+     *
+     * @param ability
+     * @return the value of the given ability
+     */
     public int getAbilityValue(Ability ability)
     {
         return this.abilities.get(ability);
     }
-    
+
     public void initAbilities()
     {
-        
     }
-    
+
     public void checkAbilities()
     {
-        
     }
-    
+
     public void initCapacity()
     {
-        
+    }
+
+    /**
+     * Check that there is space available in the inventory
+     *
+     * @param i : The item to add to inventory
+     * @throws MaxInventoryException if the limit of the inventory is reached
+     */
+    private void checkInventory(Item i) throws MaxInventoryException
+    {
+        if (this.getInventoryWeight() + i.weight > this.maxWeight)
+        {
+            throw new MaxInventoryException(i);
+        }
     }
 }

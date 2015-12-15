@@ -50,14 +50,20 @@ public class Item
         this.effect = e;
     }
 
-    /**
-     * Get the effect of item
-     *
-     * @return the effect of item
-     */
+    // ------ Getters
+    
     public Effect getEffect()
     {
-        return this.effect;
+        return effect;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public int getWeight()
+    {
+        return weight;
+    }
 }
