@@ -8,6 +8,7 @@ package rpg;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import me.grea.antoine.utils.Log;
 
 /**
  * Character class : Represents a character of the game
@@ -150,8 +151,7 @@ public class Character
             this.applyEffect(w.getEffect());
         } catch (MaxInventoryException ex)
         {
-            System.out.println(ex.getMessage());
-            // TODO : Replace with log system
+            Log.e(ex.getMessage());
         }
     }
 
@@ -169,8 +169,7 @@ public class Character
             this.applyEffect(a.getEffect());
         } catch (MaxInventoryException ex)
         {
-            System.out.println(ex.getMessage());
-            // TODO : Replace with log system
+            Log.e(ex.getMessage());
         }
     }
 
