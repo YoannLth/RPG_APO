@@ -5,6 +5,7 @@ import static view.Console.displayBlue;
 
 public class HumanControler extends Controler {
     private static Scanner scanner = new Scanner(System.in);
+    
     public static int readInt(String message)
     {
         int nombre = 0;

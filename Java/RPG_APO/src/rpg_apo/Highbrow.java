@@ -7,8 +7,8 @@ public class Highbrow extends Character {
 	private int weightMax;
 	private Map<Characteristic, Integer> characsMax;
 
-    public Highbrow(String nameCharacter) {
-        super(nameCharacter,"Intellectuel", "Vous êtes un Intellectuel. Votre intelligence vous pousse instinctivement a vous entourez des bonnes personnes pour vous survivre. \nAucun bonus pour le moment");    
+    public Highbrow(String nameCharacter,CharacterType charT) {
+        super(nameCharacter,"Intellectuel", "Vous êtes un Intellectuel. Votre intelligence vous pousse instinctivement a vous entourez des bonnes personnes pour vous survivre. \nAucun bonus pour le moment",charT);    
     }
 
 	public void calculateMaximumCharacteristics() {

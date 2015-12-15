@@ -29,13 +29,13 @@ public class NewPlayer extends Event {
         int pCharacterClass = Integer.parseInt(answer);
         switch (pCharacterClass){
                 case 1:
-                    playableCharacter = new Boxer(pCharacterName);
+                    playableCharacter = new Boxer(pCharacterName,CharacterType.HUMAN);
                     break;
                 case 2:
-                    playableCharacter = new MaleNurse(pCharacterName);
+                    playableCharacter = new MaleNurse(pCharacterName,CharacterType.HUMAN);
                     break;
                 case 3:
-                    playableCharacter = new Highbrow(pCharacterName);
+                    playableCharacter = new Highbrow(pCharacterName,CharacterType.HUMAN);
                     break;
         }
         displayRed(playableCharacter.getClassDesc());

@@ -7,11 +7,18 @@ public class Action {
 	private Capacity cap;
 	private ConsumableItem consum;
         
-        public Action(Character t, Character s){
+        public Action(Character t, Character s, Capacity c){
+            this.target=t;
+            this.src=s;
+            this.cap=c;
+            this.consum=null;
+        }
+        
+        public Action(Character t, Character s, ConsumableItem cons){
             this.target=t;
             this.src=s;
             this.cap=null;
-            this.consum=null;
+            this.consum=cons;
         }
 
         

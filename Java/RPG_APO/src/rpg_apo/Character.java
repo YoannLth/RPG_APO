@@ -15,8 +15,9 @@ public class Character {
 	private Map<Armor, Integer> activeArmors;
         private String className;
         private String characterDescription;
+        private CharacterType charType;
         
-        public Character(String nameCharacter, String className, String characterDescription){
+        public Character(String nameCharacter, String className, String characterDescription, CharacterType charT){
             this.name = nameCharacter;
             this.level = 0;
             this.characs = new HashMap();
@@ -25,6 +26,7 @@ public class Character {
             this.activeArmors = new HashMap();
             this.className = className;
             this.characterDescription = characterDescription;
+            this.charType = charT;
         }
         
 	public int increaseLvl(int lvl) {
@@ -153,5 +155,9 @@ public class Character {
             String res = this.name + " , le " + this.className;
             
             return res;
+        }
+        
+        public String getName(){
+            return this.name;
         }
 }

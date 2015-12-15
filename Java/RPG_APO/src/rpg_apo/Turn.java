@@ -59,7 +59,7 @@ public class Turn {
             option = readInt("Choisis le nombre de ton choix : ");
         }
         
-        a=new Action(c,def.get(option));
+        //a=new Action(c,def.get(option));
         
         
     }
