@@ -246,14 +246,17 @@ public class Character
 
     public void initAbilities()
     {
+        // TODO : implement this method
     }
 
     public void checkAbilities()
     {
+        // TODO : Implement this method
     }
 
     public void initCapacity()
     {
+        // TODO : Implement this method
     }
 
     /**
