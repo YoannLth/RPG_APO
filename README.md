@@ -1,3 +1,2 @@
 # RPG_APO
-School project
-modifier maintenant
+School project / JAVA / Basic textual RPG
