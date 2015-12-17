@@ -60,7 +60,8 @@ public class Action
      */
     private void useItem(Edible i)
     {
-        // TODO: implement
+        this.target.applyEffect(i.getEffect());
+        this.source.removeItem(i);
     }
 
     /**
@@ -70,7 +71,6 @@ public class Action
      */
     private void useCapacity(Capacity c)
     {
-        // TODO : implement
     }
 
 }

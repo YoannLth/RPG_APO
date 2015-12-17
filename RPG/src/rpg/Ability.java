@@ -12,7 +12,6 @@ package rpg;
  */
 public enum Ability
 {
-
     STRENGTH,
     DEXTERITY,
     HEALTH,
