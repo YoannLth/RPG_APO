@@ -3,7 +3,9 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package rpg;
+package rpgException;
+
+import rpg.Item;
 
 /**
  * Exception generated when then inventory is full
@@ -13,7 +15,7 @@ public class MaxInventoryException extends Exception
 {    
     /**
      * Default constructor
-     * Indicate that the maximum inventory espace has been reached
+     * Indicate that the maximum inventory space has been reached
      */
     public MaxInventoryException()
     {

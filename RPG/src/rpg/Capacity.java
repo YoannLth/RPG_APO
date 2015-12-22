@@ -14,9 +14,7 @@ public interface Capacity
     /**
      * Get the effect of a capacity
      * 
-     * @param source : Character launching the capacity
-     * @param target : Character suffering the capacity
      * @return the effect
      */
-    public Effect getEffect(Character source, Character target);
+    public Effect getEffect();
 }

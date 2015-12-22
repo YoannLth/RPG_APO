@@ -5,6 +5,7 @@
  */
 package rpg;
 
+import rpgException.MaxInventoryException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -147,7 +148,7 @@ public class Character
     {
         try
         {
-            this.checkInventory(w);
+            this.checkMaxInventory(w);
             this.applyEffect(w.getEffect());
         } catch (MaxInventoryException ex)
         {
@@ -165,7 +166,7 @@ public class Character
     {
         try
         {
-            this.checkInventory(a);
+            this.checkMaxInventory(a);
             this.applyEffect(a.getEffect());
         } catch (MaxInventoryException ex)
         {
@@ -265,11 +266,12 @@ public class Character
      * @param i : The item to add to inventory
      * @throws MaxInventoryException if the limit of the inventory is reached
      */
-    private void checkInventory(Item i) throws MaxInventoryException
+    private void checkMaxInventory(Item i) throws MaxInventoryException
     {
         if (this.getInventoryWeight() + i.weight > this.maxWeight)
         {
             throw new MaxInventoryException(i);
         }
     }
+    
 }

@@ -22,12 +22,10 @@ public class Attack implements Capacity
     /**
      * Effect of the attack
      *
-     * @param source : Character launching the attack
-     * @param target : Character suffering the attack
      * @return
      */
     @Override
-    public Effect getEffect(Character source, Character target)
+    public Effect getEffect()
     {
         return new Effect(ATTACK_ABILITY, ATTACK_DEFAULT_DAMAGE, ATTACK_DURATION);
     }

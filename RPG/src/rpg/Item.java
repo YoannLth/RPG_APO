@@ -41,7 +41,7 @@ public class Item
     }
 
     /**
-     * Add an efect to the item
+     * Add an effect to the item
      *
      * @param e : The effect to add
      */

@@ -71,6 +71,7 @@ public class Action
      */
     private void useCapacity(Capacity c)
     {
+        this.target.applyEffect(c.getEffect());
     }
 
 }

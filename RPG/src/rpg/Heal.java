@@ -22,12 +22,10 @@ public class Heal implements Capacity
     /**
      * Effect of the attack
      *
-     * @param source : Character launching the attack
-     * @param target : Character suffering the attack
      * @return
      */
     @Override
-    public Effect getEffect(Character source, Character target)
+    public Effect getEffect()
     {
         return new Effect(HEAL_ABILITY, HEAL_VALUE, HEAL_DURATION);
     }
