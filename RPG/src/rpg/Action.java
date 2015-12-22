@@ -5,6 +5,9 @@
  */
 package rpg;
 
+import me.grea.antoine.utils.Log;
+import rpgException.ExistsInventoryException;
+
 /**
  * Class representing an action of a character : use of an item or use of a
  * capacity
@@ -60,8 +63,15 @@ public class Action
      */
     private void useItem(Edible i)
     {
-        this.target.applyEffect(i.getEffect());
-        this.source.removeItem(i);
+        try {
+            this.target.checkInInventory(i);
+            this.target.applyEffect(i.getEffect());
+            this.source.removeItem(i);
+        }catch(ExistsInventoryException e)
+        {
+            Log.e(e.getMessage());
+        }
+        
     }
 
     /**

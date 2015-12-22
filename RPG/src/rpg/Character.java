@@ -5,11 +5,12 @@
  */
 package rpg;
 
-import rpgException.MaxInventoryException;
+import rpgException.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import me.grea.antoine.utils.Log;
+
 
 /**
  * Character class : Represents a character of the game
@@ -274,4 +275,11 @@ public class Character
         }
     }
     
+    public void checkInInventory(Item i) throws ExistsInventoryException
+    {
+        if (!this.inventory.contains(i))
+        {
+            throw new ExistsInventoryException(i);
+        }
+    }
 }
