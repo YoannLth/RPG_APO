@@ -4,7 +4,6 @@
  *  Gaetan MARTIN & Jensen Joymangul
  */
 package rpg;
-
 import java.util.List;
 
 /**

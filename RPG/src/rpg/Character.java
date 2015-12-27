@@ -21,42 +21,15 @@ public class Character
 {
     // -------------- Attributes
 
-    /**
-     * Name of the character
-     */
-    private String name;
+    private String name;            //Name of the character
+    private Map<Ability, Integer> abilities;    //Stats of the character
+    private int level = 1;          //Current level of the character
+    private int maxWeight = 100;    //Max weight of carriable items
+    private int maxHealth;          //Max Health reachable by the character
+    private int maxDexterity;       //Max Dexterity reachable by the character
+    private List<Item> inventory;   //Inventory of the characters
 
-    /**
-     * Stats of the character
-     */
-    private Map<Ability, Integer> abilities;
-
-    /**
-     * Current level of the character
-     */
-    private int level = 1;
-
-    /**
-     * Max weight of carriable items
-     */
-    private int maxWeight = 100;
-
-    /**
-     * Max Health reachable by the character
-     */
-    private int maxHealth;
-
-    /**
-     * Max Dexterity reachable by the character
-     */
-    private int maxDexterity;
-
-    /**
-     * Inventory of the characters
-     */
-    private List<Item> inventory;
-
-    // -------------- Constructors
+    // -------------- Constructors ----------------------------------
     /**
      * Default constructor
      */
@@ -65,7 +38,7 @@ public class Character
         this.abilities = new HashMap<>();
     }
 
-    // -------------- Getters And Setters
+    // -------------- Getters And Setters -------------------------------
     public String getName()
     {
         return name;
@@ -126,7 +99,7 @@ public class Character
         this.maxDexterity = maxDexterity;
     }
 
-    // -------------- Methods
+    // ---------------------------- Methods --------------------------------------
     /**
      * Apply an effect onto the character
      *
@@ -140,8 +113,7 @@ public class Character
     }
 
     /**
-     * Equip a weapon, the effect is applied if there is enough room in the
-     * inventory
+     * Equip a weapon, the effect is applied if there is enough room in the inventory
      *
      * @param w
      */
@@ -246,9 +218,16 @@ public class Character
         return this.abilities.get(ability);
     }
 
+    /**
+     * Initialize the four abilities present with default values
+     */
     public void initAbilities()
     {
-        // TODO : implement this method
+        this.abilities = new HashMap();
+        this.abilities.put(Ability.DEFENSE, 10);
+        this.abilities.put(Ability.HEALTH, 100);
+        this.abilities.put(Ability.STRENGTH, 10);
+        this.abilities.put(Ability.DEXTERITY, 10);
     }
 
     public void checkAbilities()
@@ -275,6 +254,11 @@ public class Character
         }
     }
     
+    /**
+     * 
+     * @param i: Item to check if present in inventory
+     * @throws ExistsInventoryException if item i is not in inventory
+     */
     public void checkInInventory(Item i) throws ExistsInventoryException
     {
         if (!this.inventory.contains(i))
