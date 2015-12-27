@@ -30,14 +30,9 @@ public class Weapon extends Item
     
     
     
+
     /**
      * Constructor
-     * 
-     * @param name the name of the weapon
-     * @param w the weight of the weapon
-     */
-    /**
-     * 
      * @param name  Name of weapon
      * @param w     Weight of weapon
      * @param efficiency    Efficiency of weapon

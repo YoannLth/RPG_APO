@@ -29,9 +29,9 @@ public class Effect
     /**
      * Creation of an effect
      * 
-     * @param a : The ability concerned by the effect
-     * @param efficiency : The efficiency of the effect
-     * @param nbOfTurns : The number of turns the effect is lasting
+     * @param a  The ability concerned by the effect
+     * @param efficiency  The efficiency of the effect
+     * @param nbOfTurns  The number of turns the effect is lasting
      */
     public Effect(Ability a, int efficiency, int nbOfTurns)
     {
