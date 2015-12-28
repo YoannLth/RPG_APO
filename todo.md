@@ -2,7 +2,7 @@
 ##Caracter class
 - [x] initabilities()
 - [ ] checkAbilities()
-- [ ] initCapacity()
+- [x] initCapacity();this methode was replace with addCapacity()
 
 ##Armor class
 - [ ] A caracter can have only one armor
