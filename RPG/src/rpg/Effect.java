@@ -64,5 +64,14 @@ public class Effect
         return duration;
     }
     
+    @Override
+    public String toString()
+    {
+        String s;
+        s = "L'effet sur : " + this.getAbility().name() + " avec une efficacité de : " + this.getValue() ;
+        if(this.getDuration()<1000) //would not write duration for armor and weapon
+            s+= " pour une durée de " + this.getDuration() + " tours";
+        return s;
+    }
     
 }

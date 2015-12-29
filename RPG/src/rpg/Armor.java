@@ -4,7 +4,6 @@
  *  Gaetan MARTIN & Jensen Joymangul
  */
 package rpg;
-
 /**
  * Class representing an armor : defensive item
  * 
@@ -36,8 +35,7 @@ public class Armor extends Item
     public Armor(String n, int w, int resistance)
     {
         super(n, w);
-        Effect temp = new Effect(Ability.STRENGTH,resistance, 1000);
+        Effect temp = new Effect(Ability.DEFENSE,resistance, 1000); //1000 = infinite nulber of round
         super.setEffect(temp);
     }
-    
 }

@@ -17,7 +17,7 @@ public class Edible extends Item
     /**
      * Number of turns for the effect of an edible Default = 1
      */
-    public final int EDIBLE_DURATION = 1;
+    private final int EDIBLE_DURATION = 1;
 
     /**
      * Constructor

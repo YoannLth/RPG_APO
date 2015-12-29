@@ -41,7 +41,7 @@ public class Weapon extends Item
     public Weapon(String name, int w, int efficiency, int managable)
     {
         super(name, w);
-        Effect tempEffect = new Effect(Ability.DEFENSE, efficiency, 1000);
+        Effect tempEffect = new Effect(Ability.STRENGTH, efficiency, 1000);
         super.setEffect(tempEffect);
         this.manageability = managable;
     }

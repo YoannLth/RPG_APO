@@ -5,10 +5,13 @@
  */
 package rpg;
 
+import java.util.ArrayList;
 import rpgException.*;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import me.grea.antoine.utils.Log;
 
 
@@ -28,6 +31,7 @@ public class Character
     private int maxHealth;          //Max Health reachable by the character
     private int maxDexterity;       //Max Dexterity reachable by the character
     private List<Item> inventory;   //Inventory of the characters
+    private Set<Capacity> capacities;  //List of capacties of the caracter
 
     // -------------- Constructors ----------------------------------
     /**
@@ -35,7 +39,22 @@ public class Character
      */
     public Character()
     {
+        this("Player");
+    }
+    
+    /**
+     * Constructor with arguments
+     * @param name Name of Character
+     */
+    public Character(String name)
+    {
         this.abilities = new HashMap<>();
+        this.capacities = new HashSet<>();
+        this.inventory = new ArrayList<>();
+        this.setName(name);
+        this.setMaxHealth(100);
+        this.setMaxDexterity(10);
+        this.initAbilities();
     }
 
     // -------------- Getters And Setters -------------------------------
@@ -99,6 +118,11 @@ public class Character
         this.maxDexterity = maxDexterity;
     }
 
+    public List<Item> getInventory()
+    {
+        return inventory;
+    }
+
     // ---------------------------- Methods --------------------------------------
     /**
      * Apply an effect onto the character
@@ -110,41 +134,6 @@ public class Character
         Ability a = e.getAbility();
         int newValue = this.abilities.get(a) + e.getValue();
         this.abilities.put(a, newValue);
-    }
-
-    /**
-     * Equip a weapon, the effect is applied if there is enough room in the inventory
-     *
-     * @param w
-     */
-    public void equipWeapon(Weapon w)
-    {
-        try
-        {
-            this.checkMaxInventory(w);
-            this.applyEffect(w.getEffect());
-        } catch (MaxInventoryException ex)
-        {
-            Log.e(ex.getMessage());
-        }
-    }
-
-    /**
-     * Equip an armor, the effect is applied if there is enough room in the
-     * inventory
-     *
-     * @param a
-     */
-    public void equipArmor(Armor a)
-    {
-        try
-        {
-            this.checkMaxInventory(a);
-            this.applyEffect(a.getEffect());
-        } catch (MaxInventoryException ex)
-        {
-            Log.e(ex.getMessage());
-        }
     }
 
     /**
@@ -165,21 +154,45 @@ public class Character
     /**
      * Remove an item from the inventory
      *
-     * @param i
+     * @param i item to remove in inventory
      */
     public void removeItem(Item i)
     {
-        this.inventory.remove(i);
+        try
+        {
+            this.checkInInventory(i);
+            if("Weapon".equals(i.getClass().getName()) || "Armor".equals(i.getClass().getName()))
+                Log.e("Cannot remove a weapon or an armor");
+            else
+                this.inventory.remove(i);
+        }
+        catch (ExistsInventoryException ex)
+        {
+            Log.e(ex.getMessage());
+        }
+        
     }
 
     /**
      * Add an item in the inventory
      *
-     * @param i
+     * @param i item to add to inventory
      */
     public void addItem(Item i)
     {
-        this.inventory.add(i);
+        try
+        {
+            this.checkMaxInventory(i);
+            //Test if Item is a weapon or an armor
+            if("Weapon".equals(i.getClass().getName()) || "Armor".equals(i.getClass().getName()))
+            {
+                this.applyEffect(i.getEffect());
+            }
+            this.inventory.add(i);
+        } catch (MaxInventoryException ex)
+        {
+            Log.e(ex.getMessage());
+        }
     }
 
     /**
@@ -192,7 +205,6 @@ public class Character
 
     /**
      * Calculate the sum of the abilities
-     *
      * @return the sum of the abilities
      */
     public int sumAbilities()
@@ -229,16 +241,22 @@ public class Character
         this.abilities.put(Ability.STRENGTH, 10);
         this.abilities.put(Ability.DEXTERITY, 10);
     }
-
+   
     public void checkAbilities()
     {
         // TODO : Implement this method
     }
 
-    public void initCapacity()
+    /**
+     * Method to add a capacity to a character
+     * @param c Capacity to add
+     */
+    public void AddCapacity(Capacity c)
     {
-        // TODO : Implement this method
+        this.capacities.add(c);
     }
+    
+
 
     /**
      * Check that there is space available in the inventory
@@ -255,7 +273,6 @@ public class Character
     }
     
     /**
-     * 
      * @param i: Item to check if present in inventory
      * @throws ExistsInventoryException if item i is not in inventory
      */

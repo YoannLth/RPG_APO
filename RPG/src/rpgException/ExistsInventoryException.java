@@ -15,7 +15,7 @@ public class ExistsInventoryException extends Exception
 
     /**
      * Default constructor
-     * Indicate that item in not in inventory
+     * Indicates that item in not in inventory
      */
     public ExistsInventoryException()
     {
@@ -23,7 +23,7 @@ public class ExistsInventoryException extends Exception
     }
     
     /**
-     * @param i : item subjected to the verification
+     * @param i item subjected to the verification
      * indicates item i is not in inventory
      */
     public ExistsInventoryException(Item i)
