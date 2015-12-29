@@ -17,3 +17,4 @@
 - [x] Display inventory
 - [x] Display abilites
 - [x] Display the transactions on a caracter ex: when adding an weapon
+
