@@ -34,7 +34,7 @@ public class Armor extends Item
      */
     public Armor(String n, int w, int resistance)
     {
-        super(n, w);
+        super(n, w,true);
         Effect temp = new Effect(Ability.DEFENSE,resistance, 1000); //1000 = infinite nulber of round
         super.setEffect(temp);
     }

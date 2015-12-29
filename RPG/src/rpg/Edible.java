@@ -24,11 +24,12 @@ public class Edible extends Item
      *
      * @param n : Name of the edible item
      * @param w : Weight of the edible item
+     * @param using : using or not the edible
      * @param e : Effect of the edible item
      */
-    public Edible(String n, int w, Effect e)
+    public Edible(String n, int w, boolean using, Effect e)
     {
-        super(n, w);
+        super(n, w, using);
         this.effect = e;
         this.effect.setDuration(this.EDIBLE_DURATION);
     }

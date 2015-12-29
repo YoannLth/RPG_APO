@@ -26,12 +26,20 @@ public class RPG
         dc.displayHealth();
         
         Effect e1 = new Effect(Ability.DEXTERITY, 20, 2);
-        Item i = new Item("Item 1",20);
+        Item i = new Item("Item 1",20,false);
         i.setEffect(e1);
-        c.addItem(i);
+        dc.addItem(i);
+        dc.addItem(new Item("Item 2",20,false,e1));
+        Item i2 = new Item("Item to remove",20,false);
+        Weapon w = new Weapon("arme", 60, 30, 10);
+        Armor a = new Armor("armure",20,50); 
+         dc.displayInventory();
+         
+        dc.removeItem(i);
+        dc.removeItem(i2);
         dc.displayInventory();
         dc.displayAbilities();
-        c.applyEffect(e1);
+        dc.addItem(a);
         dc.displayAbilities();
     }
 

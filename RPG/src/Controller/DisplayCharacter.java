@@ -9,6 +9,8 @@ import me.grea.antoine.utils.Log;
 import rpg.Ability;
 import rpg.Character;
 import rpg.Item;
+import rpgException.ExistsInventoryException;
+import rpgException.MaxInventoryException;
 /**
  *
  * @author seljo
@@ -22,6 +24,50 @@ public class DisplayCharacter
         this.character = c;
     }
     
+    /**
+     * Display information when adding an item
+     * @param i item to add to inventory
+     */
+    public void addItem(Item i)
+    {
+        try
+        {
+            this.character.checkMaxInventory(i);
+            this.character.addItem(i);
+            Log.i("Item : " + i.getName() + " a été ajouté");
+        }
+        catch (MaxInventoryException ex)
+        {
+            Log.e(ex.getMessage());
+        }
+    }
+    
+    /**
+     * Display information when removing an item in inventory
+     * @param i item to remove in inventory
+     */
+    public void removeItem(Item i)
+    {
+        try
+        {
+            this.character.checkInInventory(i);
+            if("Weapon".equals(i.getClass().getName()) || "Armor".equals(i.getClass().getName()))
+                Log.e("Impossible de retirer une arme ou une armure dans l'inventaire");
+            else
+            {
+                this.character.removeItem(i);
+                Log.i("Item : " + i.getName() + " a été retiré dans l'inventaire");
+            }
+        }
+        catch (ExistsInventoryException ex)
+        {
+            Log.e(ex.getMessage());
+        }    
+    }
+    
+    /**
+     * Display inventory of player
+     */
     public void displayInventory()
     {
         String s = "Vous avez dans votre inventaire : \n";

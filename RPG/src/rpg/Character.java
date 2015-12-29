@@ -31,7 +31,6 @@ public class Character
     private int maxHealth;          //Max Health reachable by the character
     private int maxDexterity;       //Max Dexterity reachable by the character
     private List<Item> inventory;   //Inventory of the characters
-    private Set<Capacity> capacities;  //List of capacties of the caracter
 
     // -------------- Constructors ----------------------------------
     /**
@@ -49,7 +48,6 @@ public class Character
     public Character(String name)
     {
         this.abilities = new HashMap<>();
-        this.capacities = new HashSet<>();
         this.inventory = new ArrayList<>();
         this.setName(name);
         this.setMaxHealth(100);
@@ -158,19 +156,7 @@ public class Character
      */
     public void removeItem(Item i)
     {
-        try
-        {
-            this.checkInInventory(i);
-            if("Weapon".equals(i.getClass().getName()) || "Armor".equals(i.getClass().getName()))
-                Log.e("Cannot remove a weapon or an armor");
-            else
-                this.inventory.remove(i);
-        }
-        catch (ExistsInventoryException ex)
-        {
-            Log.e(ex.getMessage());
-        }
-        
+        this.inventory.remove(i);    
     }
 
     /**
@@ -180,19 +166,11 @@ public class Character
      */
     public void addItem(Item i)
     {
-        try
+        if("rpg.Armor".equals(i.getClass().getName()))
         {
-            this.checkMaxInventory(i);
-            //Test if Item is a weapon or an armor
-            if("Weapon".equals(i.getClass().getName()) || "Armor".equals(i.getClass().getName()))
-            {
-                this.applyEffect(i.getEffect());
-            }
-            this.inventory.add(i);
-        } catch (MaxInventoryException ex)
-        {
-            Log.e(ex.getMessage());
+            this.applyEffect(i.getEffect());   
         }
+        this.inventory.add(i);
     }
 
     /**
@@ -247,16 +225,6 @@ public class Character
         // TODO : Implement this method
     }
 
-    /**
-     * Method to add a capacity to a character
-     * @param c Capacity to add
-     */
-    public void AddCapacity(Capacity c)
-    {
-        this.capacities.add(c);
-    }
-    
-
 
     /**
      * Check that there is space available in the inventory
@@ -264,7 +232,7 @@ public class Character
      * @param i : The item to add to inventory
      * @throws MaxInventoryException if the limit of the inventory is reached
      */
-    private void checkMaxInventory(Item i) throws MaxInventoryException
+    public void checkMaxInventory(Item i) throws MaxInventoryException
     {
         if (this.getInventoryWeight() + i.weight > this.maxWeight)
         {

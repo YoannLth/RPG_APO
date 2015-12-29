@@ -28,19 +28,16 @@ public class Weapon extends Item
         this.manageability = manageability;
     }
     
-    
-    
-
     /**
-     * Constructor
-     * @param name  Name of weapon
-     * @param w     Weight of weapon
-     * @param efficiency    Efficiency of weapon
-     * @param managable     manageability of weapon
-     */
+    * Constructor
+    * @param name  Name of weapon
+    * @param w     Weight of weapon
+    * @param efficiency    Efficiency of weapon
+    * @param managable     manageability of weapon
+    */
     public Weapon(String name, int w, int efficiency, int managable)
     {
-        super(name, w);
+        super(name, w, true);
         Effect tempEffect = new Effect(Ability.STRENGTH, efficiency, 1000);
         super.setEffect(tempEffect);
         this.manageability = managable;
