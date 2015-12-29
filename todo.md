@@ -15,7 +15,7 @@
 
 ##DisplayCharacter class
 - [x] Display the basic information
-- [ ] Display inventory
+- [x] Display inventory
 - [ ] Display capacities
 - [x] Display abilites
 - [ ] Display the transactions on a caracter ex: when adding an weapon
