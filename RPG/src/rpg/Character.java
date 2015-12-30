@@ -175,10 +175,6 @@ public class Character
      */
     public void addItem(Item i)
     {
-        if("rpg.Armor".equals(i.getClass().getName()))
-        {
-            this.applyEffect(i.getEffect());   
-        }
         this.inventory.add(i);
     }
 

@@ -14,8 +14,12 @@ import static java.lang.Math.abs;
  */
 public class Attack implements Capacity
 {
-    private Weapon weapon;         //Weapon used during attack
+    private final Weapon weapon;         //Weapon used during attack
 
+    public Attack(Weapon w)
+    {
+        this.weapon = w;
+    }
     /**
      * Effect of the attack
      *
@@ -47,7 +51,7 @@ public class Attack implements Capacity
             return 0.4;
         if(netDexterity <-60 && netDexterity >=-80)
             return 0.2;
-        if(netDexterity <-80 && netDexterity >=-100)
+        if(netDexterity <-80)
             return 0.1;     
         return 0.5;
     }
