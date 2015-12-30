@@ -16,16 +16,8 @@ import rpgException.ExistsInventoryException;
  */
 public class Action
 {
-
-    /**
-     * Character launching the action
-     */
-    private Character source;
-
-    /**
-     * Character getting the effect of the action
-     */
-    private Character target;
+    private Character source; //Character launching the action
+    private Character target;   //Character getting the effect of the action
 
     /**
      * Utilization of an item
@@ -81,7 +73,7 @@ public class Action
      */
     private void useCapacity(Capacity c)
     {
-        this.target.applyEffect(c.getEffect());
+        this.target.applyEffect(c.getEffect(this.source,this.target));
     }
 
 }

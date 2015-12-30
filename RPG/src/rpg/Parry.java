@@ -25,8 +25,14 @@ public class Parry implements Capacity
      * @return
      */
     @Override
-    public Effect getEffect()
+    public Effect getEffect(Character source, Character target)
     {
         return new Effect(PARRY_ABILITY, PARRY_DEFAULT_DEFENSE, PARRY_DURATION);
+    }
+
+    @Override
+    public double probaWin(Character source )
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

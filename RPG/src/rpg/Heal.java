@@ -25,8 +25,14 @@ public class Heal implements Capacity
      * @return
      */
     @Override
-    public Effect getEffect()
+    public Effect getEffect(Character source, Character target)
     {
         return new Effect(HEAL_ABILITY, HEAL_VALUE, HEAL_DURATION);
+    }
+
+    @Override
+    public double probaWin(Character source)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

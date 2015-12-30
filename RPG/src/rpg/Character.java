@@ -8,11 +8,8 @@ package rpg;
 import java.util.ArrayList;
 import rpgException.*;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import me.grea.antoine.utils.Log;
 
 
 /**
@@ -119,6 +116,18 @@ public class Character
     public List<Item> getInventory()
     {
         return inventory;
+    }
+    
+    public Armor getArmor()
+    {
+        for(Item i: this.getInventory())
+        {
+            if("rpg.Armor".equals(i.getClass().getName()))
+            {
+                return (Armor)i;
+            }
+        }
+        return null;
     }
 
     // ---------------------------- Methods --------------------------------------

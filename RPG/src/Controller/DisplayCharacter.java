@@ -51,7 +51,7 @@ public class DisplayCharacter
         try
         {
             this.character.checkInInventory(i);
-            if("Weapon".equals(i.getClass().getName()) || "Armor".equals(i.getClass().getName()))
+            if("rpg.Weapon".equals(i.getClass().getName()) || "rpg.Armor".equals(i.getClass().getName()))
                 Log.e("Impossible de retirer une arme ou une armure dans l'inventaire");
             else
             {
