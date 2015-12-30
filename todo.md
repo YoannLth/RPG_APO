@@ -3,7 +3,9 @@
 - [x] initabilities()
 - [ ] checkAbilities()
 - [x] initCapacity();this methode was replace with addCapacity()
-- [ ] Display the different player information
+- [ ] Have only one armor
+- [ ] have only one weapon
+
 
 ###Armor class
 - [x] Manageability is not relevant, ant caracter would be able to use its armor without taking desterity into account
@@ -17,3 +19,4 @@
 - [x] Display inventory
 - [x] Display abilites
 - [x] Display the transactions on a caracter ex: when adding an weapon
+
