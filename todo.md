@@ -2,13 +2,23 @@
 ###Caracter class
 - [x] initabilities()
 - [ ] checkAbilities()
-- [x] initCapacity();this methode was replace with addCapacity()
+- [ ] initCapacity();
 - [ ] Have only one armor
-- [ ] have only one weapon
+- [ ] Have only one weapon
+- [ ] Reinitialize character health after each round
+- [ ] 
+
 
 
 ###Armor class
 - [x] Manageability is not relevant, ant caracter would be able to use its armor without taking desterity into account
+
+##Attack class
+- [ ] Handle case where target character does not have any armor
+- [ ] Level up for character still alive
+
+##Round class
+- [ ] Handle case where a character die in the middle of a list of actions
 
 ##Add Controller Package
 - [x] Add class to display the different information abour the caracter
