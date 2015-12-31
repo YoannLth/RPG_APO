@@ -35,11 +35,16 @@ public class Attack implements Capacity
         return new Effect(Ability.HEALTH,(-netDamage),1);
     }
 
-
+    /**
+     * Calculate the probability of executing an attack
+     * @param source
+     * @return probability of executing attack
+     */
     @Override
     public double probaWin(Character source)
     {
-        int dexterity = source.getAbilities().get(Ability.DEXTERITY);
+        int dexterity = source.getAbilities().get(Ability.DEXTERITY);   //dexteriry of attacker
+        //get netDexterity by taking into consideration the lanageability of weapon
         int netDexterity = dexterity - this.weapon.getManageability();
         if(netDexterity >= 0)
             return 1;

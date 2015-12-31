@@ -5,6 +5,7 @@
  */
 package rpg;
 
+import me.grea.antoine.utils.Dice;
 import me.grea.antoine.utils.Log;
 import rpgException.ExistsInventoryException;
 
@@ -17,7 +18,9 @@ import rpgException.ExistsInventoryException;
 public class Action
 {
     private Character source; //Character launching the action
-    private Character target;   //Character getting the effect of the action
+    private Character target; //Character getting the effect of the action
+    private Edible edible;     
+    private Capacity capacity;
 
     /**
      * Utilization of an item
@@ -30,9 +33,32 @@ public class Action
     {
         this.source = s;
         this.target = t;
-        this.useItem(i);
+        this.edible = i;
+        this.capacity = null;
+    }
+    
+    public Character getSource()
+    {
+        return source;
     }
 
+    //---------------------- Getter -----------------------------------
+    public Character getTarget()    
+    {
+        return target;
+    }
+
+    public Edible getEdible()
+    {
+        return edible;
+    }
+
+    public Capacity getCapacity()
+    {
+        return capacity;
+    }
+
+    //---------------------- Constructor -------------------------------
     /**
      * Utilization of a capacity
      *
@@ -44,21 +70,22 @@ public class Action
     {
         this.source = s;
         this.target = t;
-        this.useCapacity(c);
-
+        this.capacity = c;
+        this.edible = null;
     }
 
     /**
      * Use of an item : apply effect on the characters
-     *
-     * @param i : Edible item used
      */
-    private void useItem(Edible i)
+    public void useItem()
     {
         try {
-            this.target.checkInInventory(i);
-            this.target.applyEffect(i.getEffect());
-            this.source.removeItem(i);
+            this.target.checkInInventory(this.edible);
+            if(this.canExecute())
+            {
+                this.target.applyEffect(this.edible.getEffect());
+                this.edible.getEffect().reduceDuration();
+            }
         }catch(ExistsInventoryException e)
         {
             Log.e(e.getMessage());
@@ -68,12 +95,34 @@ public class Action
 
     /**
      * Use of a capacity : apply effect on the characters
-     *
-     * @param c : Capacity used
      */
-    private void useCapacity(Capacity c)
+    public void useCapacity()
     {
-        this.target.applyEffect(c.getEffect(this.source,this.target));
+        if(this.canExecute()) 
+        {
+            this.target.applyEffect(this.capacity.getEffect(this.source,this.target));
+        }
+    }
+    
+    /**
+     * Check if an action can be executed
+     * @return true if can execute  action otherwise return false
+     */
+    public boolean canExecute()
+    {
+        if(this.edible == null) //if actions consists of a capacity
+        {
+            int diceRoll = Dice.roll(0,10); //generate a random ulber between 0 and 10
+            if(diceRoll <= (this.capacity.probaWin(this.source)*10)) 
+            {
+                return true;
+            }
+            return false;
+        }
+        else //if action consists of using an edible
+        {
+            return true;
+        }
     }
 
 }

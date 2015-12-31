@@ -157,6 +157,20 @@ public class Character
         }
         return sum;
     }
+    
+    /**
+     * Method to remove all effect with a duration of zero(Not effective effect)
+     */
+    public void removeEffect()
+    {
+        for(Item i: this.getInventory())
+        {
+            if(i.getEffect().getDuration() == 0)
+            {
+                this.removeItem(i);
+            }
+        }
+    }
 
     /**
      * Remove an item from the inventory
@@ -212,6 +226,14 @@ public class Character
     {
         return this.abilities.get(ability);
     }
+    
+    /**
+     * Initialize health at 100(use after each round)
+     */
+    public void initHealth()
+    {
+        this.abilities.put(Ability.HEALTH, 100);
+    }
 
     /**
      * Initialize the four abilities present with default values
@@ -220,7 +242,7 @@ public class Character
     {
         this.abilities = new HashMap();
         this.abilities.put(Ability.DEFENSE, 10);
-        this.abilities.put(Ability.HEALTH, 100);
+        this.initHealth();
         this.abilities.put(Ability.STRENGTH, 10);
         this.abilities.put(Ability.DEXTERITY, 10);
     }
@@ -229,6 +251,8 @@ public class Character
     {
         // TODO : Implement this method
     }
+    
+    
 
 
     /**
