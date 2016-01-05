@@ -18,9 +18,9 @@ public class DisplayUI
     public static void displayStartText()
     {
         String text = "Welcome in the RPG ! Please, select an option \n";
-        text += "1. Start a new game \n";
-        text += "2. Load last game saved \n";
-        text += "0. Quit \n";
+        text += "\t 1. Start a new game \n";
+        text += "\t 2. Load last game saved \n";
+        text += "\t 0. Quit \n";
         System.out.println(text);
     }
     

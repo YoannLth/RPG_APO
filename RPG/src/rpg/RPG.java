@@ -126,6 +126,14 @@ public class RPG
             createNewPlayerCharacter();
         }
         createNewAICharacter();
+        
+        System.out.println("List of the player characters : ");
+        for (int i = 0; i < playerCharacters.size(); i ++)
+            System.out.println("\t" + playerCharacters.get(i).getName());
+        
+        System.out.println("List of the AI characters : ");
+        for (int i = 0; i < aiCharacters.size(); i ++)
+            System.out.println("\t" + aiCharacters.get(i).getName());
     }
     
     /**
@@ -133,7 +141,8 @@ public class RPG
      */
     private static void createNewPlayerCharacter()
     {
-        
+        String name = cp.readString("Chose a name :");
+        playerCharacters.add(new Character(name));
     }
     
     /**
@@ -149,13 +158,7 @@ public class RPG
         for (int i = 0; i < MAX_NB_CHARACTERS; i++)
         {
             aiCharacters.add(new Character((String) charactersNames.pop()));
-        }
-        
-        for (Character c : aiCharacters) 
-        {
-            System.out.println(c.getName());
-        }
-        
+        }        
     }
 
     /**
