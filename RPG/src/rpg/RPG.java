@@ -142,7 +142,12 @@ public class RPG
     private static void createNewPlayerCharacter()
     {
         String name = cp.readString("Chose a name :");
-        playerCharacters.add(new Character(name));
+        Character character = new Character(name);
+        
+        // TODO : Gérer la distribution des carractéristiques
+        
+        playerCharacters.add(character);
+        
     }
     
     /**

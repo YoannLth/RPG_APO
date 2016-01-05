@@ -11,5 +11,5 @@ package rpg;
  */
 public class ControllerAI
 {
-    // TODO : Manage the AI : do random actions
+    
 }

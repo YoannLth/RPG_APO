@@ -17,8 +17,6 @@ import me.grea.antoine.utils.Log;
  */
 public class ControllerPlayer extends Controller
 {
-
-    // TODO : create method to display the actions available
     private final Scanner scanner;
 
     /**
