@@ -23,4 +23,13 @@ public class DisplayUI
         text += "0. Quit \n";
         System.out.println(text);
     }
+    
+    /**
+     * Display the text of a new game
+     */
+    public static void displayNewGameText()
+    {
+        String text = "A long time ago in a galaxy far far away ... \n";
+        System.out.println(text);
+    }
 }
