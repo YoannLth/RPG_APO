@@ -25,8 +25,6 @@ public class Attack implements Capacity
     /**
      * Effect of the attack
      *
-     * @param source Character attacking
-     * @param target Target Character
      * @return Effect of attack(to apply on target character)
      */
     public Effect getEffect()

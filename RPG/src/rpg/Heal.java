@@ -5,6 +5,8 @@
  */
 package rpg;
 
+import me.grea.antoine.utils.Dice;
+
 /**
  * Class representing a spell of healing
  *
@@ -12,6 +14,7 @@ package rpg;
  */
 public class Heal implements Capacity
 {
+    private Character source;
 
     private static final int HEAL_VALUE = 10;
 
@@ -27,12 +30,18 @@ public class Heal implements Capacity
     @Override
     public Effect getEffect()
     {
-        return new Effect(HEAL_ABILITY, HEAL_VALUE, HEAL_DURATION);
+        int maxHealth = this.source.getMaxHealth();
+        int health = this.source.getAbilityValue(Ability.HEALTH);
+        int maxHealthGain = maxHealth - health; //the maximum health point a player can gain
+        int healthGain = (Dice.roll(1,4)/4) * maxHealthGain;    //calculate health gain
+        return new Effect(Ability.HEALTH, healthGain, 1);
     }
 
     @Override
     public double probaWin(Character source)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double maxHealth = source.getMaxHealth();
+        double health = source.getAbilityValue(Ability.HEALTH);
+        return (1-(health-maxHealth));
     }
 }

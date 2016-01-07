@@ -74,8 +74,45 @@ public class Round
         }
     }
     
+    /**
+     * Executes the actions of the merged list
+     */
+    public void executeActions()
+    {
+        for(Action a : this.finalActions)
+        {
+            if(a.getCapacity() != null)
+            {
+                a.useCapacity();
+            } else
+            {
+                a.useItem();
+            }
+            //check if the target dies if true then remove all actiosn concerning this character
+            if(a.getTarget() != null)  //if action is not a heal or using an item
+            {
+                if(a.getTarget().getAbilityValue(Ability.HEALTH)<=0)
+                    this.removeDieCharacter(a.getTarget());
+            }
+        }
+
+    }
     
-    
+    /**
+     * Method that remove all actions in the list when a character dies
+     * @param c the dead character
+     */
+    public void removeDieCharacter(Character c)
+    {
+        for(Action a: this.finalActions)
+        {
+            if(a.getTarget() == c || a.getSource() == c)
+            {
+                this.finalActions.remove(a);
+            }
+        }
+    }
+        
     /**
      * @return List of all characters taking part in an action
      */
@@ -94,22 +131,4 @@ public class Round
         }
         return res;
     }
-    
-    /**
-     * Executes the actions of the merged list
-     */
-    public void executeActions()
-    {
-        for(Action a : this.finalActions)
-        {
-            if(a.getCapacity() != null)
-            {
-                a.useCapacity();
-            } else
-            {
-                a.useItem();
-            }
-        }
-    }
-    
 }
