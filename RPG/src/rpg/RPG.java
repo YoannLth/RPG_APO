@@ -38,10 +38,9 @@ public class RPG
     private static ArrayList<Character> aiCharacters;
 
     /**
-     * Launch of the project
-     * @param args
+     * Constructor
      */
-    public static void main(String[] args)
+    public RPG()
     {
         cp = new ControllerPlayer();
         
@@ -141,6 +140,8 @@ public class RPG
      */
     private static void createNewPlayerCharacter()
     {
+        Warrior w = new Warrior();
+        
         String name = cp.readString("Chose a name :");
         Character character = new Character(name);
         
