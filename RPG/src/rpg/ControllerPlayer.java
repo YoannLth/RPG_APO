@@ -60,5 +60,14 @@ public class ControllerPlayer extends Controller
         String result = scanner.next();
         return result;
     }
+    
+    /**
+     * Ask the player to do an action 
+     * @return a new Action
+     */
+    public Action getAction()
+    {
+        return new Action(null, null, new Edible(null, 0, true, null));
+    }
 
 }

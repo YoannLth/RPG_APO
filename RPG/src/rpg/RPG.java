@@ -30,12 +30,12 @@ public class RPG
     /**
      * List of the characters of the player
      */
-    private static ArrayList<Character> playerCharacters;
+    private ArrayList<Character> playerCharacters;
     
     /**
      * List of the characters of the AI
      */
-    private static ArrayList<Character> aiCharacters;
+    private ArrayList<Character> aiCharacters;
 
     /**
      * Constructor
@@ -74,7 +74,7 @@ public class RPG
     /**
      * Start the game
      */
-    private static void start()
+    private void start()
     {
         DisplayUI.displayStartText();
         int option = cp.readInt("Please select the number corresponding to your choice : ");
@@ -98,7 +98,7 @@ public class RPG
     /**
      * Launch a new game
      */
-    private static void newGame()
+    private void newGame()
     {
         DisplayUI.displayNewGameText();
         int nbCharac = cp.readInt("Please select the number of characters"
@@ -118,7 +118,7 @@ public class RPG
      * Initialize the game
      * @param nbCharac 
      */
-    private static void initGame(int nbCharac)
+    private void initGame(int nbCharac)
     {
         for (int i = 0; i < nbCharac; i++)
         {
@@ -138,12 +138,12 @@ public class RPG
     /**
      * Creation of the characters of the player
      */
-    private static void createNewPlayerCharacter()
-    {
-        Warrior w = new Warrior();
-        
+    private void createNewPlayerCharacter()
+    {        
         String name = cp.readString("Chose a name :");
-        Character character = new Character(name);
+        Character character = new Warrior();
+        
+        character.setName(name);
         
         // TODO : Gérer la distribution des carractéristiques
         
@@ -154,7 +154,7 @@ public class RPG
     /**
      * Creation of the characters of the AI
      */
-    private static void createNewAICharacter()
+    private void createNewAICharacter()
     {
         Stack charactersNames = new Stack<String>();
         charactersNames.add("John");
@@ -170,7 +170,7 @@ public class RPG
     /**
      * Load a previous game
      */
-    private static void loadGame()
+    private void loadGame()
     {
         System.out.println("Not implemented yet");
         start();
@@ -179,7 +179,7 @@ public class RPG
     /**
      * Quit the game
      */
-    private static void quitGame()
+    private void quitGame()
     {
         // Ask for save before quiting
         System.out.println("Thanks for playing, hope you enjoyed");
