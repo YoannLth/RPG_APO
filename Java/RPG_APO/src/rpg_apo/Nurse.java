@@ -3,13 +3,13 @@ package rpg_apo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Dealer extends Character {
+public class Nurse extends Character {
 
 	private int weightMax;
 	private Map<Characteristic, Integer> characsMax;
 
 	public void calculateMaximumCharacteristics() {
-		// TODO - implement Dealer.calculateMaximumCharacteristics
+		// TODO - implement Nurse.calculateMaximumCharacteristics
 		throw new UnsupportedOperationException();
 	}
 

@@ -1,4 +1,3 @@
-
 package rpg_apo;
 public class Controler {
 

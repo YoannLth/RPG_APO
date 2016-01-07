@@ -1,3 +1,5 @@
+package rpg_apo;
+
 public interface Capacity {
 
 	/**

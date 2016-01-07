@@ -1,3 +1,4 @@
+package rpg_apo;
 public class Armor extends Item {
 
 	/**
