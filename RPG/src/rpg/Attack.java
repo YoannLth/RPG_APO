@@ -14,11 +14,13 @@ import static java.lang.Math.abs;
  */
 public class Attack implements Capacity
 {
-    private final Weapon weapon;         //Weapon used during attack
+    private Character source;
+    private Character target;
 
-    public Attack(Weapon w)
+    public Attack(Character source, Character target)
     {
-        this.weapon = w;
+        this.source = source;
+        this.target = target;
     }
     /**
      * Effect of the attack
@@ -27,9 +29,9 @@ public class Attack implements Capacity
      * @param target Target Character
      * @return Effect of attack(to apply on target character)
      */
-    public Effect getEffect(Character source, Character target)
+    public Effect getEffect()
     {
-        int damage = this.weapon.getEffect().getValue() + source.getAbilities().get(Ability.STRENGTH);
+        int damage = this.source.getWeapon().getEffect().getValue() + source.getAbilities().get(Ability.STRENGTH);
         int defence = target.getAbilities().get(Ability.DEFENSE) + target.getArmor().getEffect().getValue();
         int netDamage = abs(defence - damage);
         return new Effect(Ability.HEALTH,(-netDamage),1);
@@ -44,8 +46,8 @@ public class Attack implements Capacity
     public double probaWin(Character source)
     {
         int dexterity = source.getAbilities().get(Ability.DEXTERITY);   //dexteriry of attacker
-        //get netDexterity by taking into consideration the lanageability of weapon
-        int netDexterity = dexterity - this.weapon.getManageability();
+        //get netDexterity by taking into consideration the manageability of weapon
+        int netDexterity = dexterity - this.source.getWeapon().getManageability();
         if(netDexterity >= 0)
             return 1;
         if(netDexterity <0 && netDexterity >=-20)

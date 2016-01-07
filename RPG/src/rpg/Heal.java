@@ -25,7 +25,7 @@ public class Heal implements Capacity
      * @return
      */
     @Override
-    public Effect getEffect(Character source, Character target)
+    public Effect getEffect()
     {
         return new Effect(HEAL_ABILITY, HEAL_VALUE, HEAL_DURATION);
     }

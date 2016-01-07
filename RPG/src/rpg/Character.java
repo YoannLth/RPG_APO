@@ -129,6 +129,18 @@ public class Character
         }
         return null;
     }
+    
+    public Weapon getWeapon()
+    {
+        for(Item i: this.getInventory())
+        {
+            if("rpg.Weapon".equals(i.getClass().getName()))
+            {
+                return (Weapon)i;
+            }
+        }
+        return null;
+    }
 
     // ---------------------------- Methods --------------------------------------
     /**

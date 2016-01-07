@@ -100,7 +100,7 @@ public class Action
     {
         if(this.canExecute()) 
         {
-            this.target.applyEffect(this.capacity.getEffect(this.source,this.target));
+            this.target.applyEffect(this.capacity.getEffect());
         }
     }
     

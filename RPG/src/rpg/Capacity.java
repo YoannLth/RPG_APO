@@ -16,7 +16,7 @@ public interface Capacity
      * 
      * @return the effect
      */
-    public Effect getEffect(Character source, Character targetsss);
+    public Effect getEffect();
     
     /**
      * Calculate probability to execute a capacity
