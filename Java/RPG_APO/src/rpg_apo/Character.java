@@ -1,15 +1,11 @@
-package rpg_apo;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Character {
 
 	private String name;
 	private int level;
 	private Map<Characteristic, Integer> characs;
-        //private Map<Item> inventary;    
+	private Map<Item> inventary;
 	private Weapon activeWeapon;
-	//private Map<Armor> activeArmors;
+	private Map<Armor> activeArmors;
 
 	public void increaseLvl() {
 		// TODO - implement Character.increaseLvl

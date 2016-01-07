@@ -1,5 +1,3 @@
-package rpg_apo;
-
 public class Item {
 
 	private String name;

@@ -1,8 +1,3 @@
-package rpg_apo;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class Highbrow extends Character {
 
 	private int weightMax;

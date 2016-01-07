@@ -1,15 +1,10 @@
-package rpg_apo;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class Nurse extends Character {
+public class MaleNurse extends Character {
 
 	private int weightMax;
 	private Map<Characteristic, Integer> characsMax;
 
 	public void calculateMaximumCharacteristics() {
-		// TODO - implement Nurse.calculateMaximumCharacteristics
+		// TODO - implement MaleNurse.calculateMaximumCharacteristics
 		throw new UnsupportedOperationException();
 	}
 

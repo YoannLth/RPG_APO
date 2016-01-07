@@ -1,6 +1,3 @@
-package rpg_apo;
-import java.util.Map;
-
 public class Boxer extends Character {
 
 	private int weightMax;
