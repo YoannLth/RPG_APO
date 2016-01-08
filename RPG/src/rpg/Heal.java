@@ -6,6 +6,7 @@
 package rpg;
 
 import me.grea.antoine.utils.Dice;
+import me.grea.antoine.utils.Log;
 
 /**
  * Class representing a spell of healing
@@ -16,12 +17,11 @@ public class Heal implements Capacity
 {
     private Character source;
 
-    private static final int HEAL_VALUE = 10;
 
-    private static final int HEAL_DURATION = 1;
-
-    private static final Ability HEAL_ABILITY = Ability.DEXTERITY; // TODO : Change that with intellect
-
+    public Heal(Character source)
+    {
+        this.source = source;
+    }
     /**
      * Effect of the attack
      *
@@ -33,15 +33,16 @@ public class Heal implements Capacity
         int maxHealth = this.source.getMaxHealth();
         int health = this.source.getAbilityValue(Ability.HEALTH);
         int maxHealthGain = maxHealth - health; //the maximum health point a player can gain
-        int healthGain = (Dice.roll(1,4)/4) * maxHealthGain;    //calculate health gain
+        double diceResult = ((double)Dice.roll(1,4)/4);
+        int healthGain = (int) (diceResult * maxHealthGain);    //calculate health gain
         return new Effect(Ability.HEALTH, healthGain, 1);
     }
 
     @Override
     public double probaWin(Character source)
     {
-        double maxHealth = source.getMaxHealth();
-        double health = source.getAbilityValue(Ability.HEALTH);
+        double maxHealth = (double)source.getMaxHealth();
+        double health = (double)source.getAbilityValue(Ability.HEALTH);
         return (1-(health-maxHealth));
     }
 }

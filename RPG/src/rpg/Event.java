@@ -7,6 +7,7 @@ package rpg;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  *
@@ -14,8 +15,8 @@ import java.util.List;
  */
 public class Event
 {
-    private List<Character> playerChacraters;
-    private List<Character> aiChacraters;
+    private Stack<Character> playerChacraters;
+    private Stack<Character> aiChacraters;
 
     //------------------------- Constructor ------------------------------
     /**
@@ -23,7 +24,7 @@ public class Event
      * @param playerChacraters List of player character
      * @param aiChacraters  List of AI character
      */
-    public Event(List<Character> playerChacraters, List<Character> aiChacraters)
+    public Event(Stack<Character> playerChacraters, Stack<Character> aiChacraters)
     {
         this.playerChacraters = playerChacraters;
         this.aiChacraters = aiChacraters;

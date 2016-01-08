@@ -73,22 +73,23 @@ public class Action
         this.capacity = c;
         this.edible = null;
     }
+    
+    public Action(Character s, Capacity c)
+    {
+        this(s,null,c);
+    }
 
     /**
      * Use of an item : apply effect on the characters
      */
     public void useItem()
     {
-        try {
-            this.target.checkInInventory(this.edible);
-            if(this.canExecute())
-            {
-                this.target.applyEffect(this.edible.getEffect());
-                this.edible.getEffect().reduceDuration();
-            }
-        }catch(ExistsInventoryException e)
+        if(this.canExecute())
         {
-            Log.e(e.getMessage());
+            this.target.applyEffect(this.edible.getEffect());
+            Log.i(this.edible.toString());
+            this.edible.getEffect().reduceDuration();
+            
         }
     }
 
@@ -99,7 +100,13 @@ public class Action
     {
         if(this.canExecute()) 
         {
-            this.target.applyEffect(this.capacity.getEffect());
+            Log.i("Performing a " + this.capacity.getClass().getName());
+            if(this.target == null)
+                this.source.applyEffect(this.capacity.getEffect());
+            else
+            {
+                this.target.applyEffect(this.capacity.getEffect());
+            }
         }
     }
     
@@ -112,14 +119,19 @@ public class Action
         if(this.edible == null) //if actions consists of a capacity
         {
             int diceRoll = Dice.roll(0,10); //generate a random ulber between 0 and 10
+            Log.i("Dice is rolling...");
+            Log.i("dice result : " + diceRoll);
             if(diceRoll <= (this.capacity.probaWin(this.source)*10)) 
             {
+                Log.i("Action will be performed");
                 return true;
             }
+            Log.i("Unfortunately Action cannot be performes :(");
             return false;
         }
         else //if action consists of using an edible
         {
+            Log.i("The edible will be used");
             return true;
         }
     }

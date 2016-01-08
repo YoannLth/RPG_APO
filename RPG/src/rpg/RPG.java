@@ -5,6 +5,7 @@
  */
 package rpg;
 
+import Controller.DisplayCharacter;
 import java.util.ArrayList;
 import java.util.Stack;
 import me.grea.antoine.utils.*;
@@ -47,28 +48,33 @@ public class RPG
         aiCharacters = new ArrayList<>();
         playerCharacters = new ArrayList<>();
 
-//        Character c = new Character("Selwyn");
-//        Character c2 = new Character("Gaetan");
-//        DisplayCharacter dc = new DisplayCharacter(c);
-//        DisplayCharacter dc2 = new DisplayCharacter(c2);
-//        dc.displayName();
-//        dc.displayAbilities();
-//        dc2.displayName();
-//        dc2.displayAbilities();
-//        Effect e1 = new Effect(Ability.DEXTERITY, 20, 2);
-//        Item i = new Item("Item 1",20,false);
-//        i.setEffect(e1);
-//        dc.addItem(i);
-//        Weapon w = new Weapon("arme", 60, 30, 50);
-//        Armor a = new Armor("armure",20,50); 
-//        dc.addItem(w);
-//        dc2.addItem(a);
-//        dc.displayInventory();
-//        dc2.displayInventory();
-//        dc2.displayAbilities();
-//        Attack att = new Attack(w);
-//        Log.d(att.getEffect(c, c2).toString());
-        start();
+        Character c = new Character("Selwyn");
+        Character c2 = new Character("Gaetan");
+        DisplayCharacter dc = new DisplayCharacter(c);
+        DisplayCharacter dc2 = new DisplayCharacter(c2);
+        dc.displayName();
+       dc.displayAbilities();
+        dc2.displayName();
+       dc2.displayAbilities();
+       Effect e1 = new Effect(Ability.DEXTERITY, 20, 2);
+       Item i = new Item("Item 1",20,false);
+        i.setEffect(e1);
+       dc.addItem(i);
+        Weapon w = new Weapon("arme", 60, 90, 50);
+        Armor a = new Armor("armure",20,50); 
+        dc.addItem(w);
+        dc2.addItem(a);
+        dc.displayAbilities();
+        dc2.displayAbilities();
+        Attack att = new Attack(c,c2);
+        Action act = new Action(c,c2,att);
+        act.useCapacity();
+        Heal hl = new Heal(c2);
+        Action act2 = new Action(c2,hl);
+        dc2.displayAbilities();
+        act2.useCapacity();
+        
+        //start();
     }
 
     /**

@@ -10,6 +10,7 @@ import rpgException.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import me.grea.antoine.utils.Log;
 
 
 /**
@@ -151,6 +152,7 @@ public class Character
     public void applyEffect(Effect e)
     {
         Ability a = e.getAbility();
+        Log.i("Applying : " + e.toString());
         int newValue = this.abilities.get(a) + e.getValue();
         this.abilities.put(a, newValue);
     }
@@ -191,6 +193,7 @@ public class Character
      */
     public void removeItem(Item i)
     {
+        Log.i("Romoving item : " + i.getName() + " from " + this.getName());
         this.inventory.remove(i);    
     }
 

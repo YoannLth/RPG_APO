@@ -5,7 +5,10 @@
  */
 package rpg;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
+import me.grea.antoine.utils.Log;
 
 /**
  *
@@ -13,12 +16,12 @@ import java.util.List;
  */
 public class Round
 {
-    private List<Action> playerActions; //List of actions for a player
-    private List<Action> computerActions;   //List of actions for the AI
-    private List<Action> finalActions;  //merged list of playerActions and computerActions
+    private Stack<Action> playerActions; //List of actions for a player
+    private Stack<Action> computerActions;   //List of actions for the AI
+    private Stack<Action> finalActions;  //merged list of playerActions and computerActions
 
     //-------------------- Constructor ----------------------------
-    public Round(List<Action> playerActions, List<Action> computerActions)
+    public Round(Stack<Action> playerActions, Stack<Action> computerActions)
     {
         this.playerActions = playerActions;
         this.computerActions = computerActions;
@@ -35,8 +38,8 @@ public class Round
      * @param b Second List
      * @return  Merged List
      */
-    public <T> List<T> merge(List<T> a, List<T> b) {
-        List<T> result = new ArrayList<>();
+    public <T> Stack<T> merge(List<T> a, List<T> b) {
+        Stack<T> result = new Stack<>();
         int size = Math.max(a.size(), b.size());
 
         for (int i = 0; i < size; i++) {
@@ -57,6 +60,7 @@ public class Round
      */
     public void play()
     {
+        Log.i("Round is starting...");
         this.executeActions();
         this.initNextRound();
     }
@@ -66,12 +70,14 @@ public class Round
      */
     public void initNextRound()
     {
+        
         List<Character> characters = this.getPlayingCharacter();
         for(Character c: characters)
         {
             c.removeEffect();
             c.initHealth();
         }
+        Log.i("Round finished");
     }
     
     /**
@@ -79,8 +85,15 @@ public class Round
      */
     public void executeActions()
     {
-        for(Action a : this.finalActions)
+        Iterator iterator = this.finalActions.iterator();
+        while(!this.finalActions.empty())
         {
+            Action a = this.finalActions.pop();
+            Log.i("Action launched by : " + a.getSource().getName());
+            if(a.getTarget() != null)
+            {   
+                Log.i("Action target : " +a.getTarget().getName());
+            }
             if(a.getCapacity() != null)
             {
                 a.useCapacity();
@@ -92,7 +105,11 @@ public class Round
             if(a.getTarget() != null)  //if action is not a heal or using an item
             {
                 if(a.getTarget().getAbilityValue(Ability.HEALTH)<=0)
+                {
+                    Log.i("The character " + a.getTarget().getName() + " was killed by " + a.getSource().getName());
                     this.removeDieCharacter(a.getTarget());
+                }
+                    
             }
         }
 
