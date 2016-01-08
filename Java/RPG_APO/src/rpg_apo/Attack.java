@@ -1,2 +1,4 @@
-public class Attack implements Capacity {
+package rpg_apo;
+
+public abstract class Attack implements Capacity {
 }

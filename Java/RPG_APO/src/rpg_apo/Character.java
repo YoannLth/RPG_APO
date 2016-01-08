@@ -1,12 +1,30 @@
+package rpg_apo;
+
+import java.util.Map;
+import static view.Console.*;
+
 public class Character {
 
 	private String name;
 	private int level;
 	private Map<Characteristic, Integer> characs;
-	private Map<Item> inventary;
+	private Map<Item, Integer> inventary;
 	private Weapon activeWeapon;
-	private Map<Armor> activeArmors;
-
+	private Map<Armor, Integer> activeArmors;
+        private String className;
+        private String characterDescription;
+        
+        public Character(String nameCharacter, String className, String characterDescription){
+            this.name = nameCharacter;
+            this.level = 0;
+            this.characs = null;
+            this.inventary = null;
+            this.activeWeapon = null;
+            this.activeArmors = null;
+            this.className = className;
+            this.characterDescription = characterDescription;
+        }
+        
 	public void increaseLvl() {
 		// TODO - implement Character.increaseLvl
 		throw new UnsupportedOperationException();
@@ -51,5 +69,18 @@ public class Character {
 		// TODO - implement Character.useConsumableItem
 		throw new UnsupportedOperationException();
 	}
+        
+        public void afficherInfosTest(){
+            displayBlue("Bonjour je m'appele " + this.name + ".");
+        }
 
+        public String getClassName(){
+            String res = this.className;
+            return res;
+        }
+
+        public String getClassDesc(){
+            String res = this.characterDescription;
+            return res;
+        }
 }

@@ -1,3 +1,7 @@
+package rpg_apo;
+
+import java.util.Map;
+
 public class characterType {
 
 	private String name;
