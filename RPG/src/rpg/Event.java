@@ -39,7 +39,7 @@ public class Event
         
         for (Character c : this.playerChacraters)
         {
-            ControllerPlayer cp = new ControllerPlayer();
+            ControllerUI cp = new ControllerUI();
             actionPlayer.add(cp.getAction());
         }
         for (Character c : this.aiChacraters)

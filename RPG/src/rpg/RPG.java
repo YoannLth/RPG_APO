@@ -21,7 +21,7 @@ public class RPG
     /**
      * Controller
      */
-    private static ControllerPlayer cp;
+    private static ControllerUI cp;
     
     /**
      * Maximum number of characters in the team of the player
@@ -43,7 +43,7 @@ public class RPG
      */
     public RPG()
     {
-        cp = new ControllerPlayer();
+        cp = new ControllerUI();
         
         aiCharacters = new ArrayList<>();
         playerCharacters = new ArrayList<>();
