@@ -5,7 +5,7 @@
  */
 package rpg_apo;
 
-import me.grea.antoine.utils.Menu;
+//import me.grea.antoine.utils.Menu;
 import view.Game;
 
 /**

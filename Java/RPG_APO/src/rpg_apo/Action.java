@@ -6,5 +6,6 @@ public class Action {
 	private Character src;
 	private Capacity cap;
 	private ConsumableItem consum;
+        
 
 }

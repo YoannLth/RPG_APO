@@ -1,5 +1,6 @@
 package rpg_apo;
 
+import java.util.List;
 import java.util.Map;
 import static view.Console.*;
 
@@ -8,7 +9,7 @@ public class Character {
 	private String name;
 	private int level;
 	private Map<Characteristic, Integer> characs;
-	private Map<Item, Integer> inventary;
+	private List<Item> inventary;
 	private Weapon activeWeapon;
 	private Map<Armor, Integer> activeArmors;
         private String className;
@@ -25,10 +26,16 @@ public class Character {
             this.characterDescription = characterDescription;
         }
         
-	public void increaseLvl() {
+	public int increaseLvl(int lvl) {
 		// TODO - implement Character.increaseLvl
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+                return lvl+1;
 	}
+        
+        public int getLvl(){
+            return this.level;
+        }
+        
 
 	public void modifyCharacteristics() {
 		// TODO - implement Character.modifyCharacteristics
@@ -39,15 +46,16 @@ public class Character {
 		// TODO - implement Character.checkMaximumCharacteristics
 		throw new UnsupportedOperationException();
 	}
-
-	public void addInventary() {
+        
+        //Ajout d'un Item dans l'inventaire
+	public void addInventary(Item i) {
 		// TODO - implement Character.addInventary
-		throw new UnsupportedOperationException();
+                this.inventary.add(i);
 	}
 
-	public void deleteInventary() {
+	public void deleteInventary(Item i) {
 		// TODO - implement Character.deleteInventary
-		throw new UnsupportedOperationException();
+                this.inventary.remove(i);
 	}
 
 	public void activateWeapon() {
@@ -83,4 +91,31 @@ public class Character {
             String res = this.characterDescription;
             return res;
         }
+        
+        
+        
+        
+        
+        //Return vrai si l'item appartient a l'inventaire
+        public boolean itemIsInInventary(Item i){
+            return this.inventary.contains(i);
+        }
+        
+        //retourne le poid de notre inventaire
+        public int getWeightInventary(){
+            int somme=0;
+            
+            for(Item i : inventary){
+                somme = i.getWeight() + somme;
+            }
+            return somme;
+        }
+        
+        //Affiche chaque nom d'item de l'inventaire
+        public void afficherInventary(){
+            for(Item i : inventary){
+                displayBlack("\n"+i.getName());
+            }
+        }
+        
 }
