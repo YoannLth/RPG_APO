@@ -1,14 +1,5 @@
-<<<<<<< HEAD
 package rpg_apo;
 
-public class Item {
-
-	private String name;
-	private int weight;
-	private Effect itemEffect;
-
-=======
-package rpg_apo;
 
 public class Item {
 
@@ -43,6 +34,4 @@ public class Item {
         public String itemString(){
             return "\nL'item "+this.name+" qui pese "+this.weight+" permet : "+this.itemEffect.effectString();
         }
-        
->>>>>>> 9d67c8317edecf5580fa5d8354e419156e5cd81a
 }
