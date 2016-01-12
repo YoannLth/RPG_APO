@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -17,3 +18,28 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/RPG_APO.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Highbrow.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Controler.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Event.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Characteristic.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Action.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/characterType.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/HumanControler.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Weapon.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/NewDialog.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Capacity.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Character.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/NewPlayer.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/MaleNurse.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/Algo_Prog_Objet/RPG_APO/Java/RPG_APO/src/rpg_apo/Attack.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> 9d67c8317edecf5580fa5d8354e419156e5cd81a
