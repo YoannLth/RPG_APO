@@ -69,10 +69,6 @@ public class Character {
 		// TODO - implement Character.useConsumableItem
 		throw new UnsupportedOperationException();
 	}
-        
-        public void afficherInfosTest(){
-            displayBlue("Bonjour je m'appele " + this.name + ".");
-        }
 
         public String getClassName(){
             String res = this.className;
@@ -81,6 +77,11 @@ public class Character {
 
         public String getClassDesc(){
             String res = this.characterDescription;
+            return res;
+        }
+        
+        public String getName(){
+            String res = this.name;
             return res;
         }
 }

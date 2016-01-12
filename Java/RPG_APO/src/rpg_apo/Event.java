@@ -1,19 +1,10 @@
 package rpg_apo;
 
+import java.util.Map;
 import static view.Console.*;
 
 
-public class Event {
-    //Message de l'evenement qui sera affiché à l'écran
-    protected String message;
+public abstract class Event {
     
-    //Constructeur
-    public Event(String msg){
-        message = msg;
-    }
-    
-    //Affichage du message
-    public void display(){
-        displayBlack(message);
-    }
+    public abstract void display();
 }

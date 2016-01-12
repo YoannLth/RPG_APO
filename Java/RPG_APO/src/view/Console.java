@@ -37,6 +37,7 @@ public class Console {
         System.out.println(ANSI_BLUE + msg + ANSI_RESET);
     }
     
+    
     public static void displayContinueMessage(String msg){
         System.out.println(ANSI_BLACK + msg + ANSI_RESET);
         System.out.println(ANSI_RED + "Appuyez sur entrée pour continuer" + ANSI_RESET);
@@ -45,9 +46,16 @@ public class Console {
         clearConsole();
     }
     
+    public static void displayContinue(){
+        System.out.println(ANSI_RED + "Appuyez sur entrée pour continuer" + ANSI_RESET);
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        clearConsole();
+    }
+    
     public static void clearConsole()
     {
-        for(int clear = 0; clear < 10; clear++)
+        for(int clear = 0; clear < 3; clear++)
             {
                System.out.println(".") ;
             }

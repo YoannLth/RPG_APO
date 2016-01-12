@@ -12,12 +12,10 @@ import static view.Console.*;
 public class NewPlayer extends Event {
     Character playableCharacter;
     
-    public NewPlayer(String message){
-        super(message);
+    public NewPlayer(){
     }
     
     public void display(){
-        displayBlack(message);
         displayRed("Entrez votre nom :");
         Scanner scanner = new Scanner(System.in);
         String pCharacterName = scanner.nextLine();

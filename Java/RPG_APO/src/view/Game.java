@@ -12,13 +12,21 @@ package view;
  */
 import java.util.HashMap;
 import java.util.Map;
-import rpg_apo.Event;
+import rpg_apo.Boxer;
+import rpg_apo.Highbrow;
+import rpg_apo.MaleNurse;
+import rpg_apo.NewAnswer;
+import rpg_apo.NewMessage;
 import rpg_apo.NewDialog;
+import rpg_apo.NewMenu;
+import rpg_apo.Character;
+import rpg_apo.Event;
 import rpg_apo.NewPlayer;
 import static view.Console.*;
 
 public class Game {
     private String gameName;
+    private Character playableCharacter;
     private Map<Integer, Event> events;
     
     public Game(String name){
@@ -28,26 +36,28 @@ public class Game {
     public void launchGame(){
         initializeEvents();
         readEvents();
+        
     }
     
     public void initializeEvents(){
         events = new HashMap();
-        String introGameMessage = "Bonjour et bienvenue dans " + gameName + "\nLa partie va commencer";
+        Map<Integer, String> introGameMessage = new HashMap();
+        Map<Integer, String> introContextMessage = new HashMap();
+        Map<Integer, String> characterInitialisationMessage = new HashMap();
+        
+        introGameMessage.put(1,"Bonjour et bienvenue dans " + gameName + "\nLa partie va commencer");
         NewDialog introGame = new NewDialog(introGameMessage);
-            //introGame.displayNewDialog();
         events.put(1, introGame);
         
         
         //Affichage du script qui introduit le contexte du jeu
-        String introContextMessage = "Vous partez au Pérou en voyage \nVous esseyez de faire passer de la drogue en revennant \nVous vous faites chopper \nDirection la Prison";
-        NewDialog introContext = new NewDialog(introContextMessage);
-            //introContext.displayNewDialog(); 
+        introContextMessage.put(1,"Vous partez au Pérou en voyage \nVous esseyez de faire passer de la drogue en revennant \nVous vous faites chopper \nDirection la Prison");
+        NewDialog introContext = new NewDialog(introContextMessage); 
         events.put(2, introContext);
      
         //Affichage du script pour initialiser le personnage (en fonction des choix du joueur)
-        String characterInitialisationMessage = "Une fois dans votre cellule, un homme vous interpelle... \nQui est tu?";
-        NewPlayer mainCharacterInitialisation = new NewPlayer(characterInitialisationMessage);
-            //introContext.displayNewDialog(); 
+        characterInitialisationMessage.put(1, "Une fois dans votre cellule, un homme vous interpelle... \nQui est tu?");
+        NewPlayer mainCharacterInitialisation = new NewPlayer(); 
         events.put(3, mainCharacterInitialisation);
     }
     
