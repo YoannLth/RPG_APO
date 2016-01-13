@@ -266,7 +266,6 @@ public class RPG
      */
     private void runGame()
     {
-        // Todo : Gérer le jeu, appeler event & co
         ArrayList<ControllerPlayer> playerControllers = new ArrayList<>();
         ArrayList<ControllerAI> aiControllers = new ArrayList<>();
         

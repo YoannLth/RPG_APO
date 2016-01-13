@@ -33,6 +33,7 @@ public class ControllerPlayer extends Controller
                 return super.useCapacity(character, target, askCapacity(target));
             case 2 : // Item 
                 // this.setIem(); break;
+                // TODO : finir ça
             default : 
                 return super.useCapacity(character, target, askCapacity(target));
         }
