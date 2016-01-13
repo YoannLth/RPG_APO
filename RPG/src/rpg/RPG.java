@@ -9,6 +9,7 @@ import Controller.ControllerUI;
 import Controller.DisplayCharacter;
 import java.util.ArrayList;
 import java.util.Stack;
+import jdk.nashorn.internal.objects.NativeArray;
 import me.grea.antoine.utils.*;
 
 /**
@@ -124,18 +125,8 @@ public class RPG
             createNewPlayerCharacter();
         }
         createNewAICharacter();
-
-        System.out.println("List of the player characters : ");
-        for (int i = 0; i < playerCharacters.size(); i++)
-        {
-            System.out.println("\t" + playerCharacters.get(i).getName());
-        }
-
-        System.out.println("List of the AI characters : ");
-        for (int i = 0; i < aiCharacters.size(); i++)
-        {
-            System.out.println("\t" + aiCharacters.get(i).getName());
-        }
+        
+        this.displayCharacters();
     }
 
     /**
@@ -143,8 +134,16 @@ public class RPG
      */
     private void createNewPlayerCharacter()
     {
-        String name = cp.readString("Chose a name :");
-        Character character = new Warrior();
+        String name = DisplayUI.getCharacterName();
+        String classChosen = DisplayUI.getPlayerClass();
+        
+        Character character;
+        
+        switch (classChosen) {
+            case "Athlete" : character = new Athlete(); break;
+            case "Healer" : character = new Healer(); break;
+            default : character = new Warrior(); break;
+        }
 
         character.setName(name);
 
@@ -158,14 +157,16 @@ public class RPG
      */
     private void createNewAICharacter()
     {
-        Stack charactersNames = new Stack<String>();
+        Stack charactersNames = new Stack<>();
         charactersNames.add("John");
         charactersNames.add("Brice");
         charactersNames.add("Chuck");
         charactersNames.add("Frodo");
         for (int i = 0; i < MAX_NB_CHARACTERS; i++)
         {
-            aiCharacters.add(new Character((String) charactersNames.pop()));
+            Warrior w = new Warrior();
+            w.setName((String) charactersNames.pop());
+            aiCharacters.add(w);
         }
     }
 
@@ -174,7 +175,7 @@ public class RPG
      */
     private void loadGame()
     {
-        System.out.println("Not implemented yet");
+        Log.e("Not implemented yet");
         start();
     }
 
@@ -183,9 +184,52 @@ public class RPG
      */
     private void quitGame()
     {
-        // Ask for save before quiting
-        System.out.println("Thanks for playing, hope you enjoyed");
+        DisplayUI.displayQuitGameMessage();
         System.exit(0);
+    }
+    
+    /**
+     * Display all the characters
+     */
+    private void displayCharacters()
+    {
+        this.displayPlayerCharacters();
+        this.displayAICharacters();
+    }
+    
+    /**
+     * Display all the characters of the player
+     */
+    private void displayPlayerCharacters()
+    {
+        System.out.println("List of the player characters : ");
+        for (int i = 0; i < playerCharacters.size(); i++)
+        {
+            System.out.println(playerCharacters.get(i).toString());
+        }
+    }
+    
+    /**
+     * Display all the characters of the AI
+     */
+    private void displayAICharacters()
+    {
+        System.out.println("List of the AI characters : ");
+        for (int i = 0; i < aiCharacters.size(); i++)
+        {
+            System.out.println(aiCharacters.get(i).toString());
+        }
+    }
+    
+    private Character getAICharacterByName()
+    {
+        String name = DisplayUI.getCharacterName();
+        for(Character c : aiCharacters)
+        {
+            if (c.getName().equals(name))
+                return c;
+        }
+        return this.getAICharacterByName();
     }
 
 }

@@ -6,15 +6,17 @@
 package rpg;
 
 /**
- * Class representing the "class" of character warrior
+ * Class representing the "class" of character Healer
+ *
  * @author p1509413
  */
-public class Warrior extends Character
+public class Healer extends Character
 {
-   
-    public Warrior()
+
+    public Healer()
     {
         super();
-        this.setMaxHealth(MAX_HEALTH_WARRIOR);
+        this.setMaxHealth(MAX_HEALTH_HEALER);
     }
+;
 }

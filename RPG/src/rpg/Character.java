@@ -32,7 +32,30 @@ public class Character
     
     // -------------- Constants
     
-    private final int INIT_MAX_HEALTH = 100;    // Maximum Health at the creation
+    /**
+     * Maximum Health at the creation
+     */
+    protected final int INIT_MAX_HEALTH = 100;
+    
+    /**
+     * Maximum Health of the class Athlete
+     */
+    protected final int MAX_HEALTH_ATHLETE = 200;
+    
+    /**
+     * Maximum Health of the class Warrior
+     */
+    protected final int MAX_HEALTH_WARRIOR = 300;
+    
+    /**
+     * Maximum Health of the class Healer
+     */
+    protected final int MAX_HEALTH_HEALER = 100;
+    
+    /**
+     * Maximum sum of abitilities
+     */
+    private final int OVERPOWERED = 500;
 
     // -------------- Constructors ----------------------------------
     /**
@@ -108,6 +131,7 @@ public class Character
     public void setMaxHealth(int maxHealth)
     {
         this.maxHealth = maxHealth;
+        this.currentHealth = maxHealth;
     }
 
     public int getMaxDexterity()
@@ -274,9 +298,21 @@ public class Character
         this.abilities.put(Ability.DEXTERITY, 10);
     }
 
-    public void checkAbilities()
+    /**
+     * Check that the abilities chose by the player are not too high
+     */
+    private void checkAbilities()
     {
-        // TODO : Implement this method
+        int somme = 0;
+        for (int i = 0; i < abilities.size(); i ++)
+        {
+            somme += abilities.get(i);
+        }
+        if (somme > this.OVERPOWERED)
+        {
+            System.out.println("Overpowered mode activated ! ");
+            // Faire un contrôle plus sérieux ! 
+        }
     }
 
     /**
@@ -305,11 +341,18 @@ public class Character
         }
     }
 
+    /**
+     * Display the important information about the character
+     * @return 
+     */
     @Override
     public String toString()
     {
-        String s = "Name : " + this.name + "\n";
-        s += "Health : " + this.currentHealth;
+        String s = "------------------------------------ \n";
+        s += "Name : " + this.name + "\n";
+        s += "Health : " + this.currentHealth + "\n";
+        s+= "Class : " +  this.getClass().getSimpleName() + "\n";
+        s += "------------------------------------ \n";
         return s;
     }
 }

@@ -12,5 +12,11 @@ package rpg;
  */
 public class Athlete extends Character
 {
-    
+
+    public Athlete()
+    {
+        super();
+        this.setMaxHealth(MAX_HEALTH_ATHLETE);
+    }
+;
 }
