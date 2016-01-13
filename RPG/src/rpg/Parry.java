@@ -18,6 +18,14 @@ public class Parry implements Capacity
     private static final int PARRY_DURATION = 1;
 
     private static final Ability PARRY_ABILITY = Ability.DEFENSE;
+    
+    private Character source;
+
+
+    public Parry(Character source)
+    {
+        this.source = source;
+    }
 
     /**
      * Effect of the attack
