@@ -15,7 +15,7 @@ import rpg.Edible;
  * 
  * @author p1509413
  */
-public class Controller 
+public class Controller
 {
     /**
      * Play an action by consuming an item

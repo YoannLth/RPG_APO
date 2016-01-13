@@ -41,7 +41,7 @@ public class Event
         for (Character c : this.playerChacraters)
         {
             ControllerUI cp = new ControllerUI();
-            actionPlayer.add(cp.getAction());
+            // actionPlayer.add(cp.getAction()); // TODO : update this
         }
         for (Character c : this.aiChacraters)
         {

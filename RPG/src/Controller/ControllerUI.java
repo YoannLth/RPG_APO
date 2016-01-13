@@ -19,15 +19,7 @@ import rpg.Edible;
  */
 public class ControllerUI extends Controller
 {
-    private final Scanner scanner;
-
-    /**
-     * Constructor : instanciante a new Scanner to manage console line I/O
-     */
-    public ControllerUI()
-    {
-        this.scanner = new Scanner(System.in);
-    }
+    private static Scanner scanner = new Scanner(System.in);
 
     /**
      * Read an integer from the console
@@ -35,7 +27,7 @@ public class ControllerUI extends Controller
      * 
      * @return the integer typed in by the user
      */
-    public int readInt(String message)
+    public static int readInt(String message)
     {
         int nombre = 0;
         try
@@ -56,20 +48,10 @@ public class ControllerUI extends Controller
      * 
      * @return the string typed in
      */
-    public String readString(String message)
+    public static String readString(String message)
     {
         System.out.println(message);
         String result = scanner.next();
         return result;
     }
-    
-    /**
-     * Ask the player to do an action 
-     * @return a new Action
-     */
-    public Action getAction()
-    {
-        return new Action(null, null, new Edible(null, 0, true, null));
-    }
-
 }
