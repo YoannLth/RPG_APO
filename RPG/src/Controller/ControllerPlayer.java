@@ -9,6 +9,8 @@ import rpg.Action;
 import rpg.Attack;
 import rpg.Capacity;
 import rpg.Character;
+import rpg.Heal;
+import rpg.Parry;
 
 /**
  * Class managing the actions of the player
@@ -33,7 +35,6 @@ public class ControllerPlayer extends Controller
                 return super.useCapacity(character, target, askCapacity(target));
             case 2 : // Item 
                 // this.setIem(); break;
-                // TODO : finir ça
             default : 
                 return super.useCapacity(character, target, askCapacity(target));
         }
@@ -50,7 +51,23 @@ public class ControllerPlayer extends Controller
         
         int choice = DisplayUI.getCapacityChoice();
         
-        capacity = new Attack(character, target);
+        switch (choice)
+        {
+            case 1 : capacity = new Attack(character, target); break;
+            case 2 : capacity = new Heal(character);  break;
+            case 3 : capacity = new Parry(character); break;
+            default : capacity = new Attack(character, target); break;
+        }        
+        
         return capacity;
+    }
+    
+    private void askItem(Character target)
+    {
+//        Capacity capacity; 
+//        
+//        int choice = DisplayUI.getItemToUse(character);
+//        
+        
     }
 }
