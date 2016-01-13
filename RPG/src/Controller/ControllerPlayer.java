@@ -9,6 +9,7 @@ import rpg.Action;
 import rpg.Attack;
 import rpg.Capacity;
 import rpg.Character;
+import rpg.Edible;
 import rpg.Heal;
 import rpg.Parry;
 
@@ -25,6 +26,13 @@ public class ControllerPlayer extends Controller
         super(c);
     }
     
+    /**
+     * Get an action
+     * Use the supermethod 
+     * 
+     * @param target : the target of the capacity
+     * @return the action chosen by the player
+     */
     public Action getAction(Character target)
     {
         int choice = DisplayUI.getAction(character);
@@ -32,9 +40,9 @@ public class ControllerPlayer extends Controller
         switch(choice)
         {
             case 1 : // Capacity
-                return super.useCapacity(character, target, askCapacity(target));
+                return super.useCapacity(character, target, askCapacity(target)); 
             case 2 : // Item 
-                // this.setIem(); break;
+                return super.useItem(character, target, this.askItem());
             default : 
                 return super.useCapacity(character, target, askCapacity(target));
         }
@@ -62,12 +70,16 @@ public class ControllerPlayer extends Controller
         return capacity;
     }
     
-    private void askItem(Character target)
+    /**
+     * Get an item to use from the character
+     * @param target
+     * @return 
+     */
+    private Edible askItem()
     {
-//        Capacity capacity; 
-//        
-//        int choice = DisplayUI.getItemToUse(character);
-//        
+        int choice = DisplayUI.getItemToUse(character);
         
+        // TODO : ERREUR DE CAST
+        return (Edible) character.getInventory().get(choice);
     }
 }
