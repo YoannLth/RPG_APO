@@ -77,8 +77,8 @@ public class Item
     public String toString()
     {
         String s;
-        s= "Item : " + this.getName() + " avec un poid de " + this.getWeight();
-        s+= "\n" + this.getEffect().toString();
+        s= "Item : " + this.getName() + " avec un poid de " + this.getWeight() + "\n";
+        s+= this.getEffect().toString() + "\n";
         return s;
     }
 }
