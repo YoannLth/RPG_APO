@@ -27,10 +27,16 @@ import static view.Console.*;
 public class Game {
     private String gameName;
     private Character playableCharacter;
-    private Map<Integer, Event> events;
+    private Map<Integer, Event> introGame;
+    private Map<Integer, Event> introContext;
+    private Map<Integer, Event> newPlayableCharacter;
+    
+    private Map<Integer, Map<Integer, Event>> events_game;
     
     public Game(String name){
         gameName = name;
+        events_game = new HashMap();
+        
     }
     
     public void launchGame(){
@@ -40,33 +46,54 @@ public class Game {
     }
     
     public void initializeEvents(){
-        events = new HashMap();
+        introGame = new HashMap();
+        introContext = new HashMap();
+        newPlayableCharacter = new HashMap();
+
         Map<Integer, String> introGameMessage = new HashMap();
         Map<Integer, String> introContextMessage = new HashMap();
         Map<Integer, String> characterInitialisationMessage = new HashMap();
         
         introGameMessage.put(1,"Bonjour et bienvenue dans " + gameName + "\nLa partie va commencer");
-        NewDialog introGame = new NewDialog(introGameMessage);
-        events.put(1, introGame);
+        NewDialog introGame1 = new NewDialog(introGameMessage);
+        introGame.put(1, introGame1);
         
         
         //Affichage du script qui introduit le contexte du jeu
         introContextMessage.put(1,"Vous partez au Pérou en voyage \nVous esseyez de faire passer de la drogue en revennant \nVous vous faites chopper \nDirection la Prison");
-        NewDialog introContext = new NewDialog(introContextMessage); 
-        events.put(2, introContext);
+        NewDialog introContext1 = new NewDialog(introContextMessage); 
+        introContext.put(1, introContext1);
      
         //Affichage du script pour initialiser le personnage (en fonction des choix du joueur)
         characterInitialisationMessage.put(1, "Une fois dans votre cellule, un homme vous interpelle... \nQui est tu?");
         NewPlayer mainCharacterInitialisation = new NewPlayer(); 
-        events.put(3, mainCharacterInitialisation);
+        this.newPlayableCharacter.put(1, mainCharacterInitialisation);
+        
+        events_game.put(1, introGame);
+        events_game.put(2, introContext);
+        events_game.put(3, newPlayableCharacter);
     }
     
     public void readEvents(){
-        int sizeEvents = events.size();
+        //int sizeEvents = introGame.size();
+        
+        //for(int i=1;i<=sizeEvents;i++){
+        //    Event currentEvent = introGame.get(i);
+        //    currentEvent.display();
+        //}
+        
+        int sizeEvents = events_game.size();
         
         for(int i=1;i<=sizeEvents;i++){
-            Event currentEvent = events.get(i);
-            currentEvent.display();
+            Map<Integer, Event> currentEvent = events_game.get(i);
+            
+            int currentEventSize = currentEvent.size();
+            
+            for(int j=1;j<=currentEventSize;j++){
+                Event a = currentEvent.get(j);
+                a.display();
+            }
+            //currentEvent.display();
         }
     }
 }
