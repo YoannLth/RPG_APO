@@ -5,7 +5,7 @@
  */
 package rpg;
 
-import Controller.ControllerUI;
+import Controller.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -42,6 +42,7 @@ public class Event
         {
             ControllerUI cp = new ControllerUI();
             // actionPlayer.add(cp.getAction()); // TODO : update this
+            
         }
         for (Character c : this.aiChacraters)
         {

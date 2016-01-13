@@ -297,6 +297,17 @@ public class Character
         this.abilities.put(Ability.STRENGTH, 10);
         this.abilities.put(Ability.DEXTERITY, 10);
     }
+    
+    /**
+     * Inialize the inventory adding few items
+     */
+    public void initInventory()
+    {
+        this.inventory.add(new Item("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
+        this.inventory.add(new Item("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
+        this.inventory.add(new Weapon("BadassWeapon", 60, 90, 50));
+        this.inventory.add(new Armor("VerySexyArmor", 20, 50));
+    }
 
     /**
      * Check that the abilities chose by the player are not too high

@@ -27,7 +27,6 @@ public class Controller
      */
     public Action useItem(Character source, Character target, Edible i)
     {
-        // TODO : au moment de l'appel de cette méthode, enlever l'objet de l'inventaire
         source.removeItem(i);
         return new Action(source, target, i);
     }

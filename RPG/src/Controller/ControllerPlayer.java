@@ -9,7 +9,7 @@ package Controller;
  * Class managing the actions of the player
  * @author Gaetan
  */
-public class ControllerPlayer
+public class ControllerPlayer extends Controller
 {
     
 }

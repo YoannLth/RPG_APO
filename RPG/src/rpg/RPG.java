@@ -127,6 +127,8 @@ public class RPG
         createNewAICharacter();
         
         this.displayCharacters();
+        
+        this.runGame();
     }
 
     /**
@@ -146,8 +148,7 @@ public class RPG
         }
 
         character.setName(name);
-
-        // TODO : Gérer la distribution des carractéristiques
+        
         playerCharacters.add(character);
 
     }
@@ -221,15 +222,46 @@ public class RPG
         }
     }
     
+    /**
+     * Ask for a target among the AI Characters
+     * 
+     * @return AI character corresponding to the name typed in
+     */
     private Character getAICharacterByName()
     {
+        this.displayPlayerCharacters();
         String name = DisplayUI.getCharacterName();
-        for(Character c : aiCharacters)
+        for(Character aiCharacter : aiCharacters)
         {
-            if (c.getName().equals(name))
-                return c;
+            if (aiCharacter.getName().equals(name))
+                return aiCharacter;
         }
         return this.getAICharacterByName();
+    }
+    
+    /**
+     * Ask for a target among the Player Characters
+     *
+     * @return player character corresponding to the name typed in
+     */
+    private Character getPlayerCharacterByName()
+    {
+        this.displayAICharacters();
+        String name = DisplayUI.getCharacterName();
+        for(Character playerCharacter : playerCharacters)
+        {
+            if (playerCharacter.getName().equals(name))
+                return playerCharacter;
+        }
+        return this.getPlayerCharacterByName();
+    }
+
+    /**
+     * Launch the game after everything is set & prepared
+     */
+    private void runGame()
+    {
+        // Todo : Gérer le jeu
     }
 
 }
