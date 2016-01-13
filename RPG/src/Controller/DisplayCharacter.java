@@ -34,7 +34,7 @@ public class DisplayCharacter
         {
             this.character.checkMaxInventory(i);
             this.character.addItem(i);
-            Log.i("Item : " + i.getName() + " a été ajouté");
+            System.out.println("Item : " + i.getName() + " a été ajouté");
         }
         catch (MaxInventoryException ex)
         {
@@ -56,7 +56,7 @@ public class DisplayCharacter
             else
             {
                 this.character.removeItem(i);
-                Log.i("Item : " + i.getName() + " a été retiré dans l'inventaire");
+                System.out.println("Item : " + i.getName() + " a été retiré dans l'inventaire");
             }
         }
         catch (ExistsInventoryException ex)
@@ -75,7 +75,7 @@ public class DisplayCharacter
         {
             s+= i.toString();
         }
-        Log.i(s);
+        System.out.println(s);
     }
     
     public void displayAbilities()
@@ -87,21 +87,32 @@ public class DisplayCharacter
             int value = e.getValue();
             s += "        - "+ ability + " : " + value + "\n";        
         }
-        Log.i(s);
+        System.out.println(s);
     }
     
     public void displayWeight()
     {
-        Log.i("Vous avez :" + (this.character.getMaxWeight() - this.character.getInventoryWeight()) + " poid restant");
+        System.out.println("Vous avez :" + (this.character.getMaxWeight() - this.character.getInventoryWeight()) + " poid restant");
     }
     
     public void displayHealth()
     {
-        Log.i("Vous avez :" + this.character.getMaxHealth() + " point de vie");
+        System.out.println("Vous avez :" + this.character.getMaxHealth() + " point de vie");
     }
     
     public void displayName()
     {
-        Log.i("Le nom du joueur est : " + this.character.getName());
+        System.out.println("Le nom du joueur est : " + this.character.getName());
+    }
+
+    /**
+     * Display all the information about the character
+     */
+    public void displayAll()
+    {
+        this.displayName();
+        this.displayAbilities();
+        this.displayHealth();
+        this.displayWeight();
     }
 }

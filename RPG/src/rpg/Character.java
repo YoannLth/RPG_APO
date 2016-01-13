@@ -24,7 +24,7 @@ public class Character
     private String name;            //Name of the character
     private Map<Ability, Integer> abilities;    //Stats of the character
     private int level = 1;          //Current level of the character
-    private int maxWeight = 100;    //Max weight of carriable items
+    private int maxWeight = 300;    //Max weight of carriable items
     private int maxHealth;          //Max Health reachable by the character
     private int maxDexterity;       //Max Dexterity reachable by the character
     private List<Item> inventory;   //Inventory of the characters
@@ -80,6 +80,7 @@ public class Character
         this.currentHealth = INIT_MAX_HEALTH;
         this.setMaxDexterity(10);
         this.initAbilities();
+        this.initInventory();
     }
 
     // -------------- Getters And Setters -------------------------------

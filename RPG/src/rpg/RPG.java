@@ -5,11 +5,16 @@
  */
 package rpg;
 
+import Controller.ControllerAI;
+import Controller.DisplayUI;
+import Controller.ControllerPlayer;
 import Controller.ControllerUI;
 import Controller.DisplayCharacter;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Stack;
-import jdk.nashorn.internal.objects.NativeArray;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import me.grea.antoine.utils.*;
 
 /**
@@ -229,7 +234,7 @@ public class RPG
      */
     private Character getAICharacterByName()
     {
-        this.displayPlayerCharacters();
+        this.displayAICharacters();
         String name = DisplayUI.getCharacterName();
         for(Character aiCharacter : aiCharacters)
         {
@@ -246,7 +251,7 @@ public class RPG
      */
     private Character getPlayerCharacterByName()
     {
-        this.displayAICharacters();
+        this.displayPlayerCharacters();
         String name = DisplayUI.getCharacterName();
         for(Character playerCharacter : playerCharacters)
         {
@@ -261,7 +266,49 @@ public class RPG
      */
     private void runGame()
     {
-        // Todo : Gérer le jeu
+        // Todo : Gérer le jeu, appeler event & co
+        ArrayList<ControllerPlayer> playerControllers = new ArrayList<>();
+        ArrayList<ControllerAI> aiControllers = new ArrayList<>();
+        
+        for (Character player : playerCharacters)
+        {
+            playerControllers.add(new ControllerPlayer(player));
+        }
+        
+        for (Character ai : aiCharacters)
+        {
+            aiControllers.add(new ControllerAI(ai));
+        }
+        
+        for (ControllerPlayer cp : playerControllers)
+        {
+            System.out.println("***********************");
+            System.out.println("Round of " + cp.getCharacter().getName());
+            turn(cp.getCharacter());
+            
+            System.out.println("Select a target : ");
+            Character target = this.getAICharacterByName();
+            Action a = cp.getAction(target);
+            new DisplayCharacter(target).displayAll();
+        }
+        
+    }
+    
+    /**
+     * Show all the actions possible : continue, leave game, consult Inventory, etc..
+     */
+    private void turn(Character character)
+    {
+        int choice = DisplayUI.getActionTurn();
+        switch (choice)
+        {
+            case 0 : this.quitGame(); break;
+            case 1 : new DisplayCharacter(character).displayInventory(); break;
+            case 2 : new DisplayCharacter(character).displayAll(); break;
+            case 3 : return;
+            default : break;
+        }
+        turn(character);
     }
 
 }

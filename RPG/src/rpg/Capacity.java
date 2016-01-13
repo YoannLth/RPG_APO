@@ -12,6 +12,12 @@ package rpg;
 public interface Capacity
 { 
     /**
+     * Number of capacity
+     * Needed when the user is asked to chose a capacity
+     */
+    public final static int NUMBER_OF_CAPACITY = 3;
+    
+    /**
      * Get the effect of a capacity
      * 
      * @return the effect

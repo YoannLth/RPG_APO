@@ -5,19 +5,14 @@
  */
 package Controller;
 
-import java.io.Console;
-import java.text.ParseException;
 import java.util.Scanner;
-import me.grea.antoine.utils.Log;
-import rpg.Action;
-import rpg.Edible;
 
 /**
  * Class managing the interactions between the player and the game
  *
  * @author p1509413
  */
-public class ControllerUI extends Controller
+public class ControllerUI
 {
     private static Scanner scanner = new Scanner(System.in);
 

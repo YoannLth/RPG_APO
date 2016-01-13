@@ -17,6 +17,19 @@ import rpg.Edible;
  */
 public class Controller
 {
+    
+    protected Character character;
+
+    public Character getCharacter()
+    {
+        return character;
+    }
+    
+    public Controller(Character c)
+    {
+        character = c;
+    }
+    
     /**
      * Play an action by consuming an item
      * 
