@@ -71,9 +71,11 @@ public class DisplayCharacter
     public void displayInventory()
     {
         String s = "Vous avez dans votre inventaire : \n";
+        int itemId = 0;
         for(Item i: this.character.getInventory())
         {
-            s+= i.toString();
+            s+= itemId + ". " + i.toString();
+            itemId ++;
         }
         System.out.println(s);
     }
