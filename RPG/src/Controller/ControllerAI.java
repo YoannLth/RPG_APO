@@ -3,13 +3,13 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package rpg;
+package Controller;
 
 /**
- * Class managing the actions of the player
- * @author Gaetan
+ * Class managing the actions of the AI
+ * @author p1509413
  */
-public class ControllerPlayer
+public class ControllerAI
 {
     
 }

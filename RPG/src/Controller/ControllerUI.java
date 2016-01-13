@@ -3,12 +3,14 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package rpg;
+package Controller;
 
 import java.io.Console;
 import java.text.ParseException;
 import java.util.Scanner;
 import me.grea.antoine.utils.Log;
+import rpg.Action;
+import rpg.Edible;
 
 /**
  * Class managing the interactions between the player and the game

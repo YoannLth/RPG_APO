@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import me.grea.antoine.utils.Log;
 
-
 /**
  * Character class : Represents a character of the game
  *
@@ -29,6 +28,11 @@ public class Character
     private int maxHealth;          //Max Health reachable by the character
     private int maxDexterity;       //Max Dexterity reachable by the character
     private List<Item> inventory;   //Inventory of the characters
+    private int currentHealth;      // Current health of the character
+    
+    // -------------- Constants
+    
+    private final int INIT_MAX_HEALTH = 100;    // Maximum Health at the creation
 
     // -------------- Constructors ----------------------------------
     /**
@@ -38,9 +42,10 @@ public class Character
     {
         this("Player");
     }
-    
+
     /**
      * Constructor with arguments
+     *
      * @param name Name of Character
      */
     public Character(String name)
@@ -48,7 +53,8 @@ public class Character
         this.abilities = new HashMap<>();
         this.inventory = new ArrayList<>();
         this.setName(name);
-        this.setMaxHealth(100);
+        this.setMaxHealth(INIT_MAX_HEALTH);
+        this.currentHealth = INIT_MAX_HEALTH;
         this.setMaxDexterity(10);
         this.initAbilities();
     }
@@ -118,29 +124,34 @@ public class Character
     {
         return inventory;
     }
-    
+
     public Armor getArmor()
     {
-        for(Item i: this.getInventory())
+        for (Item i : this.getInventory())
         {
-            if("rpg.Armor".equals(i.getClass().getName()))
+            if ("rpg.Armor".equals(i.getClass().getName()))
             {
-                return (Armor)i;
+                return (Armor) i;
             }
         }
         return null;
     }
-    
+
     public Weapon getWeapon()
     {
-        for(Item i: this.getInventory())
+        for (Item i : this.getInventory())
         {
-            if("rpg.Weapon".equals(i.getClass().getName()))
+            if ("rpg.Weapon".equals(i.getClass().getName()))
             {
-                return (Weapon)i;
+                return (Weapon) i;
             }
         }
         return null;
+    }
+
+    public int getCurrentHealth()
+    {
+        return currentHealth;
     }
 
     // ---------------------------- Methods --------------------------------------
@@ -171,15 +182,15 @@ public class Character
         }
         return sum;
     }
-    
+
     /**
      * Method to remove all effect with a duration of zero(Not effective effect)
      */
     public void removeEffect()
     {
-        for(Item i: this.getInventory())
+        for (Item i : this.getInventory())
         {
-            if(i.getEffect().getDuration() == 0)
+            if (i.getEffect().getDuration() == 0)
             {
                 this.removeItem(i);
             }
@@ -194,7 +205,7 @@ public class Character
     public void removeItem(Item i)
     {
         Log.i("Romoving item : " + i.getName() + " from " + this.getName());
-        this.inventory.remove(i);    
+        this.inventory.remove(i);
     }
 
     /**
@@ -217,6 +228,7 @@ public class Character
 
     /**
      * Calculate the sum of the abilities
+     *
      * @return the sum of the abilities
      */
     public int sumAbilities()
@@ -241,7 +253,7 @@ public class Character
     {
         return this.abilities.get(ability);
     }
-    
+
     /**
      * Initialize health at 100(use after each round)
      */
@@ -261,14 +273,11 @@ public class Character
         this.abilities.put(Ability.STRENGTH, 10);
         this.abilities.put(Ability.DEXTERITY, 10);
     }
-   
+
     public void checkAbilities()
     {
         // TODO : Implement this method
     }
-    
-    
-
 
     /**
      * Check that there is space available in the inventory
@@ -283,7 +292,7 @@ public class Character
             throw new MaxInventoryException(i);
         }
     }
-    
+
     /**
      * @param i: Item to check if present in inventory
      * @throws ExistsInventoryException if item i is not in inventory
@@ -294,5 +303,13 @@ public class Character
         {
             throw new ExistsInventoryException(i);
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        String s = "Name : " + this.name + "\n";
+        s += "Health : " + this.currentHealth;
+        return s;
     }
 }

@@ -3,7 +3,12 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package rpg;
+package Controller;
+
+import rpg.Action;
+import rpg.Capacity;
+import rpg.Character;
+import rpg.Edible;
 
 /**
  * Class used to interact with AI & player
