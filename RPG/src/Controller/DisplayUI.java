@@ -194,4 +194,28 @@ public class DisplayUI
             return choice;
         }
     }
+    
+    /**
+     * Ask the user to select an item to use
+     * 
+     * @param character
+     * @return 
+     */
+    public static int getItemToUse(Character character)
+    {
+        System.out.println("What item do you want to use : ");
+        new DisplayCharacter(character).displayInventory();
+        
+        int nbItem = character.getInventory().size();
+        
+        int choice = ControllerUI.readInt("Please have a choice : ");
+        if (choice < 0 || choice > nbItem)
+        {
+            System.out.println("Incorrect value - Range : [0 - " + nbItem + "]");
+            return DisplayUI.getItemToUse(character);
+        } else
+        {
+            return choice;
+        }
+    }
 }
