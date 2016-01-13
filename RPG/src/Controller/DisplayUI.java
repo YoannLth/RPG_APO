@@ -184,7 +184,7 @@ public class DisplayUI
         System.out.println("\t 2. Display Information About your character");
         System.out.println("\t 3. Continue");
         
-        int choice = ControllerUI.readInt("Please select an item : ");
+        int choice = ControllerUI.readInt("Please have a choice : ");
         if (choice < 0 || choice > 3)
         {
             System.out.println("Incorrect value - Range : [0 - 3]");
