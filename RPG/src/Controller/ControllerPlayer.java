@@ -42,7 +42,16 @@ public class ControllerPlayer extends Controller
             case 1: // Capacity
                 return super.useCapacity(character, target, askCapacity(target));
             case 2: // Item 
-                return super.useItem(character, target, this.askItem());
+                if (character.getNbEdibles() == 0)
+                {
+                    // No edible in the inventory of the character : cant use an item
+                    System.out.println("You don't have any edibles in your inventory");
+                    return this.getAction(target);
+                }
+                else
+                {
+                    return super.useItem(character, target, this.askItem());
+                }
             default:
                 return super.useCapacity(character, target, askCapacity(target));
         }
