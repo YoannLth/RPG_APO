@@ -7,5 +7,17 @@ public class Action {
 	private Capacity cap;
 	private ConsumableItem consum;
         
+        public Action(Character t, Character s){
+            this.target=t;
+            this.src=s;
+            this.cap=null;
+            this.consum=null;
+        }
 
+        
+        
+        public void SetCapacity(){
+            
+        }
+        
 }
