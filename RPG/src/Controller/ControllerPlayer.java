@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import me.grea.antoine.utils.Log;
 import rpg.Action;
 import rpg.Attack;
 import rpg.Capacity;
@@ -25,61 +26,78 @@ public class ControllerPlayer extends Controller
     {
         super(c);
     }
-    
+
     /**
-     * Get an action
-     * Use the supermethod 
-     * 
+     * Get an action Use the supermethod
+     *
      * @param target : the target of the capacity
      * @return the action chosen by the player
      */
     public Action getAction(Character target)
     {
         int choice = DisplayUI.getAction(character);
-        
-        switch(choice)
+
+        switch (choice)
         {
-            case 1 : // Capacity
-                return super.useCapacity(character, target, askCapacity(target)); 
-            case 2 : // Item 
+            case 1: // Capacity
+                return super.useCapacity(character, target, askCapacity(target));
+            case 2: // Item 
                 return super.useItem(character, target, this.askItem());
-            default : 
+            default:
                 return super.useCapacity(character, target, askCapacity(target));
         }
     }
 
     /**
      * Ask the player for a capacity
+     *
      * @param target the target selected before
-     * @return 
+     * @return
      */
     private Capacity askCapacity(Character target)
     {
         Capacity capacity;
-        
+
         int choice = DisplayUI.getCapacityChoice();
-        
+
         switch (choice)
         {
-            case 1 : capacity = new Attack(character, target); break;
-            case 2 : capacity = new Heal(character);  break;
-            case 3 : capacity = new Parry(character); break;
-            default : capacity = new Attack(character, target); break;
-        }        
-        
+            case 1:
+                capacity = new Attack(character, target);
+                break;
+            case 2:
+                capacity = new Heal(character);
+                break;
+            case 3:
+                capacity = new Parry(character);
+                break;
+            default:
+                capacity = new Attack(character, target);
+                break;
+        }
+
         return capacity;
     }
-    
+
     /**
      * Get an item to use from the character
+     *
      * @param target
-     * @return 
+     * @return
      */
     private Edible askItem()
     {
         int choice = DisplayUI.getItemToUse(character);
         
-        // TODO : ERREUR DE CAST
-        return (Edible) character.getInventory().get(choice);
+        Log.d(character.getInventory().get(choice).getClass());
+
+        if (character.getInventory().get(choice).getClass() == Edible.class)
+        {
+            return (Edible) character.getInventory().get(choice);
+        } else
+        {
+            System.out.println("You can not use this item. Please, pick an edible");
+            return askItem();
+        }
     }
 }
