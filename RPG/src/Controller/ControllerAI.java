@@ -51,6 +51,10 @@ public class ControllerAI extends Controller
         this.aiCharacters = aiCharacters;
     }
     
+    /**
+     * Return a stack of names for the AI characters
+     * @return the stack of name
+     */
     public static Stack<String> getStackNames()
     {
         Stack charactersNames = new Stack<>();
