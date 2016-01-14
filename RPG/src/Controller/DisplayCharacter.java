@@ -99,7 +99,8 @@ public class DisplayCharacter
     
     public void displayHealth()
     {
-        System.out.println("Vous avez :" + this.character.getMaxHealth() + " point de vie");
+        System.out.println("Vous avez :" + this.character.getCurrentHealth() + " point de vie");
+        Log.d(this.character.getAbilities().get(Ability.HEALTH));
     }
     
     public void displayName()

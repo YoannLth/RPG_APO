@@ -9,6 +9,8 @@ import Controller.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import me.grea.antoine.utils.Log;
+
 
 /**
  *
@@ -16,8 +18,8 @@ import java.util.Stack;
  */
 public class Event
 {
-    private Stack<Character> playerChacraters;
-    private Stack<Character> aiChacraters;
+    private List<Character> playerCharacters;
+    private List<Character> aiCharacters;
 
     //------------------------- Constructor ------------------------------
     /**
@@ -25,29 +27,136 @@ public class Event
      * @param playerChacraters List of player character
      * @param aiChacraters  List of AI character
      */
-    public Event(Stack<Character> playerChacraters, Stack<Character> aiChacraters)
+    public Event(List<Character> playerChacraters, List<Character> aiChacraters)
     {
-        this.playerChacraters = playerChacraters;
-        this.aiChacraters = aiChacraters;
+        this.playerCharacters = playerChacraters;
+        this.aiCharacters = aiChacraters;
     }
+    
     
     /**
      * Method use to generate the actions for a fight and play a round according to these actions
+     * @return true player wins; false if AI wins
      */
-    public void fight()
+    public Boolean fight()
     {
-        List<Action> actionPlayer = new ArrayList<>();
+        ArrayList<ControllerPlayer> playerControllers = new ArrayList<>();
+        ArrayList<ControllerAI> aiControllers = new ArrayList<>();
         
-        for (Character c : this.playerChacraters)
+        Stack<Action> playerActions = new Stack<>(); 
+        Stack<Action> aiAction = new Stack<>();
+        
+        for (Character player : playerCharacters)
         {
-            ControllerUI cp = new ControllerUI();
-            // actionPlayer.add(cp.getAction()); // TODO : update this
+            playerControllers.add(new ControllerPlayer(player));
+        }
+        
+        for (Character ai : aiCharacters)
+        {
+            aiControllers.add(new ControllerAI(ai));
+        }
+        
+        for (ControllerPlayer cp : playerControllers)
+        {
+            System.out.println("***********************");
+            System.out.println("Round of " + cp.getCharacter().getName());
+            turn(cp.getCharacter());
             
+            System.out.println("Select a target : ");
+            Character target = this.getAICharacterByName();
+            Action a = cp.getAction(target);
+            playerActions.push(a);
+            new DisplayCharacter(target).displayAll();
         }
-        for (Character c : this.aiChacraters)
+        Round fightRound = new Round(playerActions, playerActions);
+        fightRound.play();
+        return true;
+    }
+    
+    /**
+     * Display all the characters
+     */
+    private void displayCharacters()
+    {
+        this.displayPlayerCharacters();
+        this.displayAICharacters();
+    }
+    
+    /**
+     * Display all the characters of the player
+     */
+    private void displayPlayerCharacters()
+    {
+        System.out.println("List of the player characters : ");
+        for (int i = 0; i < playerCharacters.size(); i++)
         {
-
+            System.out.println(playerCharacters.get(i).toString());
         }
+    }
+    
+    /**
+     * Display all the characters of the AI
+     */
+    private void displayAICharacters()
+    {
+        System.out.println("List of the AI characters : ");
+        for (int i = 0; i < aiCharacters.size(); i++)
+        {
+            System.out.println(aiCharacters.get(i).toString());
+        }
+    }
+    
+    /**
+     * Ask for a target among the AI Characters
+     * 
+     * @return AI character corresponding to the name typed in
+     */
+    private Character getAICharacterByName()
+    {
+        this.displayAICharacters();
+        String name = DisplayUI.getCharacterName();
+        for(Character aiCharacter : aiCharacters)
+        {
+            if (aiCharacter.getName().equals(name))
+                return aiCharacter;
+        }
+        return this.getAICharacterByName();
+    }
+    
+    /**
+     * Ask for a target among the Player Characters
+     *
+     * @return player character corresponding to the name typed in
+     */
+    private Character getPlayerCharacterByName()
+    {
+        this.displayPlayerCharacters();
+        String name = DisplayUI.getCharacterName();
+        for(Character playerCharacter : playerCharacters)
+        {
+            if (playerCharacter.getName().equals(name))
+                return playerCharacter;
+        }
+        return this.getPlayerCharacterByName();
+    }
+
+    
+    /**
+     * Show all the actions possible : continue, leave game, consult Inventory, etc..
+     */
+    private void turn(Character character)
+    {
+        int choice = DisplayUI.getActionTurn();
+        Log.d("I'm in turn");
+        switch (choice)
+        {
+            case 0 : rpg.RPG.quitGame(); break;
+            case 1 : new DisplayCharacter(character).displayInventory(); break;
+            case 2 : new DisplayCharacter(character).displayAll(); break;
+            case 3 : return;
+            default : break;
+        }
+        turn(character);
     }
     
 }

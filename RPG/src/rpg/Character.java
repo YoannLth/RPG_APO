@@ -189,8 +189,15 @@ public class Character
     {
         Ability a = e.getAbility();
         Log.i("Applying : " + e.toString());
-        int newValue = this.abilities.get(a) + e.getValue();
-        this.abilities.put(a, newValue);
+        if(a == Ability.HEALTH) //Change value of cuurent health if effect is on Ability HEALTH
+        {
+            this.currentHealth = Math.min(this.maxHealth, this.currentHealth + e.getValue());
+        }
+        else    //Change Ability value
+        {
+            int newValue = this.abilities.get(a) + e.getValue();
+            this.abilities.put(a, newValue);
+        }
     }
 
     /**
@@ -306,7 +313,7 @@ public class Character
     {
         this.inventory.add(new Item("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
         this.inventory.add(new Item("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
-        this.inventory.add(new Weapon("BadassWeapon", 60, 90, 50));
+        this.inventory.add(new Weapon("BadassWeapon", 60, 90, 5));
         this.inventory.add(new Armor("VerySexyArmor", 20, 50));
     }
 

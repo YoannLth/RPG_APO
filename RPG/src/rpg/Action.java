@@ -78,6 +78,17 @@ public class Action
     {
         this(s,null,c);
     }
+    
+    public void useAction()
+    {
+        if(this.edible != null)
+        {
+            this.useItem();
+        }else 
+        {
+            this.useCapacity();
+        }
+    }
 
     /**
      * Use of an item : apply effect on the characters

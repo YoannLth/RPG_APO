@@ -25,7 +25,7 @@ public class Round
     {
         this.playerActions = playerActions;
         this.computerActions = computerActions;
-        this.finalActions = this.merge(finalActions, finalActions);
+        this.finalActions = this.merge(playerActions, computerActions);
     }
     
     
@@ -104,7 +104,7 @@ public class Round
             //check if the target dies if true then remove all actiosn concerning this character
             if(a.getTarget() != null)  //if action is not a heal or using an item
             {
-                if(a.getTarget().getAbilityValue(Ability.HEALTH)<=0)
+                if(a.getTarget().getCurrentHealth()<=0)
                 {
                     Log.i("The character " + a.getTarget().getName() + " was killed by " + a.getSource().getName());
                     this.removeDieCharacter(a.getTarget());
@@ -147,5 +147,10 @@ public class Round
             }
         }
         return res;
+    }
+    
+    public void addAction(Action a)
+    {
+        this.finalActions.push(a);
     }
 }
