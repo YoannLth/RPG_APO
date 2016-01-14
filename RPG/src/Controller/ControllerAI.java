@@ -6,6 +6,7 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.Stack;
 import rpg.Action;
 import rpg.Attack;
 import rpg.Character;
@@ -48,6 +49,22 @@ public class ControllerAI extends Controller
         super(ai);
         this.playerCharacters = playerCharacters;
         this.aiCharacters = aiCharacters;
+    }
+    
+    public static Stack<String> getStackNames()
+    {
+        Stack charactersNames = new Stack<>();
+        charactersNames.add("Chucky");
+        charactersNames.add("Djouk");
+        charactersNames.add("John");
+        charactersNames.add("Brice");
+        charactersNames.add("Finn");
+        charactersNames.add("TR8TOR");
+        charactersNames.add("Gollum");
+        charactersNames.add("Boro");
+        charactersNames.add("Frodo");
+        
+        return charactersNames;
     }
 
     /**
