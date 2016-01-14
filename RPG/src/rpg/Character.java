@@ -21,14 +21,14 @@ public class Character
 {
     // -------------- Attributes
 
-    private String name;            //Name of the character
-    private Map<Ability, Integer> abilities;    //Stats of the character
-    private int level = 1;          //Current level of the character
-    private int maxWeight = 300;    //Max weight of carriable items
-    private int maxHealth;          //Max Health reachable by the character
-    private int maxDexterity;       //Max Dexterity reachable by the character
-    private List<Item> inventory;   //Inventory of the characters
-    private int currentHealth;      // Current health of the character
+    protected String name;            //Name of the character
+    protected Map<Ability, Integer> abilities;    //Stats of the character
+    protected int level = 1;          //Current level of the character
+    protected int maxWeight = 300;    //Max weight of carriable items
+    protected int maxHealth;          //Max Health reachable by the character
+    protected int maxDexterity;       //Max Dexterity reachable by the character
+    protected List<Item> inventory;   //Inventory of the characters
+    protected int currentHealth;      // Current health of the character
     
     // -------------- Constants
     
@@ -309,12 +309,26 @@ public class Character
     /**
      * Inialize the inventory adding few items
      */
-    public void initInventory()
+    protected void initInventory()
     {
-        this.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
-        this.inventory.add(new Edible("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
         this.inventory.add(new Weapon("BadassWeapon", 60, 90, 50));
         this.inventory.add(new Armor("VerySexyArmor", 20, 50));
+    }
+    
+    /**
+     * Get the number of edibles in the inventory
+     * 
+     * @return the number of edibles in the inventory
+     */
+    public int getNbEdibles()
+    {
+        int number = 0;
+        for (Item i : inventory)
+        {
+            if (i.getClass() == Edible.class)
+                number ++;
+        }
+        return number;
     }
 
     /**
