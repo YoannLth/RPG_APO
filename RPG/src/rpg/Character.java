@@ -352,6 +352,18 @@ public class Character
             // Faire un contrôle plus sérieux ! 
         }
     }
+    
+    /**
+     * Method to test if a character is dead
+     * @return true character is dead; false character is still alive
+     */
+    public boolean isDead()
+    {
+        if(this.currentHealth<=0)
+            return true;
+        else
+            return false;
+    }
 
     /**
      * Check that there is space available in the inventory

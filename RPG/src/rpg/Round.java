@@ -67,7 +67,7 @@ public class Round
     {
         Log.i("Round is starting...");
         this.executeActions();
-        this.initNextRound();
+        //this.initNextRound();
     }
     
     /**
@@ -112,7 +112,7 @@ public class Round
             //check if the target dies if true then remove all actiosn concerning this character
             if(a.getTarget() != null)  //if action is not a heal or using an item
             {
-                if(a.getTarget().getCurrentHealth()<=0)
+                if(a.getTarget().isDead())
                 {
                     System.out.println("The character " + a.getTarget().getName() + " was killed by " + a.getSource().getName());
                     this.removeDieCharacter(a.getTarget());
@@ -164,9 +164,15 @@ public class Round
      */
     public void characterExists(Character c) throws CharatcerExistsException
     {
+        if(this.aiCharacters == null || this.playerCharacters == null)
+        {
+            throw new CharatcerExistsException(c);
+        }
+        
         if (!this.aiCharacters.contains(c) || !this.playerCharacters.contains(c))
         {
             throw new CharatcerExistsException(c);
         }
+        
     }
 }

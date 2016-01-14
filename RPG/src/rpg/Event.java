@@ -35,41 +35,66 @@ public class Event
     
     /**
      * Method use to generate the actions for a fight and play a round according to these actions
-     * @return true player wins; false if AI wins
+     * @return true fight ends; false fight is ongoing
      */
     public Boolean fight()
     {
-        ArrayList<ControllerPlayer> playerControllers = new ArrayList<>();
-        ArrayList<ControllerAI> aiControllers = new ArrayList<>();
-        
-        Stack<Action> playerActions = new Stack<>(); 
-        Stack<Action> aiAction = new Stack<>();
-        
-        for (Character player : playerCharacters)
+        if(this.haveWinner())
+            return true;
+        else
         {
-            playerControllers.add(new ControllerPlayer(player));
+            ArrayList<ControllerPlayer> playerControllers = new ArrayList<>();
+            ArrayList<ControllerAI> aiControllers = new ArrayList<>();
+
+            Stack<Action> playerActions = new Stack<>(); 
+            Stack<Action> aiAction = new Stack<>();
+
+            for (Character player : playerCharacters)
+            {
+                playerControllers.add(new ControllerPlayer(player));
+            }
+
+            for (Character ai : aiCharacters)
+            {
+                aiControllers.add(new ControllerAI(ai, playerCharacters, aiCharacters));
+            }
+
+            for (ControllerPlayer cp : playerControllers)
+            {
+                System.out.println("***********************");
+                System.out.println("Round of " + cp.getCharacter().getName());
+                turn(cp.getCharacter());
+
+                System.out.println("Select a target : ");
+                Character target = this.getAICharacterByName();
+                Action a = cp.getAction(target);
+                playerActions.push(a);
+                new DisplayCharacter(target).displayAll();
+            }
+            Round fightRound = new Round(playerCharacters,playerActions, aiCharacters,playerActions);
+            fightRound.play();
+            this.fight();
         }
-        
-        for (Character ai : aiCharacters)
+        return false;
+    }
+    
+    /**
+     * 
+     * @return true if found winner false no winner found 
+     */
+    private boolean haveWinner()
+    {
+        if(this.aiCharacters == null)
         {
-            aiControllers.add(new ControllerAI(ai, playerCharacters, aiCharacters));
-        }
-        
-        for (ControllerPlayer cp : playerControllers)
+            System.out.println("Game Over!!!Chuck Norris killled your imaginary friends");
+            return true;
+        } 
+        else if (this.playerCharacters == null)
         {
-            System.out.println("***********************");
-            System.out.println("Round of " + cp.getCharacter().getName());
-            turn(cp.getCharacter());
-            
-            System.out.println("Select a target : ");
-            Character target = this.getAICharacterByName();
-            Action a = cp.getAction(target);
-            playerActions.push(a);
-            new DisplayCharacter(target).displayAll();
+            System.out.println("You win!!!");
+            return true;
         }
-        Round fightRound = new Round(playerCharacters,playerActions, aiCharacters,playerActions);
-        fightRound.play();
-        return true;
+        return false;
     }
     
     /**
