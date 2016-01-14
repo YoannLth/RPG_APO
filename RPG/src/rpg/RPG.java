@@ -80,7 +80,6 @@ public class RPG
 //        Action act2 = new Action(c2, hl);
 //        dc2.displayAbilities();
 //        act2.useCapacity();
-
         start();
     }
 
@@ -113,7 +112,7 @@ public class RPG
      */
     private void newGame()
     {
-        DisplayUI.displayNewGameText();        
+        DisplayUI.displayNewGameText();
         int nbCharacs = DisplayUI.getNbCharacters(MAX_NB_CHARACTERS);
         initGame(nbCharacs);
     }
@@ -129,8 +128,12 @@ public class RPG
         {
             createNewPlayerCharacter();
         }
-        createNewAICharacter();
-        
+
+        int numberOfAiCharacters = DisplayUI.getDifficulty()
+                * Math.max(playerCharacters.size() - 1, 1);
+
+        createNewAICharacter(numberOfAiCharacters);
+
         this.runGame();
     }
 
@@ -139,22 +142,30 @@ public class RPG
      */
     private void createNewPlayerCharacter()
     {
+        System.out.println("Creation of character n° " + (playerCharacters.size() + 1));
         String name = DisplayUI.getCharacterName();
         String classChosen = DisplayUI.getPlayerClass();
-        
+
         Character character;
-        
-        switch (classChosen) {
-            case "Athlete" : character = new Athlete(); break;
-            case "Healer" : character = new Healer(); break;
-            default : character = new Warrior(); break;
+
+        switch (classChosen)
+        {
+            case "Athlete":
+                character = new Athlete();
+                break;
+            case "Healer":
+                character = new Healer();
+                break;
+            default:
+                character = new Warrior();
+                break;
         }
 
         character.setName(name);
-        
+
         System.out.println("Player Character created : ");
         System.out.println(character.toString());
-        
+
         playerCharacters.add(character);
 
     }
@@ -162,22 +173,20 @@ public class RPG
     /**
      * Creation of the characters of the AI
      */
-    private void createNewAICharacter()
+    private void createNewAICharacter(int numberOfAiCharacters)
     {
-        Stack charactersNames = new Stack<>();
-        charactersNames.add("John");
-        charactersNames.add("Brice");
-        charactersNames.add("Chuck");
-        charactersNames.add("Frodo");
-        for (int i = 0; i < MAX_NB_CHARACTERS; i++)
+        
+        Stack charactersNames = ControllerAI.getStackNames();
+        
+        for (int i = 0; i < numberOfAiCharacters; i++)
         {
-            Warrior w = new Warrior();
-            w.setName((String) charactersNames.pop());
-            
+            Ennemy ennemy = new Ennemy();
+            ennemy.setName((String) charactersNames.pop());
+
             System.out.println("AI Character created : ");
-            System.out.println(w.toString());
-            
-            aiCharacters.add(w);
+            System.out.println(ennemy.toString());
+
+            aiCharacters.add(ennemy);
         }
     }
 
@@ -198,15 +207,20 @@ public class RPG
         DisplayUI.displayQuitGameMessage();
         System.exit(0);
     }
-    
-    
+
     /**
      * Launch the game after everything is set & prepared
      */
     private void runGame()
     {
-        Event fight = new Event(playerCharacters, aiCharacters);
-        fight.fight();
-             
+        Event event = new Event(playerCharacters, aiCharacters);
+        Boolean victory = event.fight();
+        if (victory)
+        {
+            System.out.println("You Won The Fight!");
+        } else
+        {
+            System.out.println("You Lost The Fight!");
+        }
     }
 }
