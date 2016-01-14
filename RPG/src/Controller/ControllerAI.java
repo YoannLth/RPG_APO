@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import rpg.Action;
 import rpg.Attack;
 import rpg.Character;
+import rpg.Heal;
 
 /**
  * Class managing the actions of the AI
@@ -27,12 +28,19 @@ public class ControllerAI extends Controller
      * List of the ai Characters - Needed to chose a target (i.e : for a heal)
      */
     ArrayList<Character> aiCharacters;
-    
+
     /**
      * Indicates that an aiCharacter needs a heal
      */
     private boolean healNeeded = false;
 
+    /**
+     * Constructor
+     *
+     * @param ai : Ai player
+     * @param playerCharacters : List of player characters
+     * @param aiCharacters : List of ai characters
+     */
     public ControllerAI(Character ai,
             ArrayList<Character> playerCharacters,
             ArrayList<Character> aiCharacters)
@@ -44,46 +52,74 @@ public class ControllerAI extends Controller
 
     /**
      * Get the action of the AI
+     *
      * @return the action of the AI
      */
     public Action getAction()
     {
-        Character target = this.choseTarget();        
-        
-        return new Action(character, character, new Attack(character, character));
+        healNeeded();
+        Character target = this.choseTarget();
+
+        if (healNeeded)
+        {
+            return new Action(character, target, new Heal(character));
+        } else // Attaque par défaut
+        {
+            return new Action(character, target, new Attack(character, target));
+        }
     }
 
     /**
-     * 
-     * @return 
+     *
+     *
+     * @return the target chosen
      */
     private Character choseTarget()
     {
         if (healNeeded)
         {
             return getCharacterWithLowerHealth(aiCharacters);
-        }
-        else
+        } else
         {
             return getCharacterWithLowerHealth(playerCharacters);
         }
     }
 
     /**
-     * 
-     * 
+     * Return the character with the lower health from the list given
+     *
      * @param listCharacters
      * @return the character with the lower health from the list given
      */
     private Character getCharacterWithLowerHealth(ArrayList<Character> listCharacters)
     {
         Character characterWithLowerHealth = listCharacters.get(0); // Init to the first
-        for(Character c : listCharacters)
+        for (Character c : listCharacters)
         {
             if (characterWithLowerHealth.getCurrentHealth() <= c.getCurrentHealth())
+            {
                 characterWithLowerHealth = c;
+            }
         }
         return characterWithLowerHealth;
+    }
+
+    /**
+     * Update the field healNeeded : check if a character has less than 50% of
+     * his HP
+     */
+    private void healNeeded()
+    {
+        boolean aCharacterNeedsHeal = false;
+        for (Character ai : aiCharacters)
+        {
+            // If a character has less than 50% HP
+            if (ai.getCurrentHealth() <= ai.getMaxHealth() / 2)
+            {
+                aCharacterNeedsHeal = true;
+            }
+        }
+        healNeeded = aCharacterNeedsHeal;
     }
 
 }

@@ -7,7 +7,6 @@ package rpg;
 
 import Controller.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 import me.grea.antoine.utils.Log;
 
@@ -18,8 +17,8 @@ import me.grea.antoine.utils.Log;
  */
 public class Event
 {
-    private List<Character> playerCharacters;
-    private List<Character> aiCharacters;
+    private ArrayList<Character> playerCharacters;
+    private ArrayList<Character> aiCharacters;
 
     //------------------------- Constructor ------------------------------
     /**
@@ -27,7 +26,7 @@ public class Event
      * @param playerChacraters List of player character
      * @param aiChacraters  List of AI character
      */
-    public Event(List<Character> playerChacraters, List<Character> aiChacraters)
+    public Event(ArrayList<Character> playerChacraters, ArrayList<Character> aiChacraters)
     {
         this.playerCharacters = playerChacraters;
         this.aiCharacters = aiChacraters;
@@ -53,7 +52,7 @@ public class Event
         
         for (Character ai : aiCharacters)
         {
-            aiControllers.add(new ControllerAI(ai));
+            aiControllers.add(new ControllerAI(ai, playerCharacters, aiCharacters));
         }
         
         for (ControllerPlayer cp : playerControllers)
