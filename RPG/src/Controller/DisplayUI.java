@@ -5,10 +5,8 @@
  */
 package Controller;
 
-import Controller.ControllerUI;
 import java.util.Arrays;
 import java.util.HashSet;
-import me.grea.antoine.utils.Log;
 import rpg.Capacity;
 import rpg.Character;
 
@@ -38,7 +36,7 @@ public class DisplayUI
      */
     public static void displayNewGameText()
     {
-        String text = "A long time ago in a galaxy far far away ... \n";
+        String text = "A long time ago in a galaxy far far away ... Beforehand let's create your team ! \n";
         System.out.println(text);
     }
 
@@ -50,15 +48,8 @@ public class DisplayUI
     public static int getNbCharacters(int max)
     {
         int nbCharac = ControllerUI.readInt("Please select the number of characters"
-                + " you want to have in your team");
-        if (nbCharac <= 0 || nbCharac > max)
-        {
-            System.out.println("Incorrect value, max number of characters is 3");
-            return DisplayUI.getNbCharacters(max);
-        } else
-        {
-            return nbCharac;
-        }
+                + " you want to have in your team", 1, max);
+        return nbCharac;
     }
 
     /**
@@ -137,21 +128,14 @@ public class DisplayUI
             System.out.println("\t 2. Use an Item");
         }
 
-        int choice = ControllerUI.readInt("Please select an action : ");
-        if (choice <= 0 || choice > maxAction)
-        {
-            System.out.println("Incorrect value - Range : [1 - " + maxAction + "]");
-            return DisplayUI.getAction(character);
-        } else
-        {
-            return choice;
-        }
+        int choice = ControllerUI.readInt("Please select an action : ", 1, maxAction);
+        return choice;
     }
-    
+
     /**
      * Ask the user for a capacity
-     * 
-     * @return 
+     *
+     * @return
      */
     public static int getCapacityChoice()
     {
@@ -160,15 +144,8 @@ public class DisplayUI
         System.out.println("\t 2. Heal");
         System.out.println("\t 3. Parry");
 
-        int choice = ControllerUI.readInt("Please select a capacity : ");
-        if (choice <= 0 || choice > Capacity.NUMBER_OF_CAPACITY)
-        {
-            System.out.println("Incorrect value - Range : [1 - " + Capacity.NUMBER_OF_CAPACITY + "]");
-            return DisplayUI.getCapacityChoice();
-        } else
-        {
-            return choice;
-        }
+        int choice = ControllerUI.readInt("Please select a capacity : ", 1, Capacity.NUMBER_OF_CAPACITY);
+        return choice;
     }
 
     /**
@@ -182,40 +159,41 @@ public class DisplayUI
         System.out.println("\t 0. Leave the game");
         System.out.println("\t 1. Display Inventory");
         System.out.println("\t 2. Display Information About your character");
-        System.out.println("\t 3. Continue");
-        
-        int choice = ControllerUI.readInt("Please have a choice : ");
-        if (choice < 0 || choice > 3)
-        {
-            System.out.println("Incorrect value - Range : [0 - 3]");
-            return DisplayUI.getActionTurn();
-        } else
-        {
-            return choice;
-        }
+        System.out.println("\t 3. Do an action");
+
+        int choice = ControllerUI.readInt("Please have a choice : ", 0, 3);
+        return choice;
     }
-    
+
     /**
      * Ask the user to select an item to use
-     * 
+     *
      * @param character
-     * @return 
+     * @return
      */
     public static int getItemToUse(Character character)
     {
         System.out.println("What item do you want to use : ");
         new DisplayCharacter(character).displayInventory();
-        
+
         int nbItem = character.getInventory().size();
-        
-        int choice = ControllerUI.readInt("Please have a choice : ");
-        if (choice < 0 || choice > nbItem)
-        {
-            System.out.println("Incorrect value - Range : [0 - " + nbItem + "]");
-            return DisplayUI.getItemToUse(character);
-        } else
-        {
-            return choice;
-        }
+
+        int choice = ControllerUI.readInt("Please have a choice : ", 0, nbItem - 1);
+        return choice;
+    }
+
+    /**
+     * Ask the user for the difficulty of the game, i.e the number of AI
+     * characters
+     *
+     * @return int the number of AI characters to create
+     */
+    public static int getDifficulty()
+    {
+        String text = "Select a difficutly : \n";
+        text += "1. Easy \n";
+        text += "2. Medium \n";
+        text += "3. Hard";
+        return ControllerUI.readInt(text, 1, 3);
     }
 }
