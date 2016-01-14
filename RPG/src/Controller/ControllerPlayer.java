@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import me.grea.antoine.utils.Log;
 import rpg.Action;
 import rpg.Attack;
 import rpg.Capacity;
@@ -87,8 +88,10 @@ public class ControllerPlayer extends Controller
     private Edible askItem()
     {
         int choice = DisplayUI.getItemToUse(character);
+        
+        Log.d(character.getInventory().get(choice).getClass());
 
-        if (character.getInventory().get(choice).getClass().isInstance(Edible.class))
+        if (character.getInventory().get(choice).getClass() == Edible.class)
         {
             return (Edible) character.getInventory().get(choice);
         } else
