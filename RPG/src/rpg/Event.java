@@ -67,7 +67,7 @@ public class Event
             playerActions.push(a);
             new DisplayCharacter(target).displayAll();
         }
-        Round fightRound = new Round(playerActions, playerActions);
+        Round fightRound = new Round(playerCharacters,playerActions, aiCharacters,playerActions);
         fightRound.play();
         return true;
     }
@@ -146,7 +146,6 @@ public class Event
     private void turn(Character character)
     {
         int choice = DisplayUI.getActionTurn();
-        Log.d("I'm in turn");
         switch (choice)
         {
             case 0 : rpg.RPG.quitGame(); break;

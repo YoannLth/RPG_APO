@@ -9,6 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 import me.grea.antoine.utils.Log;
+import rpgException.CharatcerExistsException;
+import rpgException.ExistsInventoryException;
+import rpgException.MaxInventoryException;
 
 /**
  *
@@ -19,9 +22,11 @@ public class Round
     private Stack<Action> playerActions; //List of actions for a player
     private Stack<Action> computerActions;   //List of actions for the AI
     private Stack<Action> finalActions;  //merged list of playerActions and computerActions
+    private ArrayList<Character> playerCharacters;  //list of player character
+    private ArrayList<Character> aiCharacters;      //List of ai character
 
     //-------------------- Constructor ----------------------------
-    public Round(Stack<Action> playerActions, Stack<Action> computerActions)
+    public Round(ArrayList<Character> playerCharacters, Stack<Action> playerActions, ArrayList<Character> aiCharacters, Stack<Action> computerActions)
     {
         this.playerActions = playerActions;
         this.computerActions = computerActions;
@@ -70,9 +75,12 @@ public class Round
      */
     public void initNextRound()
     {
-        
-        List<Character> characters = this.getPlayingCharacter();
-        for(Character c: characters)
+        for(Character c: this.playerCharacters)
+        {
+            c.removeEffect();
+            c.initHealth();
+        }
+        for(Character c: this.aiCharacters)
         {
             c.removeEffect();
             c.initHealth();
@@ -106,13 +114,11 @@ public class Round
             {
                 if(a.getTarget().getCurrentHealth()<=0)
                 {
-                    Log.i("The character " + a.getTarget().getName() + " was killed by " + a.getSource().getName());
+                    System.out.println("The character " + a.getTarget().getName() + " was killed by " + a.getSource().getName());
                     this.removeDieCharacter(a.getTarget());
-                }
-                    
+                }           
             }
         }
-
     }
     
     /**
@@ -121,36 +127,46 @@ public class Round
      */
     public void removeDieCharacter(Character c)
     {
-        for(Action a: this.finalActions)
+        try
         {
-            if(a.getTarget() == c || a.getSource() == c)
-            {
-                this.finalActions.remove(a);
-            }
+            this.characterExists(c);
+            if(this.playerCharacters.contains(c))
+                this.playerCharacters.remove(c);
+            else
+                this.aiCharacters.remove(c);
+        } 
+        catch(CharatcerExistsException ex)
+        {
+            Log.e(ex.getMessage());
         }
-    }
         
-    /**
-     * @return List of all characters taking part in an action
-     */
-    public List<Character> getPlayingCharacter()
-    {
-        List<Character> res = new ArrayList<>();
-        for(Action a:this.finalActions)
+        if(this.finalActions !=null)
         {
-            if(!res.contains(a.getSource()))
+            for(Action a: this.finalActions)
             {
-                res.add(a.getSource());
-            } else if(!res.contains(a.getTarget()))
-            {
-                res.add(a.getTarget());
+                if(a.getTarget() == c || a.getSource() == c)
+                {
+                    this.finalActions.remove(a);
+                }
             }
         }
-        return res;
+
     }
     
     public void addAction(Action a)
     {
         this.finalActions.push(a);
+    }
+    
+    /**
+     * @param c the tested character
+     * @throws rpgException.CharatcerExistsException Exception if exception is not found in list
+     */
+    public void characterExists(Character c) throws CharatcerExistsException
+    {
+        if (!this.aiCharacters.contains(c) || !this.playerCharacters.contains(c))
+        {
+            throw new CharatcerExistsException(c);
+        }
     }
 }

@@ -1,4 +1,4 @@
-/*
+ /*
  * Projet - APO Création d'un RPG
  * Décembre 2015
  * Gaëtan MARTIN & Jensen JOYMANGUL
@@ -7,14 +7,9 @@ package rpg;
 
 import Controller.ControllerAI;
 import Controller.DisplayUI;
-import Controller.ControllerPlayer;
 import Controller.ControllerUI;
-import Controller.DisplayCharacter;
-import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import me.grea.antoine.utils.*;
 
 /**
