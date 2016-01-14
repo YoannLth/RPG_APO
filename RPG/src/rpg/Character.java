@@ -43,6 +43,11 @@ public class Character
     protected final int MAX_HEALTH_ATHLETE = 200;
     
     /**
+     * Maximum Health of the class Ennemy
+     */
+    protected final int MAX_HEALTH_ENNEMY = 100;
+    
+    /**
      * Maximum Health of the class Warrior
      */
     protected final int MAX_HEALTH_WARRIOR = 300;
