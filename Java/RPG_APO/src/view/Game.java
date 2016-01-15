@@ -20,13 +20,20 @@ import rpg_apo.NewMessage;
 import rpg_apo.NewDialog;
 import rpg_apo.NewMenu;
 import rpg_apo.Character;
+import rpg_apo.Characteristic;
 import rpg_apo.Event;
+import rpg_apo.NewFight;
 import rpg_apo.NewPlayer;
 import static view.Console.*;
 
 public class Game {
     private String gameName;
+    
+    private Map<Integer, Character> team1;
+    private Map<Integer, Character> team2;
+    
     private Character playableCharacter;
+    
     private Map<Integer, Event> introGame;
     private Map<Integer, Event> introContext;
     private Map<Integer, Event> newPlayableCharacter;
@@ -36,13 +43,12 @@ public class Game {
     public Game(String name){
         gameName = name;
         events_game = new HashMap();
-        
     }
     
     public void launchGame(){
-        initializeEvents();
-        readEvents();
-        
+        //initializeEvents();
+        //readEvents();
+        testCombat();
     }
     
     public void initializeEvents(){
@@ -75,12 +81,6 @@ public class Game {
     }
     
     public void readEvents(){
-        //int sizeEvents = introGame.size();
-        
-        //for(int i=1;i<=sizeEvents;i++){
-        //    Event currentEvent = introGame.get(i);
-        //    currentEvent.display();
-        //}
         
         int sizeEvents = events_game.size();
         
@@ -93,7 +93,42 @@ public class Game {
                 Event a = currentEvent.get(j);
                 a.display();
             }
-            //currentEvent.display();
         }
+    }
+    
+    
+    public void testInitialiseObjets(){
+        
+    }
+    
+    
+    public void testCombat(){
+        team1 = new HashMap();
+        team2 = new HashMap();
+        
+        Map<Characteristic, Integer> c = new HashMap();
+        c.put(Characteristic.HEALTH, 100);
+        c.put(Characteristic.DEFENCE, 10);
+        c.put(Characteristic.DEXTERITY, 10);
+        c.put(Characteristic.STRENGTH, 10);
+        
+        Character c1a = new Boxer("Combatant_1_t1");
+        Character c1b = new MaleNurse("Combatant_2_t1");
+        Character c1c = new Highbrow("Combatant_3_t1");
+        
+        Character c2a = new Boxer("Combatant_1_t2");
+        Character c2b = new MaleNurse("Combatant_2_t2");
+        Character c2c = new Highbrow("Combatant_3_t2");
+        
+        team1.put(1, c1a);
+        team1.put(2, c1b);
+        team1.put(3, c1c);
+        
+        team2.put(1, c2a);
+        team2.put(2, c2b);
+        team2.put(3, c2c);
+        
+        NewFight fightTest = new NewFight(team1,team2);
+        fightTest.display();
     }
 }

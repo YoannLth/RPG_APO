@@ -1,5 +1,6 @@
 package rpg_apo;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import static view.Console.*;
@@ -18,10 +19,10 @@ public class Character {
         public Character(String nameCharacter, String className, String characterDescription){
             this.name = nameCharacter;
             this.level = 0;
-            this.characs = null;
+            this.characs = new HashMap();
             this.inventary = null;
             this.activeWeapon = null;
-            this.activeArmors = null;
+            this.activeArmors = new HashMap();
             this.className = className;
             this.characterDescription = characterDescription;
         }
@@ -77,10 +78,6 @@ public class Character {
 		// TODO - implement Character.useConsumableItem
 		throw new UnsupportedOperationException();
 	}
-        
-        public void afficherInfosTest(){
-            displayBlue("Bonjour je m'appele " + this.name + ".");
-        }
 
         public String getClassName(){
             String res = this.className;
@@ -116,5 +113,45 @@ public class Character {
             for(Item i : inventary){
                 displayBlack("\n"+i.getName());
             }
+        }
+        
+        
+        public void setCharacteristics(Map<Characteristic, Integer> c){
+            this.characs = c;
+        }
+       
+        public Map<Characteristic, Integer> getCharacteristics(){
+            return this.characs;
+        }
+        
+
+        public void setInventary(List<Item> invent){
+            
+        }
+        
+        public List<Item> getInventary(){
+            return this.inventary;
+        }
+        
+        public void setActiveWeapon(Weapon w){
+            this.activeWeapon = w;
+        }
+        
+        public Weapon getActiveWeapon(){
+            return this.activeWeapon;
+        }
+
+        public void setActiveArmors(Map<Armor, Integer> activeArmrs){
+            this.activeArmors = activeArmrs;
+        }
+        
+        public Map<Armor, Integer> getActiveArmors(){
+            return this.activeArmors;
+        }
+        
+        public String testGetInfos(){
+            String res = this.name + " , le " + this.className;
+            
+            return res;
         }
 }
