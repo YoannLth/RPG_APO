@@ -82,12 +82,51 @@ public class Event
     {
         if(this.playerCharacters.isEmpty())
         {
-            System.out.println("Game Over!!!Chuck Norris killled your imaginary friends");
+            System.out.println("              ~~~~~~~~~");
+            System.out.println("            /           \\");
+            System.out.println("           /             \\");
+            System.out.println("          | )           ( |");
+            System.out.println("           \\  /C\\   /C\\  /");
+            System.out.println("           /  ~~~   ~~~  \\");
+            System.out.println("           \\___  .^,  ___/");
+            System.out.println("            `| _______ |'");
+            System.out.println("         _   | HHHHHHH |   _");
+            System.out.println("        ( )  \\         /  ( )");
+            System.out.println("       (_) \\  ~~~~^~~~~ ,/ (_)");
+            System.out.println("         ~\\ \"\\         /  /~");
+            System.out.println("            \\  \\     /  /");
+            System.out.println("              \\  \\v/  /");
+            System.out.println("               >     <");
+            System.out.println("              /  /^\\  \\");
+            System.out.println("            /  /     \\  \\");
+            System.out.println("        _~/ \"/         \\  \\~_");
+            System.out.println("       ( ) /             \\ ( )");
+            System.out.println("        (_)               (_)");
             return true;
         } 
         else if (this.aiCharacters.isEmpty())
         {
-            System.out.println("You win!!!");
+            System.out.println("                                            .''.");
+            System.out.println("                  .''.             *''*    :_\\/_:     . ");
+            System.out.println("                 :_\\/_:   .    .:.*_\\/_*   : /\\ :  .'.:.'.");
+            System.out.println("              .''.: /\\ : _\\(/_  ':'* /\\ *  : '..'.  -=:o:=-");
+            System.out.println("             :_\\/_:'.:::. /)\\*''*  .|.* '.\\'/.'_\\(/_'.':'.'");
+            System.out.println("             : /\\ : :::::  '*_\\/_* | |  -= o =- /)\\    '  *");
+            System.out.println("              '..'  ':::'   * /\\ * |'|  .'/.\'.  '._____");
+            System.out.println("                  *        __*..* |  |     :      |.   |' .---\"|");
+            System.out.println("                   _*   .-'   '-. |  |     .--'|  ||   | _|    |");
+            System.out.println("                .-'|  _.|  |    ||   '-__  |   |  |    ||      |");
+            System.out.println("                |' | |.    |    ||       | |   |  |    ||      |");
+            System.out.println("             ___|  '-'     '    \"\"       '-'   '-.'    '`      |___");
+            System.out.println("            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("    `YMM'   `MM'                     `7MMF'     A     `7MF'           ");      
+            System.out.println("      VMA   ,V                         `MA     ,MA     ,V       ");            
+            System.out.println("       VMA ,V ,pW\"Wq.`7MM  `7MM         VM:   ,VVM:   ,V ,pW\"Wq.`7MMpMMMb.  ");
+            System.out.println("        VMMP 6W'   `Wb MM    MM          MM.  M' MM.  M'6W'   `Wb MM    MM  ");
+            System.out.println("         MM  8M     M8 MM    MM          `MM A'  `MM A' 8M     M8 MM    MM  ");
+            System.out.println("         MM  YA.   ,A9 MM    MM           :MM;    :MM;  YA.   ,A9 MM    MM  ");
+            System.out.println("       .JMML. `Ybmd9'  `Mbod\"YML.          VF      VF    `Ybmd9'.JMML  JMML.");
+ 
             return true;
         }
         return false;

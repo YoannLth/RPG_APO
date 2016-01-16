@@ -6,8 +6,6 @@
 package rpg;
 
 import me.grea.antoine.utils.Dice;
-import me.grea.antoine.utils.Log;
-import rpgException.ExistsInventoryException;
 
 /**
  * Class representing an action of a character : use of an item or use of a
@@ -111,13 +109,10 @@ public class Action
     {
         if(this.canExecute()) 
         {
-            System.out.println("Performing a " + this.capacity.getClass().getName());
             if(this.target == null)
                 this.source.applyEffect(this.capacity.getEffect());
             else
-            {
                 this.target.applyEffect(this.capacity.getEffect());
-            }
         }
     }
     
@@ -130,14 +125,13 @@ public class Action
         if(this.edible == null) //if actions consists of a capacity
         {
             int diceRoll = Dice.roll(0,10); //generate a random ulber between 0 and 10
-            System.out.println("Dice is rolling...");
-            System.out.println("dice result : " + diceRoll);
+            System.out.println(Main.ANSI_CYAN + "Dice is rolling... and the result is " + diceRoll + Main.ANSI_RESET);
             if(diceRoll <= (this.capacity.probaWin(this.source)*10)) 
             {
-                System.out.println("Action will be performed");
+                System.out.println(Main.ANSI_GREEN + "\\\\\\\\\\Action will be performed//////////" + Main.ANSI_RESET);
                 return true;
             }
-            System.out.println("Unfortunately Action cannot be performes :(");
+            System.out.println(Main.ANSI_RED + "\\\\\\\\\\Unfortunately action cannot be executed//////////" + Main.ANSI_RESET);
             return false;
         }
         else //if action consists of using an edible

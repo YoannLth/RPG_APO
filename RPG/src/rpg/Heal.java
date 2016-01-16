@@ -16,16 +16,16 @@ import me.grea.antoine.utils.Log;
 public class Heal implements Capacity
 {
     private Character source;
+    private Character target;
 
 
     public Heal(Character source)
     {
         this.source = source;
     }
+    
     /**
-     * Effect of the attack
-     *
-     * @return
+     * @return Effect of a healing 
      */
     @Override
     public Effect getEffect()

@@ -193,7 +193,7 @@ public class Character
     public void applyEffect(Effect e)
     {
         Ability a = e.getAbility();
-        Log.i("Applying : " + e.toString());
+        System.out.println("Applying : " + e.toString());
         if(a == Ability.HEALTH) //Change value of cuurent health if effect is on Ability HEALTH
         {
             this.currentHealth = Math.min(this.maxHealth, this.currentHealth + e.getValue());
@@ -207,7 +207,6 @@ public class Character
 
     /**
      * Get the current weight of the inventory
-     *
      * @return the weight of the inventory
      */
     public int getInventoryWeight()
@@ -401,7 +400,7 @@ public class Character
         String s = "------------------------------------ \n";
         s += "Name : " + this.name + "\n";
         s += "Health : " + this.currentHealth + "\n";
-        s+= "Class : " +  this.getClass().getSimpleName() + "\n";
+        s += "Class : " +  this.getClass().getSimpleName() + "\n";
         s += "------------------------------------ \n";
         return s;
     }

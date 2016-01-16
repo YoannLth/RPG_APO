@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
-import me.grea.antoine.utils.Log;
+import static rpg.Main.*;
 import rpgException.CharatcerExistsException;
 
 /**
@@ -65,9 +65,14 @@ public class Round
      */
     public void play()
     {
-        System.out.println("Round is starting...");
+        System.out.println("");
+        System.out.println(ANSI_PURPLE + "***********************************************");
+        System.out.println(ANSI_PURPLE + "***********************************************");
+        System.out.println(ANSI_PURPLE + "**             Round is starting             **");
+        System.out.println(ANSI_PURPLE + "***********************************************");
+        System.out.println(ANSI_PURPLE + "***********************************************\n" + ANSI_RESET);
         this.executeActions();
-        //this.initNextRound();
+        this.initNextRound();
     }
     
     /**
@@ -85,7 +90,10 @@ public class Round
             c.removeEffect();
             c.initHealth();
         }
-        System.out.println("Round finished");
+        System.out.println("");
+        System.out.println(ANSI_PURPLE + "***********************************************");
+        System.out.println(ANSI_PURPLE + "*               Round finished                *");
+        System.out.println(ANSI_PURPLE + "***********************************************\n" + ANSI_RESET);
     }
     
     /**
@@ -96,10 +104,11 @@ public class Round
         while(!this.finalActions.empty())
         {
             Action a = this.finalActions.pop();
-            System.out.println("Action launched by : " + a.getSource().getName());
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println( ANSI_GREEN + "Action launched by : " + a.getSource().getName() +  ANSI_RESET);
             if(a.getTarget() != null)
             {   
-                System.out.println("Action target : " +a.getTarget().getName());
+                System.out.println(ANSI_RED + "Action target : " +a.getTarget().getName() + ANSI_RESET);
             }
             if(a.getCapacity() != null)
             {
@@ -113,22 +122,40 @@ public class Round
             {
                 if(a.getTarget().isDead())
                 {
-                    System.out.println("The character " + a.getTarget().getName() + " was killed by " + a.getSource().getName());
+                System.out.println("   .-.");
+                System.out.println(" __| |__");
+                System.out.println("[__   __]              " + ANSI_RED + a.getTarget().getName() + ANSI_RESET );
+                System.out.println("   | |           " + ANSI_RED + " was killed by " +  a.getSource().getName() + ANSI_RESET);
+                System.out.println("   | |");
+                System.out.println("   | |");
+                System.out.println("   '-'");
                     this.removeDieActions(a.getTarget());
                     this.removeDieCharacter(a.getTarget());
                 }           
             }
+            System.out.println("\n ");
         }
     }
     
+    /**
+     * Remove he character in the appropriate list of character
+     * @param c the decreased character
+     */
     public void removeDieCharacter(Character c)
     {
-        this.aiCharacters.remove(c);
+        if(this.aiCharacters.contains(c))
+        {
+            this.aiCharacters.remove(c);
+        }
+        else 
+        {
+            this.playerCharacters.remove(c);
+        }
     }
     
     /**
      * Method that remove all actions in the list when a character dies
-     * @param c the dead character
+     * @param c the decreased character
      */
     public void removeDieActions(Character c)
     {
@@ -152,7 +179,6 @@ public class Round
         {
             this.finalActions.remove(a);
         }
-        System.out.println("remove action done");
     }
     
     public void addAction(Action a)

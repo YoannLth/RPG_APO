@@ -52,11 +52,11 @@ public class DisplayCharacter
         {
             this.character.checkInInventory(i);
             if("rpg.Weapon".equals(i.getClass().getName()) || "rpg.Armor".equals(i.getClass().getName()))
-                Log.e("Impossible de retirer une arme ou une armure dans l'inventaire");
+                Log.e("Cannot remove an armor in inventory");
             else
             {
                 this.character.removeItem(i);
-                System.out.println("Item : " + i.getName() + " a été retiré dans l'inventaire");
+                System.out.println("Item : " + i.getName() + " was removed in inventory");
             }
         }
         catch (ExistsInventoryException ex)
@@ -70,7 +70,7 @@ public class DisplayCharacter
      */
     public void displayInventory()
     {
-        String s = "Vous avez dans votre inventaire : \n";
+        String s = "Yout inventory : \n";
         int itemId = 0;
         for(Item i: this.character.getInventory())
         {
@@ -82,7 +82,7 @@ public class DisplayCharacter
     
     public void displayAbilities()
     {
-        String s = "Vous avez les Carastisques suivantes : \n";
+        String s = "Your Abilities : \n";
         for(Entry<Ability, Integer> e : this.character.getAbilities().entrySet())
         {
             String ability = e.getKey().name();
@@ -94,18 +94,17 @@ public class DisplayCharacter
     
     public void displayWeight()
     {
-        System.out.println("Vous avez :" + (this.character.getMaxWeight() - this.character.getInventoryWeight()) + " poid restant");
+        System.out.println("You have " + (this.character.getMaxWeight() - this.character.getInventoryWeight()) + " weight unused");
     }
     
     public void displayHealth()
     {
-        System.out.println("Vous avez :" + this.character.getCurrentHealth() + " point de vie");
-        Log.d(this.character.getAbilities().get(Ability.HEALTH));
+        System.out.println("You have " + this.character.getCurrentHealth() + " Health Point");
     }
     
     public void displayName()
     {
-        System.out.println("Le nom du joueur est : " + this.character.getName());
+        System.out.println("The player game : " + this.character.getName());
     }
 
     /**
