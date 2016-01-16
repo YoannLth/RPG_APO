@@ -117,9 +117,9 @@ public class Game {
         Character c1b = new MaleNurse("Combatant_2_t1",CharacterType.HUMAN);
         Character c1c = new Highbrow("Combatant_3_t1",CharacterType.HUMAN);
         
-        Character c2a = new Boxer("Combatant_1_t2",CharacterType.IA);
-        Character c2b = new MaleNurse("Combatant_2_t2",CharacterType.IA);
-        Character c2c = new Highbrow("Combatant_3_t2",CharacterType.IA);
+        Character c2a = new Boxer("Combatant_1_t2",CharacterType.HUMAN);
+        Character c2b = new MaleNurse("Combatant_2_t2",CharacterType.HUMAN);
+        Character c2c = new Highbrow("Combatant_3_t2",CharacterType.HUMAN);
         
         team1.put(1, c1a);
         team1.put(2, c1b);

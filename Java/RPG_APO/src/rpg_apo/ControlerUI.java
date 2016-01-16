@@ -19,12 +19,12 @@ public class ControlerUI {
 
     public static int readInt(String message, int min, int max)
     {
-        int number = -1;
+        displayBlack(message);
+        int number = scanner.nextInt();
         
-        displayBlack("Selectionner un nombre entre " + min + " et " + max);
         if (number < min || number > max)
         {
-            return readInt("Erreur, Selectionner un nombre entre " + min + " and " + max, min, max);
+            return readInt("Erreur, Selectionner un nombre entre " + min + " et " + max, min, max);
         } else
         {
             return number;

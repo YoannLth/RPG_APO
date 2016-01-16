@@ -8,7 +8,6 @@ package rpg_apo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import static rpg_apo.HumanControler.readInt;
 import static view.Console.displayBlue;
 import static view.Console.displayRed;
 
@@ -41,7 +40,8 @@ public class NewFight extends Event{
             displayRed(team2.get(i).testGetInfos());
         }
         
-        
+        Turn t = new Turn(team1,team2);
+        t.launchTurnHumanVersusHuman();
     }
     
 }

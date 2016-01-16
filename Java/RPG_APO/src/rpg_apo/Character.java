@@ -3,6 +3,7 @@ package rpg_apo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import static rpg_apo.Characteristic.*;
 import static view.Console.*;
 
 public class Character {
@@ -16,6 +17,7 @@ public class Character {
         private String className;
         private String characterDescription;
         private CharacterType charType;
+        private Controler characterControler;
         
         public Character(String nameCharacter, String className, String characterDescription, CharacterType charT){
             this.name = nameCharacter;
@@ -27,6 +29,17 @@ public class Character {
             this.className = className;
             this.characterDescription = characterDescription;
             this.charType = charT;
+            
+            switch(charType)
+            {
+                case HUMAN :
+                    this.characterControler = new HumanControler(this);
+                    break;
+                case IA :
+                    this.characterControler = new IAControler(this);
+                    break;
+            }
+            
         }
         
 	public int increaseLvl(int lvl) {
@@ -159,5 +172,13 @@ public class Character {
         
         public String getName(){
             return this.name;
+        }
+        
+        public int getHealth(){
+            return characs.get(HEALTH);
+        }
+        
+        public Controler getControler(){
+            return this.characterControler;
         }
 }
