@@ -35,14 +35,12 @@ public class Event
     
     /**
      * Method use to generate the actions for a fight and play a round according to these actions
-     * @return true fight ends; false fight is ongoing
      */
-    public Boolean fight()
+    public void fight()
     {
-        if(this.haveWinner())
-            return true;
-        else
+        while(this.haveWinner() == false)
         {
+            System.out.println("I'm in fight");
             ArrayList<ControllerPlayer> playerControllers = new ArrayList<>();
             ArrayList<ControllerAI> aiControllers = new ArrayList<>();
 
@@ -73,9 +71,7 @@ public class Event
             }
             Round fightRound = new Round(playerCharacters,playerActions, aiCharacters,playerActions);
             fightRound.play();
-            this.fight();
         }
-        return false;
     }
     
     /**
@@ -84,12 +80,12 @@ public class Event
      */
     private boolean haveWinner()
     {
-        if(this.aiCharacters == null)
+        if(this.playerCharacters.isEmpty())
         {
             System.out.println("Game Over!!!Chuck Norris killled your imaginary friends");
             return true;
         } 
-        else if (this.playerCharacters == null)
+        else if (this.aiCharacters.isEmpty())
         {
             System.out.println("You win!!!");
             return true;

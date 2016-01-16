@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Stack;
 import me.grea.antoine.utils.Log;
 import rpgException.CharatcerExistsException;
-import rpgException.ExistsInventoryException;
-import rpgException.MaxInventoryException;
 
 /**
  *
@@ -31,6 +29,8 @@ public class Round
         this.playerActions = playerActions;
         this.computerActions = computerActions;
         this.finalActions = this.merge(playerActions, computerActions);
+        this.aiCharacters = aiCharacters;
+        this.playerCharacters = playerCharacters;
     }
     
     
@@ -65,7 +65,7 @@ public class Round
      */
     public void play()
     {
-        Log.i("Round is starting...");
+        System.out.println("Round is starting...");
         this.executeActions();
         //this.initNextRound();
     }
@@ -85,7 +85,7 @@ public class Round
             c.removeEffect();
             c.initHealth();
         }
-        Log.i("Round finished");
+        System.out.println("Round finished");
     }
     
     /**
@@ -93,14 +93,13 @@ public class Round
      */
     public void executeActions()
     {
-        Iterator iterator = this.finalActions.iterator();
         while(!this.finalActions.empty())
         {
             Action a = this.finalActions.pop();
-            Log.i("Action launched by : " + a.getSource().getName());
+            System.out.println("Action launched by : " + a.getSource().getName());
             if(a.getTarget() != null)
             {   
-                Log.i("Action target : " +a.getTarget().getName());
+                System.out.println("Action target : " +a.getTarget().getName());
             }
             if(a.getCapacity() != null)
             {
@@ -115,42 +114,45 @@ public class Round
                 if(a.getTarget().isDead())
                 {
                     System.out.println("The character " + a.getTarget().getName() + " was killed by " + a.getSource().getName());
+                    this.removeDieActions(a.getTarget());
                     this.removeDieCharacter(a.getTarget());
                 }           
             }
         }
     }
     
+    public void removeDieCharacter(Character c)
+    {
+        this.aiCharacters.remove(c);
+    }
+    
     /**
      * Method that remove all actions in the list when a character dies
      * @param c the dead character
      */
-    public void removeDieCharacter(Character c)
+    public void removeDieActions(Character c)
     {
-        try
-        {
-            this.characterExists(c);
-            if(this.playerCharacters.contains(c))
-                this.playerCharacters.remove(c);
-            else
-                this.aiCharacters.remove(c);
-        } 
-        catch(CharatcerExistsException ex)
-        {
-            Log.e(ex.getMessage());
-        }
+        ArrayList<Action> removeActions;
+        removeActions = new ArrayList<>();
         
-        if(this.finalActions !=null)
+        Iterator<Action> iterator = this.finalActions.iterator();
+        while(iterator.hasNext())
         {
-            for(Action a: this.finalActions)
+            Action a = iterator.next();
+            if(a.getTarget() == c || a.getSource() == c)
             {
-                if(a.getTarget() == c || a.getSource() == c)
+                if(!removeActions.contains(a))
                 {
-                    this.finalActions.remove(a);
+                    removeActions.add(a);
                 }
             }
         }
-
+        
+        for(Action a : removeActions)
+        {
+            this.finalActions.remove(a);
+        }
+        System.out.println("remove action done");
     }
     
     public void addAction(Action a)
@@ -164,11 +166,6 @@ public class Round
      */
     public void characterExists(Character c) throws CharatcerExistsException
     {
-        if(this.aiCharacters == null || this.playerCharacters == null)
-        {
-            throw new CharatcerExistsException(c);
-        }
-        
         if (!this.aiCharacters.contains(c) || !this.playerCharacters.contains(c))
         {
             throw new CharatcerExistsException(c);

@@ -209,13 +209,6 @@ public class RPG
     private void runGame()
     {
         Event event = new Event(playerCharacters, aiCharacters);
-        Boolean victory = event.fight();
-        if (victory)
-        {
-            System.out.println("You Won The Fight!");
-        } else
-        {
-            System.out.println("You Lost The Fight!");
-        }
+        event.fight();
     }
 }
