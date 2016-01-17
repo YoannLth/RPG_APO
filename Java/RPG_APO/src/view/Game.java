@@ -38,8 +38,9 @@ public class Game {
     private Map<Integer, Event> introGame;
     private Map<Integer, Event> introContext;
     private Map<Integer, Event> newPlayableCharacter;
-    
     private Map<Integer, Map<Integer, Event>> events_game;
+    
+    private Map<Integer, Event>  introPremierJour;
     
     public Game(String name){
         gameName = name;
@@ -47,34 +48,38 @@ public class Game {
     }
     
     public void launchGame(){
-        //initializeEvents();
-        //readEvents();
-        testCombat();
+        initializeEvents();
+        readEvents();
+        //testCombat();
     }
     
     public void initializeEvents(){
         introGame = new HashMap();
         introContext = new HashMap();
         newPlayableCharacter = new HashMap();
-
+        
         Map<Integer, String> introGameMessage = new HashMap();
         Map<Integer, String> introContextMessage = new HashMap();
         Map<Integer, String> characterInitialisationMessage = new HashMap();
         
-        introGameMessage.put(1,"Bonjour et bienvenue dans " + gameName + "\nLa partie va commencer");
+        introGameMessage.put(1,"Bonjour et bienvenue dans " + gameName + "\nLa partie commence");
         NewDialog introGame1 = new NewDialog(introGameMessage);
         introGame.put(1, introGame1);
         
         
         //Affichage du script qui introduit le contexte du jeu
-        introContextMessage.put(1,"Vous partez au Pérou en voyage \nVous esseyez de faire passer de la drogue en revennant \nVous vous faites chopper \nDirection la Prison");
+        introContextMessage.put(1,"Vous etes partis au Pérou en voyage et avez esseyé de faire passer de la drogue en revennant \nVous vous faites chopper \nDirection la Prison");
         NewDialog introContext1 = new NewDialog(introContextMessage); 
         introContext.put(1, introContext1);
      
         //Affichage du script pour initialiser le personnage (en fonction des choix du joueur)
-        characterInitialisationMessage.put(1, "Une fois dans votre cellule, un homme vous interpelle... \nQui est tu?");
+        //characterInitialisationMessage.put(1, "Une fois dans votre cellule, un homme vous interpelle... \nQui est tu?");
+        //NewDialog characterInitialisationMessage1 = new NewDialog(characterInitialisationMessage);
         NewPlayer mainCharacterInitialisation = new NewPlayer(); 
+        //this.newPlayableCharacter.put(1, characterInitialisationMessage1);
         this.newPlayableCharacter.put(1, mainCharacterInitialisation);
+        
+      
         
         events_game.put(1, introGame);
         events_game.put(2, introContext);
@@ -107,12 +112,14 @@ public class Game {
         team1 = new HashMap();
         team2 = new HashMap();
         
+        //Initialise les caracteristique basique 100 10 10 10
         Map<Characteristic, Integer> c = new HashMap();
         c.put(Characteristic.HEALTH, 100);
         c.put(Characteristic.DEFENCE, 10);
         c.put(Characteristic.DEXTERITY, 10);
         c.put(Characteristic.STRENGTH, 10);
         
+        //Initialise les équipe avec nom est CharactereType
         Character c1a = new Boxer("Combatant_1_t1",CharacterType.HUMAN);
         Character c1b = new MaleNurse("Combatant_2_t1",CharacterType.HUMAN);
         Character c1c = new Highbrow("Combatant_3_t1",CharacterType.HUMAN);
