@@ -1,19 +1,45 @@
 package rpg_apo;
 
 import java.util.Map;
+import static rpg_apo.ControlerUI.readInt;
+import static view.Console.displayRed;
 
 public class Highbrow extends Character {
 
-	private int weightMax;
-	private Map<Characteristic, Integer> characsMax;
-
+    private int weightMax;
+    private Map<Characteristic, Integer> characsMax;
+    private int MAX_POINT=75;
+    
+    private int MAX_HEALTH = 35;
+    private int MAX_DEFENCE = 10;
+    private int MAX_STRENGTH = 5;
+    private int MAX_DEXTERITY = 35;
+    
     public Highbrow(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Intellectuel", "Vous êtes un Intellectuel. Votre intelligence vous pousse instinctivement a vous entourez des bonnes personnes pour vous survivre. \nAucun bonus pour le moment",charT);    
+        int str,dex,health,def;
+        int pointAttribuer=0;
+        displayRed("En tant qu'intellectuel vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");
+        str = readInt("STRENGTH : (max = "+this.MAX_STRENGTH+") : ",1,this.MAX_STRENGTH);
+        dex = readInt("DEXTERITY : (max = "+this.MAX_DEXTERITY+") : ",1,this.MAX_DEXTERITY);
+        health = readInt("HEALTH : (max = "+this.MAX_HEALTH+") : 3*",1,this.MAX_HEALTH);
+        def = readInt("DEFENCE : (max = "+this.MAX_DEFENCE+") : ",1,this.MAX_DEFENCE);
+        pointAttribuer=str+dex+health+def;
+        while(pointAttribuer!=this.MAX_POINT){
+            displayRed("Il vous reste "+(this.MAX_POINT-pointAttribuer)+"points a attribuer");
+            str = readInt("STRENGTH : (max = "+this.MAX_STRENGTH+", actuel = "+str+") : ",1,this.MAX_STRENGTH);
+            dex = readInt("DEXTERITY : (max = "+this.MAX_DEXTERITY+", actuel = "+dex+") : ",1,this.MAX_DEXTERITY);
+            health = readInt("HEALTH : (max = "+this.MAX_HEALTH+", actuel = "+health+") : 3*",1,this.MAX_HEALTH);
+            def = readInt("DEFENCE : (max = "+this.MAX_DEFENCE+", actuel = "+def+") : ",1,this.MAX_DEFENCE);
+            pointAttribuer=str+dex+health+def;
+        }
+        //On pourrai ajouter ici un bonus de force ici 
+        initCharacteristic(str+5,dex,3*health,def);
     }
 
-	public void calculateMaximumCharacteristics() {
-		// TODO - implement Highbrow.calculateMaximumCharacteristics
-		throw new UnsupportedOperationException();
-	}
+    public void calculateMaximumCharacteristics() {
+            // TODO - implement Highbrow.calculateMaximumCharacteristics
+            throw new UnsupportedOperationException();
+    }
 
 }

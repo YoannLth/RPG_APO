@@ -20,6 +20,16 @@ public class Character {
     private Controler characterControler;
     private int life;
 
+
+    /*
+    private Map<Characteristic, Integer> characsMaxB;
+    private Map<Characteristic, Integer> characsMaxH;
+    private Map<Characteristic, Integer> characsMaxN;
+    private int MAX_POINTS_B = 100;
+    private int MAX_POINTS_H = 100;
+    private int MAX_POINTS_N = 100;
+    */
+
     public Character(String nameCharacter, String className, String characterDescription, CharacterType charT){
         this.name = nameCharacter;
         this.level = 0;
