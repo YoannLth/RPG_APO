@@ -4,6 +4,7 @@
  *  Gaetan MARTIN & Jensen Joymangul
  */
 package rpg;
+import Controller.DisplayCharacter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -83,12 +84,20 @@ public class Round
         for(Character c: this.playerCharacters)
         {
             c.removeEffect();
-            c.initHealth();
+            c.reinitHealth();
+            DisplayCharacter dc = new DisplayCharacter(c);
+            System.out.println(Main.ANSI_CYAN + c.getName() + "->" + Main.ANSI_RESET);
+            dc.displayHealth();
+            System.out.println("");
         }
         for(Character c: this.aiCharacters)
         {
             c.removeEffect();
-            c.initHealth();
+            c.reinitHealth();
+            DisplayCharacter dc = new DisplayCharacter(c);
+            System.out.println(Main.ANSI_CYAN + c.getName() + "->" + Main.ANSI_RESET);
+            dc.displayHealth();
+            System.out.println("");
         }
         System.out.println("");
         System.out.println(ANSI_PURPLE + "***********************************************");
@@ -122,15 +131,16 @@ public class Round
             {
                 if(a.getTarget().isDead())
                 {
-                System.out.println("   .-.");
-                System.out.println(" __| |__");
-                System.out.println("[__   __]              " + ANSI_RED + a.getTarget().getName() + ANSI_RESET );
-                System.out.println("   | |           " + ANSI_RED + " was killed by " +  a.getSource().getName() + ANSI_RESET);
-                System.out.println("   | |");
-                System.out.println("   | |");
-                System.out.println("   '-'");
+                    System.out.println("   .-.");
+                    System.out.println(" __| |__");
+                    System.out.println("[__   __]              " + ANSI_RED + a.getTarget().getName() + ANSI_RESET );
+                    System.out.println("   | |           " + ANSI_RED + " was killed by " +  a.getSource().getName() + ANSI_RESET);
+                    System.out.println("   | |");
+                    System.out.println("   | |");
+                    System.out.println("   '-'");
                     this.removeDieActions(a.getTarget());
                     this.removeDieCharacter(a.getTarget());
+                    a.getSource().incrementLevel();
                 }           
             }
             System.out.println("\n ");

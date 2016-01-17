@@ -5,6 +5,7 @@
  */
 package rpg;
 
+import Controller.DisplayCharacter;
 import java.util.ArrayList;
 import rpgException.*;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class Character
     protected final int MAX_HEALTH_ATHLETE = 200;
     
     /**
-     * Maximum Health of the class Ennemy
+     * Maximum Health of the class Enemy
      */
     protected final int MAX_HEALTH_ENNEMY = 100;
     
@@ -58,7 +59,7 @@ public class Character
     protected final int MAX_HEALTH_HEALER = 100;
     
     /**
-     * Maximum sum of abitilities
+     * Maximum sum of abilities
      */
     private final int OVERPOWERED = 500;
 
@@ -260,6 +261,14 @@ public class Character
     public void incrementLevel()
     {
         this.level++;
+        for (Map.Entry<Ability, Integer> map : abilities.entrySet())
+        {
+            int newValue = (int) (((int) map.getValue()*0.2) + map.getValue());
+            map.setValue(newValue);
+        }
+        DisplayCharacter dc = new DisplayCharacter(this);
+        System.out.println(Main.ANSI_GREEN + this.getName() +" level up!! Level : " + this.level + Main.ANSI_RESET);
+        dc.displayAbilities();
     }
 
     /**
@@ -281,7 +290,6 @@ public class Character
 
     /**
      * Return the value of the given ability
-     *
      * @param ability
      * @return the value of the given ability
      */
@@ -293,9 +301,13 @@ public class Character
     /**
      * Initialize health at 100(use after each round)
      */
-    public void initHealth()
+    public void reinitHealth()
     {
-        this.abilities.put(Ability.HEALTH, 100);
+        this.currentHealth += (this.currentHealth * 0.5);
+        if(this.currentHealth > this.maxHealth)
+        {
+            this.currentHealth = this.maxHealth;
+        }
     }
 
     /**
@@ -305,7 +317,7 @@ public class Character
     {
         this.abilities = new HashMap();
         this.abilities.put(Ability.DEFENSE, 10);
-        this.initHealth();
+        this.abilities.put(Ability.HEALTH, 100);
         this.abilities.put(Ability.STRENGTH, 10);
         this.abilities.put(Ability.DEXTERITY, 10);
     }

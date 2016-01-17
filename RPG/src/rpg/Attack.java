@@ -6,6 +6,7 @@
 package rpg;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.abs;
 
 /**
  * Class representing a physical attack
