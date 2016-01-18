@@ -327,8 +327,8 @@ public class Character
      */
     protected void initInventory()
     {
-        this.inventory.add(new Weapon("BadassWeapon", 60, 90, 50));
-        this.inventory.add(new Armor("VerySexyArmor", 20, 50));
+        this.inventory.add(new Weapon("DefaultWeapon", 60, 90, 50));
+        this.inventory.add(new Armor("DefaultArmor", 20, 50));
     }
     
     /**

@@ -149,7 +149,7 @@ public class Event
         System.out.println("List of the player characters : ");
         for (int i = 0; i < playerCharacters.size(); i++)
         {
-            System.out.println(playerCharacters.get(i).toString());
+            System.out.println(playerCharacters.get(i).getName());
         }
     }
     
@@ -161,7 +161,7 @@ public class Event
         System.out.println("List of the AI characters : ");
         for (int i = 0; i < aiCharacters.size(); i++)
         {
-            System.out.println(aiCharacters.get(i).toString());
+            System.out.println(aiCharacters.get(i).getName());
         }
     }
     

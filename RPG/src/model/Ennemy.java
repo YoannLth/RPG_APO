@@ -11,7 +11,7 @@ import rpg.Character;
  * Class ennemy used for AI characters
  * @author Gaetan
  */
-public class Ennemy extends Character
+public final class Ennemy extends Character
 {
     /**
      * Constructor
@@ -20,14 +20,6 @@ public class Ennemy extends Character
     {
         super();
         this.setMaxHealth(MAX_HEALTH_ENNEMY);
-        this.initInventoryEnnemy();
-    }
-    
-    /**
-     * Init the inventory of the Ennemy
-     */
-    private void initInventoryEnnemy()
-    {
-        // No item for the moment
+        this.initInventory();
     }
 }

@@ -6,32 +6,35 @@
 package model;
 
 import rpg.Ability;
+import rpg.Armor;
 import rpg.Character;
 import rpg.Edible;
 import rpg.Effect;
+import rpg.Weapon;
 
 /**
  * Class representing the "class" of character warrior
  * @author p1509413
  */
-public class Warrior extends Character
+public final class Warrior extends Character
 {
    
     public Warrior()
     {
         super();
         this.setMaxHealth(MAX_HEALTH_WARRIOR);
-        this.initInventoryWarrior();
+        this.initInventory();
     }
     
     /**
      * Init the inventory of the warrior
      */
-    private void initInventoryWarrior()
+    @Override
+    protected void initInventory()
     {
         super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
         super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
-        super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
-        super.inventory.add(new Edible("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
+        super.inventory.add(new Weapon("BadassWeapon", 60, 90, 50));
+        super.inventory.add(new Armor("VerySexyArmor", 20, 50));
     }
 }
