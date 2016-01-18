@@ -64,7 +64,7 @@ public class Event
                 turn(cp.getCharacter());
 
                 System.out.println("Select a target : ");
-                Character target = this.getAICharacterByName();
+                Character target = this.getCharacterByName();
                 Action a = cp.getAction(target);
                 playerActions.push(a);
                 new DisplayCharacter(target).displayAll();
@@ -149,7 +149,7 @@ public class Event
         System.out.println("List of the player characters : ");
         for (int i = 0; i < playerCharacters.size(); i++)
         {
-            System.out.println(playerCharacters.get(i).getName());
+            System.out.println(Main.ANSI_BLUE + playerCharacters.get(i).getName() + Main.ANSI_RESET);
         }
     }
     
@@ -161,7 +161,7 @@ public class Event
         System.out.println("List of the AI characters : ");
         for (int i = 0; i < aiCharacters.size(); i++)
         {
-            System.out.println(aiCharacters.get(i).getName());
+            System.out.println(Main.ANSI_PURPLE + aiCharacters.get(i).getName() + Main.ANSI_RESET);
         }
     }
     
@@ -197,6 +197,28 @@ public class Event
                 return playerCharacter;
         }
         return this.getPlayerCharacterByName();
+    }
+    
+    /**
+     * Ask for a target among all the Characters
+     *
+     * @return character corresponding to the name typed in
+     */
+    private Character getCharacterByName()
+    {
+        this.displayCharacters();
+        String name = DisplayUI.getCharacterName();
+        for(Character playerCharacter : playerCharacters)
+        {
+            if (playerCharacter.getName().equals(name))
+                return playerCharacter;
+        }
+        for(Character aiCharacter : aiCharacters)
+        {
+            if (aiCharacter.getName().equals(name))
+                return aiCharacter;
+        }
+        return this.getCharacterByName();
     }
 
     
