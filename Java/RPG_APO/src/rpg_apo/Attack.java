@@ -27,7 +27,7 @@ public class Attack implements Capacity {
         characterStrength = source.getCharacteristicValue(STRENGTH);
         characterEquipedWeampon = source.getActiveWeapon();
         characterWeaponDamage = characterEquipedWeampon.getDamage();
-        succesProbability = probaReussite(source);
+        succesProbability = probaReussite();
         opponentDefence = cible.getCharacteristicValue(DEFENCE);
         
         
@@ -42,7 +42,7 @@ public class Attack implements Capacity {
                 displayedMessage = source.getName() + " tente d'attaquer " + cible.getName() + " mais il n'est pas assez fort, l'ennemie ne subit aucun dégat!";
             }
             else{
-                displayedMessage = source.getName() + " attaque " + cible.getName() + " , l'ennemie pert " + value + "points de vie!";
+                displayedMessage = source.getName() + " attaque " + cible.getName() + " , l'ennemie pert " + value + " points de vie!";
                 value = -value;
             }
             int permanent = 0;
@@ -62,12 +62,12 @@ public class Attack implements Capacity {
         return e;
     }
     
-    public double probaReussite(Character src){
+    public double probaReussite(){
         // 70% de réussite de base + dexterité
         // 90% max
         double probaR = 70.0;
         int characterDexterity = 0;
-        characterDexterity = src.getCharacteristicValue(DEXTERITY);
+        characterDexterity = source.getCharacteristicValue(DEXTERITY);
         
         probaR = probaR + characterDexterity;
         

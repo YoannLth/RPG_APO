@@ -1,5 +1,6 @@
 package rpg_apo;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import static view.Console.*;
@@ -10,7 +11,7 @@ public class HumanControler extends Controler {
         super(c);
     }
     
-    public Action getAction(Map<Integer, rpg_apo.Character> adversaires, Map<Integer, rpg_apo.Character> partners)
+    public Action getAction(ArrayList<Character> adversaires, ArrayList<Character> partners)
     {
         int choice = DisplayUI.getAction(charac);
         Action choosenAction = null;
@@ -33,7 +34,7 @@ public class HumanControler extends Controler {
         return choosenAction;
     }
     
-    public Action getCapacity(int choosenInt, Map<Integer, rpg_apo.Character> adversaires, Map<Integer, rpg_apo.Character> partners)
+    public Action getCapacity(int choosenInt, ArrayList<Character> adversaires, ArrayList<Character> partners)
     {
         Action a = null;
         Character target;
@@ -51,7 +52,7 @@ public class HumanControler extends Controler {
                 break;
             case 3: // Item 
                 target = DisplayUI.getPartner(partners);
-                Treatment trtmnt = new Treatment(target);
+                Treatment trtmnt = new Treatment(charac, target);
                 a = new Action(charac, target, trtmnt);
                 break;
             default:
@@ -81,31 +82,7 @@ public class HumanControler extends Controler {
         }
         
         return null;
-    }
-    
-    
-    public Character getTarget()
-    {
-        Character target;
-        
-//        switch (choosenInt)
-//        {
-//            case 1: // Capacity
-//                Attack atk = new Attack();
-//                break;
-//            case 2: // Item 
-//                Defence def = new Defence();
-//                break;
-//            case 3: // Item 
-//                Treatment trtmnt = new Treamtment();
-//                break;
-//            default:
-//                displayBlack("OK");
-//                break;
-//        }
-        
-        return null;
-    }    
+    }   
 
     @Override
     public Action getAction() {

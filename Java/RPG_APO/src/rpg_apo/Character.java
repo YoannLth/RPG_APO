@@ -216,8 +216,12 @@ public class Character {
     public String getNameAndInfos(){
         String infos = "";
         
-        infos = this.getName() + "( Santé : " + characs.get(HEALTH) + "/ Defence : " + characs.get(DEFENCE) + ")";
-        
+        if(this.isAlive()){
+            infos = this.getName() + " ( Santé : " + characs.get(HEALTH) + "/ Defence : " + characs.get(DEFENCE) + ")";
+        }
+        else{
+            infos = this.getName() + " (Viens juste de mourir)";
+        }
         return infos;
     }
     
@@ -233,12 +237,15 @@ public class Character {
     }
     
     public boolean isAlive(){
-        boolean isAlive = false;
+        boolean isAlive = true;
+        int health = getCharacteristicValue(HEALTH);
         
-        if(getCharacteristicValue(HEALTH) < 1){
+        if(health < 1){
+            isAlive = false;
+        }
+        else{
             isAlive = true;
         }
-        else{}
         
         return isAlive;
     }
@@ -249,11 +256,4 @@ public class Character {
         
         characs.put(characteristicToAlter, characteristicValue);
     }
-
-//    public void applyEffect(Effect e){
-//        Characteristic characteristicToAlter = e.getCharacteristique();
-//        int valueAlteration = e.getValue();
-//        
-//        alterCharacteristic(characteristicToAlter, valueAlteration);
-//    }
 }

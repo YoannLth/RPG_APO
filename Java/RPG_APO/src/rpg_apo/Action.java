@@ -25,10 +25,19 @@ public class Action {
             String actionDisplay = "";
             
             if(consum == null){
-                //actionDisplay = src.getName() + " à choisi d'utiliser " + cap.readCapacity() + " sur " + target.getName();
                 Effect e = cap.effect();
-                e.applyEffect(e, target);
-                actionDisplay = cap.getDisplayMessage();
+                if(src.isAlive()){
+                    if(target.isAlive()){
+                    e.applyEffect(e, target);
+                    actionDisplay = cap.getDisplayMessage();  
+                    }
+                    else{
+                        actionDisplay = src.getName() + " esseye d'utiliser une capacité sur " + target.getName() + ", mais il est mort, cela ne fait aucun effet!";
+                    }
+                }
+                else{
+                    actionDisplay = src.getName() + " est mort, il ne peut pas utiliser de capacités!";
+                }
             }
             else{
                 actionDisplay = "Tu as choisi un objet";

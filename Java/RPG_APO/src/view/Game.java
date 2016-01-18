@@ -10,6 +10,7 @@ package view;
  *
  * @author Yoann
  */
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import rpg_apo.Boxer;
@@ -30,8 +31,8 @@ import static view.Console.*;
 public class Game {
     private String gameName;
     
-    private Map<Integer, Character> team1;
-    private Map<Integer, Character> team2;
+    private ArrayList<Character> team1;
+    private ArrayList<Character> team2;
     
     private Character playableCharacter;
     
@@ -110,8 +111,8 @@ public class Game {
     
     
     public void testCombat(){
-        team1 = new HashMap();
-        team2 = new HashMap();
+        team1 = new ArrayList<Character>();
+        team2 = new ArrayList<Character>();
         
         //Initialise les caracteristique basique 100 10 10 10
         Map<Characteristic, Integer> c = new HashMap();
@@ -123,27 +124,27 @@ public class Game {
         //Initialise les équipe avec nom est CharactereType
         Character c1a = new Boxer("Combatant_1_t1",CharacterType.HUMAN);
         Character c1b = new MaleNurse("Combatant_2_t1",CharacterType.HUMAN);
-        Character c1c = new Highbrow("Combatant_3_t1",CharacterType.HUMAN);
+        //Character c1c = new Highbrow("Combatant_3_t1",CharacterType.HUMAN);
         
         Character c2a = new Boxer("Combatant_1_t2",CharacterType.HUMAN);
         Character c2b = new MaleNurse("Combatant_2_t2",CharacterType.HUMAN);
-        Character c2c = new Highbrow("Combatant_3_t2",CharacterType.HUMAN);
+        //Character c2c = new Highbrow("Combatant_3_t2",CharacterType.HUMAN);
         
-        c1a.initCharacteristic(10, 10, 100, 10);
-        c1b.initCharacteristic(10, 10, 100, 10);
-        c1c.initCharacteristic(10, 10, 100, 10);
+        c1a.initCharacteristic(30, 10, 100, 10);
+        c1b.initCharacteristic(30, 10, 100, 10);
+        //c1c.initCharacteristic(10, 10, 100, 10);
         
         c2a.initCharacteristic(10, 10, 100, 1);
         c2b.initCharacteristic(10, 10, 100, 1);
-        c2c.initCharacteristic(10, 10, 100, 1);
+        //c2c.initCharacteristic(10, 10, 100, 1);
         
-        team1.put(1, c1a);
-        team1.put(2, c1b);
-        team1.put(3, c1c);
+        team1.add(c1a);
+        team1.add(c1b);
+        //team1.add(c1c);
         
-        team2.put(1, c2a);
-        team2.put(2, c2b);
-        team2.put(3, c2c);
+        team2.add(c2a);
+        team2.add(c2b);
+        //team2.add(c2c);
         
         NewFight fightTest = new NewFight(team1,team2);
         fightTest.display();
