@@ -15,19 +15,6 @@ public class NewPlayer extends Event {
     public NewPlayer(){
     }
     
-    public void initBoxer(){
-        playableCharacter.initCharacteristic(12,10,120,10);
-    }
-    
-    public void initNurse(){
-        playableCharacter.initCharacteristic(8,10,120,10);
-    }
-    
-    public void initHighbrow(){
-        playableCharacter.initCharacteristic(10,10,100,10);
-                
-    }
-    
     public void display(){
         displayRed("Entrez votre nom :");
         Scanner scanner = new Scanner(System.in);
@@ -43,15 +30,12 @@ public class NewPlayer extends Event {
         switch (pCharacterClass){
                 case 1:
                     playableCharacter = new Boxer(pCharacterName,CharacterType.HUMAN);
-                    initBoxer();
                     break;
                 case 2:
                     playableCharacter = new MaleNurse(pCharacterName,CharacterType.HUMAN);
-                    initNurse();
                     break;
                 case 3:
                     playableCharacter = new Highbrow(pCharacterName,CharacterType.HUMAN);
-                    initHighbrow();
                     break;
         }
         displayRed(playableCharacter.getClassDesc());
