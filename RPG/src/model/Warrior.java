@@ -23,7 +23,6 @@ public final class Warrior extends Character
     {
         super();
         this.setMaxHealth(MAX_HEALTH_WARRIOR);
-        this.initInventory();
     }
     
     /**

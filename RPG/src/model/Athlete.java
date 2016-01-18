@@ -24,7 +24,6 @@ public final class Athlete extends Character
     {
         super();
         this.setMaxHealth(MAX_HEALTH_ATHLETE);
-        this.initInventory();
     }
     
     @Override

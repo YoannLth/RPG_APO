@@ -45,6 +45,11 @@ public class RPG
     private ArrayList<Character> aiCharacters;
 
     /**
+     * Stack of events for the scenario
+     */
+    private Stack<Event> events;
+
+    /**
      * Constructor
      */
     public RPG()
@@ -53,6 +58,7 @@ public class RPG
 
         aiCharacters = new ArrayList<>();
         playerCharacters = new ArrayList<>();
+        events = new Stack<>();
 
 //        Character c = new Character("Selwyn");
 //        Character c2 = new Character("Gaetan");
@@ -174,9 +180,9 @@ public class RPG
      */
     private void createNewAICharacter(int numberOfAiCharacters)
     {
-        
+
         Stack charactersNames = ControllerAI.getStackNames();
-        
+
         for (int i = 0; i < numberOfAiCharacters; i++)
         {
             Ennemy ennemy = new Ennemy();
@@ -212,7 +218,20 @@ public class RPG
      */
     private void runGame()
     {
-        Event event = new Event(playerCharacters, aiCharacters);
-        event.fight();
+        initEvents();
+        while (!events.isEmpty())
+        {
+            Event event = events.pop();
+            event.launch();
+        }
+    }
+
+    /**
+     * Initialize the stack of events
+     */
+    private void initEvents()
+    {
+        
+        events.add(new Fight(playerCharacters, aiCharacters));
     }
 }

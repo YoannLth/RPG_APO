@@ -24,7 +24,6 @@ public final class Healer extends Character
     {
         super();
         this.setMaxHealth(MAX_HEALTH_HEALER);
-        this.initInventory();
     }
     
     /**
