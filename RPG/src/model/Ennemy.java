@@ -3,7 +3,9 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package rpg;
+package model;
+
+import rpg.Character;
 
 /**
  * Class ennemy used for AI characters

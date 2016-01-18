@@ -3,30 +3,35 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package rpg;
+package model;
+
+import rpg.Ability;
+import rpg.Character;
+import rpg.Edible;
+import rpg.Effect;
 
 /**
  * Class representing the "class" of character warrior
+ *
  * @author p1509413
  */
-public class Warrior extends Character
+public class Athlete extends Character
 {
-   
-    public Warrior()
+
+    public Athlete()
     {
         super();
-        this.setMaxHealth(MAX_HEALTH_WARRIOR);
-        this.initInventoryWarrior();
+        this.setMaxHealth(MAX_HEALTH_ATHLETE);
+        this.initInventoryAthlete();
     }
     
     /**
-     * Init the inventory of the warrior
+     * Init the inventory of the athlete
      */
-    private void initInventoryWarrior()
+    private void initInventoryAthlete()
     {
         super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
-        super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
-        super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
+        super.inventory.add(new Edible("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
         super.inventory.add(new Edible("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
     }
 }

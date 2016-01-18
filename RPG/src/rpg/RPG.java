@@ -5,6 +5,10 @@
  */
 package rpg;
 
+import model.Ennemy;
+import model.Warrior;
+import model.Healer;
+import model.Athlete;
 import Controller.ControllerAI;
 import Controller.DisplayUI;
 import Controller.ControllerUI;

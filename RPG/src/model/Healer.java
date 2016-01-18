@@ -3,7 +3,12 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package rpg;
+package model;
+
+import rpg.Ability;
+import rpg.Character;
+import rpg.Edible;
+import rpg.Effect;
 
 /**
  * Class representing the "class" of character Healer
