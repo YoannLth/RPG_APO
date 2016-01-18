@@ -13,6 +13,12 @@ public class Weapon extends Item {
     private int damage;
     private int manageability;
     
+    public Weapon(String name, int poid, int damage, int m){
+        super(name, poid, new Effect(Characteristic.STRENGTH, damage,10000));
+        this.manageability=m;
+        this.damage = damage;
+    }
+    
     public int getDamage(){
         return this.damage;
     }
@@ -20,8 +26,4 @@ public class Weapon extends Item {
         return this.manageability;
     }
     
-    public Weapon(String name, int poid, int damage, int m){
-        super(name, poid,new Effect(Characteristic.STRENGTH, damage,10000));
-        this.manageability=m;
-    }
 }

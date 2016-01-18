@@ -44,4 +44,17 @@ public class NewFight extends Event{
         t.launchTurnHumanVersusHuman();
     }
     
+    public void TestIfPlayerIsAlive(Map<Integer, Character> t){
+        for(int i=1;i<=t.size();i++){
+            Character currentUser = t.get(i);
+            if(currentUser.isAlive()){
+                
+            }
+            else{
+                t.remove(i);
+                
+            }
+        }
+    }
+    
 }

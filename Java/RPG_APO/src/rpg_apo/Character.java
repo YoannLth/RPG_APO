@@ -25,7 +25,7 @@ public class Character {
         this.level = 0;
         this.characs = new HashMap();
         this.inventary = null;
-        this.activeWeapon = null;
+        this.activeWeapon = new Weapon("Mains nues", 0, 10, 100);
         this.activeArmors = new HashMap();
         this.className = className;
         this.characterDescription = characterDescription;
@@ -203,6 +203,14 @@ public class Character {
         return this.characs.get(c);
     }
     
+    public String getNameAndInfos(){
+        String infos = "";
+        
+        infos = this.getName() + "( Santé : " + characs.get(HEALTH) + "/ Defence : " + characs.get(DEFENCE) + ")";
+        
+        return infos;
+    }
+    
     public String afficherCaracteristiques(){
         String s;
         s="--------------------------------Caracteristic de "+this.name+"----------------------------------";
@@ -213,5 +221,29 @@ public class Character {
         s=s+"\n\tDEXTERITY : "+getCharacteristicValue(DEXTERITY);
         return s;
     }
+    
+    public boolean isAlive(){
+        boolean isAlive = false;
+        
+        if(getCharacteristicValue(HEALTH) < 1){
+            isAlive = true;
+        }
+        else{}
+        
+        return isAlive;
+    }
+    
+    public void alterCharacteristic(Characteristic characteristicToAlter, int valueAlteration){
+        int characteristicValue = characs.get(characteristicToAlter);
+        characteristicValue = characteristicValue + valueAlteration;
+        
+        characs.put(characteristicToAlter, characteristicValue);
+    }
 
+//    public void applyEffect(Effect e){
+//        Characteristic characteristicToAlter = e.getCharacteristique();
+//        int valueAlteration = e.getValue();
+//        
+//        alterCharacteristic(characteristicToAlter, valueAlteration);
+//    }
 }

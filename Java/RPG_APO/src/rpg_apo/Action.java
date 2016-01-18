@@ -7,7 +7,7 @@ public class Action {
 	private Capacity cap;
 	private ConsumableItem consum;
         
-        public Action(Character t, Character s, Capacity c){
+        public Action( Character s, Character t, Capacity c){
             this.target=t;
             this.src=s;
             this.cap=c;
@@ -21,7 +21,20 @@ public class Action {
             this.consum=cons;
         }
 
-        
+        public String readAction(){
+            String actionDisplay = "";
+            
+            if(consum == null){
+                //actionDisplay = src.getName() + " à choisi d'utiliser " + cap.readCapacity() + " sur " + target.getName();
+                Effect e = cap.effect();
+                e.applyEffect(e, target);
+                actionDisplay = cap.getDisplayMessage();
+            }
+            else{
+                actionDisplay = "Tu as choisi un objet";
+            }
+            return actionDisplay;
+        }
         
         public void SetCapacity(){
             

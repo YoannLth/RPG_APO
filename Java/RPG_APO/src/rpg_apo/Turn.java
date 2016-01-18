@@ -39,11 +39,23 @@ public class Turn {
         
         for(int i=1;i<=team1.size();i++){
             Character currentCharacter = team1.get(i);
-            //Action currentAction = currentCharacter.getControler().getAction(team2);
-            //actionsT1.put(currentCharacter, currentAction);
+            Action currentAction = currentCharacter.getControler().getAction(team2,team1);
+            actionsT1.put(currentCharacter, currentAction);
         }
         
+        for(int i=1;i<=team1.size();i++){
+            Character currentCharacter = team1.get(i);
+            Action currentAction = actionsT1.get(currentCharacter);
+            displayBlue(currentAction.readAction());
+            
+        }
         
+        displayRed("-------------");
+                
+        for(int i=1;i<=team2.size();i++){
+            Character currentCharacter = team2.get(i);
+            displayBlue(currentCharacter.getNameAndInfos());
+        }
         
 //        for(int i=1;i<=team2.size();i++){
 //            int choice = DisplayUI.getAction(team2.get(i));

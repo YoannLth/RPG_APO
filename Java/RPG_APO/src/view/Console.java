@@ -37,6 +37,10 @@ public class Console {
         System.out.println(ANSI_BLUE + msg + ANSI_RESET);
     }
     
+    public static void displayGreen(String msg){
+        System.out.println(ANSI_GREEN + msg + ANSI_RESET);
+    }
+    
     
     public static void displayContinueMessage(String msg){
         System.out.println(ANSI_BLACK + msg + ANSI_RESET);

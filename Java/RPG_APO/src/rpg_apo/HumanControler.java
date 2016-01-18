@@ -10,16 +10,17 @@ public class HumanControler extends Controler {
         super(c);
     }
     
-    public Action getAction(Map<Integer, rpg_apo.Character> adversaires)
+    public Action getAction(Map<Integer, rpg_apo.Character> adversaires, Map<Integer, rpg_apo.Character> partners)
     {
         int choice = DisplayUI.getAction(charac);
+        Action choosenAction = null;
 
         switch (choice)
         {
             case 1: // Capacity
                 displayBlack(charac.getName() + " à choisi une capacité");
                 int choixCapacite = DisplayUI.getCapacity(charac);
-                //Action choosenAction = getCapacity(choixCapacite,adversaire);
+                choosenAction = getCapacity(choixCapacite,adversaires,partners);
                 break;
             case 2: // Item 
                 displayBlack(charac.getName() + " à choisi un item");
@@ -29,31 +30,36 @@ public class HumanControler extends Controler {
                 break;
         }
         
-        return null;
+        return choosenAction;
     }
     
-    public Action getCapacity(int choosenInt, Map<Integer, rpg_apo.Character> adversaires)
+    public Action getCapacity(int choosenInt, Map<Integer, rpg_apo.Character> adversaires, Map<Integer, rpg_apo.Character> partners)
     {
-        Action a;
-        //Character target = DisplayUI.
+        Action a = null;
+        Character target;
         
         switch (choosenInt)
         {
             case 1: // Capacity
-               // Attack atk = new Attack();
+                target = DisplayUI.getOpponent(adversaires);
+                Attack atk = new Attack(charac,target);
+                a = new Action(charac, target, atk);
                 break;
             case 2: // Item 
-               // Defence def = new Defence();
+                Defence def = new Defence(charac);
+                a = new Action(charac, charac, def);
                 break;
             case 3: // Item 
-                //Treatment trtmnt = new Treamtment();
+                target = DisplayUI.getPartner(partners);
+                Treatment trtmnt = new Treatment(target);
+                a = new Action(charac, target, trtmnt);
                 break;
             default:
                 displayBlack("OK");
                 break;
         }
         
-        return null;
+        return a;
     }
     
     public Action getItem()

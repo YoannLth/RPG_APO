@@ -7,7 +7,7 @@ public interface Capacity {
 	 * @param src
 	 * @param target
 	 */
-	Effect effect(Character src, Character target);
+	Effect effect();
 
 	/**
 	 * 
@@ -15,4 +15,9 @@ public interface Capacity {
 	 */
 	double probaReussite(Character src);
 
+        
+        
+        String readCapacity();
+        
+        String getDisplayMessage();
 }

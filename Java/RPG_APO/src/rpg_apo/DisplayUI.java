@@ -39,18 +39,32 @@ public class DisplayUI {
         return choice;
     }
     
-    public static int getOpponent(Map<Integer, rpg_apo.Character> opponents){
+    public static Character getOpponent(Map<Integer, rpg_apo.Character> opponents){
         int maxPlayer = opponents.size();
         
         displayRed("Selectionner une adversaire :");
         
         for(int i=1;i<=opponents.size();i++){
-            displayRed("\t " + i + "." + opponents.get(i));
+            displayRed("\t " + i + "." + opponents.get(i).getNameAndInfos());
         }
         
         int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxPlayer, 1, maxPlayer);
-        return choice;
-        
-        // Je me suis arrete ici
+        Character target = opponents.get(choice);
+        return target;
     }
+    
+    public static Character getPartner(Map<Integer, rpg_apo.Character> partners){
+        int maxPlayer = partners.size();
+        
+        displayRed("Selectionner une partenaire :");
+        
+        for(int i=1;i<=partners.size();i++){
+            displayRed("\t " + i + "." + partners.get(i).getName());
+        }
+        
+        int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxPlayer, 1, maxPlayer);
+        Character target = partners.get(choice);
+        return target;
+    }
+    
 }

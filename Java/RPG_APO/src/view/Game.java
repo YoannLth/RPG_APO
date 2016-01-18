@@ -48,9 +48,10 @@ public class Game {
     }
     
     public void launchGame(){
-        initializeEvents();
-        readEvents();
-        //testCombat();
+        //initializeEvents();
+        //readEvents();
+        
+        testCombat();
     }
     
     public void initializeEvents(){
@@ -127,6 +128,14 @@ public class Game {
         Character c2a = new Boxer("Combatant_1_t2",CharacterType.HUMAN);
         Character c2b = new MaleNurse("Combatant_2_t2",CharacterType.HUMAN);
         Character c2c = new Highbrow("Combatant_3_t2",CharacterType.HUMAN);
+        
+        c1a.initCharacteristic(10, 10, 100, 10);
+        c1b.initCharacteristic(10, 10, 100, 10);
+        c1c.initCharacteristic(10, 10, 100, 10);
+        
+        c2a.initCharacteristic(10, 10, 100, 1);
+        c2b.initCharacteristic(10, 10, 100, 1);
+        c2c.initCharacteristic(10, 10, 100, 1);
         
         team1.put(1, c1a);
         team1.put(2, c1b);

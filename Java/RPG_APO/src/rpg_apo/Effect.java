@@ -16,6 +16,8 @@ public class Effect {
             this.permanent=d;
         }
         
+        
+        
         //Lifetime of effect can be more than 1 turn
         //That why at the end of turn we reduce to 1
         
@@ -30,6 +32,13 @@ public class Effect {
         
         public int getValue(){
             return this.value;
+        }
+        
+        public void applyEffect(Effect e, Character c){
+            Characteristic characteristicToAlter = e.getCharacteristique();
+            int valueAlteration = e.getValue();
+
+            c.alterCharacteristic(characteristicToAlter, valueAlteration);
         }
         
         public Characteristic getCharacteristique(){
