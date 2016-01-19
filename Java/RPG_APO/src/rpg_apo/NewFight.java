@@ -45,16 +45,12 @@ public class NewFight extends Event{
         }
         
         while(team1.size() >= 1 && team2.size() >= 1){
-            TestIfPlayerIsAlive(team1);
-            TestIfPlayerIsAlive(team2);
             
             Turn t = new Turn(team1,team2);
             t.launchTurnHumanVersusHuman(); 
             
             TestIfPlayerIsAlive(team1);
             TestIfPlayerIsAlive(team2);
-            //TestIfPlayerIsAlive(team1);
-            //TestIfPlayerIsAlive(team2);
         }
         
         displayRed(TestWinnerTeam(team1,team2));
