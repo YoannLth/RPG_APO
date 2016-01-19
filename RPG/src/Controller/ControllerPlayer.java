@@ -75,7 +75,7 @@ public class ControllerPlayer extends Controller
                 capacity = new Attack(character, target);
                 break;
             case 2:
-                capacity = new Heal(character);
+                capacity = new Heal(character, target);
                 break;
             case 3:
                 capacity = new Parry(character);

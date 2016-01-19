@@ -109,9 +109,6 @@ public class Action
     {
         if(this.canExecute()) 
         {
-            if(this.target == null)
-                this.source.applyEffect(this.capacity.getEffect());
-            else
                 this.target.applyEffect(this.capacity.getEffect());
         }
     }

@@ -53,7 +53,7 @@ public class Fight extends Event
             ArrayList<ControllerAI> aiControllers = new ArrayList<>();
 
             Stack<Action> playerActions = new Stack<>();
-            Stack<Action> aiAction = new Stack<>();
+            Stack<Action> aiActions = new Stack<>();
 
             for (Character player : playerCharacters)
             {
@@ -63,6 +63,15 @@ public class Fight extends Event
             for (Character ai : aiCharacters)
             {
                 aiControllers.add(new ControllerAI(ai, playerCharacters, aiCharacters));
+            }
+            for (ControllerAI ca : aiControllers)
+            {
+                System.out.println("***********************");
+                System.out.println("Round of " + ca.getCharacter().getName());
+                Action a = ca.getAction();
+                aiActions.push(a);
+                new DisplayCharacter(a.getTarget()).displayAll();
+                System.out.println("");
             }
 
             for (ControllerPlayer cp : playerControllers)
@@ -77,7 +86,7 @@ public class Fight extends Event
                 playerActions.push(a);
                 new DisplayCharacter(target).displayAll();
             }
-            Round fightRound = new Round(playerCharacters, playerActions, aiCharacters, playerActions);
+            Round fightRound = new Round(playerCharacters, playerActions, aiCharacters, aiActions);
             fightRound.play();
         }
     }

@@ -83,7 +83,7 @@ public class ControllerAI extends Controller
 
         if (healNeeded)
         {
-            return new Action(character, target, new Heal(character));
+            return new Action(character, target, new Heal(character, target));
         } else // Attaque par défaut
         {
             return new Action(character, target, new Attack(character, target));

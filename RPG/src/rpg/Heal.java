@@ -19,9 +19,10 @@ public class Heal implements Capacity
     private Character target;
 
 
-    public Heal(Character source)
+    public Heal(Character source, Character target)
     {
         this.source = source;
+        this.target = target;
     }
     
     /**
@@ -30,8 +31,8 @@ public class Heal implements Capacity
     @Override
     public Effect getEffect()
     {
-        int maxHealth = this.source.getMaxHealth();
-        int health = this.source.getAbilityValue(Ability.HEALTH);
+        int maxHealth = this.target.getMaxHealth();
+        int health = this.target.getAbilityValue(Ability.HEALTH);
         int maxHealthGain = maxHealth - health; //the maximum health point a player can gain
         double diceResult = ((double)Dice.roll(1,4)/4);
         int healthGain = (int) (diceResult * maxHealthGain);    //calculate health gain
@@ -39,10 +40,10 @@ public class Heal implements Capacity
     }
 
     @Override
-    public double probaWin(Character source)
+    public double probaWin(Character target)
     {
-        double maxHealth = (double)source.getMaxHealth();
-        double health = (double)source.getAbilityValue(Ability.HEALTH);
+        double maxHealth = (double)target.getMaxHealth();
+        double health = (double)target.getAbilityValue(Ability.HEALTH);
         return (1-(health-maxHealth));
     }
 }
