@@ -17,12 +17,11 @@ public class MaleNurse extends Character {
     
     public MaleNurse(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Infirmier", "Vous êtes un Infirmier. Vous savez comment maintenir votre santé au plus haut. Vous avez plus de chance de rester en bonne santé. \nSanté fortement augmenté",charT);    
-<<<<<<< HEAD
         setMax(this.MAX_HEALTH,this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY, this.MAX_POINT);
+        initMaleNurseInventary();
     }
 
-=======
-        initMaleNurseInventary();
+        
 //        int str,dex,health,def;
 //        int pointAttribuer=0;
 //        displayRed("En tant qu'infirmier vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");
@@ -41,7 +40,6 @@ public class MaleNurse extends Character {
 //        }
 //        //On pourrai ajouter ici un bonus de force ici 
 //        initCharacteristic(str+5,dex,3*health,def);
-    }
 
     private void initMaleNurseInventary()
     {
@@ -66,6 +64,4 @@ public class MaleNurse extends Character {
             throw new UnsupportedOperationException();
     }
         
-
->>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
 }

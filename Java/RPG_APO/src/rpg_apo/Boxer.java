@@ -19,15 +19,14 @@ public class Boxer extends Character {
             
             
     public Boxer(String nameCharacter,CharacterType charT) {
-<<<<<<< HEAD
+
         super(nameCharacter,"Boxeur", "Vous êtes un boxeur, poids lourd. Vous corpulence, vos marques sur le visage et vos tatouages vous donne l'air agressif. Votre puissance vous accorde un bonus de Force.",charT);
         setMax(this.MAX_HEALTH,this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY, this.MAX_POINT);
+        initBoxerInventary();
     }
 
-=======
-        
-        super(nameCharacter,"Boxeur", "Vous êtes un boxeur, poids lourd. Vous corpulence, vos marques sur le visage et vos tatouages vous donne l'air agressif. Votre puissance vous accorde un bonus de Force.",charT); 
-        this.initBoxerInventary();
+
+
         //int str,dex,health,def;
         //int pointAttribuer=0;
 //        displayRed("En tant que boxeur vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");
@@ -46,10 +45,9 @@ public class Boxer extends Character {
 //        }
         //On pourrai ajouter ici un bonus de force ici 
         //initCharacteristic(str+5,dex,3*health,def);
-    }
     
-    private void initBoxerInventary()
-    {
+    
+    private void initBoxerInventary(){
         Item money = new Item("Dollars", 0, "Argent à dépenser");
         super.addInventary(money, 10);
         
@@ -65,6 +63,5 @@ public class Boxer extends Character {
         super.activeWeapon = startWeapon;
         super.activeArmors.add(startArmor);
     }
->>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
-    
+
 }

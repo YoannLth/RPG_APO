@@ -10,25 +10,6 @@ import static view.Console.*;
 
 public class Character {
 
-<<<<<<< HEAD
-    private String name;
-    protected int level;
-    protected Map<Characteristic, Integer> characs;
-    private List<Item> inventary;
-    private Weapon activeWeapon;
-    private Map<Armor, Integer> activeArmors;
-    private String className;
-    private String characterDescription;
-    private CharacterType charType;
-    private Controler characterControler;
-    private int life;
-    
-    protected int MAX_STR;
-    protected int MAX_DEF;
-    protected int MAX_DEX;
-    protected int MAX_HEALTH;
-    protected int MAX_POINT;
-=======
     protected String name;
     protected int level;
     protected Map<Characteristic, Integer> characs;
@@ -41,16 +22,12 @@ public class Character {
     protected Controler characterControler;
     protected int life;
 
+    protected int MAX_STR;
+    protected int MAX_DEF;
+    protected int MAX_DEX;
+    protected int MAX_HEALTH;
+    protected int MAX_POINT;
 
->>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
-    /*
-    private Map<Characteristic, Integer> characsMaxB;
-    private Map<Characteristic, Integer> characsMaxH;
-    private Map<Characteristic, Integer> characsMaxN;
-    private int MAX_POINTS_B = 100;
-    private int MAX_POINTS_H = 100;
-    private int MAX_POINTS_N = 100;
-    */
 
     public Character(String nameCharacter, String className, String characterDescription, CharacterType charT){
         this.name = nameCharacter;
@@ -217,8 +194,6 @@ public class Character {
     public Controler getControler(){
         return this.characterControler;
     }
-<<<<<<< HEAD
-
 
     public void initCharacterPlayer(){
         int pointAttribuer=0;
@@ -239,8 +214,6 @@ public class Character {
         }
         initCharacteristic(str,dex,health,def);
     }
-=======
->>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
     
     public void initCharacteristic(int s, int d, int h, int def)
     {
@@ -256,7 +229,6 @@ public class Character {
         return this.characs.get(c);
     }
     
-<<<<<<< HEAD
     public void setMax(int health,int def,int str,int dext, int point){
         this.MAX_HEALTH=health;
         this.MAX_DEF=def;
@@ -266,7 +238,9 @@ public class Character {
     }
     
     public String putCaracteristics(){
-=======
+        return null;
+    }
+    
     public String getNameAndInfos(){
         String infos = "";
         
@@ -280,7 +254,6 @@ public class Character {
     }
     
     public String afficherCaracteristiques(){
->>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
         String s;
         s="--------------------------------Caracteristic de "+this.name+"----------------------------------";
         s+="\n\tLevel : "+this.level;
@@ -290,8 +263,7 @@ public class Character {
         s=s+"\n\tDEXTERITY : "+getCharacteristicValue(DEXTERITY);
         return s;
     }
-    
-<<<<<<< HEAD
+
     public void increaseLvl() {
         this.level++;
         this.characs.put(Characteristic.STRENGTH, (this.characs.get(Characteristic.STRENGTH)+(this.MAX_STR/5)));
@@ -305,7 +277,6 @@ public class Character {
         initCharacteristic(this.MAX_STR, this.MAX_DEX, this.MAX_HEALTH, this.MAX_DEF);
     }
     
-=======
     public boolean isAlive(){
         boolean isAlive = true;
         int health = getCharacteristicValue(HEALTH);
@@ -326,7 +297,7 @@ public class Character {
         
         characs.put(characteristicToAlter, characteristicValue);
     }
->>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
+
 }
 
 
