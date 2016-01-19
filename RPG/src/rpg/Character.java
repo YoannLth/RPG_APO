@@ -30,6 +30,8 @@ public class Character
     protected int maxDexterity;       //Max Dexterity reachable by the character
     protected List<Item> inventory;   //Inventory of the characters
     protected int currentHealth;      // Current health of the character
+    protected Armor armors[];         //armors of the character
+    protected Armor currentArmor;     //Current armor of character
     
     // -------------- Constants
     
@@ -79,6 +81,7 @@ public class Character
      */
     public Character(String name)
     {
+        this.armors = new Armor[2];
         this.abilities = new HashMap<>();
         this.inventory = new ArrayList<>();
         this.setName(name);
@@ -87,6 +90,7 @@ public class Character
         this.setMaxDexterity(10);
         this.initAbilities();
         this.initInventory();
+        
     }
 
     // -------------- Getters And Setters -------------------------------
@@ -156,16 +160,51 @@ public class Character
         return inventory;
     }
 
-    public Armor getArmor()
+    public Armor[] getArmors()
     {
-        for (Item i : this.getInventory())
+        return armors;
+    }
+
+    public Armor getCurrentArmor()
+    {
+        return currentArmor;
+    }
+    
+    /**
+     * 
+     * @param i 0: equip first armor 1: equip second amor
+     * @return success of method
+     */
+    public boolean equipeArmor(int i)
+    {
+        if(i==0 || i==1)
         {
-            if ("rpg.Armor".equals(i.getClass().getName()))
-            {
-                return (Armor) i;
-            }
+            this.currentArmor  = this.armors[i];
+            return true;
+        } else
+        {
+            System.out.println(Main.ANSI_RED + "You cannot equipe an armor you don' possess" + Main.ANSI_RESET);
+            return false;
         }
-        return null;
+    }
+    
+    /**
+     * Add an armor in armor inventory(replace an armor also)
+     * @param a armor to armor
+     * @param i index to replace existing armor (0 or 1)
+     * @return success of method
+     */
+    public boolean addArmorInInventory(Armor a, int i)
+    {
+        if(i == 0 || i==1)
+        {
+            this.armors[i] = a;
+            return true;
+        } else
+        {
+            System.out.println("Cannot add armor in inventory");
+            return false;
+        }
     }
 
     public Weapon getWeapon()
@@ -303,7 +342,7 @@ public class Character
      */
     public void reinitHealth()
     {
-        this.currentHealth += (this.currentHealth * 0.5);
+        this.currentHealth += (this.currentHealth * 0.4);
         if(this.currentHealth > this.maxHealth)
         {
             this.currentHealth = this.maxHealth;
@@ -316,19 +355,22 @@ public class Character
     public void initAbilities()
     {
         this.abilities = new HashMap();
-        this.abilities.put(Ability.DEFENSE, 10);
+        this.abilities.put(Ability.DEFENCE, 10);
         this.abilities.put(Ability.HEALTH, 100);
         this.abilities.put(Ability.STRENGTH, 10);
         this.abilities.put(Ability.DEXTERITY, 10);
     }
     
     /**
-     * Inialize the inventory adding few items
+     * Initialize the inventory adding few items
      */
     protected void initInventory()
     {
         this.inventory.add(new Weapon("DefaultWeapon", 60, 90, 50));
         this.inventory.add(new Armor("DefaultArmor", 20, 50));
+        this.armors[0] = new Armor("DefaultArmor2", 20, 50);
+        this.armors[1] = new Armor("DefaultArmor2", 40, 75);
+        this.equipeArmor(0);
     }
     
     /**

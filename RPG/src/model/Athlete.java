@@ -34,5 +34,8 @@ public final class Athlete extends Character
         super.inventory.add(new Edible("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
         super.inventory.add(new Weapon("NotThatBadWeapon", 60, 90, 50));
         super.inventory.add(new Armor("PrettyCoolArmor", 20, 50));
+        this.armors[0] = new Armor("SteroidArmor", 5, 20);
+        this.armors[1] = new Armor("BoltArmor", 45, 45);
+        this.equipeArmor(1);
     }
 }

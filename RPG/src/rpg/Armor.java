@@ -35,7 +35,17 @@ public class Armor extends Item
     public Armor(String n, int w, int resistance)
     {
         super(n, w,true);
-        Effect temp = new Effect(Ability.DEFENSE,resistance, 1000); //1000 = infinite nulber of round
+        this.resistance = resistance;
+        Effect temp = new Effect(Ability.DEFENCE,resistance, 1000); //1000 = infinite nulber of round
         super.setEffect(temp);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String s;
+        s= "Armor : " + this.getName() + " have a wieght of " + this.getWeight() + "\n";
+        s+= " Your defence was increased by  " + this.resistance;
+        return s;
     }
 }

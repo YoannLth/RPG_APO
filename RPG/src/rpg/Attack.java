@@ -6,6 +6,7 @@
 package rpg;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.abs;
 
 /**
  * Class representing a physical attack
@@ -30,7 +31,11 @@ public class Attack implements Capacity
     public Effect getEffect()
     {
         int damage = this.source.getWeapon().getEffect().getValue() + source.getAbilities().get(Ability.STRENGTH);
-        int defence = target.getAbilities().get(Ability.DEFENSE) + target.getArmor().getEffect().getValue();
+        int defence;
+        if(target.getCurrentArmor() != null)
+            defence = target.getAbilities().get(Ability.DEFENCE) + target.getCurrentArmor().getResistance();
+        else
+            defence = target.getAbilities().get(Ability.DEFENCE);
         int netDamage = abs(defence - damage);
         return new Effect(Ability.HEALTH,(-netDamage),1);
     }

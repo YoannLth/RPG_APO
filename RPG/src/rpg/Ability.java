@@ -15,5 +15,5 @@ public enum Ability
     STRENGTH,
     DEXTERITY,
     HEALTH,
-    DEFENSE;
+    DEFENCE;
 }

@@ -39,6 +39,8 @@ public final class Healer extends Character
         super.inventory.add(new Edible("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
         super.inventory.add(new Edible("MajorHealthPotion", 10, true, new Effect(Ability.HEALTH, 100, 1)));
         super.inventory.add(new Weapon("BeautifulStaff", 60, 90, 50));
-        super.inventory.add(new Armor("LightArmor", 20, 50));
+        this.armors[0] = new Armor("LightArmor", 10, 50);
+        this.armors[1] = new Armor("DarkArmor", 50, 85);
+        this.equipeArmor(1);
     }
 }

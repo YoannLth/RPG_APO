@@ -15,7 +15,7 @@ public class Parry implements Capacity
 
     private Character source;
 
-    private static final Ability PARRY_ABILITY = Ability.DEFENSE;
+    private static final Ability PARRY_ABILITY = Ability.DEFENCE;
 
 
     public Parry(Character source)
@@ -29,13 +29,13 @@ public class Parry implements Capacity
     @Override
     public Effect getEffect()
     {
-        return new Effect(PARRY_ABILITY, this.source.getAbilityValue(Ability.DEFENSE), 1);
+        return new Effect(PARRY_ABILITY, this.source.getAbilityValue(Ability.DEFENCE), 1);
     }
 
     @Override
     public double probaWin(Character source)
     {
-        double totalAbility = source.getAbilityValue(Ability.DEFENSE) + source.getAbilityValue(Ability.DEXTERITY);
+        double totalAbility = source.getAbilityValue(Ability.DEFENCE) + source.getAbilityValue(Ability.DEXTERITY);
         return (totalAbility / 100);
     }
 }

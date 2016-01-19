@@ -34,6 +34,8 @@ public final class Warrior extends Character
         super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
         super.inventory.add(new Edible("MinorHealthPotion", 10, true, new Effect(Ability.HEALTH, 50, 1)));
         super.inventory.add(new Weapon("BadassWeapon", 60, 90, 50));
-        super.inventory.add(new Armor("VerySexyArmor", 20, 50));
+        this.armors[0] = new Armor("VerySexyArmor", 20, 50);
+        this.armors[1] = new Armor("MoulinRougeArmor", 40, 75);
+        this.equipeArmor(0);
     }
 }

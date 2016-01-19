@@ -248,7 +248,7 @@ public class RPG
         Scenario s1 = new Scenario(playerCharacters, aiCharacters, message1);
         ArrayList<Item> items = new ArrayList<>();
         items.add(new Edible("Fire Potion", 10, true, new Effect(Ability.HEALTH, 10, 1)));
-        items.add(new Edible("Avoidance Potion", 10, true, new Effect(Ability.DEFENSE, 1, 1)));
+        items.add(new Edible("Avoidance Potion", 10, true, new Effect(Ability.DEFENCE, 1, 1)));
         s1.setItemFound(items);
         return s1;
     }

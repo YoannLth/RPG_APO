@@ -5,9 +5,7 @@
  */
 package controllerPackage;
 
-import java.text.ParseException;
 import java.util.Scanner;
-import me.grea.antoine.utils.Log;
 
 /**
  * Class managing the interactions between the player and the game
