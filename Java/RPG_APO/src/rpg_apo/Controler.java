@@ -16,4 +16,5 @@ public abstract class Controler {
         public abstract Action getItem();
         
         public abstract Action getCapacity(int choosenInt, ArrayList<Character> adversaires, ArrayList<Character> partners);
+        
 }

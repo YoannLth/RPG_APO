@@ -57,6 +57,7 @@ public class NewFight extends Event{
         fealTeams();
     }
     
+    
     public void TestIfPlayerIsAlive(ArrayList<Character> t){
         for(int i=0;i<t.size();i++){
             Character currentUser = t.get(i);

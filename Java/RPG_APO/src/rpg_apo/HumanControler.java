@@ -11,6 +11,7 @@ public class HumanControler extends Controler {
         super(c);
     }
     
+    
     public Action getAction(ArrayList<Character> adversaires, ArrayList<Character> partners)
     {
         int choice = DisplayUI.getAction(charac);

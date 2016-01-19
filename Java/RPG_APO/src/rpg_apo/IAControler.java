@@ -10,6 +10,7 @@ public class IAControler extends Controler {
         super(c);
     }
 
+    
     public Action getCapacity(int choosenInt, ArrayList<Character> adversaires, ArrayList<Character> partners)
     {
         Action a = null;
