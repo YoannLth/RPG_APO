@@ -6,6 +6,8 @@
 package controllerPackage;
 
 import me.grea.antoine.utils.Log;
+import model.Healer;
+import model.Warrior;
 import rpg.Action;
 import rpg.Attack;
 import rpg.Capacity;
@@ -72,9 +74,19 @@ public class ControllerPlayer extends Controller
         switch (choice)
         {
             case 1:
+                if (character.getClass() == Healer.class)
+                {
+                    System.out.println("A Healer can't do this");
+                    return this.askCapacity(target);                            
+                }
                 capacity = new Attack(character, target);
                 break;
             case 2:
+                if (character.getClass() == Warrior.class)
+                {
+                    System.out.println("A Warrior can't do this");
+                    return this.askCapacity(target);
+                }
                 capacity = new Heal(character, target);
                 break;
             case 3:
