@@ -17,6 +17,7 @@ public class MaleNurse extends Character {
     
     public MaleNurse(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Infirmier", "Vous êtes un Infirmier. Vous savez comment maintenir votre santé au plus haut. Vous avez plus de chance de rester en bonne santé. \nSanté fortement augmenté",charT);    
+        initMaleNurseInventary();
 //        int str,dex,health,def;
 //        int pointAttribuer=0;
 //        displayRed("En tant qu'infirmier vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");
@@ -37,6 +38,24 @@ public class MaleNurse extends Character {
 //        initCharacteristic(str+5,dex,3*health,def);
     }
 
+    private void initMaleNurseInventary()
+    {
+        Item money = new Item("Dollars", 0, "Argent à dépenser");
+        super.addInventary(money, 10);
+        
+        Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");
+        super.addInventary(startWeapon, 1);
+        
+        Armor startArmor = new Armor("Gants ",1, 2, "Gants en tissus qui protège les mains");
+        super.addInventary(startArmor, 1);
+        
+        Item cafeine = new Item("Caféine", 1, new Effect(Characteristic.DEFENCE, 10,1), "Objet consomable qui augmente la force pour la durée du combat");
+        super.addInventary(cafeine, 1);
+        
+        super.activeWeapon = startWeapon;
+        super.activeArmors.add(startArmor);
+    }    
+    
     public void calculateMaximumCharacteristics() {
             // TODO - implement MaleNurse.calculateMaximumCharacteristics
             throw new UnsupportedOperationException();

@@ -40,7 +40,19 @@ public class Action {
                 }
             }
             else{
-                actionDisplay = "Tu as choisi un objet";
+                Effect e = consum.getEffect();
+                if(src.isAlive()){
+                    if(target.isAlive()){
+                    e.applyEffect(e, target);
+                    actionDisplay = src.getName() + consum.getDisplayMessage();  
+                    }
+                    else{
+                        actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item!";
+                    }
+                }
+                else{
+                    actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item!";
+                }
             }
             return actionDisplay;
         }

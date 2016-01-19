@@ -25,9 +25,11 @@ public class HumanControler extends Controler {
                 break;
             case 2: // Item 
                 displayBlack(charac.getName() + " à choisi un item");
+                ConsumableItem choosenItem = DisplayUI.getConsomableItem(charac);
+                choosenAction = new Action(charac, charac, choosenItem);
                 break;
             default:
-                displayBlack("OK");
+                displayBlack("ERROR");
                 break;
         }
         

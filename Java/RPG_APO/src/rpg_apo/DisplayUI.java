@@ -2,6 +2,7 @@ package rpg_apo;
 
 import java.util.ArrayList;
 import java.util.Map;
+import static view.Console.displayBlack;
 import static view.Console.displayRed;
 
 /*
@@ -66,6 +67,31 @@ public class DisplayUI {
         int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxPlayer, 1, maxPlayer);
         Character target = partners.get((choice-1));
         return target;
+    }
+    
+    public static ConsumableItem getConsomableItem(Character character){
+        Map<Item, Integer> inv = character.getInventary();
+        ArrayList<ConsumableItem> availableItems = new ArrayList<ConsumableItem>();
+        int maxItem = inv.size();
+        
+        displayRed("Selectionner un objet à utiliser :");
+        
+        for(Map.Entry<Item, Integer> item : inv.entrySet()){
+            if(item.getKey().getClass() == ConsumableItem.class){
+                availableItems.add((ConsumableItem) item.getKey());
+            }
+            else{
+                
+            }
+        }
+        
+        for(int i=0; i<availableItems.size();i++){
+            displayBlack("\t" + (i+1) + "." +availableItems.get(i).getName() + " " + availableItems.get(i).getItemInfos() + " x " + inv.get(availableItems.get(i)));
+        }
+        
+        int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxItem, 1, maxItem);
+        ConsumableItem choosenItem = availableItems.get((choice-1));
+        return choosenItem;
     }
     
 }

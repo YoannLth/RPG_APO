@@ -1,5 +1,6 @@
 package rpg_apo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,17 +9,17 @@ import static view.Console.*;
 
 public class Character {
 
-    private String name;
-    private int level;
-    private Map<Characteristic, Integer> characs;
-    private List<Item> inventary;
-    private Weapon activeWeapon;
-    private Map<Armor, Integer> activeArmors;
-    private String className;
-    private String characterDescription;
-    private CharacterType charType;
-    private Controler characterControler;
-    private int life;
+    protected String name;
+    protected int level;
+    protected Map<Characteristic, Integer> characs;
+    protected Map<Item, Integer> inventary;
+    protected Weapon activeWeapon;
+    protected ArrayList<Armor> activeArmors;
+    protected String className;
+    protected String characterDescription;
+    protected CharacterType charType;
+    protected Controler characterControler;
+    protected int life;
 
 
     /*
@@ -34,9 +35,9 @@ public class Character {
         this.name = nameCharacter;
         this.level = 0;
         this.characs = new HashMap();
-        this.inventary = null;
-        this.activeWeapon = new Weapon("Mains nues", 0, 10, 100);
-        this.activeArmors = new HashMap();
+        this.inventary = new HashMap();
+        this.activeWeapon = null;
+        this.activeArmors = new ArrayList<Armor>();
         this.className = className;
         this.characterDescription = characterDescription;
         this.charType = charT;
@@ -75,9 +76,16 @@ public class Character {
     }
 
     //Ajout d'un Item dans l'inventaire
-    public void addInventary(Item i) {
+    public void addInventary(Item i, int quant) {
             // TODO - implement Character.addInventary
-            this.inventary.add(i);
+            if(this.inventary.containsKey(i)){
+                int quantity = this.inventary.get(i);
+                quantity = quantity + quant;
+                this.inventary.replace(i, quantity);
+            }
+            else{
+                this.inventary.put(i, quant);
+            }
     }
 
     public void deleteInventary(Item i) {
@@ -121,23 +129,23 @@ public class Character {
 
     //Return vrai si l'item appartient a l'inventaire
     public boolean itemIsInInventary(Item i){
-        return this.inventary.contains(i);
+        return this.inventary.containsKey(i);
     }
 
     //retourne le poid de notre inventaire
     public int getWeightInventary(){
         int somme=0;
 
-        for(Item i : inventary){
-            somme = i.getWeight() + somme;
+        for(Map.Entry<Item, Integer> item : inventary.entrySet()){
+            somme = item.getKey().getWeight() + somme;
         }
         return somme;
     }
 
     //Affiche chaque nom d'item de l'inventaire
     public void afficherInventary(){
-        for(Item i : inventary){
-            displayBlack("\n"+i.getName());
+        for(Map.Entry<Item, Integer> item : inventary.entrySet()){
+            displayBlack("\t" + item.getKey().getName() + " x" + item.getValue());
         }
     }
 
@@ -152,12 +160,7 @@ public class Character {
         return this.characs;
     }
 
-
-    public void setInventary(List<Item> invent){
-
-    }
-
-    public List<Item> getInventary(){
+    public Map<Item, Integer> getInventary(){
         return this.inventary;
     }
 
@@ -169,11 +172,11 @@ public class Character {
         return this.activeWeapon;
     }
 
-    public void setActiveArmors(Map<Armor, Integer> activeArmrs){
+    public void setActiveArmors(ArrayList<Armor> activeArmrs){
         this.activeArmors = activeArmrs;
     }
 
-    public Map<Armor, Integer> getActiveArmors(){
+    public ArrayList<Armor> getActiveArmors(){
         return this.activeArmors;
     }
 
@@ -194,10 +197,6 @@ public class Character {
     public Controler getControler(){
         return this.characterControler;
     }
-
-
-
-    
     
     public void initCharacteristic(int s, int d, int h, int def)
     {

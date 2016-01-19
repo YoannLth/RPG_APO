@@ -46,6 +46,6 @@ public class Effect {
         }
         
         public String effectString(){
-            return "\nCette effet agit sur la Characteristique "+this.c+" avec une efficacité de "+this.value+" pour une durée d'encore : "+this.permanent;
+            return "\n agit sur la Characteristique "+this.c+" avec une efficacité de " +this.value;
         }
 }
