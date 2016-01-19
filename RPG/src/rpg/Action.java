@@ -15,9 +15,10 @@ import me.grea.antoine.utils.Dice;
  */
 public class Action
 {
+
     private Character source; //Character launching the action
     private Character target; //Character getting the effect of the action
-    private Edible edible;     
+    private Edible edible;
     private Capacity capacity;
 
     /**
@@ -34,14 +35,14 @@ public class Action
         this.edible = i;
         this.capacity = null;
     }
-    
+
     public Character getSource()
     {
         return source;
     }
 
     //---------------------- Getter -----------------------------------
-    public Character getTarget()    
+    public Character getTarget()
     {
         return target;
     }
@@ -71,18 +72,18 @@ public class Action
         this.capacity = c;
         this.edible = null;
     }
-    
+
     public Action(Character s, Capacity c)
     {
-        this(s,null,c);
+        this(s, null, c);
     }
-    
+
     public void useAction()
     {
-        if(this.edible != null)
+        if (this.edible != null)
         {
             this.useItem();
-        }else 
+        } else
         {
             this.useCapacity();
         }
@@ -93,11 +94,11 @@ public class Action
      */
     public void useItem()
     {
-        if(this.canExecute())
+        if (this.canExecute())
         {
             this.target.applyEffect(this.edible.getEffect());
             System.out.println(this.edible.toString());
-            this.edible.getEffect().reduceDuration();  
+            this.edible.getEffect().reduceDuration();
         }
     }
 
@@ -106,31 +107,33 @@ public class Action
      */
     public void useCapacity()
     {
-        if(this.canExecute()) 
+        if (this.canExecute())
         {
-                this.target.applyEffect(this.capacity.getEffect());
+            this.target.applyEffect(this.capacity.getEffect());
         }
     }
-    
+
     /**
      * Check if an action can be executed
-     * @return true if can execute  action otherwise return false
+     *
+     * @return true if can execute action otherwise return false
      */
     public boolean canExecute()
     {
-        if(this.edible == null) //if actions consists of a capacity
+        if (this.edible == null) //if actions consists of a capacity
         {
-            int diceRoll = Dice.roll(0,10); //generate a random ulber between 0 and 10
+            double proba = this.capacity.probaWin(this.source);
+            System.out.println(Main.ANSI_CYAN + "Your probability of performing this action : " + proba + Main.ANSI_RESET);
+            int diceRoll = Dice.roll(0, 10); //generate a random ulber between 0 and 10
             System.out.println(Main.ANSI_CYAN + "Dice is rolling... and the result is " + diceRoll + Main.ANSI_RESET);
-            if(diceRoll <= (this.capacity.probaWin(this.source)*10)) 
+            if (diceRoll <= (proba * 10))
             {
                 System.out.println(Main.ANSI_GREEN + "\\\\\\\\\\Action will be performed//////////" + Main.ANSI_RESET);
                 return true;
             }
             System.out.println(Main.ANSI_RED + "\\\\\\\\\\Unfortunately action cannot be executed//////////" + Main.ANSI_RESET);
             return false;
-        }
-        else //if action consists of using an edible
+        } else //if action consists of using an edible
         {
             System.out.println("The edible will be used");
             return true;
