@@ -97,8 +97,7 @@ public class Action
         {
             this.target.applyEffect(this.edible.getEffect());
             System.out.println(this.edible.toString());
-            this.edible.getEffect().reduceDuration();
-            
+            this.edible.getEffect().reduceDuration();  
         }
     }
 

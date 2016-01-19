@@ -13,13 +13,9 @@ package rpg;
 public class Parry implements Capacity
 {
 
-    private static final int PARRY_DEFAULT_DEFENSE = 10;
-
-    private static final int PARRY_DURATION = 1;
+    private Character source;
 
     private static final Ability PARRY_ABILITY = Ability.DEFENSE;
-    
-    private Character source;
 
 
     public Parry(Character source)
@@ -28,19 +24,18 @@ public class Parry implements Capacity
     }
 
     /**
-     * Effect of the attack
-     *
-     * @return
+     * @return Effect of parry
      */
     @Override
     public Effect getEffect()
     {
-        return new Effect(PARRY_ABILITY, PARRY_DEFAULT_DEFENSE, PARRY_DURATION);
+        return new Effect(PARRY_ABILITY, this.source.getAbilityValue(Ability.DEFENSE), 1);
     }
 
     @Override
-    public double probaWin(Character source )
+    public double probaWin(Character source)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double totalAbility = source.getAbilityValue(Ability.DEFENSE) + source.getAbilityValue(Ability.DEXTERITY);
+        return (totalAbility / 100);
     }
 }
