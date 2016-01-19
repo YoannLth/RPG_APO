@@ -49,7 +49,7 @@ public class NewFight extends Event{
             TestIfPlayerIsAlive(team2);
             
             Turn t = new Turn(team1,team2);
-            t.launchTurnHumanVersusHuman(); 
+            t.launchTurnHumanVersusIA(); 
             
             TestIfPlayerIsAlive(team1);
             TestIfPlayerIsAlive(team2);

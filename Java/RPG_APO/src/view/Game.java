@@ -128,8 +128,8 @@ public class Game {
         Character c1b = new MaleNurse("Combatant_2_t1",CharacterType.HUMAN);
         //Character c1c = new Highbrow("Combatant_3_t1",CharacterType.HUMAN);
         
-        Character c2a = new Boxer("Combatant_1_t2",CharacterType.HUMAN);
-        Character c2b = new MaleNurse("Combatant_2_t2",CharacterType.HUMAN);
+        Character c2a = new Boxer("Combatant_1_t2",CharacterType.IA);
+        Character c2b = new MaleNurse("Combatant_2_t2",CharacterType.IA);
         //Character c2c = new Highbrow("Combatant_3_t2",CharacterType.HUMAN);
         
         c1a.initCharacteristic(110, 100, 100, 10);

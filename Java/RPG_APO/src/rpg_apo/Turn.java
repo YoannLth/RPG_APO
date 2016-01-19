@@ -27,7 +27,7 @@ public class Turn {
         this.actionsT2 = new HashMap(); 
     }
     
-    public void launchTurnHumanVersusHuman(){
+    public void launchTurnHumanVersusIA(){
         
         displayRed("-------------");
         
@@ -70,6 +70,7 @@ public class Turn {
             displayBlue(currentCharacter.getNameAndInfos());
         }
     }
+    
     
     public void ListMembreEquipe(ArrayList<rpg_apo.Character> team){
         for (int i = 0; i < team.size(); i++)
