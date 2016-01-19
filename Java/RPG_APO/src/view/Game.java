@@ -43,6 +43,8 @@ public class Game {
     
     private Map<Integer, Event>  introPremierJour;
     
+    private Map<ArrayList<Character>, Integer> ennemies;
+    
     public Game(String name){
         gameName = name;
         events_game = new HashMap();

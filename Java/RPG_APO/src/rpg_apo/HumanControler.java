@@ -92,9 +92,4 @@ public class HumanControler extends Controler {
         
         return null;
     }   
-
-    @Override
-    public Action getAction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
