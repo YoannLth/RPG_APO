@@ -5,7 +5,7 @@
  */
 package rpg;
 
-import Controller.DisplayCharacter;
+import controllerPackage.DisplayCharacter;
 import java.util.ArrayList;
 import rpgException.*;
 import java.util.HashMap;

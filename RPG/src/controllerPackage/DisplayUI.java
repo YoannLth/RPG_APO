@@ -3,7 +3,7 @@
  *  Decembre 2015
  *  Gaetan MARTIN & Jensen Joymangul
  */
-package Controller;
+package controllerPackage;
 
 import java.util.Arrays;
 import java.util.HashSet;

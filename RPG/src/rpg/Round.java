@@ -4,7 +4,7 @@
  *  Gaetan MARTIN & Jensen Joymangul
  */
 package rpg;
-import Controller.DisplayCharacter;
+import controllerPackage.DisplayCharacter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

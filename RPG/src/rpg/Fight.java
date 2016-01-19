@@ -5,10 +5,10 @@
  */
 package rpg;
 
-import Controller.ControllerAI;
-import Controller.ControllerPlayer;
-import Controller.DisplayCharacter;
-import Controller.DisplayUI;
+import controllerPackage.ControllerAI;
+import controllerPackage.ControllerPlayer;
+import controllerPackage.DisplayCharacter;
+import controllerPackage.DisplayUI;
 import java.util.ArrayList;
 import java.util.Stack;
 
