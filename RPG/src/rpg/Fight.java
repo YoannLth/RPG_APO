@@ -30,6 +30,18 @@ public class Fight extends Event
     {
         super(playerChacraters, aiChacraters);
     }
+    
+    /**
+     * Constructor initializing the list of characters and displaying an intro message
+     *
+     * @param playerChacraters
+     * @param aiChacraters
+     * @param message to be display when the fight is launch
+     */
+    public Fight(ArrayList<Character> playerChacraters, ArrayList<Character> aiChacraters, String message)
+    {
+        super(playerChacraters, aiChacraters, message);
+    }
 
     /**
      * Launch the fight
@@ -37,6 +49,7 @@ public class Fight extends Event
     @Override
     public void launch()
     {
+        System.out.println(introMessage);
         this.fight();
     }
 
@@ -48,7 +61,6 @@ public class Fight extends Event
     {
         while (this.haveWinner() == false)
         {
-            System.out.println("I'm in fight");
             ArrayList<ControllerPlayer> playerControllers = new ArrayList<>();
             ArrayList<ControllerAI> aiControllers = new ArrayList<>();
 
@@ -71,7 +83,6 @@ public class Fight extends Event
                 Action a = ca.getAction();
                 aiActions.push(a);
                 new DisplayCharacter(a.getTarget()).displayAll();
-                System.out.println("");
             }
 
             for (ControllerPlayer cp : playerControllers)
@@ -230,14 +241,14 @@ public class Fight extends Event
         String name = DisplayUI.getCharacterName();
         for (Character playerCharacter : playerCharacters)
         {
-            if (playerCharacter.getName().equals(name))
+            if (playerCharacter.getName().contains(name))
             {
                 return playerCharacter;
             }
         }
         for (Character aiCharacter : aiCharacters)
         {
-            if (aiCharacter.getName().equals(name))
+            if (aiCharacter.getName().contains(name))
             {
                 return aiCharacter;
             }

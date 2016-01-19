@@ -34,7 +34,7 @@ public class DisplayCharacter
         {
             this.character.checkMaxInventory(i);
             this.character.addItem(i);
-            System.out.println("Item : " + i.getName() + " a été ajouté");
+            System.out.println("Item : " + i.getName() + " has been picked up by " + character.getName());
         }
         catch (MaxInventoryException ex)
         {

@@ -218,6 +218,7 @@ public class RPG
      */
     private void runGame()
     {
+        System.out.println("\nOnce uppon a time, a company of brave comrades walking in a forest");
         initEvents();
         while (!events.isEmpty())
         {
@@ -231,7 +232,66 @@ public class RPG
      */
     private void initEvents()
     {
-        
-        events.add(new Fight(playerCharacters, aiCharacters));
+        events.add(this.getEvent3());
+        events.add(this.getEvent2());
+        events.add(this.getEvent1());
+    }
+
+    /**
+     * Scenario n°1
+     *
+     * @return
+     */
+    private Event getEvent1()
+    {
+        String message1 = "You are walking in the forest. Suddenly you found the temple!";
+        Scenario s1 = new Scenario(playerCharacters, aiCharacters, message1);
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(new Edible("Fire Potion", 10, true, new Effect(Ability.HEALTH, 10, 1)));
+        items.add(new Edible("Avoidance Potion", 10, true, new Effect(Ability.DEFENSE, 1, 1)));
+        s1.setItemFound(items);
+        return s1;
+    }
+
+    /**
+     * Scenario n°2
+     *
+     * @return
+     */
+    private Event getEvent2()
+    {
+        String message2 = "You entered in a black room! \n";
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(new Edible("Dexterity Potion", 10, true, new Effect(Ability.DEXTERITY, 10, 1)));
+        items.add(new Edible("Strength Potion", 10, true, new Effect(Ability.STRENGTH, 10, 1)));
+        Scenario s2 = new Scenario(playerCharacters, aiCharacters, message2);
+        s2.setItemFound(items);
+        return s2;
+    }
+    
+    /**
+     * Event n°3 : fight
+     *
+     * @return
+     */
+    private Event getEvent3()
+    {
+        String message3 = "A wild ennemy team appears!";
+        Fight s3 = new Fight(playerCharacters, aiCharacters);
+        s3.setIntroMessage(message3);
+        return s3;
+    }
+    
+    /**
+     * Event n°4 : the end
+     *
+     * @return
+     */
+    private Event getEvent4()
+    {
+        String message4 = "The end - GG Well Play";
+        Scenario s4 = new Scenario(playerCharacters, aiCharacters);
+        s4.setIntroMessage(message4);
+        return s4;
     }
 }
