@@ -22,7 +22,7 @@ public class NewDialog extends Event{
     //Affichage du message
     public void display(){
         for(int i=1;i<=script.size();i++){
-            displayBlue(script.get(i));
+            displayBlue(script.get(i)); 
         }
     }
 }

@@ -18,7 +18,7 @@ public class ConsumableItem extends Item {
     avec differente intensité d'ou la puissance
     */
     public ConsumableItem(String name, int poid, Characteristic c, int puissance, String itExplaination, int quantity){
-        super(name, poid,new Effect(c, puissance,1), itExplaination);
+        super(name,  poid,new Effect(c, puissance,1), itExplaination);
     }
     
     public String getDisplayMessage(){

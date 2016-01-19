@@ -26,7 +26,7 @@ public class NewPlayer extends Event {
         displayBlack("3 - Intellectuel");
         
         String answer = scanner.nextLine();
-        int pCharacterClass = Integer.parseInt(answer);
+        int pCharacterClass = Integer.parseInt(answer); 
         switch (pCharacterClass){
                 case 1:
                     playableCharacter = new Boxer(pCharacterName,CharacterType.HUMAN);

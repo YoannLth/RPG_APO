@@ -21,7 +21,7 @@ public class NewAnswer  extends Event{
     }
     
     //Affichage du message
-    public void display(){
+    public void display(){ 
         displayRed(instruction);
         Scanner scanner = new Scanner(System.in);
         String res = scanner.nextLine();

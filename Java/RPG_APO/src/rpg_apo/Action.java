@@ -48,7 +48,7 @@ public class Action {
                     src.deleteInventary(consum);
                     }
                     else{
-                        actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item!";
+                        actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item! ";
                     }
                 }
                 else{

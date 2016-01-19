@@ -8,7 +8,7 @@ import static rpg_apo.Characteristic.*;
 import static rpg_apo.ControlerUI.readInt;
 import static view.Console.*;
 
-public class Character {
+public class Character  {
 
     protected String name;
     protected int level;

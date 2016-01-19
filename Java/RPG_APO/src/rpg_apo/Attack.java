@@ -9,7 +9,7 @@ public class Attack implements Capacity {
     private Character cible;
     private String displayedMessage;
     
-    public Attack(Character s, Character c){
+    public Attack(Character s, Character c ){
         this.source=s;
         this.cible=c;
         this.displayedMessage = "";

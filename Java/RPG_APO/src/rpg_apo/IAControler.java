@@ -8,6 +8,6 @@ public class IAControler extends Controler {
 
     @Override
     public Action getAction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates. 
     }
 }

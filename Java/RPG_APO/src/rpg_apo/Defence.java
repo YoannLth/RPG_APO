@@ -20,7 +20,7 @@ public class Defence implements Capacity {
         double randomNumber = 0.0;
         int characterDefence;
         
-        characterDefence = source.getCharacteristicValue(DEFENCE);
+        characterDefence = source.getCharacteristicValue(DEFENCE );
         succesProbability = probaReussite();
                 
         Random rand = new Random();

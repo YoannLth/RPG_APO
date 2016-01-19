@@ -18,7 +18,7 @@ public class ControlerUI {
     
     private static Scanner scanner = new Scanner(System.in);
 
-    public static int readInt(String message, int min, int max)
+    public static int readInt(String message, int min, int max )
     {
         displayBlack(message);
         

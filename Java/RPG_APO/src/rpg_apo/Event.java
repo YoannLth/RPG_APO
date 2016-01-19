@@ -6,5 +6,5 @@ import static view.Console.*;
 
 public abstract class Event {
     
-    public abstract void display();
+    public abstract void display(); 
 }

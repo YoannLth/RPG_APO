@@ -22,7 +22,7 @@ import rpg_apo.NewDialog;
 import rpg_apo.NewMenu;
 import rpg_apo.Character;
 import rpg_apo.CharacterType;
-import rpg_apo.Characteristic;
+import rpg_apo.Characteristic; 
 import rpg_apo.Event;
 import rpg_apo.NewFight;
 import rpg_apo.NewPlayer;

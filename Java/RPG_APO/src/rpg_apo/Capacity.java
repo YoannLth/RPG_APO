@@ -7,7 +7,7 @@ public interface Capacity {
 	 * @param src
 	 * @param target
 	 */
-	Effect effect();
+	Effect effect() ;
 
 	/**
 	 * 

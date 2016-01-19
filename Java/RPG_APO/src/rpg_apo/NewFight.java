@@ -27,7 +27,7 @@ public class NewFight extends Event{
         deadCharactersTeam1 = new ArrayList<Character>();
         deadCharactersTeam2 = new ArrayList<Character>();
         
-        this.team1 = t1;
+        this.team1 = t1; 
         this.team2 = t2;
     }
     

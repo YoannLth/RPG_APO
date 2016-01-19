@@ -15,7 +15,7 @@ public abstract class Controler {
         
 	public Action act() {
 		// TODO - implement Controler.act
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException() ;
 	}
 
     Action getAction(ArrayList<Character> team2, ArrayList<Character> team1) {

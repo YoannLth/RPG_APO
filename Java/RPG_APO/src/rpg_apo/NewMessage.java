@@ -22,7 +22,7 @@ public class NewMessage extends Event{
     
     public void display() {
         for(int i=1;i<=quotes.size();i++){
-            displayBlack(quotes.get(i));
+            displayBlack(quotes.get(i)); 
         }
     }
         

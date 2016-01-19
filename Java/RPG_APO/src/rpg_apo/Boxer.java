@@ -5,7 +5,7 @@ import java.util.Map;
 import static rpg_apo.ControlerUI.readInt;
 import static view.Console.displayRed;
 
-public class Boxer extends Character {
+public class Boxer extends Character  {
 
     private int weightMax;
     private Map<Characteristic, Integer> characsMax;

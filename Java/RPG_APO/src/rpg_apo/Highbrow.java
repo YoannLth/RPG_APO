@@ -18,7 +18,7 @@ public class Highbrow extends Character {
     public Highbrow(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Intellectuel", "Vous êtes un Intellectuel. Votre intelligence vous pousse instinctivement a vous entourez des bonnes personnes pour vous survivre. \nAucun bonus pour le moment",charT);    
         setMax(this.MAX_HEALTH,this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY, this.MAX_POINT);
-        initHighbrowInventary();
+        initHighbrowInventary(); 
 //        int str,dex,health,def;
 //        int pointAttribuer=0;
 //        displayRed("En tant qu'intellectuel vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");

@@ -24,7 +24,7 @@ public class Turn {
         this.team1 = t1;
         this.team2 = t2;
         this.actionsT1 = new HashMap();
-        this.actionsT2 = new HashMap();
+        this.actionsT2 = new HashMap(); 
     }
     
     public void launchTurnHumanVersusHuman(){

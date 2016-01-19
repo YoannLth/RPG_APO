@@ -10,7 +10,7 @@ package rpg_apo;
  *
  * @author Yoann
  */
-public enum CharacterType {
+public enum CharacterType  {
     HUMAN,
     IA
 }

@@ -23,7 +23,7 @@ public class Weapon extends Item {
         return this.damage;
     }
     public int getManageability(){
-        return this.manageability;
+        return this.manageability; 
     }
     
 }

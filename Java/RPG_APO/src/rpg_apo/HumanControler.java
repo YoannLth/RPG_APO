@@ -16,7 +16,7 @@ public class HumanControler extends Controler {
         int choice = DisplayUI.getAction(charac);
         Action choosenAction = null;
 
-        switch (choice)
+        switch (choice) 
         {
             case 1: // Capacity
                 displayBlack(charac.getName() + " à choisi une capacité");

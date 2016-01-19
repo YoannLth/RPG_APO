@@ -19,7 +19,7 @@ public class Item {
         public Item(String nom, int poid, String itExplaination)
         {
             this.name = nom;
-            this.weight = poid;
+            this.weight = poid; 
             this.itemEffect = null;
             this.itemExplaination = itExplaination;
         }

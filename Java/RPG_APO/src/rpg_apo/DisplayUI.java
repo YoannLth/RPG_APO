@@ -15,7 +15,7 @@ import static view.Console.displayRed;
  *
  * @author Yoann
  */
-public class DisplayUI {
+public class DisplayUI  {
     public static int getAction(Character character)
     {
         int maxAction = 2;

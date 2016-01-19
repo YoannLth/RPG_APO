@@ -26,7 +26,7 @@ public class Treatment implements Capacity {
         partnerHealth = source.getCharacteristicValue(HEALTH);
         
         
-        Random rand = new Random();
+        Random rand = new Random(); 
         randomNumber = (100.0 - 0.0) * rand.nextDouble();
         
         if(randomNumber <= succesProbability){

@@ -18,7 +18,7 @@ public class MaleNurse extends Character {
     public MaleNurse(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Infirmier", "Vous êtes un Infirmier. Vous savez comment maintenir votre santé au plus haut. Vous avez plus de chance de rester en bonne santé. \nSanté fortement augmenté",charT);    
         setMax(this.MAX_HEALTH,this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY, this.MAX_POINT);
-        initMaleNurseInventary();
+        initMaleNurseInventary(); 
     }
 
         

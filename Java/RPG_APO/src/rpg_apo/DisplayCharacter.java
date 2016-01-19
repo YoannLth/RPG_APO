@@ -10,6 +10,6 @@ package rpg_apo;
  *
  * @author Yoann
  */
-public class DisplayCharacter {
+public class DisplayCharacter  {
     
 }

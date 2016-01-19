@@ -13,7 +13,7 @@ public class Effect {
         public Effect(Characteristic c, int v, int d){
             this.c=c;
             this.value=v;
-            this.permanent=d;
+            this.permanent=d; 
         }
         
         

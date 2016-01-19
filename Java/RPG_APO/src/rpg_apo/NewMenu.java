@@ -26,7 +26,7 @@ public class NewMenu extends Event{
     public void display() {
         displayRed(menuMessage);
         for(int i = 1; i<=items.size(); i++){
-            displayRed(items.get(i));
+            displayRed(items.get(i)); 
         }
         
         Scanner scanner = new Scanner(System.in);
