@@ -43,6 +43,27 @@ public class HumanControler extends Controler {
         return choosenAction;
     }
     
+    public Action getItem()
+    {
+        int choice = DisplayUI.getAction(charac);
+
+        switch (choice)
+        {
+            case 1: // Capacity
+                displayBlack(charac.getName() + " à choisi une capacité");
+                int choixCapacite = DisplayUI.getCapacity(charac);
+                break;
+            case 2: // Item 
+                displayBlack(charac.getName() + " à choisi un item");
+                break;
+            default:
+                displayBlack("OK");
+                break;
+        }
+        
+        return null;
+    }  
+    
     public Action getCapacity(int choosenInt, ArrayList<Character> adversaires, ArrayList<Character> partners)
     {
         Action a = null;
@@ -72,24 +93,4 @@ public class HumanControler extends Controler {
         return a;
     }
     
-    public Action getItem()
-    {
-        int choice = DisplayUI.getAction(charac);
-
-        switch (choice)
-        {
-            case 1: // Capacity
-                displayBlack(charac.getName() + " à choisi une capacité");
-                int choixCapacite = DisplayUI.getCapacity(charac);
-                break;
-            case 2: // Item 
-                displayBlack(charac.getName() + " à choisi un item");
-                break;
-            default:
-                displayBlack("OK");
-                break;
-        }
-        
-        return null;
-    }   
 }

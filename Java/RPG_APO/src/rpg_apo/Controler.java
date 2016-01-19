@@ -11,12 +11,9 @@ public abstract class Controler {
             this.charac = c;
         }
         
-        
-	public Action act() {
-		// TODO - implement Controler.act
-		throw new UnsupportedOperationException() ;
-	}
-
         public abstract Action getAction(ArrayList<Character> team2, ArrayList<Character> team1);
         
+        public abstract Action getItem();
+        
+        public abstract Action getCapacity(int choosenInt, ArrayList<Character> adversaires, ArrayList<Character> partners);
 }
