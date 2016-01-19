@@ -7,7 +7,7 @@ public class Action {
 	private Capacity cap;
 	private ConsumableItem consum;
         
-        public Action(Character t, Character s, Capacity c){
+        public Action( Character s, Character t, Capacity c){
             this.target=t;
             this.src=s;
             this.cap=c;
@@ -21,7 +21,41 @@ public class Action {
             this.consum=cons;
         }
 
-        
+        public String readAction(){
+            String actionDisplay = "";
+            
+            if(consum == null){
+                Effect e = cap.effect();
+                if(src.isAlive()){
+                    if(target.isAlive()){
+                    e.applyEffect(e, target);
+                    actionDisplay = cap.getDisplayMessage();  
+                    }
+                    else{
+                        actionDisplay = src.getName() + " esseye d'utiliser une capacité sur " + target.getName() + ", mais il est mort, cela ne fait aucun effet!";
+                    }
+                }
+                else{
+                    actionDisplay = src.getName() + " est mort, il ne peut pas utiliser de capacités!";
+                }
+            }
+            else{
+                Effect e = consum.getEffect();
+                if(src.isAlive()){
+                    if(target.isAlive()){
+                    e.applyEffect(e, target);
+                    actionDisplay = src.getName() + consum.getDisplayMessage();  
+                    }
+                    else{
+                        actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item!";
+                    }
+                }
+                else{
+                    actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item!";
+                }
+            }
+            return actionDisplay;
+        }
         
         public void SetCapacity(){
             

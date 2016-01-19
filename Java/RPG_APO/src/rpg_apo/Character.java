@@ -1,5 +1,6 @@
 package rpg_apo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import static view.Console.*;
 
 public class Character {
 
+<<<<<<< HEAD
     private String name;
     protected int level;
     protected Map<Characteristic, Integer> characs;
@@ -26,6 +28,21 @@ public class Character {
     protected int MAX_DEX;
     protected int MAX_HEALTH;
     protected int MAX_POINT;
+=======
+    protected String name;
+    protected int level;
+    protected Map<Characteristic, Integer> characs;
+    protected Map<Item, Integer> inventary;
+    protected Weapon activeWeapon;
+    protected ArrayList<Armor> activeArmors;
+    protected String className;
+    protected String characterDescription;
+    protected CharacterType charType;
+    protected Controler characterControler;
+    protected int life;
+
+
+>>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
     /*
     private Map<Characteristic, Integer> characsMaxB;
     private Map<Characteristic, Integer> characsMaxH;
@@ -39,9 +56,9 @@ public class Character {
         this.name = nameCharacter;
         this.level = 0;
         this.characs = new HashMap();
-        this.inventary = null;
+        this.inventary = new HashMap();
         this.activeWeapon = null;
-        this.activeArmors = new HashMap();
+        this.activeArmors = new ArrayList<Armor>();
         this.className = className;
         this.characterDescription = characterDescription;
         this.charType = charT;
@@ -78,9 +95,16 @@ public class Character {
     }
 
     //Ajout d'un Item dans l'inventaire
-    public void addInventary(Item i) {
+    public void addInventary(Item i, int quant) {
             // TODO - implement Character.addInventary
-            this.inventary.add(i);
+            if(this.inventary.containsKey(i)){
+                int quantity = this.inventary.get(i);
+                quantity = quantity + quant;
+                this.inventary.replace(i, quantity);
+            }
+            else{
+                this.inventary.put(i, quant);
+            }
     }
 
     public void deleteInventary(Item i) {
@@ -124,23 +148,23 @@ public class Character {
 
     //Return vrai si l'item appartient a l'inventaire
     public boolean itemIsInInventary(Item i){
-        return this.inventary.contains(i);
+        return this.inventary.containsKey(i);
     }
 
     //retourne le poid de notre inventaire
     public int getWeightInventary(){
         int somme=0;
 
-        for(Item i : inventary){
-            somme = i.getWeight() + somme;
+        for(Map.Entry<Item, Integer> item : inventary.entrySet()){
+            somme = item.getKey().getWeight() + somme;
         }
         return somme;
     }
 
     //Affiche chaque nom d'item de l'inventaire
     public void afficherInventary(){
-        for(Item i : inventary){
-            displayBlack("\n"+i.getName());
+        for(Map.Entry<Item, Integer> item : inventary.entrySet()){
+            displayBlack("\t" + item.getKey().getName() + " x" + item.getValue());
         }
     }
 
@@ -156,12 +180,7 @@ public class Character {
         return this.characs;
     }
 
-
-    public void setInventary(List<Item> invent){
-
-    }
-
-    public List<Item> getInventary(){
+    public Map<Item, Integer> getInventary(){
         return this.inventary;
     }
 
@@ -173,11 +192,11 @@ public class Character {
         return this.activeWeapon;
     }
 
-    public void setActiveArmors(Map<Armor, Integer> activeArmrs){
+    public void setActiveArmors(ArrayList<Armor> activeArmrs){
         this.activeArmors = activeArmrs;
     }
 
-    public Map<Armor, Integer> getActiveArmors(){
+    public ArrayList<Armor> getActiveArmors(){
         return this.activeArmors;
     }
 
@@ -198,6 +217,7 @@ public class Character {
     public Controler getControler(){
         return this.characterControler;
     }
+<<<<<<< HEAD
 
 
     public void initCharacterPlayer(){
@@ -219,6 +239,8 @@ public class Character {
         }
         initCharacteristic(str,dex,health,def);
     }
+=======
+>>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
     
     public void initCharacteristic(int s, int d, int h, int def)
     {
@@ -234,6 +256,7 @@ public class Character {
         return this.characs.get(c);
     }
     
+<<<<<<< HEAD
     public void setMax(int health,int def,int str,int dext, int point){
         this.MAX_HEALTH=health;
         this.MAX_DEF=def;
@@ -243,6 +266,21 @@ public class Character {
     }
     
     public String putCaracteristics(){
+=======
+    public String getNameAndInfos(){
+        String infos = "";
+        
+        if(this.isAlive()){
+            infos = this.getName() + " ( Santé : " + characs.get(HEALTH) + "/ Defence : " + characs.get(DEFENCE) + ")";
+        }
+        else{
+            infos = this.getName() + " (Viens juste de mourir)";
+        }
+        return infos;
+    }
+    
+    public String afficherCaracteristiques(){
+>>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
         String s;
         s="--------------------------------Caracteristic de "+this.name+"----------------------------------";
         s+="\n\tLevel : "+this.level;
@@ -253,6 +291,7 @@ public class Character {
         return s;
     }
     
+<<<<<<< HEAD
     public void increaseLvl() {
         this.level++;
         this.characs.put(Characteristic.STRENGTH, (this.characs.get(Characteristic.STRENGTH)+(this.MAX_STR/5)));
@@ -266,6 +305,28 @@ public class Character {
         initCharacteristic(this.MAX_STR, this.MAX_DEX, this.MAX_HEALTH, this.MAX_DEF);
     }
     
+=======
+    public boolean isAlive(){
+        boolean isAlive = true;
+        int health = getCharacteristicValue(HEALTH);
+        
+        if(health < 1){
+            isAlive = false;
+        }
+        else{
+            isAlive = true;
+        }
+        
+        return isAlive;
+    }
+    
+    public void alterCharacteristic(Characteristic characteristicToAlter, int valueAlteration){
+        int characteristicValue = characs.get(characteristicToAlter);
+        characteristicValue = characteristicValue + valueAlteration;
+        
+        characs.put(characteristicToAlter, characteristicValue);
+    }
+>>>>>>> e0ac102e2f4fab213ee54bd18502e796f556ed3e
 }
 
 

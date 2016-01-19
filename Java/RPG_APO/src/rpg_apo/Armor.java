@@ -23,9 +23,9 @@ public class Armor extends Item {
     }
     
     
-    public Armor(String name, int poid, int resistance)
+    public Armor(String name, int poid, int resistance, String itExplaination)
     {
-        super(name, poid,new Effect(Characteristic.DEFENCE, resistance,10000));
+        super(name, poid,new Effect(Characteristic.DEFENCE, resistance,10000), itExplaination);
     }
 
 }
