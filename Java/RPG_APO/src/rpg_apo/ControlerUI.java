@@ -35,7 +35,7 @@ public class ControlerUI {
             }
         }
         catch (Exception e){
-                return readInt("Erreur, Selectionner un nombre entre " + min + " et " + max, min, max);
+                return readInt("Erreur, Selectionner svp un nombre entre " + min + " et " + max, min, max);
         }
     }
 }
