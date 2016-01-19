@@ -130,8 +130,8 @@ public class Game {
         Character c2b = new MaleNurse("Combatant_2_t2",CharacterType.HUMAN);
         //Character c2c = new Highbrow("Combatant_3_t2",CharacterType.HUMAN);
         
-        c1a.initCharacteristic(30, 10, 100, 10);
-        c1b.initCharacteristic(30, 10, 100, 10);
+        c1a.initCharacteristic(110, 100, 100, 10);
+        c1b.initCharacteristic(110, 100, 100, 10);
         //c1c.initCharacteristic(10, 10, 100, 10);
         
         c2a.initCharacteristic(10, 10, 100, 1);
@@ -148,5 +148,8 @@ public class Game {
         
         NewFight fightTest = new NewFight(team1,team2);
         fightTest.display();
+        
+        NewFight fightTest2 = new NewFight(team1,team2);
+        fightTest2.display();
     }
 }

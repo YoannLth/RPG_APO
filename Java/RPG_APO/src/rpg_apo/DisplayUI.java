@@ -69,10 +69,13 @@ public class DisplayUI {
         return target;
     }
     
+    
+    
+    
     public static ConsumableItem getConsomableItem(Character character){
         Map<Item, Integer> inv = character.getInventary();
         ArrayList<ConsumableItem> availableItems = new ArrayList<ConsumableItem>();
-        int maxItem = inv.size();
+        
         
         displayRed("Selectionner un objet à utiliser :");
         
@@ -85,13 +88,22 @@ public class DisplayUI {
             }
         }
         
-        for(int i=0; i<availableItems.size();i++){
-            displayBlack("\t" + (i+1) + "." +availableItems.get(i).getName() + " " + availableItems.get(i).getItemInfos() + " x " + inv.get(availableItems.get(i)));
+        int maxItem = availableItems.size();
+        
+        if(maxItem == 0){
+            return null;
         }
         
-        int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxItem, 1, maxItem);
-        ConsumableItem choosenItem = availableItems.get((choice-1));
-        return choosenItem;
+        else{
+            for(int i=0; i<availableItems.size();i++){
+            displayBlack("\t" + (i+1) + "." +availableItems.get(i).getName() + " " + availableItems.get(i).getItemInfos() + " x " + inv.get(availableItems.get(i)));
+            }
+
+            int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxItem, 1, maxItem);
+            ConsumableItem choosenItem = availableItems.get((choice-1));
+            return choosenItem;
+        }
+        
     }
     
 }

@@ -21,14 +21,21 @@ public class ControlerUI {
     public static int readInt(String message, int min, int max)
     {
         displayBlack(message);
-        int number = scanner.nextInt();
         
-        if (number < min || number > max)
-        {
-            return readInt("Erreur, Selectionner un nombre entre " + min + " et " + max, min, max);
-        } else
-        {
-            return number;
+        try{
+            String result = scanner.next();
+            int number = Integer.parseInt(result);
+            
+            if (number < min || number > max)
+            {
+                return readInt("Erreur, Selectionner un nombre entre " + min + " et " + max, min, max);
+            } else
+            {
+                return number;
+            }
+        }
+        catch (Exception e){
+                return readInt("Erreur, Selectionner un nombre entre " + min + " et " + max, min, max);
         }
     }
 }

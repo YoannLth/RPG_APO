@@ -44,7 +44,8 @@ public class Action {
                 if(src.isAlive()){
                     if(target.isAlive()){
                     e.applyEffect(e, target);
-                    actionDisplay = src.getName() + consum.getDisplayMessage();  
+                    actionDisplay = src.getName() + consum.getDisplayMessage(); 
+                    src.deleteInventary(consum);
                     }
                     else{
                         actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item!";

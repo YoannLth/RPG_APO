@@ -271,7 +271,7 @@ public class Character {
         String infos = "";
         
         if(this.isAlive()){
-            infos = this.getName() + " ( Santé : " + characs.get(HEALTH) + "/ Defence : " + characs.get(DEFENCE) + ")";
+            infos = this.getName() + " ( Santé : " + characs.get(HEALTH)+" sur "+this.life + "/ Defence : " + characs.get(DEFENCE) + "/ Force : " + characs.get(STRENGTH) + "/ Dexterité : " + characs.get(DEXTERITY) + ")";
         }
         else{
             infos = this.getName() + " (Viens juste de mourir)";
