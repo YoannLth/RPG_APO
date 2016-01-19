@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -13,3 +14,8 @@ hs_err_pid*
 /Java/RPG_APO/build/
 /Java/RPG_APO/dist/
 /Java/RPG_APO/nbproject/private/
+=======
+/RPG/nbproject/private/
+/RPG/build/
+/RPG/dist/
+>>>>>>> origin/master

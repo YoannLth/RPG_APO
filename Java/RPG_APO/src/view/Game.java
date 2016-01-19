@@ -154,5 +154,4 @@ public class Game {
         NewFight fightTest2 = new NewFight(team1,team2);
         fightTest2.display();
     }
-    
 }
