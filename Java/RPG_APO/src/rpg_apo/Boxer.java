@@ -57,7 +57,7 @@ public class Boxer extends Character  {
         Armor startArmor = new Armor("Bandes de boxe",1, 2, "Bandes en tissus qui protège les mains");
         super.addInventary(startArmor, 1);
         
-        ConsumableItem cafeine = new ConsumableItem("Caféine", 1, Characteristic.DEFENCE, 10, "Objet consomable qui augmente la force pour la durée du combat", 1);
+        ConsumableItem cafeine = new ConsumableItem("Caféine", 1, Characteristic.DEFENCE, 10, "Objet consomable qui augmente la force pour la durée du combat");
         super.addInventary(cafeine, 1);
         
         super.activeWeapon = startWeapon;

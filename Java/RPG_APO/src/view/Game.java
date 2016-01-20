@@ -13,6 +13,7 @@ package view;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import rpg_apo.Armor;
 import rpg_apo.Boxer;
 import rpg_apo.Highbrow;
 import rpg_apo.MaleNurse;
@@ -21,11 +22,15 @@ import rpg_apo.NewMessage;
 import rpg_apo.NewDialog;
 import rpg_apo.NewMenu;
 import rpg_apo.Character;
+import rpg_apo.CharacterTeam;
 import rpg_apo.CharacterType;
 import rpg_apo.Characteristic; 
+import rpg_apo.ConsumableItem;
 import rpg_apo.Event;
+import rpg_apo.Item;
 import rpg_apo.NewFight;
 import rpg_apo.NewPlayer;
+import rpg_apo.Weapon;
 import static view.Console.*;
 
 public class Game {
@@ -43,11 +48,19 @@ public class Game {
     
     private Map<Integer, Event>  introPremierJour;
     
-    private Map<ArrayList<Character>, Integer> ennemies;
+    private ArrayList<CharacterTeam> ennemies;
+    private ArrayList<Item> itemsGame;
+    private CharacterTeam playerTeam;
     
     public Game(String name){
         gameName = name;
         events_game = new HashMap();
+        introGame = new HashMap();
+        introContext = new HashMap();
+        newPlayableCharacter = new HashMap();
+        ennemies = new ArrayList<CharacterTeam>();
+        playerTeam = null;
+        itemsGame = new ArrayList<Item>();
     }
     
     public void launchGame(){
@@ -58,10 +71,7 @@ public class Game {
     }
     
     public void initializeEvents(){
-        introGame = new HashMap();
-        introContext = new HashMap();
-        newPlayableCharacter = new HashMap();
-        
+
         Map<Integer, String> introGameMessage = new HashMap();
         Map<Integer, String> introContextMessage = new HashMap();
         Map<Integer, String> characterInitialisationMessage = new HashMap();
@@ -153,5 +163,95 @@ public class Game {
         
         NewFight fightTest2 = new NewFight(team1,team2);
         fightTest2.display();
+    }
+    
+    public void initializeGameObjects(){
+        ConsumableItem growthHormone = new ConsumableItem("Hormone de croissance", 1, Characteristic.STRENGTH, 10, "hormones qui augmente la force temporairement de 10 points");
+        ConsumableItem creatin = new ConsumableItem("Créatine", 2, Characteristic.STRENGTH, 20, "substance qui augmente la force temporairement de 20 points");
+        ConsumableItem steroid = new ConsumableItem("Stéroides", 3, Characteristic.STRENGTH, 30, "substance qui augmente la force temporairement de 30 points");
+    
+        ConsumableItem cafein = new ConsumableItem("Caféïne", 1, Characteristic.DEXTERITY, 10, "substance qui augmente la dexterité temporairement de 10 points");
+        ConsumableItem ginseng = new ConsumableItem("Ginseng", 2, Characteristic.DEXTERITY, 20, "substance qui augmente la dexterité temporairement de 20 points");
+        ConsumableItem taurine = new ConsumableItem("Taurine", 3, Characteristic.DEXTERITY, 30, "substance qui augmente la dexterité temporairement de 30 points");
+        
+        ConsumableItem miniAdrenaline = new ConsumableItem("Mini dose d'adrénaline", 1, Characteristic.HEALTH, 10, "substance qui augmente la santé de 25 points");
+        ConsumableItem superAdrenaline = new ConsumableItem("Super dose d'adrénaline", 2, Characteristic.HEALTH, 20, "substance qui augmente la santé de 50 points");
+        ConsumableItem maxiAdrenaline = new ConsumableItem("Maxi dose d'adrénaline", 3, Characteristic.HEALTH, 30, "substance qui augmente la force santé de 100 points");
+        
+        ConsumableItem vodka = new ConsumableItem("Shot de vodka", 1, Characteristic.DEFENCE, 10, "substance qui augmente votre résitance aux coups temporairement de 10 points");
+        ConsumableItem cocaine = new ConsumableItem("Ligne de cocaïne", 2, Characteristic.DEFENCE, 20, "substance qui augmente la force temporairement de 20 points");
+        ConsumableItem captagon = new ConsumableItem("Captagon", 3, Characteristic.DEFENCE, 30, "substance qui augmente la force temporairement de 30 points");
+        
+        Weapon razorBlade = new Weapon("Lame de rasoir", 4, 5, 60, "arme tranchante moyennement maniable qui inflige de faible dégats (5 points)");
+        Weapon knuckle = new Weapon("Poing-Américain", 5, 10, 90, "arme extrèmement maniable qui inflige des dégats moyens (10 points)");
+        Weapon knife = new Weapon("Couteau de chase", 6, 20, 90, "arme tranchante extrèmement maniable qui inflige de lourds dégats (20 points)");
+        
+        Armor foamGloves = new Armor("Gants avec renforts en mousse", 4, 5, "gants légers qui protègent faiblement le personnage");
+        Armor plasticGloves = new Armor("Gants avec renforts en plastique", 5, 10, "gants qui protègent moyennement le personnage");
+        Armor kevlarGloves = new Armor("Gants avec renforts en kevlar", 6, 20, "gants lourds qui protègent fortement le personnage");
+        
+        Armor foamTShirt = new Armor("Gants avec renforts en mousse", 4, 5, "t-shirt légers qui protègent faiblement le personnage");
+        Armor plasticTShirt = new Armor("Gants avec renforts en plastique", 10, 5, "t-shirt lourds qui protègent moyennement le personnage");
+        Armor kevlarTShirt = new Armor("Gants avec renforts en kevlar", 6, 20, "t-shirt lourds qui protègent fortement le personnage");
+        
+        itemsGame.add(growthHormone);
+        itemsGame.add(creatin);
+        itemsGame.add(steroid);
+        itemsGame.add(cafein);
+        itemsGame.add(ginseng);
+        itemsGame.add(taurine);
+        itemsGame.add(miniAdrenaline);
+        itemsGame.add(superAdrenaline);
+        itemsGame.add(maxiAdrenaline);
+        itemsGame.add(vodka);
+        itemsGame.add(cocaine);
+        itemsGame.add(captagon);
+        itemsGame.add(razorBlade);
+        itemsGame.add(knuckle);
+        itemsGame.add(knife);
+        itemsGame.add(foamGloves);
+        itemsGame.add(plasticGloves);
+        itemsGame.add(kevlarGloves);
+        itemsGame.add(foamTShirt);
+        itemsGame.add(plasticTShirt);
+        itemsGame.add(kevlarTShirt);
+        
+        
+        
+        
+        
+        
+        ArrayList<CharacterTeam> gang1 = new ArrayList<CharacterTeam>();
+        ArrayList<CharacterTeam> gang2 = new ArrayList<CharacterTeam>();
+        ArrayList<CharacterTeam> gang3 = new ArrayList<CharacterTeam>();
+        
+        Character piranha1 = new Boxer("Joaquin",CharacterType.IA);
+        Character piranha2 = new Highbrow("Jesus",CharacterType.IA);
+        Character piranha3 = new MaleNurse("Cesar",CharacterType.IA);
+        piranha1.initCharacteristic(10, 40, 100, 10);
+        piranha2.initCharacteristic(10, 40, 100, 10);
+        piranha3.initCharacteristic(10, 40, 100, 10);
+        
+        
+        Character eme1 = new Boxer("Enrique",CharacterType.IA);
+        Character eme2 = new Highbrow("Ricardo",CharacterType.IA);
+        Character eme3 = new MaleNurse("Horacio",CharacterType.IA);
+        eme1.initCharacteristic(20, 50, 125, 20);
+        eme2.initCharacteristic(20, 50, 125, 20);
+        eme3.initCharacteristic(20, 50, 125, 20);
+        
+        
+        Character maras1 = new Boxer("Ramiro",CharacterType.IA);
+        Character maras2 = new Highbrow("Diego",CharacterType.IA);
+        Character maras3 = new MaleNurse("Juan-Carlos",CharacterType.IA);
+        maras1.initCharacteristic(30, 60, 150, 30);
+        maras2.initCharacteristic(30, 60, 150, 30);
+        maras3.initCharacteristic(30, 60, 150, 30);
+                
+        ArrayList<Item> gang1Rewards = new ArrayList<Item>();
+        ArrayList<Item> gang2Rewards = new ArrayList<Item>();
+        ArrayList<Item> gang3Rewards = new ArrayList<Item>();
+        
+        
     }
 }

@@ -31,7 +31,7 @@ public class Character  {
 
     public Character(String nameCharacter, String className, String characterDescription, CharacterType charT){
         this.name = nameCharacter;
-        this.level = 0;
+        this.level = 1;
         this.characs = new HashMap();
         this.inventary = new HashMap();
         this.activeWeapon = null;

@@ -10,11 +10,6 @@ import static view.Console.displayBlue;
 import static view.Console.displayRed;
 
 public class Turn {
-    //private int nbAttaque;
-    //private int nbDef;
-    //private ArrayList<rpg_apo.Character> attaque;
-    //private ArrayList<rpg_apo.Character> def;
-    //Les attaquant toujours en premier
     private ArrayList<Character> team1;
     private ArrayList<Character> team2;
     private Map<rpg_apo.Character, Action> actionsT1;

@@ -17,7 +17,7 @@ public class ConsumableItem extends Item {
     il peut avoir plusieur effet (ajit sur differente characteristique
     avec differente intensité d'ou la puissance
     */
-    public ConsumableItem(String name, int poid, Characteristic c, int puissance, String itExplaination, int quantity){
+    public ConsumableItem(String name, int poid, Characteristic c, int puissance, String itExplaination){
         super(name,  poid,new Effect(c, puissance,1), itExplaination);
     }
     
