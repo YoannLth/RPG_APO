@@ -46,7 +46,6 @@ public class IAControler extends Controler {
     {
         Action choosenAction = null;
         // Notre inteligence ne réalise que des capacité pour le moment
-        displayBlack(charac.getName() + " à choisi une capacité");
         
         int choixCapacite = (int)(Math.random()*3)+1;
         choosenAction = getCapacity(choixCapacite,adversaires,partners);

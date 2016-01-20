@@ -9,6 +9,7 @@ package rpg_apo;
 import java.util.Map;
 import java.util.Scanner;
 import static view.Console.displayBlack;
+import static view.Console.displayRed;
 
 /**
  *
@@ -20,7 +21,7 @@ public class ControlerUI {
 
     public static int readInt(String message, int min, int max )
     {
-        displayBlack(message);
+        displayRed(message);
         
         try{
             String result = scanner.next();

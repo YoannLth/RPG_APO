@@ -20,12 +20,12 @@ public class HumanControler extends Controler {
         switch (choice) 
         {
             case 1: // Capacity
-                displayBlack(charac.getName() + " à choisi une capacité");
+                displayBlue(charac.getName() + " à choisi une capacité");
                 int choixCapacite = DisplayUI.getCapacity(charac);
                 choosenAction = getCapacity(choixCapacite,adversaires,partners);
                 break;
             case 2: // Item 
-                displayBlack(charac.getName() + " à choisi un item");
+                displayBlue(charac.getName() + " à choisi un item");
                 ConsumableItem choosenItem = DisplayUI.getConsomableItem(charac);
                 if(choosenItem == null){
                     displayRed("PAS D'ITEMS DISPONIBLE!!");
@@ -37,7 +37,7 @@ public class HumanControler extends Controler {
                 }
                 break;
             default:
-                displayBlack("ERROR");
+                displayBlue("ERROR");
                 break;
         }
         
@@ -51,14 +51,14 @@ public class HumanControler extends Controler {
         switch (choice)
         {
             case 1: // Capacity
-                displayBlack(charac.getName() + " à choisi une capacité");
+                displayBlue(charac.getName() + " à choisi une capacité");
                 int choixCapacite = DisplayUI.getCapacity(charac);
                 break;
             case 2: // Item 
-                displayBlack(charac.getName() + " à choisi un item");
+                displayBlue(charac.getName() + " à choisi un item");
                 break;
             default:
-                displayBlack("OK");
+                displayBlue("OK");
                 break;
         }
         

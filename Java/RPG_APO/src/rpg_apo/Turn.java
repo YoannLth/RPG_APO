@@ -28,8 +28,7 @@ public class Turn {
     }
     
     public void launchTurnHumanVersusIA(){
-        
-        displayRed("-------------");
+        displayRed("\n------------------------------------------------------\n");
         
         for(int i=0;i<team1.size();i++){
             Character currentCharacter = team1.get(i);
@@ -55,19 +54,19 @@ public class Turn {
             displayBlue(currentAction.readAction());
         }
         
-        displayRed("-------------");
-        displayRed("----TEAM 1----");  
+        displayRed("------------------------------------------------------------------------------------");
+        displayRed("-------------------------------------- Team 1 --------------------------------------");  
         for(int i=0;i<team1.size();i++){
             Character currentCharacter = team1.get(i);
-            displayBlue(currentCharacter.getNameAndInfos());
+            displayBlack(currentCharacter.getNameAndInfos());
         }
         
         
-        displayRed("-------------");
-        displayRed("----TEAM 2----");
+        displayRed("------------------------------------------------------------------------------------");
+        displayRed("-------------------------------------- Team 2 --------------------------------------"); 
         for(int i=0;i<team2.size();i++){
             Character currentCharacter = team2.get(i);
-            displayBlue(currentCharacter.getNameAndInfos());
+            displayBlack(currentCharacter.getNameAndInfos());
         }
     }
     
@@ -75,7 +74,7 @@ public class Turn {
     public void ListMembreEquipe(ArrayList<rpg_apo.Character> team){
         for (int i = 0; i < team.size(); i++)
         {
-            displayBlue("\t%"+ i + ") " + team.get(i).getClassName()+"\n");
+            displayRed("\t"+ i + ") " + team.get(i).getClassName()+"\n");
         }
     }
 }

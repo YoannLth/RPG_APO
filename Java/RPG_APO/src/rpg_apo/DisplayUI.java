@@ -3,6 +3,7 @@ package rpg_apo;
 import java.util.ArrayList;
 import java.util.Map;
 import static view.Console.displayBlack;
+import static view.Console.displayBlue;
 import static view.Console.displayRed;
 
 /*
@@ -20,9 +21,9 @@ public class DisplayUI  {
     {
         int maxAction = 2;
 
-        displayRed("Selectionner une action pour : " + character.getName());
-        displayRed("\t 1. Utiliser une capacité");
-        displayRed("\t 2. Utiliser un item");
+        displayBlue(character.getName()+" vous avez les possibilité suivantes : ");
+        displayBlack("\t 1. Utiliser une capacité");
+        displayBlack("\t 2. Utiliser un item");
         
         int choice = ControlerUI.readInt("Selectionner une action : ", 1, maxAction);
         return choice;
@@ -32,10 +33,10 @@ public class DisplayUI  {
     {
         int maxCapacity = 3;
 
-        displayRed("Selectionner une capacité :");
-        displayRed("\t 1. Attaque");
-        displayRed("\t 2. Défense");
-        displayRed("\t 3. Soin");
+        displayBlue(character.getName()+" vous avez les possibilité suivantes : ");
+        displayBlack("\t 1. Attaque");
+        displayBlack("\t 2. Défense");
+        displayBlack("\t 3. Soin");
         
         int choice = ControlerUI.readInt("Selectionner une action : ", 1, maxCapacity);
         return choice;
@@ -44,10 +45,10 @@ public class DisplayUI  {
     public static Character getOpponent(ArrayList<Character> opponents){
         int maxPlayer = opponents.size();
         
-        displayRed("Selectionner une adversaire :");
+        displayBlue("Vos adversaire sont : ");
         
         for(int i=0;i<opponents.size();i++){
-            displayRed("\t " + (i+1) + "." + opponents.get(i).getNameAndInfos());
+            displayBlack("\t " + (i+1) + "." + opponents.get(i).getNameAndInfos());
         }
         
         int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxPlayer, 1, maxPlayer);
@@ -68,9 +69,6 @@ public class DisplayUI  {
         Character target = partners.get((choice-1));
         return target;
     }
-    
-    
-    
     
     public static ConsumableItem getConsomableItem(Character character){
         Map<Item, Integer> inv = character.getInventary();

@@ -29,6 +29,10 @@ public class Console {
         System.out.println(ANSI_BLACK + msg + ANSI_RESET);
     }
     
+    public static void displayPurple(String msg){
+        System.out.println(ANSI_PURPLE + msg + ANSI_RESET);
+    }
+    
     public static void displayRed(String msg){
         System.out.println(ANSI_RED + msg + ANSI_RESET);
     }

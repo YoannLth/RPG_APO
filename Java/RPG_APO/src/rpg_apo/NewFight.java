@@ -34,14 +34,14 @@ public class NewFight extends Event{
     
     
     public void display(){
-        displayRed("Bonjour et bienvenue dans la simulation de combats");
-        displayBlue("Le combat oppose l'equipe 1 constitué de :");
+        displayBlue("Bonjour et bienvenue dans la simulation de combats");
+        displayBlue("Le combat oppose votre equipe constitué de :");
         for(int i=0;i<team1.size();i++){
-            displayRed(team1.get(i).testGetInfos());
+            displayBlack("\t"+team1.get(i).testGetInfos());
         }
-        displayBlue("A l'équipe 2 constitué de :");
+        displayBlue("\nA l'équipe adverse constitué de :");
         for(int i=0;i<team2.size();i++){
-            displayRed(team2.get(i).testGetInfos());
+            displayBlack("\t"+team2.get(i).testGetInfos());
         }
         
         while(team1.size() >= 1 && team2.size() >= 1){
