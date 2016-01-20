@@ -51,8 +51,8 @@ public class Game {
     }
     
     public void launchGame(){
-        //initializeEvents();
-        //readEvents();
+        initializeEvents();
+        readEvents();
         
         testCombat();
     }
@@ -72,7 +72,7 @@ public class Game {
         
         
         //Affichage du script qui introduit le contexte du jeu
-        introContextMessage.put(1,"Vous etes partis au Pérou en voyage et avez esseyé de faire passer de la drogue en revennant \nVous vous faites chopper \nDirection la Prison");
+        introContextMessage.put(1,"Vous etes partis au Pérou en voyage et avez esseyé de faire passer de la drogue en revennant. Vous vous faites chopper. Direction la Prison");
         NewDialog introContext1 = new NewDialog(introContextMessage); 
         introContext.put(1, introContext1);
      
