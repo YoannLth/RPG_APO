@@ -149,7 +149,7 @@ public class Game {
                     playableCharacter = new Highbrow(pCharacterName,CharacterType.HUMAN);
                     break;
         }
-        playableCharacter.initCharacteristics(3);
+        playableCharacter.initCharacteristics(1);
         
         String className = playableCharacter.getClassName();
         switch (className){
@@ -188,9 +188,9 @@ public class Game {
         displayContinue();
         
         Character hector = new Boxer("Hector",CharacterType.HUMAN);
-        hector.initCharacteristics(3);
+        hector.initCharacteristics(1);
         Character jese = new MaleNurse("Jese",CharacterType.HUMAN);
-        jese.initCharacteristics(3);
+        jese.initCharacteristics(1);
 
         playerTeam.addMember(playableCharacter);
         playerTeam.addMember(hector);

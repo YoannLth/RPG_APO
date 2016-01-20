@@ -23,7 +23,16 @@ public class Boxer extends Character  {
         initBoxerInventary();
     }
 
-
+    public void upLvl(){
+        super.upLvlFromInt(1);
+        int newDefence = 1;
+        int newStrength = 2;
+        int newDexterity = 1;
+        
+        super.upCharacteristic(Characteristic.DEFENCE, newDefence, DEFENCE_MAX);
+        super.upCharacteristic(Characteristic.STRENGTH, newStrength, STRENGTH_MAX);
+        super.upCharacteristic(Characteristic.DEXTERITY, newDexterity, DEXTERITY_MAX);
+    };
 
         //int str,dex,health,def;
         //int pointAttribuer=0;

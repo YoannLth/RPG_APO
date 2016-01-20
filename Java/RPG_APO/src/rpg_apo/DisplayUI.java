@@ -34,18 +34,18 @@ public class DisplayUI  {
         int maxCapacity = 3;
 
         displayBlue(character.getName()+" vous avez les possibilité suivantes : ");
-        displayBlack("\t 1. Attaque");
-        displayBlack("\t 2. Défense");
-        displayBlack("\t 3. Soin");
+        displayBlack("\t 1. Utiliser 'Attaque'");
+        displayBlack("\t 2. Utiliser 'Défense'");
+        displayBlack("\t 3. Utiliser 'Soin'");
         
-        int choice = ControlerUI.readInt("Selectionner une action : ", 1, maxCapacity);
+        int choice = ControlerUI.readInt("Entrez un nombre entre 1 et : ", 1, maxCapacity);
         return choice;
     }
     
     public static Character getOpponent(ArrayList<Character> opponents){
         int maxPlayer = opponents.size();
         
-        displayBlue("Vos adversaire sont : ");
+        displayBlue("Selectionner une cible : ");
         
         for(int i=0;i<opponents.size();i++){
             displayBlack("\t " + (i+1) + "." + opponents.get(i).getNameAndInfos());
@@ -59,10 +59,10 @@ public class DisplayUI  {
     public static Character getPartner(ArrayList<Character> partners){
         int maxPlayer = partners.size();
         
-        displayRed("Selectionner une partenaire :");
+        displayBlue("Selectionner un partenaire :");
         
         for(int i=0;i<partners.size();i++){
-            displayRed("\t " + (i+1) + "." + partners.get(i).getName());
+            displayBlack("\t " + (i+1) + "." + partners.get(i).getName());
         }
         
         int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxPlayer, 1, maxPlayer);
@@ -94,7 +94,7 @@ public class DisplayUI  {
         
         else{
             for(int i=0; i<availableItems.size();i++){
-            displayBlack("\t" + (i+1) + "." +availableItems.get(i).getName() + " " + availableItems.get(i).getItemInfos() + " x " + inv.get(availableItems.get(i)));
+            displayBlack("\t" + (i+1) + "." + availableItems.get(i).getItemInfos() + " x " + inv.get(availableItems.get(i)));
             }
 
             int choice = ControlerUI.readInt("Entrez un nombre entre 1 et " + maxItem, 1, maxItem);

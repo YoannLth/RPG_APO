@@ -27,7 +27,7 @@ public class EnnemyTeam extends Team{
     }
     
     public int moneyGivenWhenLoose(){
-        int givenMoney = (difficulty*10) * super.getTeamSize();
+        int givenMoney = (difficulty*10) * 3;
         return givenMoney;
     }
     

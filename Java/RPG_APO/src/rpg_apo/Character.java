@@ -57,6 +57,14 @@ public class Character  {
         return this.level;
     }
 
+    public void upLvlFromInt(int val){
+        this.level = level + val;
+    };
+    
+    public void upLvl(){
+        displayBlue("" + this.getName() + " augmente d'un niveau!");
+        displayContinue();
+    };
 
     public void modifyCharacteristics() {
             // TODO - implement Character.modifyCharacteristics
@@ -264,7 +272,7 @@ public class Character  {
         String infos = "";
         
         if(this.isAlive()){
-            infos = this.getName() + " ( Santé : " + characs.get(HEALTH)+" sur "+ this.getMaxHealth() + "/ Defence : " + characs.get(DEFENCE) + "/ Force : " + characs.get(STRENGTH) + "/ Dexterité : " + characs.get(DEXTERITY) + ")";
+            infos = this.getName() + " ( Santé : " + characs.get(HEALTH)+" sur "+ this.getMaxHealth() + "/ Defense : " + characs.get(DEFENCE) + "/ Force : " + characs.get(STRENGTH) + "/ Dexterité : " + characs.get(DEXTERITY) + ")";
         }
         else{
             infos = this.getName() + " (Viens juste de mourir)";
@@ -300,7 +308,23 @@ public class Character  {
         int characteristicValue = characs.get(characteristicToAlter);
         characteristicValue = characteristicValue + valueAlteration;
         
-        characs.put(characteristicToAlter, characteristicValue);
+        characs.replace(characteristicToAlter, characteristicValue);
+    }
+    
+    public void upCharacteristic(Characteristic characteristicToAlter, int upValue, int maxValueCharacteristic){
+        int characteristicValue = characs.get(characteristicToAlter);
+        
+        characteristicValue = characteristicValue + upValue;
+        if(characteristicValue < maxValueCharacteristic){
+            characs.replace(characteristicToAlter, characteristicValue);
+            displayBlue(this.name + " augmente sa " + characteristicToAlter.name() + " de " + upValue + "!");
+        }
+        else{
+            characteristicValue = maxValueCharacteristic;
+            characs.replace(characteristicToAlter, characteristicValue);
+            displayBlue(this.name + " a atteind le palier maximum pour sa " + characteristicToAlter.name() + "!");
+        }
+        
     }
 
     

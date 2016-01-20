@@ -22,7 +22,7 @@ public class ConsumableItem extends Item {
     }
     
     public String getDisplayMessage(){
-        String res = " utilise " + super.getName() + "ce qui " + super.getEffect().effectString();
+        String res = " utilise " + super.getName() + " ce qui " + super.getEffect().effectString();
         return res;
     }
     

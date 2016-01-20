@@ -20,6 +20,18 @@ public class MaleNurse extends Character {
     }
 
 
+    public void upLvl(){
+        super.upLvlFromInt(1);
+        int newDefence = 2;
+        int newStrength = 1;
+        int newDexterity = 1;
+        
+        super.upCharacteristic(Characteristic.DEFENCE, newDefence, DEFENCE_MAX);
+        super.upCharacteristic(Characteristic.STRENGTH, newStrength, STRENGTH_MAX);
+        super.upCharacteristic(Characteristic.DEXTERITY, newDexterity, DEXTERITY_MAX);
+    };
+    
+    
     private void initMaleNurseInventary()
     {
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");

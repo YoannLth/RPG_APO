@@ -96,26 +96,33 @@ public class NewFight extends Event{
         t2Members = t2.size();
         
         if(t1Members > t2Members){
-            displayRed("Vous avez gagné le combat!");
+            displayBlue("Vous avez gagné le combat!");
             displayContinue();
             Item earnedItem = team2.giveRandomItem();
             int earnedMoney = team2.moneyGivenWhenLoose();
             playableCharac.addInventary(earnedItem, 1);
             playableCharac.addMoney(earnedMoney);
-            displayRed("Vous remportez un(e) " + earnedItem.getName() + "!");
+            displayBlue("Vous remportez un(e) " + earnedItem.getName() + "!");
             displayContinue();
-            displayRed("Vous gagnez " + earnedMoney + "$!");
+            displayBlue("Vous gagnez " + earnedMoney + "$!");
             displayContinue();
-            displayRed("Vous augmentez d'un niveau!");
+            upLevels(t1);
         }
         else{
-            displayRed("Vous avez perdu!");
+            displayBlue("Vous avez perdu!");
             displayContinue();
             int currentMoney = playableCharac.getMoney();
             int loosedMoney = (currentMoney*10)/100;
             loosedMoney = -loosedMoney;
             playableCharac.addMoney(loosedMoney);
-            displayRed("Vous perdez " + loosedMoney + "$!");
+            displayBlue("Vous perdez " + loosedMoney + "$!");
+        }
+    }
+    
+    public void upLevels(ArrayList<Character> c){
+        for(int i=0;i<c.size();i++){
+            c.get(i).upLvl();
+            displayContinue();
         }
     }
     

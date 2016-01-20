@@ -20,15 +20,13 @@ public class HumanControler extends Controler {
         switch (choice) 
         {
             case 1: // Capacity
-                displayBlue(charac.getName() + " à choisi une capacité");
                 int choixCapacite = DisplayUI.getCapacity(charac);
                 choosenAction = getCapacity(choixCapacite,adversaires,partners);
                 break;
             case 2: // Item 
-                displayBlue(charac.getName() + " à choisi un item");
                 ConsumableItem choosenItem = DisplayUI.getConsomableItem(charac);
                 if(choosenItem == null){
-                    displayRed("PAS D'ITEMS DISPONIBLE!!");
+                    displayBlue("PAS D'ITEMS DISPONIBLE!!");
                     choixCapacite = DisplayUI.getCapacity(charac);
                     choosenAction = getCapacity(choixCapacite,adversaires,partners);
                 }

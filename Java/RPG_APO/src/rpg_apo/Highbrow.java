@@ -36,6 +36,17 @@ public class Highbrow extends Character {
 //        initCharacteristic(str+5,dex,3*health,def);
     }
     
+    public void upLvl(){
+        super.upLvlFromInt(1);
+        int newDefence = 1;
+        int newStrength = 1;
+        int newDexterity = 2;
+        
+        super.upCharacteristic(Characteristic.DEFENCE, newDefence, DEFENCE_MAX);
+        super.upCharacteristic(Characteristic.STRENGTH, newStrength, STRENGTH_MAX);
+        super.upCharacteristic(Characteristic.DEXTERITY, newDexterity, DEXTERITY_MAX);
+    };
+    
     private void initHighbrowInventary()
     {
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");

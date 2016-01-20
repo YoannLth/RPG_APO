@@ -35,7 +35,12 @@ public class Treatment implements Capacity {
             
             if( (value + cible.getMaxHealth()) > cible.getMaxHealth() ){
                 value = cible.getMaxHealth() - targetHealth;
-                displayedMessage = source.getName() + " tente d'utiliser 'soin' sur " + cible.getName() + " , mais sa santé est presque au maximum," + cible.getName() + " gagne seulement " + value + " points de vie!";
+                if(value ==0){
+                displayedMessage = source.getName() + " tente d'utiliser 'soin' sur " + cible.getName() + " , mais sa santé est au maximum!";
+                }
+                else{
+                    displayedMessage = source.getName() + " tente d'utiliser 'soin' sur " + cible.getName() + " , mais sa santé est presque au maximum," + cible.getName() + " gagne seulement " + value + " points de vie!";
+                }
             }
             else{
                 displayedMessage = source.getName() + " utilise 'soin' sur " + cible.getName() + " , " + cible.getName() + " gagne " + value + " points de vie!";

@@ -51,6 +51,7 @@ public class NewDay extends Event{
         }  
         
         displayBlack("La journée se termine maintenant, vous regagnez votre cellule*");
+        displayContinue();
     }
     
 }

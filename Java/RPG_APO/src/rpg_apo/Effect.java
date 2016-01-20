@@ -46,6 +46,6 @@ public class Effect {
         }
         
         public String effectString(){
-            return "\n agit sur la Characteristique "+this.c+" avec une efficacité de " +this.value;
+            return " agit sur la Characteristique "+this.c+" avec une efficacité de " +this.value;
         }
 }
