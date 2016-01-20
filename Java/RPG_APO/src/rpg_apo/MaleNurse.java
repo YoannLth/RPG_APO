@@ -8,38 +8,17 @@ public class MaleNurse extends Character {
 
     private int weightMax;
     private Map<Characteristic, Integer> characsMax;
-    private int MAX_POINT=75;
     
-    private int MAX_HEALTH = 50;
-    private int MAX_DEFENCE = 10;
+    private int MAX_DEFENCE = 30;
     private int MAX_STRENGTH = 10;
-    private int MAX_DEXTERITY = 25;
+    private int MAX_DEXTERITY = 30;
     
     public MaleNurse(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Infirmier", "Vous êtes un Infirmier. Vous savez comment maintenir votre santé au plus haut. Vous avez plus de chance de rester en bonne santé. \nSanté fortement augmenté",charT);    
-        setMax(this.MAX_HEALTH,this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY, this.MAX_POINT);
+        setMax(this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY);
         initMaleNurseInventary(); 
     }
 
-        
-//        int str,dex,health,def;
-//        int pointAttribuer=0;
-//        displayRed("En tant qu'infirmier vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");
-//        str = readInt("STRENGTH : (max = "+this.MAX_STRENGTH+") : ",1,this.MAX_STRENGTH);
-//        dex = readInt("DEXTERITY : (max = "+this.MAX_DEXTERITY+") : ",1,this.MAX_DEXTERITY);
-//        health = readInt("HEALTH : (max = "+this.MAX_HEALTH+") : 3*",1,this.MAX_HEALTH);
-//        def = readInt("DEFENCE : (max = "+this.MAX_DEFENCE+") : ",1,this.MAX_DEFENCE);
-//        pointAttribuer=str+dex+health+def;
-//        while(pointAttribuer!=this.MAX_POINT){
-//            displayRed("Il vous reste "+(this.MAX_POINT-pointAttribuer)+"points a attribuer");
-//            str = readInt("STRENGTH : (max = "+this.MAX_STRENGTH+", actuel = "+str+") : ",1,this.MAX_STRENGTH);
-//            dex = readInt("DEXTERITY : (max = "+this.MAX_DEXTERITY+", actuel = "+dex+") : ",1,this.MAX_DEXTERITY);
-//            health = readInt("HEALTH : (max = "+this.MAX_HEALTH+", actuel = "+health+") : 3*",1,this.MAX_HEALTH);
-//            def = readInt("DEFENCE : (max = "+this.MAX_DEFENCE+", actuel = "+def+") : ",1,this.MAX_DEFENCE);
-//            pointAttribuer=str+dex+health+def;
-//        }
-//        //On pourrai ajouter ici un bonus de force ici 
-//        initCharacteristic(str+5,dex,3*health,def);
 
     private void initMaleNurseInventary()
     {

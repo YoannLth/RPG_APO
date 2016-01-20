@@ -26,7 +26,7 @@ public class Character  {
     protected int MAX_DEF;
     protected int MAX_DEX;
     protected int MAX_HEALTH;
-    protected int MAX_POINT;
+    protected int MAX_POINT=50;
 
 
     public Character(String nameCharacter, String className, String characterDescription, CharacterType charT){
@@ -198,21 +198,19 @@ public class Character  {
     public void initCharacterPlayer(){
         int pointAttribuer=0;
         int str, def, health, dex;
-        displayBlue("Vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");
+        displayBlue("Vous disposé de "+this.MAX_POINT+" points a répartir sur vos 3 characateristique");
         str = readInt("\tSTRENGTH : (max = "+this.MAX_STR+") : ",1,this.MAX_STR);
         dex = readInt("\tDEXTERITY : (max = "+this.MAX_DEX+") : ",1,this.MAX_DEX);
-        health = readInt("\tHEALTH : (max = "+this.MAX_HEALTH+") : 3*",1,this.MAX_HEALTH);
         def = readInt("\tDEFENCE : (max = "+this.MAX_DEF+") : ",1,this.MAX_DEF);
-        pointAttribuer=str+dex+health+def;
+        pointAttribuer=str+dex+def;
         while(pointAttribuer!=this.MAX_POINT){
             displayBlue("Il vous reste "+(this.MAX_POINT-pointAttribuer)+"points a attribuer");
             str = readInt("\tSTRENGTH : (max = "+this.MAX_STR+", actuel = "+str+") : ",1,this.MAX_STR);
             dex = readInt("\tDEXTERITY : (max = "+this.MAX_DEX+", actuel = "+dex+") : ",1,this.MAX_DEX);
-            health = readInt("\tHEALTH : (max = "+this.MAX_HEALTH+", actuel = "+health+") : 3*",1,this.MAX_HEALTH);
             def = readInt("\tDEFENCE : (max = "+this.MAX_DEF+", actuel = "+def+") : ",1,this.MAX_DEF);
-            pointAttribuer=str+dex+health+def;
+            pointAttribuer=str+dex+def;
         }
-        initCharacteristic(str,dex,health*3,def);
+        initCharacteristic(str,dex,getMaxHealth()*3,def);
     }
     
     public void initCharacteristic(int s, int d, int h, int def)
@@ -229,12 +227,14 @@ public class Character  {
         return this.characs.get(c);
     }
     
-    public void setMax(int health,int def,int str,int dext, int point){
-        this.MAX_HEALTH=health;
+    public void setMax(int def,int str,int dext){
         this.MAX_DEF=def;
         this.MAX_STR=str;
         this.MAX_DEX=dext;
-        this.MAX_POINT=point;
+    }
+    
+    public int getMaxHealth(){
+        return 200+this.level*3;
     }
     
     public String putCaracteristics(){

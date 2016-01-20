@@ -8,16 +8,14 @@ public class Highbrow extends Character {
 
     private int weightMax;
     private Map<Characteristic, Integer> characsMax;
-    private int MAX_POINT=75;
     
-    private int MAX_HEALTH = 35;
-    private int MAX_DEFENCE = 10;
-    private int MAX_STRENGTH = 5;
-    private int MAX_DEXTERITY = 35;
+    private int MAX_DEFENCE = 15;
+    private int MAX_STRENGTH = 15;
+    private int MAX_DEXTERITY = 40;
     
     public Highbrow(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Intellectuel", "Vous êtes un Intellectuel. Votre intelligence vous pousse instinctivement a vous entourez des bonnes personnes pour vous survivre. \nAucun bonus pour le moment",charT);    
-        setMax(this.MAX_HEALTH,this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY, this.MAX_POINT);
+        setMax(this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY);
         initHighbrowInventary(); 
 //        int str,dex,health,def;
 //        int pointAttribuer=0;

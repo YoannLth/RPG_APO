@@ -62,25 +62,43 @@ public class Game {
     }
     
     public void launchGame(){
-        //initializeEvents();
-        //readEvents();
+        initializeEvents();
+        readEvents();
         initializeGameObjects();
         
         testCombat();
     }
+    
     
     public void initializeEvents(){
 
         ArrayList<String> introGameTextScript = new ArrayList<String>();
         ArrayList<String> introContextTextScript = new ArrayList<String>();
         
-        introGameTextScript.add("Bonjour et bienvenue dans " + gameName + "\nLa partie commence");
-        NewMessage introGame1 = new NewMessage(introGameTextScript);
-        introGame.put(1, introGame1);
-        
         
         //Affichage du script qui introduit le contexte du jeu
-        introContextTextScript.add("Vous etes partis au Pérou en voyage et avez esseyé de faire passer de la drogue en revennant. Vous vous faites chopper. Direction la Prison");
+        introContextTextScript.add("Vous etes de retour d'Amerique du sud ou vous avez effectué un agréable voyage au dépend de vos ressources.");
+        introContextTextScript.add("Pour rembourser les extras trop nombreux de votre voyage vous avez accepter un deal pour ramener de la drogue en France.");
+        introContextTextScript.add("Après quelques minutes de marches dans l'aéroport, vous appercevez la sortie. Vous souriez.");
+        introContextTextScript.add("Seul le contrôle des douannes vous sépare du bonneur.");
+        introContextTextScript.add("Impatient de passer cette formalité, vous vous dirrigez vers le douanier.");
+        introContextTextScript.add("Il était petit et très maigre. Il portait un uniforme vert kaki et parlait dans son talkie-walkie.");
+        introContextTextScript.add("A peine apres vous être présenté a lui, son chien renifle votre valise et marque une pose au sol.");
+        introContextTextScript.add("Malheur, 3 autres douanier le rejoigne et vous demande de ne plus bouger.");
+        introContextTextScript.add("Appeuré, vous lui demandez ce qu'il se passe. Il vous demande de le suivre.");
+        introContextTextScript.add("Vous vous trouvez maintenant dans un bureau.");
+        introContextTextScript.add("Devant vous un homme assis donne l'odre d'ouvrir votre valise...");
+        introContextTextScript.add("C'est avec fausse stupeur que vous découvez à l'interieur, 5 sachets de poudre blanches.");
+        introContextTextScript.add("Vous les aviez bien caché à l'interieur de la doublure.");
+        introContextTextScript.add("Apres de long échanges, en esseyant tant bien que mal de vous défendre, le cdouanier vous explique que vous allez devoir passer quelques jours en prison.");
+        introContextTextScript.add("Avant de passer au tribunal.");
+        introContextTextScript.add("*4 semaines plus tard*");
+        introContextTextScript.add("Votre avocat sur place a tant bien que mal esseyé de prouver votre innocence, mais le tribunal à trancher.");
+        introContextTextScript.add("Vous êtes condanné a 30 ans pour traffic de drogue.");
+        introContextTextScript.add("Vous serez incarséré dès demain à la Prison de Luriguancho.");
+        introContextTextScript.add("Votre aventure commence maintenant...");
+        
+        
         NewMessage introContext1 = new NewMessage(introContextTextScript); 
         introContext.put(1, introContext1);
      
@@ -110,9 +128,6 @@ public class Game {
     }
     
     
-    public void testInitialiseObjets(){
-        
-    }
     
     
     public void testCombat(){
