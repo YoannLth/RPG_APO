@@ -37,6 +37,7 @@ public class Attack implements Capacity {
         if(randomNumber <= succesProbability){
             Characteristic c = HEALTH;
             int value = (characterStrength + characterWeaponDamage) - opponentDefence;
+            
             if(value<0){
                 value = 0;
                 displayedMessage = source.getName() + " tente d'attaquer " + cible.getName() + " mais il n'est pas assez fort, l'ennemie ne subit aucun dégat!";
@@ -47,7 +48,7 @@ public class Attack implements Capacity {
             }
             int permanent = 0;
             
-        
+            value = value * 10;
             e = new Effect(c,value,permanent);
         }
         else{

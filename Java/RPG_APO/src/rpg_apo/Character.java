@@ -244,6 +244,11 @@ public class Character  {
         return 200+this.level*3;
     }
     
+    public void setMaxHealth(){
+        int maxLife = getMaxHealth();
+        this.characs.replace(HEALTH, maxLife);
+    }
+    
     public String putCaracteristics(){
         String s;
         s="--------------------------------Caracteristic de "+this.name+"----------------------------------";
@@ -259,7 +264,7 @@ public class Character  {
         String infos = "";
         
         if(this.isAlive()){
-            infos = this.getName() + " ( Santé : " + characs.get(HEALTH)+" sur "+this.life + "/ Defence : " + characs.get(DEFENCE) + "/ Force : " + characs.get(STRENGTH) + "/ Dexterité : " + characs.get(DEXTERITY) + ")";
+            infos = this.getName() + " ( Santé : " + characs.get(HEALTH)+" sur "+ this.getMaxHealth() + "/ Defence : " + characs.get(DEFENCE) + "/ Force : " + characs.get(STRENGTH) + "/ Dexterité : " + characs.get(DEXTERITY) + ")";
         }
         else{
             infos = this.getName() + " (Viens juste de mourir)";
@@ -302,6 +307,10 @@ public class Character  {
     public void initCharacteristics(int difficulty){
         
     };
+    
+    public int getMoney(){
+        return this.money;
+    }
 }
 
 

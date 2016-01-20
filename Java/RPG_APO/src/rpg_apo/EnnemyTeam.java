@@ -6,27 +6,36 @@
 package rpg_apo;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author Yoann
  */
 public class EnnemyTeam extends Team{
-    private int difficuly;
+    private int difficulty;
     private ArrayList<Item> rewardItems;
     
     public EnnemyTeam(String n, ArrayList<Character> chars, int difficult, ArrayList<Item> rewardItms){
         super(n, chars);
-        this.difficuly = difficult;
+        this.difficulty = difficult;
         this.rewardItems = rewardItms;
     }
 
     public int getDifficulty(){
-        return this.difficuly;
+        return this.difficulty;
     }
     
     public int moneyGivenWhenLoose(){
-        return 0;
+        int givenMoney = (difficulty*10) * super.getTeamSize();
+        return givenMoney;
+    }
+    
+    public Item giveRandomItem(){
+        Random randomGenerator = new Random();
+        int index = randomGenerator.nextInt(rewardItems.size());
         
+        Item randomItem = rewardItems.get(index);
+        return randomItem;
     }
 }

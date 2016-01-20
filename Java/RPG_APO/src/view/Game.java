@@ -149,7 +149,7 @@ public class Game {
                     playableCharacter = new Highbrow(pCharacterName,CharacterType.HUMAN);
                     break;
         }
-        playableCharacter.initCharacteristics(1);
+        playableCharacter.initCharacteristics(3);
         
         String className = playableCharacter.getClassName();
         switch (className){
@@ -188,9 +188,9 @@ public class Game {
         displayContinue();
         
         Character hector = new Boxer("Hector",CharacterType.HUMAN);
-        hector.initCharacteristics(1);
+        hector.initCharacteristics(3);
         Character jese = new MaleNurse("Jese",CharacterType.HUMAN);
-        jese.initCharacteristics(1);
+        jese.initCharacteristics(3);
 
         playerTeam.addMember(playableCharacter);
         playerTeam.addMember(hector);
@@ -244,12 +244,12 @@ public class Game {
         displayBlack("\t - PERSONNAGE : Ou-est ce que tu veut en venir?");
         displayBlack("\t - HECTOR : *A voie basse* On a un plan pour s'échapper...");
         displayBlack("\t - PERSONNAGE : Je viens avec vous.");
-        displayBlack("\t - HECTOR : Tu pourra, mais pour l'instant, il nous manque 500 dollars pour organiser la fuite.");
+        displayBlack("\t - HECTOR : Tu pourra, mais pour l'instant, il nous manque 1000 dollars pour organiser la fuite.");
         displayBlack("\t - PERSONNAGE : T'inquiete, on les trouvera.");
         displayContinue();
         
         displayBlue("Vous avez fini le didactitiel des activités de nuit");
-        displayBlue("Vous avez maintenant un objectif, réunir 500$ pour organiser votre évasion!");
+        displayBlue("Vous avez maintenant un objectif, réunir 1000$ pour organiser votre évasion!");
         displayContinue();
     }
     

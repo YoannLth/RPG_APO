@@ -8,6 +8,8 @@ package rpg_apo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import static rpg_apo.Characteristic.*;
 import static rpg_apo.ControlerUI.readInt;
 import static view.Console.*;
 
@@ -17,36 +19,44 @@ import static view.Console.*;
  */
 public class NewFight extends Event{
     private Team team1;
-    private Team team2;
+    private EnnemyTeam team2;
     private ArrayList<Character> team1Characters;
     private ArrayList<Character> team2Characters;
     private ArrayList<Character> deadCharactersTeam1;
     private ArrayList<Character> deadCharactersTeam2;
     private ArrayList<EnnemyTeam> ennemies;
+    private Map<Character, Map<Characteristic, Integer>> currentCharacteristics;
+    private Character playableCharac;
     
-    public NewFight(Team t1, ArrayList<EnnemyTeam> ennemis){        
+    public NewFight(Character playableChar, Team t1, ArrayList<EnnemyTeam> ennemis){        
         this.ennemies = ennemis;
         this.team1 = t1;         
         this.team2 = this.getEnnemyTeam();
         this.team1Characters = team1.getTeam();
         this.team2Characters = team2.getTeam();
+        this.playableCharac = playableChar;
         
         deadCharactersTeam1 = new ArrayList<Character>();
         deadCharactersTeam2 = new ArrayList<Character>();
+        currentCharacteristics = new HashMap();
     }
     
     
     
     public void display(){
+        setCharactersStartCharacteristics();
+        
         displayBlue("Vous avez choisi de défier " + team2.getName() + ".");
         displayBlue("Le combat oppose votre equipe constitué de :");
         for(int i=0;i<team1Characters.size();i++){
-            displayBlack("\t"+team1Characters.get(i).testGetInfos());
+            displayBlack("\t"+team1Characters.get(i).getNameAndInfos());
         }
-        displayBlue("\nContre " + team2.getName() + " constitué de :");
+        displayBlue("\nContre le " + team2.getName() + " constitué de :");
         for(int i=0;i<team2Characters.size();i++){
-            displayBlack("\t"+team2Characters.get(i).testGetInfos());
+            displayBlack("\t"+team2Characters.get(i).getNameAndInfos());
         }
+        
+        
         
         while(team1Characters.size() >= 1 && team2Characters.size() >= 1){
             
@@ -57,8 +67,9 @@ public class NewFight extends Event{
             TestIfPlayerIsAlive(team2Characters);
         }
         
-        displayRed(TestWinnerTeam(team1Characters,team2Characters));
+        postFightReward(team1Characters,team2Characters);
         fealTeams();
+        refillCharactersStartCharacteristics();
     }
     
     
@@ -76,7 +87,7 @@ public class NewFight extends Event{
         }
     }
     
-    public String TestWinnerTeam(ArrayList<Character> t1, ArrayList<Character> t2){
+    public void postFightReward(ArrayList<Character> t1, ArrayList<Character> t2){
         int t1Members;
         int t2Members;
         String res = "";
@@ -85,18 +96,27 @@ public class NewFight extends Event{
         t2Members = t2.size();
         
         if(t1Members > t2Members){
-            res = "L'équipe 1 a gagné!";
+            displayRed("Vous avez gagné le combat!");
+            displayContinue();
+            Item earnedItem = team2.giveRandomItem();
+            int earnedMoney = team2.moneyGivenWhenLoose();
+            playableCharac.addInventary(earnedItem, 1);
+            playableCharac.addMoney(earnedMoney);
+            displayRed("Vous remportez un(e) " + earnedItem.getName() + "!");
+            displayContinue();
+            displayRed("Vous gagnez " + earnedMoney + "$!");
+            displayContinue();
+            displayRed("Vous augmentez d'un niveau!");
         }
         else{
-            res = "L'équipe 2 a gagné!";
+            displayRed("Vous avez perdu!");
+            displayContinue();
+            int currentMoney = playableCharac.getMoney();
+            int loosedMoney = (currentMoney*10)/100;
+            loosedMoney = -loosedMoney;
+            playableCharac.addMoney(loosedMoney);
+            displayRed("Vous perdez " + loosedMoney + "$!");
         }
-        
-        displayGreen("" + team1Characters.size());
-        displayGreen("" + team2Characters.size());
-        displayGreen("deadCharactersTeam1 :" + deadCharactersTeam1.size());
-        displayGreen("deadCharactersTeam2 :" + deadCharactersTeam2.size());
-        
-        return res;
     }
     
     public ArrayList<Character> getTeam(Character charac){
@@ -128,7 +148,7 @@ public class NewFight extends Event{
         deadCharactersTeam2.clear();
     }
     
-    public Team getEnnemyTeam(){
+    public EnnemyTeam getEnnemyTeam(){
         displayBlue("Quel Gang voulez vous affronter?");
         for(int i=0; i<ennemies.size(); i++){
             displayBlue("\t " + (i+1) + ". " + ennemies.get(i).getName() + "(Difficulté : " + ennemies.get(i).getDifficulty() + ")");
@@ -136,5 +156,59 @@ public class NewFight extends Event{
         int rep = readInt("Choisissez une gang a affronter : ",1,ennemies.size());
         
         return ennemies.get((rep-1));    
+    }
+    
+    public void fillMaxHealthFighters(){
+        for(int i=0;i<team1Characters.size();i++){
+            team1Characters.get(i).setMaxHealth();
+        }
+        
+        for(int i=0;i<team2Characters.size();i++){
+            team2Characters.get(i).setMaxHealth();
+        }
+    }
+    
+    public void setCharactersStartCharacteristics(){
+        fillMaxHealthFighters();
+        
+        for(int i=0;i<team1Characters.size();i++){
+            int tempForce = team1Characters.get(i).getCharacteristicValue(STRENGTH);
+            int tempDext = team1Characters.get(i).getCharacteristicValue(DEXTERITY);
+            int tempSante = team1Characters.get(i).getMaxHealth();
+            int tempDef = team1Characters.get(i).getCharacteristicValue(DEFENCE);
+            Map<Characteristic, Integer> tempCharacs;
+            tempCharacs = new HashMap();
+            tempCharacs.put(STRENGTH, tempForce);
+            tempCharacs.put(DEXTERITY, tempDext);
+            tempCharacs.put(HEALTH, tempSante);
+            tempCharacs.put(DEFENCE, tempDef);
+            
+            currentCharacteristics.putIfAbsent(team1Characters.get(i), tempCharacs);
+        }
+        
+        for(int i=0;i<team2Characters.size();i++){
+            int tempForce = team2Characters.get(i).getCharacteristicValue(STRENGTH);
+            int tempDext = team2Characters.get(i).getCharacteristicValue(DEXTERITY);
+            int tempSante = team2Characters.get(i).getMaxHealth();
+            int tempDef = team2Characters.get(i).getCharacteristicValue(DEFENCE);
+            Map<Characteristic, Integer> tempCharacs;
+            tempCharacs = new HashMap();
+            tempCharacs.put(STRENGTH, tempForce);
+            tempCharacs.put(DEXTERITY, tempDext);
+            tempCharacs.put(HEALTH, tempSante);
+            tempCharacs.put(DEFENCE, tempDef);
+            
+            currentCharacteristics.putIfAbsent(team2Characters.get(i), tempCharacs);
+        }
+    }
+    
+    public void refillCharactersStartCharacteristics(){        
+        for(int i=0;i<team1Characters.size();i++){
+            team1Characters.get(i).setCharacteristics(currentCharacteristics.get(team1Characters.get(i)));
+        }
+        
+        for(int i=0;i<team2Characters.size();i++){
+            team2Characters.get(i).setCharacteristics(currentCharacteristics.get(team2Characters.get(i)));
+        }
     }
 }
