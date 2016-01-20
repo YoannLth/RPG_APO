@@ -21,6 +21,7 @@ public class Character  {
     protected CharacterType charType;
     protected Controler characterControler;
     protected int life;
+    protected int money;
 
     protected int MAX_STR;
     protected int MAX_DEF;
@@ -260,7 +261,10 @@ public class Character  {
         return infos;
     }
    
-
+    public void addMoney(int i){
+        this.money+=i;
+    }
+    
     public void increaseLvl() {
         this.level++;
         this.characs.put(Characteristic.STRENGTH, (this.characs.get(Characteristic.STRENGTH)+(this.MAX_STR/5)));
