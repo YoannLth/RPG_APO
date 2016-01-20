@@ -22,10 +22,7 @@ public class NewAppelle extends Event{
         this.c=c;
     }
     
-    public int choixAppel(){
-        return 1;
-    }
-    
+
     
     public boolean donne(int i){
         int pr=1+((int)(Math.random()*(99)));
