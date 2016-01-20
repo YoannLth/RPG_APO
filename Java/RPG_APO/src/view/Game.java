@@ -17,10 +17,8 @@ import rpg_apo.Armor;
 import rpg_apo.Boxer;
 import rpg_apo.Highbrow;
 import rpg_apo.MaleNurse;
-import rpg_apo.NewAnswer;
 import rpg_apo.NewMessage;
 import rpg_apo.NewDialog;
-import rpg_apo.NewMenu;
 import rpg_apo.Character;
 import rpg_apo.CharacterTeam;
 import rpg_apo.CharacterType;
@@ -29,7 +27,7 @@ import rpg_apo.ConsumableItem;
 import rpg_apo.Event;
 import rpg_apo.Item;
 import rpg_apo.NewFight;
-import rpg_apo.NewPlayer;
+import rpg_apo.NewPlayerIntro;
 import rpg_apo.Weapon;
 import static view.Console.*;
 
@@ -44,7 +42,7 @@ public class Game {
     private Map<Integer, Event> introGame;
     private Map<Integer, Event> introContext;
     private Map<Integer, Event> newPlayableCharacter;
-    private Map<Integer, Map<Integer, Event>> events_game;
+    private Map<Integer, Map<Integer, Event>> gameEvents;
     
     private Map<Integer, Event>  introPremierJour;
     
@@ -54,7 +52,7 @@ public class Game {
     
     public Game(String name){
         gameName = name;
-        events_game = new HashMap();
+        gameEvents = new HashMap();
         introGame = new HashMap();
         introContext = new HashMap();
         newPlayableCharacter = new HashMap();
@@ -64,48 +62,43 @@ public class Game {
     }
     
     public void launchGame(){
-        initializeEvents();
-        readEvents();
+        //initializeEvents();
+        //readEvents();
+        initializeGameObjects();
         
         testCombat();
     }
     
     public void initializeEvents(){
 
-        Map<Integer, String> introGameMessage = new HashMap();
-        Map<Integer, String> introContextMessage = new HashMap();
-        Map<Integer, String> characterInitialisationMessage = new HashMap();
+        ArrayList<String> introGameTextScript = new ArrayList<String>();
+        ArrayList<String> introContextTextScript = new ArrayList<String>();
         
-        introGameMessage.put(1,"Bonjour et bienvenue dans " + gameName + "\nLa partie commence");
-        NewDialog introGame1 = new NewDialog(introGameMessage);
+        introGameTextScript.add("Bonjour et bienvenue dans " + gameName + "\nLa partie commence");
+        NewMessage introGame1 = new NewMessage(introGameTextScript);
         introGame.put(1, introGame1);
         
         
         //Affichage du script qui introduit le contexte du jeu
-        introContextMessage.put(1,"Vous etes partis au Pérou en voyage et avez esseyé de faire passer de la drogue en revennant. Vous vous faites chopper. Direction la Prison");
-        NewDialog introContext1 = new NewDialog(introContextMessage); 
+        introContextTextScript.add("Vous etes partis au Pérou en voyage et avez esseyé de faire passer de la drogue en revennant. Vous vous faites chopper. Direction la Prison");
+        NewMessage introContext1 = new NewMessage(introContextTextScript); 
         introContext.put(1, introContext1);
      
         //Affichage du script pour initialiser le personnage (en fonction des choix du joueur)
-        //characterInitialisationMessage.put(1, "Une fois dans votre cellule, un homme vous interpelle... \nQui est tu?");
-        //NewDialog characterInitialisationMessage1 = new NewDialog(characterInitialisationMessage);
-        NewPlayer mainCharacterInitialisation = new NewPlayer(); 
-        //this.newPlayableCharacter.put(1, characterInitialisationMessage1);
-        this.newPlayableCharacter.put(1, mainCharacterInitialisation);
+        NewPlayerIntro mainCharacterInitialisation = new NewPlayerIntro(); 
+        this.newPlayableCharacter.put(1, mainCharacterInitialisation);      
         
-      
-        
-        events_game.put(1, introGame);
-        events_game.put(2, introContext);
-        events_game.put(3, newPlayableCharacter);
+        gameEvents.put(1, introGame);
+        gameEvents.put(2, introContext);
+        gameEvents.put(3, newPlayableCharacter);
     }
     
     public void readEvents(){
         
-        int sizeEvents = events_game.size();
+        int sizeEvents = gameEvents.size();
         
         for(int i=1;i<=sizeEvents;i++){
-            Map<Integer, Event> currentEvent = events_game.get(i);
+            Map<Integer, Event> currentEvent = gameEvents.get(i);
             
             int currentEventSize = currentEvent.size();
             

@@ -1,5 +1,6 @@
 package rpg_apo;
 
+import java.util.ArrayList;
 import java.util.Map;
 import static view.Console.*;
 
@@ -14,14 +15,14 @@ import static view.Console.*;
  * @author Yoann
  */
 public class NewMessage extends Event{
-    private final Map<Integer,String> quotes;
+    private final ArrayList<String> quotes;
     
-    public NewMessage(Map<Integer, String> qts){
-        quotes = qts;
+    public NewMessage(ArrayList<String> qts){
+        this.quotes = qts; 
     }
     
     public void display() {
-        for(int i=1;i<=quotes.size();i++){
+        for(int i=0;i<quotes.size();i++){
             displayBlack(quotes.get(i)); 
         }
     }

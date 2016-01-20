@@ -5,6 +5,7 @@
  */
 package rpg_apo;
 
+import java.util.ArrayList;
 import java.util.Map;
 import static view.Console.*;
 
@@ -13,9 +14,9 @@ import static view.Console.*;
  * @author Yoann
  */
 public class NewDialog extends Event{
-    private Map<Integer,String> script;
+    private ArrayList<String> script;
     
-    public NewDialog(Map<Integer, String> scrpt){
+    public NewDialog(ArrayList<String> scrpt){
         script = scrpt;
     }
     

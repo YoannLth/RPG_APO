@@ -9,10 +9,10 @@ package rpg_apo;
 import java.util.Scanner;
 import static view.Console.*;
 
-public class NewPlayer extends Event {
+public class NewPlayerIntro extends Event {
     Character playableCharacter;
     
-    public NewPlayer(){
+    public NewPlayerIntro(){
     }
     
     public void display(){
