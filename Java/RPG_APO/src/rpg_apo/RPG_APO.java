@@ -21,7 +21,7 @@ public class RPG_APO {
     
     public static void main(String[] args) {
         
-        Game g = new Game("Prison Life");
+        Game g = new Game();
         g.launchGame(); 
     }
 }

@@ -18,9 +18,7 @@ import rpg_apo.Armor;
 import rpg_apo.Boxer;
 import rpg_apo.Highbrow;
 import rpg_apo.MaleNurse;
-import rpg_apo.NewMessage;
-import rpg_apo.NewDialog;
-import rpg_apo.NewAppelle;
+import rpg_apo.NewCall;
 import rpg_apo.Character;
 import rpg_apo.CharacterType;
 import rpg_apo.Characteristic; 
@@ -29,36 +27,35 @@ import rpg_apo.ControlerUI;
 import rpg_apo.EnnemyTeam;
 import rpg_apo.Event;
 import rpg_apo.Item;
+import rpg_apo.NewDay;
 import rpg_apo.NewFight;
 import rpg_apo.Team;
 import rpg_apo.Weapon;
 import static view.Console.*;
 
 public class Game {
-    private String gameName;
     
     private ArrayList<Character> team1;
     private ArrayList<Character> team2;
     
     private Character playableCharacter;
     
-    private Map<Integer, Event> introGame;
-    private Map<Integer, Event> introContext;
-    private Map<Integer, Event> newPlayableCharacter;
-    private Map<Integer, Map<Integer, Event>> gameEvents;
+//    private Map<Integer, Event> introGame;
+//    private Map<Integer, Event> introContext;
+//    private Map<Integer, Event> newPlayableCharacter;
+//    private Map<Integer, Map<Integer, Event>> gameEvents;
     
-    private Map<Integer, Event>  introPremierJour;
+//    private Map<Integer, Event>  introPremierJour;
     
     private ArrayList<EnnemyTeam> ennemies;
     private ArrayList<Item> itemsGame;
     private Team playerTeam;
     
-    public Game(String name){
-        gameName = name;
-        gameEvents = new HashMap();
-        introGame = new HashMap();
-        introContext = new HashMap();
-        newPlayableCharacter = new HashMap();
+    public Game(){
+//        gameEvents = new HashMap();
+//        introGame = new HashMap();
+//        introContext = new HashMap();
+//        newPlayableCharacter = new HashMap();
         ennemies = new ArrayList<EnnemyTeam>();
         playerTeam = new Team("Equipe j1");
         itemsGame = new ArrayList<Item>();
@@ -227,7 +224,7 @@ public class Game {
     }
     
     public void newDay(){
-        
+        NewDay nd = new NewDay(playableCharacter, playerTeam, ennemies);
     }
     
     public void introTutorialNight(){
