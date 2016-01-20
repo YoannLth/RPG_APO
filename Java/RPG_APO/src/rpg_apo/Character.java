@@ -21,6 +21,7 @@ public class Character  {
     protected CharacterType charType;
     protected Controler characterControler;
     protected int life;
+    protected int money;
 
     protected int MAX_POINT=50;
 
@@ -266,14 +267,10 @@ public class Character  {
         return infos;
     }
    
-
-//    public void increaseLvl() {
-//        this.level++;
-//        this.characs.put(Characteristic.STRENGTH, (this.characs.get(Characteristic.STRENGTH)+(this.MAX_STR/5)));
-//        this.characs.put(Characteristic.DEXTERITY, this.characs.get(Characteristic.DEXTERITY)+(this.MAX_DEX/5));
-//        this.characs.put(Characteristic.HEALTH, this.characs.get(Characteristic.HEALTH)+(this.MAX_HEALTH/5));
-//        this.characs.put(Characteristic.DEFENCE, this.characs.get(Characteristic.DEFENCE)+(this.MAX_DEF/5));
-//    }
+    public void addMoney(int i){
+        this.money+=i;
+    }
+    
     
     //Initialisaton d'un personnage ennemie appellé boss caracteristique max
 //    public void initCharacteristicBoss(){

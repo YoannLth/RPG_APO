@@ -20,6 +20,7 @@ import rpg_apo.Highbrow;
 import rpg_apo.MaleNurse;
 import rpg_apo.NewMessage;
 import rpg_apo.NewDialog;
+import rpg_apo.NewAppelle;
 import rpg_apo.Character;
 import rpg_apo.CharacterType;
 import rpg_apo.Characteristic; 
@@ -65,6 +66,9 @@ public class Game {
     
     public void launchGame(){
         initializeGameObjects();
+        //initializeEvents();
+        //readEvents();
+        //initializeGameObjects();
         
         introJeu();
         introJoueur();
