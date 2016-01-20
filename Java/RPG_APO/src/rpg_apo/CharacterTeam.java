@@ -13,12 +13,14 @@ import java.util.ArrayList;
  */
 public class CharacterTeam {
     private String name;
+    private int difficuly;
     private ArrayList<Character> characters;
     private ArrayList<Item> rewardItems;
     
-    public CharacterTeam(String n, ArrayList<Character> chars, ArrayList<Item> rewardItms){
+    public CharacterTeam(String n, ArrayList<Character> chars, int difficult, ArrayList<Item> rewardItms){
         this.name = n;
         this.characters = chars;
+        this.difficuly = difficult;
         this.rewardItems = rewardItms;
     }
     
@@ -27,11 +29,6 @@ public class CharacterTeam {
     }
     
     public int getTeamSize(){
-        return 0;
-        
-    }
-    
-    public int getDifficulty(){
         return 0;
         
     }

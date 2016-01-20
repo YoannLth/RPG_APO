@@ -215,15 +215,11 @@ public class Game {
         itemsGame.add(foamTShirt);
         itemsGame.add(plasticTShirt);
         itemsGame.add(kevlarTShirt);
-        
-        
-        
-        
-        
-        
-        ArrayList<CharacterTeam> gang1 = new ArrayList<CharacterTeam>();
-        ArrayList<CharacterTeam> gang2 = new ArrayList<CharacterTeam>();
-        ArrayList<CharacterTeam> gang3 = new ArrayList<CharacterTeam>();
+
+                
+        ArrayList<Character> gang1Members = new ArrayList<Character>();
+        ArrayList<Character> gang2Members = new ArrayList<Character>();
+        ArrayList<Character> gang3Members = new ArrayList<Character>();
         
         Character piranha1 = new Boxer("Joaquin",CharacterType.IA);
         Character piranha2 = new Highbrow("Jesus",CharacterType.IA);
@@ -231,7 +227,9 @@ public class Game {
         piranha1.initCharacteristic(10, 40, 100, 10);
         piranha2.initCharacteristic(10, 40, 100, 10);
         piranha3.initCharacteristic(10, 40, 100, 10);
-        
+        gang1Members.add(piranha1);
+        gang1Members.add(piranha2);
+        gang1Members.add(piranha3);
         
         Character eme1 = new Boxer("Enrique",CharacterType.IA);
         Character eme2 = new Highbrow("Ricardo",CharacterType.IA);
@@ -239,7 +237,9 @@ public class Game {
         eme1.initCharacteristic(20, 50, 125, 20);
         eme2.initCharacteristic(20, 50, 125, 20);
         eme3.initCharacteristic(20, 50, 125, 20);
-        
+        gang2Members.add(eme1);
+        gang2Members.add(eme2);
+        gang2Members.add(eme3);
         
         Character maras1 = new Boxer("Ramiro",CharacterType.IA);
         Character maras2 = new Highbrow("Diego",CharacterType.IA);
@@ -247,11 +247,43 @@ public class Game {
         maras1.initCharacteristic(30, 60, 150, 30);
         maras2.initCharacteristic(30, 60, 150, 30);
         maras3.initCharacteristic(30, 60, 150, 30);
-                
+        gang3Members.add(maras1);
+        gang3Members.add(maras1);
+        gang3Members.add(maras1);
+        
         ArrayList<Item> gang1Rewards = new ArrayList<Item>();
         ArrayList<Item> gang2Rewards = new ArrayList<Item>();
         ArrayList<Item> gang3Rewards = new ArrayList<Item>();
         
+        gang1Rewards.add(growthHormone);
+        gang2Rewards.add(creatin);
+        gang3Rewards.add(steroid);
+        gang1Rewards.add(cafein);
+        gang2Rewards.add(ginseng);
+        gang3Rewards.add(taurine);
+        gang1Rewards.add(miniAdrenaline);
+        gang2Rewards.add(superAdrenaline);
+        gang3Rewards.add(maxiAdrenaline);
+        gang1Rewards.add(vodka);
+        gang2Rewards.add(cocaine);
+        gang3Rewards.add(captagon);
+        gang1Rewards.add(razorBlade);
+        gang2Rewards.add(knuckle);
+        gang3Rewards.add(knife);
+        gang1Rewards.add(foamGloves);
+        gang2Rewards.add(plasticGloves);
+        gang3Rewards.add(kevlarGloves);
+        gang1Rewards.add(foamTShirt);
+        gang2Rewards.add(plasticTShirt);
+        gang3Rewards.add(kevlarTShirt);
         
+        
+        CharacterTeam gang1 = new CharacterTeam("Gang des Piranhas de Lima", gang1Members, 1, gang1Rewards);
+        CharacterTeam gang2 = new CharacterTeam("Gang de la Mara Salvatrucha", gang2Members, 2, gang2Rewards);
+        CharacterTeam gang3 = new CharacterTeam("Gang de la eMe de Cuzco", gang3Members, 3, gang3Rewards);
+        
+        ennemies.add(gang1);
+        ennemies.add(gang2);
+        ennemies.add(gang3);
     }
 }
