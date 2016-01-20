@@ -40,9 +40,6 @@ public class MaleNurse extends Character {
         Armor startArmor = new Armor("Gants ",1, 2, "Gants en tissus qui protège les mains");
         super.addInventary(startArmor, 1);
         
-        Item cafeine = new Item("Caféine", 1, new Effect(Characteristic.DEFENCE, 10,1), "Objet consomable qui augmente la force pour la durée du combat");
-        super.addInventary(cafeine, 1);
-        
         super.activeWeapon = startWeapon;
         super.activeArmors.add(startArmor);
     }    
