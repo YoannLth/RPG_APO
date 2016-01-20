@@ -20,10 +20,10 @@ public class Treatment implements Capacity {
         double succesProbability = 0.0;
         double randomNumber = 0.0;
 
-        int partnerHealth;
+        int targetHealth;
         
         succesProbability = probaReussite();
-        partnerHealth = source.getCharacteristicValue(HEALTH);
+        targetHealth = cible.getCharacteristicValue(HEALTH);
         
         
         Random rand = new Random(); 
@@ -31,12 +31,17 @@ public class Treatment implements Capacity {
         
         if(randomNumber <= succesProbability){
             Characteristic c = HEALTH;
-            int value = (partnerHealth * 25) / 100;
-            displayedMessage = source.getName() + " utilise 'soin' sur " + cible.getName() + " , " + cible.getName() + " gagne " + value + " points de vie!";
-
-            int permanent = 0;
+            int value = (targetHealth * 25) / 100;
             
-        
+            if( (value + cible.getMaxHealth()) > cible.getMaxHealth() ){
+                value = cible.getMaxHealth() - targetHealth;
+                displayedMessage = source.getName() + " tente d'utiliser 'soin' sur " + cible.getName() + " , mais sa santé est presque au maximum," + cible.getName() + " gagne seulement " + value + " points de vie!";
+            }
+            else{
+                displayedMessage = source.getName() + " utilise 'soin' sur " + cible.getName() + " , " + cible.getName() + " gagne " + value + " points de vie!";
+            }
+            
+            int permanent = 0;
             e = new Effect(c,value,permanent);
         }
         else{

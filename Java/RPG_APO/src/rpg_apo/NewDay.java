@@ -41,9 +41,12 @@ public class NewDay extends Event{
                 nc.display();
                 break;
             case 2 :
-                
+                NewWork nw = new NewWork(playableCharacter);
+                nw.display();
                 break;
             case 3 :
+                NewFight nf = new NewFight(playerTeam, ennemies);
+                nf.display();
                 break;
         }  
         

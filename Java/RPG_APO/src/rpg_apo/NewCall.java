@@ -39,7 +39,7 @@ public class NewCall extends Event{
         displayBlue("\t 1. Parents (Réussite : 60% / Récompense : 40$ max)");
         displayBlue("\t 2. Frere (Réussite : 5% / Récompense : 110$ max)");
         displayBlue("\t 3. Petite amie (Réussite : 80% / Récompense : 20$ max)");
-        int rep = readInt("Choisissez une personne : ",1,4);
+        int rep = readInt("Choisissez une personne : ",1,3);
         displayBlue("Le telephone sonne ...");
         switch(rep){
             case 1 : 

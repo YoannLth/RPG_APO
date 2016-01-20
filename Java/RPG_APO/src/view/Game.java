@@ -67,10 +67,12 @@ public class Game {
         //readEvents();
         //initializeGameObjects();
         
-        introJeu();
+        //introJeu();
         introJoueur();
-        introTutorialDay();
-        introTutorialNight();
+        //introTutorialDay();
+        //introTutorialNight();
+        
+        newDay();
         
         //while(true){
             
@@ -225,6 +227,7 @@ public class Game {
     
     public void newDay(){
         NewDay nd = new NewDay(playableCharacter, playerTeam, ennemies);
+        nd.display();
     }
     
     public void introTutorialNight(){
@@ -287,11 +290,11 @@ public class Game {
         team2.add(c2b);
         //team2.add(c2c);
         
-        NewFight fightTest = new NewFight(team1,team2);
-        fightTest.display();
+//        NewFight fightTest = new NewFight(team1,team2);
+//        fightTest.display();
         
-        NewFight fightTest2 = new NewFight(team1,team2);
-        fightTest2.display();
+//        NewFight fightTest2 = new NewFight(team1,team2);
+//        fightTest2.display();
     }
     
     public void initializeGameObjects(){

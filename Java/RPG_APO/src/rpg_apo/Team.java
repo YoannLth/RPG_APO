@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author Yoann
  */
 public class Team {
-    private String name;
-    private ArrayList<Character> characters;
+    protected String name;
+    protected ArrayList<Character> characters;
     
     public Team(String n, ArrayList<Character> chars){
         this.name = n;
@@ -30,7 +30,14 @@ public class Team {
     }
     
     public int getTeamSize(){
-        return 0;
-        
+        return characters.size(); 
+    }
+    
+    public ArrayList<Character> getTeam(){
+        return this.characters;
+    }
+    
+    public String getName(){
+        return this.name;
     }
 }

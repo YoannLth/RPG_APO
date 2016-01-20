@@ -20,14 +20,9 @@ public class EnnemyTeam extends Team{
         this.difficuly = difficult;
         this.rewardItems = rewardItms;
     }
-    
-    public void addMember(){
-        
-    }
-    
-    public int getTeamSize(){
-        return 0;
-        
+
+    public int getDifficulty(){
+        return this.difficuly;
     }
     
     public int moneyGivenWhenLoose(){
