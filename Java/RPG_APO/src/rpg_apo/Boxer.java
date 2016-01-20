@@ -25,6 +25,7 @@ public class Boxer extends Character  {
 
     public void upLvl(){
         super.upLvlFromInt(1);
+        super.upLvl();
         int newDefence = 1;
         int newStrength = 2;
         int newDexterity = 1;

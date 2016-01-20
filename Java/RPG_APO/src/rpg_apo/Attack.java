@@ -48,7 +48,7 @@ public class Attack implements Capacity {
             }
             int permanent = 0;
             
-            value = value * 10;
+            value = value * 30;
             e = new Effect(c,value,permanent);
         }
         else{

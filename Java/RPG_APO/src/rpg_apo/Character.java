@@ -316,12 +316,15 @@ public class Character  {
         
         characteristicValue = characteristicValue + upValue;
         if(characteristicValue < maxValueCharacteristic){
-            characs.replace(characteristicToAlter, characteristicValue);
+            //characs.replace(characteristicToAlter, characteristicValue);
+            characs.remove(characteristicToAlter);
+            characs.put(characteristicToAlter, characteristicValue);
             displayBlue(this.name + " augmente sa " + characteristicToAlter.name() + " de " + upValue + "!");
         }
         else{
             characteristicValue = maxValueCharacteristic;
-            characs.replace(characteristicToAlter, characteristicValue);
+            characs.remove(characteristicToAlter);
+            characs.put(characteristicToAlter, characteristicValue);
             displayBlue(this.name + " a atteind le palier maximum pour sa " + characteristicToAlter.name() + "!");
         }
         

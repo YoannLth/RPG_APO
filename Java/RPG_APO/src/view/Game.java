@@ -29,6 +29,7 @@ import rpg_apo.Event;
 import rpg_apo.Item;
 import rpg_apo.NewDay;
 import rpg_apo.NewFight;
+import rpg_apo.NewNight;
 import rpg_apo.Team;
 import rpg_apo.Weapon;
 import static view.Console.*;
@@ -65,18 +66,18 @@ public class Game {
         initializeGameObjects();
         //initializeEvents();
         //readEvents();
-        //initializeGameObjects();
         
-        //introJeu();
+        introJeu();
         introJoueur();
-        //introTutorialDay();
-        //introTutorialNight();
+        introTutorialDay();
+        introTutorialNight();
         
-        newDay();
         
-        //while(true){
-            
-        //}
+        
+        while(true){
+            newDay();
+            newNight();
+        }
         
         //testCombat();
     }
@@ -228,6 +229,11 @@ public class Game {
     public void newDay(){
         NewDay nd = new NewDay(playableCharacter, playerTeam, ennemies);
         nd.display();
+    }
+    
+    public void newNight(){
+        NewNight nn = new NewNight(playableCharacter);
+        nn.display();
     }
     
     public void introTutorialNight(){
