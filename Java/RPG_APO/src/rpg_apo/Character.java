@@ -22,10 +22,6 @@ public class Character  {
     protected Controler characterControler;
     protected int life;
 
-    protected int MAX_STR;
-    protected int MAX_DEF;
-    protected int MAX_DEX;
-    protected int MAX_HEALTH;
     protected int MAX_POINT=50;
 
 
@@ -195,43 +191,53 @@ public class Character  {
         return this.characterControler;
     }
 
-    public void initCharacterPlayer(){
-        int pointAttribuer=0;
-        int str, def, health, dex;
-        displayBlue("Vous disposé de "+this.MAX_POINT+" points a répartir sur vos 3 characateristique");
-        str = readInt("\tSTRENGTH : (max = "+this.MAX_STR+") : ",1,this.MAX_STR);
-        dex = readInt("\tDEXTERITY : (max = "+this.MAX_DEX+") : ",1,this.MAX_DEX);
-        def = readInt("\tDEFENCE : (max = "+this.MAX_DEF+") : ",1,this.MAX_DEF);
-        pointAttribuer=str+dex+def;
-        while(pointAttribuer!=this.MAX_POINT){
-            displayBlue("Il vous reste "+(this.MAX_POINT-pointAttribuer)+"points a attribuer");
-            str = readInt("\tSTRENGTH : (max = "+this.MAX_STR+", actuel = "+str+") : ",1,this.MAX_STR);
-            dex = readInt("\tDEXTERITY : (max = "+this.MAX_DEX+", actuel = "+dex+") : ",1,this.MAX_DEX);
-            def = readInt("\tDEFENCE : (max = "+this.MAX_DEF+", actuel = "+def+") : ",1,this.MAX_DEF);
-            pointAttribuer=str+dex+def;
-        }
-        initCharacteristic(str,dex,getMaxHealth()*3,def);
-    }
+//    public void initCharacterPlayer(){
+//        int pointRestant=0;
+//        int str, def, dex;
+//        str = 0;
+//        def = 0;
+//        dex = 0;
+//        displayBlue("Vous disposé de "+this.MAX_POINT+" points a répartir sur vos 3 characateristique");
+//        pointRestant=this.MAX_POINT;
+//        while(pointRestant>0){
+//            str = ControlerUI.readInt("\tSTRENGTH : (max = "+this.MAX_STR+") : ",1,this.MAX_STR);
+//            pointRestant=this.MAX_POINT - str;
+//            if(pointRestant == 0){
+//                break;
+//            }
+//            else{
+//                dex = ControlerUI.readInt("\tDEXTERITY : (max = "+this.MAX_DEX+") : ",1,pointRestant);
+//                pointRestant=pointRestant - dex;
+//            }
+//            if(pointRestant == 0){
+//                break;
+//            }
+//            else{
+//                def = ControlerUI.readInt("\tDEFENCE : (max = "+this.MAX_DEF+") : ",1,pointRestant);
+//                pointRestant=pointRestant - dex;
+//            }
+//        }
+//        initCharacteristic(str,dex,getMaxHealth(),def);
+//    }
     
     public void initCharacteristic(int s, int d, int h, int def)
     {
         this.characs = new HashMap();
         this.characs.put(Characteristic.STRENGTH, s);
         this.characs.put(Characteristic.DEXTERITY, d);
-        this.characs.put(Characteristic.HEALTH, h);
+        this.characs.put(Characteristic.HEALTH, this.getMaxHealth());
         this.characs.put(Characteristic.DEFENCE, def);
-        this.life=h;
     }
     
     public int getCharacteristicValue(Characteristic c){
         return this.characs.get(c);
     }
     
-    public void setMax(int def,int str,int dext){
-        this.MAX_DEF=def;
-        this.MAX_STR=str;
-        this.MAX_DEX=dext;
-    }
+//    public void setMax(int def,int str,int dext){
+//        this.MAX_DEF=def;
+//        this.MAX_STR=str;
+//        this.MAX_DEX=dext;
+//    }
     
     public int getMaxHealth(){
         return 200+this.level*3;
@@ -261,18 +267,18 @@ public class Character  {
     }
    
 
-    public void increaseLvl() {
-        this.level++;
-        this.characs.put(Characteristic.STRENGTH, (this.characs.get(Characteristic.STRENGTH)+(this.MAX_STR/5)));
-        this.characs.put(Characteristic.DEXTERITY, this.characs.get(Characteristic.DEXTERITY)+(this.MAX_DEX/5));
-        this.characs.put(Characteristic.HEALTH, this.characs.get(Characteristic.HEALTH)+(this.MAX_HEALTH/5));
-        this.characs.put(Characteristic.DEFENCE, this.characs.get(Characteristic.DEFENCE)+(this.MAX_DEF/5));
-    }
+//    public void increaseLvl() {
+//        this.level++;
+//        this.characs.put(Characteristic.STRENGTH, (this.characs.get(Characteristic.STRENGTH)+(this.MAX_STR/5)));
+//        this.characs.put(Characteristic.DEXTERITY, this.characs.get(Characteristic.DEXTERITY)+(this.MAX_DEX/5));
+//        this.characs.put(Characteristic.HEALTH, this.characs.get(Characteristic.HEALTH)+(this.MAX_HEALTH/5));
+//        this.characs.put(Characteristic.DEFENCE, this.characs.get(Characteristic.DEFENCE)+(this.MAX_DEF/5));
+//    }
     
     //Initialisaton d'un personnage ennemie appellé boss caracteristique max
-    public void initCharacteristicBoss(){
-        initCharacteristic(this.MAX_STR, this.MAX_DEX, this.MAX_HEALTH, this.MAX_DEF);
-    }
+//    public void initCharacteristicBoss(){
+//        initCharacteristic(this.MAX_STR, this.MAX_DEX, this.MAX_HEALTH, this.MAX_DEF);
+//    }
     
     public boolean isAlive(){
         boolean isAlive = true;
@@ -295,6 +301,10 @@ public class Character  {
         characs.put(characteristicToAlter, characteristicValue);
     }
 
+    
+    public void initCharacteristics(int difficulty){
+        
+    };
 }
 
 

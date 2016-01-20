@@ -10,16 +10,16 @@ public class Boxer extends Character  {
     private int weightMax;
     private Map<Characteristic, Integer> characsMax;
     
-    private int MAX_DEFENCE = 30;
-    private int MAX_STRENGTH = 30;
-    private int MAX_DEXTERITY = 10;
+    private int DEFENCE_MAX = 25;
+    private int STRENGTH_MAX = 50;
+    private int DEXTERITY_MAX = 25;
     
             
             
     public Boxer(String nameCharacter,CharacterType charT) {
 
         super(nameCharacter,"Boxeur", "Vous êtes un boxeur, poids lourd. Vous corpulence, vos marques sur le visage et vos tatouages vous donne l'air agressif. Votre puissance vous accorde un bonus de Force.",charT);
-        setMax(this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY);
+//        setMax(this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY);
         initBoxerInventary();
     }
 
@@ -46,9 +46,6 @@ public class Boxer extends Character  {
     
     
     private void initBoxerInventary(){
-        Item money = new Item("Dollars", 0, "Argent à dépenser");
-        super.addInventary(money, 10);
-        
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");
         super.addInventary(startWeapon, 1);
         
@@ -62,4 +59,21 @@ public class Boxer extends Character  {
         super.activeArmors.add(startArmor);
     }
 
+    
+    public void initCharacteristics(int difficulty) {
+        switch(difficulty){
+            case 1:
+                super.initCharacteristic((((STRENGTH_MAX)/10)*3), (((DEXTERITY_MAX)/10)*3), super.getMaxHealth(), (((DEFENCE_MAX)/10)*3));
+                break;
+            case 2:
+                super.initCharacteristic((((STRENGTH_MAX)/10)*6), (((DEXTERITY_MAX)/10)*6), super.getMaxHealth(), (((DEFENCE_MAX)/10)*6));
+                break;
+            case 3:
+                super.initCharacteristic(STRENGTH_MAX, DEXTERITY_MAX, super.getMaxHealth(), DEFENCE_MAX);
+                break;    
+            default:
+                super.initCharacteristic(STRENGTH_MAX, DEXTERITY_MAX, super.getMaxHealth(), DEFENCE_MAX);
+                break;
+        }
+    }
 }

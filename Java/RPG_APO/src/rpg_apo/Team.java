@@ -11,21 +11,22 @@ import java.util.ArrayList;
  *
  * @author Yoann
  */
-public class CharacterTeam {
+public class Team {
     private String name;
-    private int difficuly;
     private ArrayList<Character> characters;
-    private ArrayList<Item> rewardItems;
     
-    public CharacterTeam(String n, ArrayList<Character> chars, int difficult, ArrayList<Item> rewardItms){
+    public Team(String n, ArrayList<Character> chars){
         this.name = n;
         this.characters = chars;
-        this.difficuly = difficult;
-        this.rewardItems = rewardItms;
     }
     
-    public void addMember(){
-        
+    public Team(String n){
+        this.name = n;
+        this.characters = new ArrayList<Character>();
+    }
+    
+    public void addMember(Character c){
+        this.characters.add(c);
     }
     
     public int getTeamSize(){

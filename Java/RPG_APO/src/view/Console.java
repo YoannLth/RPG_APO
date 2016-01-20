@@ -65,7 +65,7 @@ public class Console {
     {
         for(int clear = 0; clear < 3; clear++)
             {
-               System.out.println(".") ;
+               System.out.println("") ;
             }
     }
     

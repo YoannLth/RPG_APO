@@ -7,15 +7,14 @@ import static view.Console.displayRed;
 public class Highbrow extends Character {
 
     private int weightMax;
-    private Map<Characteristic, Integer> characsMax;
     
-    private int MAX_DEFENCE = 15;
-    private int MAX_STRENGTH = 15;
-    private int MAX_DEXTERITY = 40;
+    private int DEFENCE_MAX = 30;
+    private int STRENGTH_MAX = 30;
+    private int DEXTERITY_MAX = 40;
     
     public Highbrow(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Intellectuel", "Vous êtes un Intellectuel. Votre intelligence vous pousse instinctivement a vous entourez des bonnes personnes pour vous survivre. \nAucun bonus pour le moment",charT);    
-        setMax(this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY);
+//        setMax(this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY);
         initHighbrowInventary(); 
 //        int str,dex,health,def;
 //        int pointAttribuer=0;
@@ -39,9 +38,6 @@ public class Highbrow extends Character {
     
     private void initHighbrowInventary()
     {
-        Item money = new Item("Dollars", 0, "Argent à dépenser");
-        super.addInventary(money, 10);
-        
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");
         super.addInventary(startWeapon, 1);
         
@@ -53,6 +49,23 @@ public class Highbrow extends Character {
         
         super.activeWeapon = startWeapon;
         super.activeArmors.add(startArmor);
+    }
+    
+    public void initCharacteristics(int difficulty) {
+        switch(difficulty){
+            case 1:
+                super.initCharacteristic((((STRENGTH_MAX)/10)*3), (((DEXTERITY_MAX)/10)*3), super.getMaxHealth(), (((DEFENCE_MAX)/10)*3));
+                break;
+            case 2:
+                super.initCharacteristic((((STRENGTH_MAX)/10)*6), (((DEXTERITY_MAX)/10)*6), super.getMaxHealth(), (((DEFENCE_MAX)/10)*6));
+                break;
+            case 3:
+                super.initCharacteristic(STRENGTH_MAX, DEXTERITY_MAX, super.getMaxHealth(), DEFENCE_MAX);
+                break;    
+            default:
+                super.initCharacteristic(STRENGTH_MAX, DEXTERITY_MAX, super.getMaxHealth(), DEFENCE_MAX);
+                break;
+        }
     }
     
     public void calculateMaximumCharacteristics() {
