@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import static rpg_apo.Characteristic.*;
 import static rpg_apo.ControlerUI.readInt;
+import view.Console;
 import static view.Console.*;
 
 public class Character  {
@@ -138,7 +139,8 @@ public class Character  {
         int somme=0;
 
         for(Map.Entry<Item, Integer> item : inventary.entrySet()){
-            somme = item.getKey().getWeight() + somme;
+            int itemWeight = item.getKey().getWeight() * item.getValue();
+            somme = itemWeight + somme;
         }
         return somme;
     }
@@ -257,15 +259,18 @@ public class Character  {
         this.characs.replace(HEALTH, maxLife);
     }
     
-    public String putCaracteristics(){
-        String s;
-        s="--------------------------------Caracteristic de "+this.name+"----------------------------------";
-        s+="\n\tLevel : "+this.level;
-        s=s+"\n\tHEALTH : "+getCharacteristicValue(HEALTH)+"/"+this.life;
-        s=s+"\n\tSTRENGTH : "+getCharacteristicValue(STRENGTH);
-        s=s+"\n\tDEFENCE : "+getCharacteristicValue(DEFENCE);
-        s=s+"\n\tDEXTERITY : "+getCharacteristicValue(DEXTERITY);
-        return s;
+    public void getPlayerInfos(){
+        Console.displayBlue("--------------------------------"+this.name+"----------------------------------");
+        Console.displayBlue("\n\tNiveau : "+this.level);
+        Console.displayBlue("\n\tSanté : "+getCharacteristicValue(HEALTH)+"/"+this.getMaxHealth());
+        Console.displayBlue("\n\tForce : "+getCharacteristicValue(STRENGTH));
+        Console.displayBlue("\n\tDéfense : "+getCharacteristicValue(DEFENCE));
+        Console.displayBlue("\n\tDexterité : "+getCharacteristicValue(DEXTERITY));
+        Console.displayBlue("--------------------------------------");
+        Console.displayBlue("\n\tPoids inventaire: "+getWeightInventary());
+        Console.displayBlue("\n\tArgent: "+ getMoney() + "€");
+        Console.displayBlue("\n\tArmures : "+getArmorsInfos());
+        Console.displayBlue("\n\tArme : "+getWeaponInfos());
     }
     
     public String getNameAndInfos(){
@@ -337,6 +342,74 @@ public class Character  {
     
     public int getMoney(){
         return this.money;
+    }
+    
+    public void equipArmor(Armor a){
+        displayGreen("" + activeArmors.size());
+        if(activeArmors.size() < 2){
+            displayBlue("Armure équipée! (" + a.getName() + ")");
+            activeArmors.add(a);
+            deleteItem(a);
+        }
+        else{
+            displayBlue("Plus de places");
+            int choice = DisplayUI.getActiveArmors(this);
+            activeArmors.remove((choice-1));
+            equipArmor(a);
+        }
+    }
+
+    
+    public Weapon getWeapon(){
+        return this.activeWeapon;
+    }
+    
+    public void equipWeapon(Weapon w){
+        displayBlue("Armure équipée!" + w.getItemInfos());
+        
+        if(activeWeapon ==  null){
+            activeWeapon = w;
+        }
+        else{
+            Weapon currentWeapon = activeWeapon;
+            addInventary(currentWeapon, 1);
+            
+            activeWeapon = w;
+            
+            deleteItem(w);
+        }
+    }
+    
+    public void deleteItem(Item i){
+        int numberOfOccurenceItem = inventary.get(i);
+        
+        if(numberOfOccurenceItem > 1){
+            inventary.replace(i, (numberOfOccurenceItem-1));
+            displayBlue("Un exemplaire de l'objet à été supprimé!");
+        }
+        else{
+            inventary.remove(i);
+            displayBlue("L'objet à été supprimé de l'inventaire!");
+        }
+    }
+    
+    public String getArmorsInfos(){
+        String res = "";
+        
+        for(int i=0;i<this.activeArmors.size();i++){
+            res = res + activeArmors.get(i).getItemInfos();
+            res = res + " / ";
+        }
+        
+        return res;
+    }
+    
+    public String getWeaponInfos(){
+        String res = "";
+        
+        res = res + activeWeapon.getName() + "(" + activeWeapon.getDamage() + ")";
+        
+        return res;
     }
 }
 

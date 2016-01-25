@@ -34,9 +34,9 @@ public class NewWork extends Event{
         displayContinue();
         
         displayBlue("La journe est maintenant terminé. Vous avez bien travaillé!");
-        displayBlue("Vous avez gagné 8$ aujourd'hui.");  
+        displayBlue("Vous avez gagné 100$ aujourd'hui.");  
         
-        c.addMoney(8);
+        c.addMoney(600);
         displayContinue();
     }
         

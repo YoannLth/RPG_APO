@@ -67,12 +67,12 @@ public class Game {
         //initializeEvents();
         //readEvents();
         
-        introJeu();
+        //introJeu();
         introJoueur();
-        introTutorialDay();
-        introTutorialNight();
+        //introTutorialDay();
+        //introTutorialNight();
         
-        
+        testInventaire();
         
         while(true){
             newDay();
@@ -328,9 +328,9 @@ public class Game {
         Armor plasticGloves = new Armor("Gants avec renforts en plastique", 5, 10, "gants qui protègent moyennement le personnage");
         Armor kevlarGloves = new Armor("Gants avec renforts en kevlar", 6, 20, "gants lourds qui protègent fortement le personnage");
         
-        Armor foamTShirt = new Armor("Gants avec renforts en mousse", 4, 5, "t-shirt légers qui protègent faiblement le personnage");
-        Armor plasticTShirt = new Armor("Gants avec renforts en plastique", 10, 5, "t-shirt lourds qui protègent moyennement le personnage");
-        Armor kevlarTShirt = new Armor("Gants avec renforts en kevlar", 6, 20, "t-shirt lourds qui protègent fortement le personnage");
+        Armor foamTShirt = new Armor("T-shirt avec renforts en mousse", 4, 5, "t-shirt légers qui protègent faiblement le personnage");
+        Armor plasticTShirt = new Armor("T-shirt avec renforts en plastique", 10, 5, "t-shirt lourds qui protègent moyennement le personnage");
+        Armor kevlarTShirt = new Armor("T-shirt avec renforts en kevlar", 6, 20, "t-shirt lourds qui protègent fortement le personnage");
         
         itemsGame.add(growthHormone);
         itemsGame.add(creatin);
@@ -423,5 +423,11 @@ public class Game {
         ennemies.add(gang1);
         ennemies.add(gang2);
         ennemies.add(gang3);
+    }
+    
+    public void testInventaire(){
+        for(int i=0; i<itemsGame.size();i++){
+            playableCharacter.addInventary(itemsGame.get(i), 2);
+        }
     }
 }

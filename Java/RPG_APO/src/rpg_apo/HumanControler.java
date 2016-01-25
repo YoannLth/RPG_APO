@@ -91,5 +91,6 @@ public class HumanControler extends Controler {
         
         return a;
     }
+
     
 }
