@@ -158,7 +158,7 @@ public class NewFight extends Event{
     public EnnemyTeam getEnnemyTeam(){
         displayBlue("Quel Gang voulez vous affronter?");
         for(int i=0; i<ennemies.size(); i++){
-            displayBlue("\t " + (i+1) + ". " + ennemies.get(i).getName() + "(Difficulté : " + ennemies.get(i).getDifficulty() + ")");
+            displayBlack("\t " + (i+1) + ". " + ennemies.get(i).getName() + "(Difficulté : " + ennemies.get(i).getDifficulty() + ")");
         }
         int rep = readInt("Choisissez une gang a affronter : ",1,ennemies.size());
         
