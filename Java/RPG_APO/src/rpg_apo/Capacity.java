@@ -13,7 +13,7 @@ public interface Capacity {
 	 * 
 	 * @param src
 	 */
-	double probaReussite();
+	double probaSuccess();
 
         
         

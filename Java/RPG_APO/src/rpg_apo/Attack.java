@@ -27,7 +27,7 @@ public class Attack implements Capacity {
         characterStrength = source.getCharacteristicValue(STRENGTH);
         characterEquipedWeampon = source.getActiveWeapon();
         characterWeaponDamage = characterEquipedWeampon.getDamage();
-        succesProbability = probaReussite();
+        succesProbability = probaSuccess();
         opponentDefence = cible.getCharacteristicValue(DEFENCE);
         
         
@@ -63,7 +63,7 @@ public class Attack implements Capacity {
         return e;
     }
     
-    public double probaReussite(){
+    public double probaSuccess(){
         // 70% de réussite de base + dexterité
         // 90% max
         double probaR = 70.0;

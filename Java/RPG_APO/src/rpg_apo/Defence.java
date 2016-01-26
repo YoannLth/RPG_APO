@@ -21,7 +21,7 @@ public class Defence implements Capacity {
         int characterDefence;
         
         characterDefence = source.getCharacteristicValue(DEFENCE );
-        succesProbability = probaReussite();
+        succesProbability = probaSuccess();
                 
         Random rand = new Random();
         randomNumber = (100.0 - 0.0) * rand.nextDouble();
@@ -48,7 +48,7 @@ public class Defence implements Capacity {
     }
 
     @Override
-    public double probaReussite() {
+    public double probaSuccess() {
         // 70% de réussite de base + défense
         // 90% max
         double probaR = 70.0;
