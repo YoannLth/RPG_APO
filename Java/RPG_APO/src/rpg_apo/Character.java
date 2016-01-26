@@ -280,7 +280,7 @@ public class Character  {
             infos = this.getName() + " ( Santé : " + characs.get(HEALTH)+" sur "+ this.getMaxHealth() + "/ Defense : " + characs.get(DEFENCE) + "/ Force : " + characs.get(STRENGTH) + "/ Dexterité : " + characs.get(DEXTERITY) + ")";
         }
         else{
-            infos = this.getName() + " (Viens juste de mourir)";
+            infos = this.getName() + " (Viens juste de tomber KO)";
         }
         return infos;
     }

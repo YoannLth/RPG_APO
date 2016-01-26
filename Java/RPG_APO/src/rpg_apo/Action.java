@@ -32,11 +32,11 @@ public class Action {
                     actionDisplay = cap.getDisplayMessage();  
                     }
                     else{
-                        actionDisplay = src.getName() + " esseye d'utiliser une capacité sur " + target.getName() + ", mais il est mort, cela ne fait aucun effet!";
+                        actionDisplay = src.getName() + " esseye d'utiliser une capacité sur " + target.getName() + ", mais il est KO, cela ne fait aucun effet!";
                     }
                 }
                 else{
-                    actionDisplay = src.getName() + " est mort, il ne peut pas utiliser de capacités!";
+                    actionDisplay = src.getName() + " est KO, il ne peut pas utiliser de capacités!";
                 }
             }
             else{
@@ -48,11 +48,11 @@ public class Action {
                     src.deleteInventary(consum);
                     }
                     else{
-                        actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item! ";
+                        actionDisplay = src.getName() + " est KO, il ne peut pas utiliser d'item! ";
                     }
                 }
                 else{
-                    actionDisplay = src.getName() + " est mort, il ne peut pas utiliser d'item!";
+                    actionDisplay = src.getName() + " est KO, il ne peut pas utiliser d'item!";
                 }
             }
             return actionDisplay;
