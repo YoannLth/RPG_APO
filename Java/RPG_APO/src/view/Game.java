@@ -38,86 +38,33 @@ public class Game {
     
     private ArrayList<Character> team1;
     private ArrayList<Character> team2;
-    
-    private Character playableCharacter;
-    
-//    private Map<Integer, Event> introGame;
-//    private Map<Integer, Event> introContext;
-//    private Map<Integer, Event> newPlayableCharacter;
-//    private Map<Integer, Map<Integer, Event>> gameEvents;
-    
-//    private Map<Integer, Event>  introPremierJour;
-    
+    private Character playableCharacter;    
     private ArrayList<EnnemyTeam> ennemies;
     private ArrayList<Item> itemsGame;
     private Team playerTeam;
     
     public Game(){
-//        gameEvents = new HashMap();
-//        introGame = new HashMap();
-//        introContext = new HashMap();
-//        newPlayableCharacter = new HashMap();
         ennemies = new ArrayList<EnnemyTeam>();
         playerTeam = new Team("Equipe j1");
         itemsGame = new ArrayList<Item>();
     }
     
+    // "Main function"
     public void launchGame(){
         initializeGameObjects();
-        //initializeEvents();
-        //readEvents();
         
         introJeu();
         introJoueur();
-        //introTutorialDay();
-        //introTutorialNight();
-        
-        //testInventaire();
+        introTutorialDay();
+        introTutorialNight();
         
         while(true){
             newDay();
             newNight();
         }
-        
-        //introFin();
     }
     
-    public void introFin(){
-        displayBlack("Il est maintenant l'heure pour vous de partir. ");
-        displayBlack("Apres avoir passé l'intégralité de la somme demandée par votre voisin de cellule celui-ci vous ");
-        displayBlack("indique qu'il doit contacter son complice et vous fait patienter quelques jours de plus en vous demandant d'être discret.");
-        displayBlack("Vous passez vos journées au travail pénitencier ou à appeller votre famille.");
-        displayContinue();
-        displayBlack("Cinq jours plus tard Jese vous previent que  l'évasion est prévue pour la nuit du lendemin. Il vous prévient qu'une fois sorti de ");
-        displayBlack("prison il faudra vous debrouiller.");
-        displayContinue();
-        displayBlack("C'est maintenant le jour \"J\". Vous n'avez pas réussi à dormir la nuit passée, et avez tant bien que mal essayé");
-        displayBlack("de vous reposer pendant la journé pour être en forme.");
-        displayBlack("Une fois seul dans la cellule, Hector vous demande de tendre un drap blanc devant celle-ci pour vous cacher de l'exterieur.");
-        displayBlack("Septique, cet acte est en effet mal vu par les autres prisoniers pouvant s'induirent en erreur. ");
-        displayContinue();
-        displayBlack("Une fois à l'abri des regards Hector vous montre qu'il est possible de dévisser le lavabo afin de casser le mur se trouvant derrière");
-        displayBlack("donnant sur une galerie. ");
-        displayBlack("Intimidé, vous n'hésitez pas longtemps avant de le suivre danc ce couloir. ");
-        displayContinue();
-        displayBlack("Au bout, vous appercevez une fenêtre donnant sur l'exterieur. Malheureusement vous êtes au cinquième étages de la prison; il est impossible d'envisager de sauter.");
-        displayBlack("Hector vous regarde est vous dit de patienter encore quelques instant jusqu'à \"l'annonce du signal\".");
-        displayContinue();
-        displayBlack("\"BOOOM\" ");
-        displayContinue();
-        displayBlack("Vous ne voyez rien mais entendez une énorme explosion qui vient sûrement de l'autre côté de la prison.");
-        displayBlack("Sans attendre, Jese saisit une corde que vous n'aviez pas vue, l'accroche pour descendre. ");
-        displayContinue();
-        displayBlack("Abasourdi, vous mettez quelques secondes à vous resaisir avant de suivre Jese.");
-        displayBlack("Arrivé en bas, celui-ci vous attend au pied du mur et vous fait signe de vous dêchécher. ");
-        displayContinue();
-        displayBlack("Vous êtes hors des murs de la prison et vous courez au plus vite vers les bois les plus proches.");
-        displayBlack("En effet, Jese avait un second complice qui devait vous attendre quelques kilometres plus loin.");
-        displayContinue();
-        displayBlack("Quelque jours après vous entendez à la radio que l'explosion devant la prison était une voiture piégée.");
-        displayBlack("Cette diversion a empêché la police de réagir rapidement ce qui vous a permi de prendre une longueur d'avance.");
-    }
-    
+    // Function who display intro script of the game
     public void introJeu(){
         //Affichage du script qui introduit le contexte du jeu
         displayBlack("Vous etes sur le point de repartir d'Amerique du sud ou vous avez effectué un agréable voyage au dépend de vos ressources.");
@@ -150,6 +97,7 @@ public class Game {
         displayContinue();
     }
     
+    // Function who display player initialization intro script
     public void introJoueur(){
         displayBlack("*Le lendemain*");
         displayBlack("Après avoir passé la nuit au poste de police, on vous a transferé dans la prison.");
@@ -235,6 +183,7 @@ public class Game {
         displayContinue();
     }
     
+    // Function who display intro the tutorial of day activities
     public void introTutorialDay(){
         displayBlack("\t - HECTOR : Mec, viens faire un tour avec moi dans la cours, je vais t'expliquer le fonctionnement");
         displayBlack("\t - PERSONNAGE : Ok, si tu veux");
@@ -270,6 +219,7 @@ public class Game {
         nn.display();
     }
     
+    // Function who display intro the tutorial of night activities
     public void introTutorialNight(){
         displayBlack("\t - HECTOR : Maintenant que tu as vu la cours, je vais te présenter la cellule plus en details");
         displayContinue();
@@ -293,7 +243,7 @@ public class Game {
         displayContinue();
     }
     
-    
+    // Fonction de test des combats (plus utilisé mais laissé au cas ou)
     public void testCombat(){
         team1 = new ArrayList<Character>();
         team2 = new ArrayList<Character>();
@@ -337,6 +287,7 @@ public class Game {
 //        fightTest2.display();
     }
     
+    // Function who initialize game objects
     public void initializeGameObjects(){
         ConsumableItem growthHormone = new ConsumableItem("Hormone de croissance", 1, Characteristic.STRENGTH, 10, "hormones qui augmente la force temporairement de 10 points");
         ConsumableItem creatin = new ConsumableItem("Créatine", 2, Characteristic.STRENGTH, 20, "substance qui augmente la force temporairement de 20 points");
@@ -459,6 +410,7 @@ public class Game {
         ennemies.add(gang3);
     }
     
+    // Fonction de test
     public void testInventaire(){
         for(int i=0; i<itemsGame.size();i++){
             playableCharacter.addInventary(itemsGame.get(i), 2);

@@ -1,7 +1,6 @@
 package rpg_apo;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 
 public abstract class Controler {
@@ -17,5 +16,4 @@ public abstract class Controler {
         
         public abstract Action getCapacity(int choosenInt, ArrayList<Character> adversaires, ArrayList<Character> partners);
         
-        //public abstract Armor getArmor();
 }

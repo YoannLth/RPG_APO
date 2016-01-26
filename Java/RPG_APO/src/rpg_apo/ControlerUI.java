@@ -6,9 +6,7 @@
 
 package rpg_apo;
 
-import java.util.Map;
 import java.util.Scanner;
-import static view.Console.displayBlack;
 import static view.Console.displayRed;
 
 /**
