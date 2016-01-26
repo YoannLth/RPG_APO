@@ -2,30 +2,17 @@ package rpg_apo;
 
 public class Armor extends Item {
 
-	/**
-	 * 
-	 * @param name
-	 * @param weight
-	 * @param resistance
-	 * @param manageability
-	 */
+    // Resistance of the armor (defence)
     private int resistance;
-        /*
-	public Armor(int name, int weight, int resistance, int manageability) {
-		// TODO - implement Armor.Armor
-		throw new UnsupportedOperationException();
-                
-	}
-        */
     
+    // Constructor
+    public Armor(String name, int poid, int resistance, String itemExplaination)
+    {
+        super(name, poid,new Effect(Characteristic.DEFENCE, resistance,10000), itemExplaination );
+    }
+    
+    // Return the resitance of the armor
     public int getResistance(){
         return this.resistance;
     }
-    
-    
-    public Armor(String name, int poid, int resistance, String itExplaination)
-    {
-        super(name, poid,new Effect(Characteristic.DEFENCE, resistance,10000), itExplaination );
-    }
-
 }
