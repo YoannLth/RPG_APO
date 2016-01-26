@@ -36,9 +36,9 @@ public class NewCall extends Event{
     public void display(){
         int earnedMoney=0;
         displayBlue("Vous avez choisi d'appeler quelqu'un pour demander de l'argent. Qui voulez vous appeler?");
-        displayBlue("\t 1. Parents (Réussite : 60% / Récompense : 40$ max)");
-        displayBlue("\t 2. Frere (Réussite : 5% / Récompense : 110$ max)");
-        displayBlue("\t 3. Petite amie (Réussite : 80% / Récompense : 20$ max)");
+        displayBlack("\t 1. Parents (Réussite : 60% / Récompense : 40$ max)");
+        displayBlack("\t 2. Frere (Réussite : 5% / Récompense : 110$ max)");
+        displayBlack("\t 3. Petite amie (Réussite : 80% / Récompense : 20$ max)");
         int rep = readInt("Choisissez une personne : ",1,3);
         displayBlue("Le telephone sonne ...");
         switch(rep){
