@@ -38,7 +38,7 @@ public class DisplayUI  {
         displayBlack("\t 2. Utiliser 'Défense'");
         displayBlack("\t 3. Utiliser 'Soin'");
         
-        int choice = ControlerUI.readInt("Entrez un nombre entre 1 et : ", 1, maxCapacity);
+        int choice = ControlerUI.readInt("Selectionner une capacité : ", 1, maxCapacity);
         return choice;
     }
     

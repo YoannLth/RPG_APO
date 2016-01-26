@@ -1,25 +1,20 @@
 package rpg_apo;
 
-import java.util.Map;
-import static rpg_apo.ControlerUI.readInt;
-import static view.Console.displayRed;
-
 public class MaleNurse extends Character {
-
-    private int weightMax;
-    private Map<Characteristic, Integer> characsMax;
+    // A MaleNurse is an extension of a character, caracterised by :
+    private int weightMax; // Maximum of inventary weight
+    private int DEFENCE_MAX = 40; // Max defence
+    private int STRENGTH_MAX = 30; // Max strength
+    private int DEXTERITY_MAX = 30; // Max dexterity
     
-    private int DEFENCE_MAX = 40;
-    private int STRENGTH_MAX = 30;
-    private int DEXTERITY_MAX = 30;
-    
+    // Constructor of the boxer
     public MaleNurse(String nameCharacter,CharacterType charT) {
         super(nameCharacter,"Infirmier", "Vous êtes un Infirmier. Vous savez comment maintenir votre santé au plus haut. Vous avez plus de chance de rester en bonne santé. \nSanté fortement augmenté",charT);    
-//        setMax(this.MAX_DEFENCE,this.MAX_STRENGTH,this.MAX_DEXTERITY);
         initMaleNurseInventary(); 
     }
 
-
+    @Override
+    // Overrided function called when the character win a level (Characteristics will up differently if function of character class)
     public void upLvl(){
         super.upLvlFromInt(1);
         int newDefence = 2;
@@ -32,6 +27,7 @@ public class MaleNurse extends Character {
     };
     
     
+    // Initialize the highbrow basic inventary
     private void initMaleNurseInventary()
     {
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");
@@ -44,11 +40,8 @@ public class MaleNurse extends Character {
         super.activeArmors.add(startArmor);
     }    
     
-    public void calculateMaximumCharacteristics() {
-            // TODO - implement MaleNurse.calculateMaximumCharacteristics
-            throw new UnsupportedOperationException();
-    }
-    
+    @Override
+    // Function who initialize character with purcentage of max characteristics in function of choosen difficulty
     public void initCharacteristics(int difficulty) {
         switch(difficulty){
             case 1:
