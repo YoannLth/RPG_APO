@@ -2,19 +2,22 @@ package rpg_apo;
 
 import java.util.Random;
 import static rpg_apo.Characteristic.*;
-import static view.Console.*;
 
 public class Attack implements Capacity {
+    // An attack is composed of a source, a target and an execution message
     private Character source;
     private Character cible;
     private String displayedMessage;
     
-    public Attack(Character s, Character c ){
+    // Constructor
+    public Attack(Character s, Character c){
         this.source=s;
         this.cible=c;
         this.displayedMessage = "";
     }
     
+    // Function who return the effect of the attack
+    @Override
     public Effect effect(){
         Effect e;
         double succesProbability = 0.0;
@@ -48,7 +51,6 @@ public class Attack implements Capacity {
             }
             int permanent = 0;
             
-            value = value * 30;
             e = new Effect(c,value,permanent);
         }
         else{
@@ -63,24 +65,27 @@ public class Attack implements Capacity {
         return e;
     }
     
+    // Function who return the probability of the attack success
+    @Override
     public double probaSuccess(){
-        // 70% de réussite de base + dexterité
+        // 70% of basic success + character dexterity
         // 90% max
-        double probaR = 70.0;
+        double basicProbability = 70.0;
         int characterDexterity = 0;
         characterDexterity = source.getCharacteristicValue(DEXTERITY);
         
-        probaR = probaR + characterDexterity;
+        basicProbability = basicProbability + characterDexterity;
         
-        if(probaR < 90.0){
-            probaR = 90.0;
+        if(basicProbability < 90.0){
+            basicProbability = 90.0;
         }
         else{}
                 
-        return probaR;        
+        return basicProbability;        
     }
 
     @Override
+    // Function for attack effect displaying
     public String readCapacity() {
         String readCap = "'attaque'";
         
@@ -88,6 +93,7 @@ public class Attack implements Capacity {
     }
 
     @Override
+    // Function who return the string for attack effect displaying
     public String getDisplayMessage() {
         return this.displayedMessage;
     }
