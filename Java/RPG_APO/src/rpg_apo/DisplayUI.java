@@ -71,7 +71,7 @@ public class DisplayUI  {
     }
     
     public static ConsumableItem getConsomableItem(Character character){
-        Map<Item, Integer> inv = character.getInventary();
+        Map<Item, Integer> inv = character.getInventory();
         ArrayList<ConsumableItem> availableItems = new ArrayList<ConsumableItem>();
         
         
@@ -155,7 +155,7 @@ public class DisplayUI  {
     
     public static Armor getArmors(Character character){
         
-        Map<Item, Integer> inv = character.getInventary();
+        Map<Item, Integer> inv = character.getInventory();
         ArrayList<Armor> availableArmors = new ArrayList<Armor>();
         
         
@@ -202,7 +202,7 @@ public class DisplayUI  {
     }
     
     public static Weapon getWeapons(Character character){
-        Map<Item, Integer> inv = character.getInventary();
+        Map<Item, Integer> inv = character.getInventory();
         Weapon activeWeapon = character.getWeapon();
         ArrayList<Weapon> availableWeapons = new ArrayList<Weapon>();
         
@@ -235,7 +235,7 @@ public class DisplayUI  {
     }
     
     public static Item getItem(Character character){
-       Map<Item, Integer> inv = character.getInventary();
+       Map<Item, Integer> inv = character.getInventory();
        ArrayList<Item> availableItems = new ArrayList<Item>();
         
         

@@ -2,36 +2,33 @@ package rpg_apo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import static rpg_apo.Characteristic.*;
-import static rpg_apo.ControlerUI.readInt;
 import view.Console;
 import static view.Console.*;
 
 public class Character  {
+    // A character is composed by :
+    protected String name; // name
+    protected int level; // level of the character
+    protected Map<Characteristic, Integer> characs; // characteristics
+    protected Map<Item, Integer> inventory; // inventory of the character
+    protected Weapon activeWeapon; // Weapon equiped
+    protected ArrayList<Armor> activeArmors; // Armors equiped
+    protected String className; // Class name (for text display, class name for displaying is different of class name, we display for exemple "boxeur", not "Boxer")
+    protected String characterDescription; // Character description (class description)
+    protected CharacterType charType; // Character type (IA or HUMAN) -> Enumeration
+    protected Controler characterControler; // Controller of the character
+    protected int MAX_POINT=50; //Max point of the character (not used now but conserved for project stability)
+    protected int life; // Life 
+    protected int money; // Money of the character
 
-    protected String name;
-    protected int level;
-    protected Map<Characteristic, Integer> characs;
-    protected Map<Item, Integer> inventary;
-    protected Weapon activeWeapon;
-    protected ArrayList<Armor> activeArmors;
-    protected String className;
-    protected String characterDescription;
-    protected CharacterType charType;
-    protected Controler characterControler;
-    protected int life;
-    protected int money;
-
-    protected int MAX_POINT=50;
-
-
+    // Constructor of the character (never called directly)
     public Character(String nameCharacter, String className, String characterDescription, CharacterType charT){
         this.name = nameCharacter;
         this.level = 1;
         this.characs = new HashMap();
-        this.inventary = new HashMap();
+        this.inventory = new HashMap();
         this.activeWeapon = null;
         this.activeArmors = new ArrayList<Armor>();
         this.className = className;
@@ -47,190 +44,123 @@ public class Character  {
                 this.characterControler = new IAControler(this);
                 break;
         }
-
     }
 
-    public void setLvl(int i){
-        this.level=i;
-    }
-
-    public int getLvl(){
-        return this.level;
-    }
-
+    // Function who up the level by a value in parameters
     public void upLvlFromInt(int val){
         this.level = level + val;
     };
     
+    // Function who display message on level up
     public void upLvl(){
         displayBlue("" + this.getName() + " augmente d'un niveau!");
         displayContinue();
     };
 
-    public void modifyCharacteristics() {
-            // TODO - implement Character.modifyCharacteristics
-            throw new UnsupportedOperationException();
-    }
-
-    public void checkMaximumCharacteristics() {
-            // TODO - implement Character.checkMaximumCharacteristics
-            throw new UnsupportedOperationException();
-    }
-
-    //Ajout d'un Item dans l'inventaire
+    // Function who add an object to inventory
     public void addInventary(Item i, int quant) {
             // TODO - implement Character.addInventary
-            if(this.inventary.containsKey(i)){
-                int quantity = this.inventary.get(i);
+            if(this.inventory.containsKey(i)){
+                int quantity = this.inventory.get(i);
                 quantity = quantity + quant;
-                this.inventary.replace(i, quantity);
+                this.inventory.replace(i, quantity);
             }
             else{
-                this.inventary.put(i, quant);
+                this.inventory.put(i, quant);
             }
     }
 
+    // Function who delete an object from inventory
     public void deleteInventary(Item i) {
-            // TODO - implement Character.deleteInventary
-            this.inventary.remove(i);
+            this.inventory.remove(i);
     }
 
-    public void activateWeapon() {
-            // TODO - implement Character.activateWeapon
-            throw new UnsupportedOperationException();
-    }
-
-    public void activateArmor() {
-            // TODO - implement Character.activateArmor
-            throw new UnsupportedOperationException();
-    }
-
-    public void useItem() {
-            // TODO - implement Character.useItem
-            throw new UnsupportedOperationException();
-    }
-
-    public void useConsumableItem() {
-            // TODO - implement Character.useConsumableItem
-            throw new UnsupportedOperationException();
-    }
-
+    // Function who return the class name
     public String getClassName(){
         String res = this.className;
         return res;
     }
 
+    // Function who return the class description
     public String getClassDesc(){
         String res = this.characterDescription;
         return res;
     }
 
-
-
-
-
     //Return vrai si l'item appartient a l'inventaire
     public boolean itemIsInInventary(Item i){
-        return this.inventary.containsKey(i);
+        return this.inventory.containsKey(i);
     }
 
     //retourne le poid de notre inventaire
     public int getWeightInventary(){
         int somme=0;
 
-        for(Map.Entry<Item, Integer> item : inventary.entrySet()){
+        for(Map.Entry<Item, Integer> item : inventory.entrySet()){
             int itemWeight = item.getKey().getWeight() * item.getValue();
             somme = itemWeight + somme;
         }
         return somme;
     }
 
-    //Affiche chaque nom d'item de l'inventaire
+    // Function who display inventory content and number of items
     public void afficherInventary(){
-        for(Map.Entry<Item, Integer> item : inventary.entrySet()){
+        for(Map.Entry<Item, Integer> item : inventory.entrySet()){
             displayBlack("\t" + item.getKey().getName() + " x" + item.getValue());
         }
     }
 
-
-
-    
-
+    // Function for set characteristics of the character
     public void setCharacteristics(Map<Characteristic, Integer> c){
         this.characs = c;
     }
 
+    // Function who return characteristics of the character
     public Map<Characteristic, Integer> getCharacteristics(){
         return this.characs;
     }
 
-    public Map<Item, Integer> getInventary(){
-        return this.inventary;
+    // Function who return the inventory of the character
+    public Map<Item, Integer> getInventory(){
+        return this.inventory;
     }
 
+    // Function who set the active weapon
     public void setActiveWeapon(Weapon w){
         this.activeWeapon = w;
     }
 
+    // Function who return the active weapon
     public Weapon getActiveWeapon(){
         return this.activeWeapon;
     }
 
+    // Function who set active armors
     public void setActiveArmors(ArrayList<Armor> activeArmrs){
         this.activeArmors = activeArmrs;
     }
 
+    // Function who return active armors
     public ArrayList<Armor> getActiveArmors(){
         return this.activeArmors;
     }
 
-    public String testGetInfos(){
-        String res = this.name + " , le " + this.className;
-
-        return res;
-    }
-
+    // Function who return the name of the character
     public String getName(){
         return this.name;
     }
 
+    // Function who return the health of the character
     public int getHealth(){
         return characs.get(HEALTH);
     }
 
+    // Function who return the controller of the character
     public Controler getControler(){
         return this.characterControler;
     }
 
-//    public void initCharacterPlayer(){
-//        int pointRestant=0;
-//        int str, def, dex;
-//        str = 0;
-//        def = 0;
-//        dex = 0;
-//        displayBlue("Vous disposé de "+this.MAX_POINT+" points a répartir sur vos 3 characateristique");
-//        pointRestant=this.MAX_POINT;
-//        while(pointRestant>0){
-//            str = ControlerUI.readInt("\tSTRENGTH : (max = "+this.MAX_STR+") : ",1,this.MAX_STR);
-//            pointRestant=this.MAX_POINT - str;
-//            if(pointRestant == 0){
-//                break;
-//            }
-//            else{
-//                dex = ControlerUI.readInt("\tDEXTERITY : (max = "+this.MAX_DEX+") : ",1,pointRestant);
-//                pointRestant=pointRestant - dex;
-//            }
-//            if(pointRestant == 0){
-//                break;
-//            }
-//            else{
-//                def = ControlerUI.readInt("\tDEFENCE : (max = "+this.MAX_DEF+") : ",1,pointRestant);
-//                pointRestant=pointRestant - dex;
-//            }
-//        }
-//        initCharacteristic(str,dex,getMaxHealth(),def);
-//    }
-    
+    // Function who init characterstics
     public void initCharacteristic(int s, int d, int h, int def)
     {
         this.characs = new HashMap();
@@ -240,25 +170,23 @@ public class Character  {
         this.characs.put(Characteristic.DEFENCE, def);
     }
     
+    // Function who return the value of a characteristics passed in parameter
     public int getCharacteristicValue(Characteristic c){
         return this.characs.get(c);
     }
     
-//    public void setMax(int def,int str,int dext){
-//        this.MAX_DEF=def;
-//        this.MAX_STR=str;
-//        this.MAX_DEX=dext;
-//    }
-    
+    // Function who return the maximum health of the character, based on character level
     public int getMaxHealth(){
         return 200+this.level*3;
     }
     
+    // Function who set the maximum health of the character, based on character level
     public void setMaxHealth(){
         int maxLife = getMaxHealth();
         this.characs.replace(HEALTH, maxLife);
     }
     
+    // Function who display character characteristic (called on night and only for the PJ)
     public void getPlayerInfos(){
         Console.displayBlue("--------------------------------"+this.name+"----------------------------------");
         Console.displayBlue("\n\tNiveau : "+this.level);
@@ -273,6 +201,7 @@ public class Character  {
         Console.displayBlue("\n\tArme : "+getWeaponInfos());
     }
     
+    // Function who return infos about the character (called during fights)
     public String getNameAndInfos(){
         String infos = "";
         
@@ -285,16 +214,12 @@ public class Character  {
         return infos;
     }
    
+    // Function to add money to the player
     public void addMoney(int i){
         this.money+=i;
     }
-    
-    
-    //Initialisaton d'un personnage ennemie appellé boss caracteristique max
-//    public void initCharacteristicBoss(){
-//        initCharacteristic(this.MAX_STR, this.MAX_DEX, this.MAX_HEALTH, this.MAX_DEF);
-//    }
-    
+
+    // Function who test if a character is always OK (not KO)
     public boolean isAlive(){
         boolean isAlive = true;
         int health = getCharacteristicValue(HEALTH);
@@ -309,6 +234,7 @@ public class Character  {
         return isAlive;
     }
     
+    // Function to alter a characteristics passed in parameter
     public void alterCharacteristic(Characteristic characteristicToAlter, int valueAlteration){
         int characteristicValue = characs.get(characteristicToAlter);
         characteristicValue = characteristicValue + valueAlteration;
@@ -316,6 +242,7 @@ public class Character  {
         characs.replace(characteristicToAlter, characteristicValue);
     }
     
+    // Function to alter a characteristics passed in parameter and test if value is not overrided
     public void upCharacteristic(Characteristic characteristicToAlter, int upValue, int maxValueCharacteristic){
         int characteristicValue = characs.get(characteristicToAlter);
         
@@ -335,15 +262,17 @@ public class Character  {
         
     }
 
-    
+    // Overrided
     public void initCharacteristics(int difficulty){
         
     };
     
+    // Function who return character money
     public int getMoney(){
         return this.money;
     }
     
+    // Function called when armor is going to be equiped
     public void equipArmor(Armor a){
         displayGreen("" + activeArmors.size());
         if(activeArmors.size() < 2){
@@ -359,11 +288,12 @@ public class Character  {
         }
     }
 
-    
+    // Function who return active weapon
     public Weapon getWeapon(){
         return this.activeWeapon;
     }
     
+    // Function called on weapon equiping
     public void equipWeapon(Weapon w){
         displayBlue("Armure équipée!" + w.getItemInfos());
         
@@ -380,19 +310,21 @@ public class Character  {
         }
     }
     
+    // Function who delete an item and display a message
     public void deleteItem(Item i){
-        int numberOfOccurenceItem = inventary.get(i);
+        int numberOfOccurenceItem = inventory.get(i);
         
         if(numberOfOccurenceItem > 1){
-            inventary.replace(i, (numberOfOccurenceItem-1));
+            inventory.replace(i, (numberOfOccurenceItem-1));
             displayBlue("Un exemplaire de l'objet à été supprimé!");
         }
         else{
-            inventary.remove(i);
+            inventory.remove(i);
             displayBlue("L'objet à été supprimé de l'inventaire!");
         }
     }
     
+    // Function who return armor infos
     public String getArmorsInfos(){
         String res = "";
         
@@ -404,6 +336,7 @@ public class Character  {
         return res;
     }
     
+    // Function who return weapon infos 
     public String getWeaponInfos(){
         String res = "";
         

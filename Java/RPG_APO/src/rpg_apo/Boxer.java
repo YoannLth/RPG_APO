@@ -2,7 +2,7 @@ package rpg_apo;
 
 public class Boxer extends Character  {
     // A Boxer is an extension of a character, caracterised by :
-    private int weightMax; // Maximum of inventary weight
+    private int weightMax; // Maximum of inventory weight
     private final int DEFENCE_MAX = 25; // Max defence
     private final int STRENGTH_MAX = 50; // Max strength
     private final int DEXTERITY_MAX = 25; // Max dexterity
@@ -29,7 +29,7 @@ public class Boxer extends Character  {
         super.upCharacteristic(Characteristic.DEXTERITY, newDexterity, DEXTERITY_MAX);
     };
 
-    // Initialize the boxer basic inventary
+    // Initialize the boxer basic inventory
     private void initBoxerInventary(){
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Compétences de combat a main nues");
         super.addInventary(startWeapon, 1);

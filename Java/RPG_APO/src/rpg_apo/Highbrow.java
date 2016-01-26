@@ -2,7 +2,7 @@ package rpg_apo;
 
 public class Highbrow extends Character {
     // A Highbrow is an extension of a character, caracterised by :
-    private int weightMax; // Maximum of inventary weight
+    private int weightMax; // Maximum of inventory weight
     private int DEFENCE_MAX = 30; // Max defence
     private int STRENGTH_MAX = 30; // Max strength
     private int DEXTERITY_MAX = 40; // Max dexterity
@@ -26,7 +26,7 @@ public class Highbrow extends Character {
         super.upCharacteristic(Characteristic.DEXTERITY, newDexterity, DEXTERITY_MAX);
     };
     
-    // Initialize the highbrow basic inventary
+    // Initialize the highbrow basic inventory
     private void initHighbrowInventary()
     {
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");

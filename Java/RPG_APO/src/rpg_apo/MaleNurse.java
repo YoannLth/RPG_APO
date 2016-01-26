@@ -2,7 +2,7 @@ package rpg_apo;
 
 public class MaleNurse extends Character {
     // A MaleNurse is an extension of a character, caracterised by :
-    private int weightMax; // Maximum of inventary weight
+    private int weightMax; // Maximum of inventory weight
     private int DEFENCE_MAX = 40; // Max defence
     private int STRENGTH_MAX = 30; // Max strength
     private int DEXTERITY_MAX = 30; // Max dexterity
@@ -27,7 +27,7 @@ public class MaleNurse extends Character {
     };
     
     
-    // Initialize the highbrow basic inventary
+    // Initialize the highbrow basic inventory
     private void initMaleNurseInventary()
     {
         Weapon startWeapon = new Weapon("Mains nues", 0, 10, 10, "Combat a main nues");
