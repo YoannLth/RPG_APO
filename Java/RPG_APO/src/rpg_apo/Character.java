@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import static rpg_apo.Characteristic.*;
+import static rpg_apo.ControlerUI.readInt;
 import static view.Console.*;
 
 public class Character {
 
     private String name;
-    private int level;
-    private Map<Characteristic, Integer> characs;
+    protected int level;
+    protected Map<Characteristic, Integer> characs;
     private List<Item> inventary;
     private Weapon activeWeapon;
     private Map<Armor, Integer> activeArmors;
@@ -19,8 +20,12 @@ public class Character {
     private CharacterType charType;
     private Controler characterControler;
     private int life;
-
-
+    
+    protected int MAX_STR;
+    protected int MAX_DEF;
+    protected int MAX_DEX;
+    protected int MAX_HEALTH;
+    protected int MAX_POINT;
     /*
     private Map<Characteristic, Integer> characsMaxB;
     private Map<Characteristic, Integer> characsMaxH;
@@ -53,10 +58,8 @@ public class Character {
 
     }
 
-    public int increaseLvl(int lvl) {
-            // TODO - implement Character.increaseLvl
-            //throw new UnsupportedOperationException();
-            return lvl+1;
+    public void setLvl(int i){
+        this.level=i;
     }
 
     public int getLvl(){
@@ -143,6 +146,7 @@ public class Character {
 
 
 
+    
 
     public void setCharacteristics(Map<Characteristic, Integer> c){
         this.characs = c;
@@ -196,8 +200,25 @@ public class Character {
     }
 
 
-
-    
+    public void initCharacterPlayer(){
+        int pointAttribuer=0;
+        int str, def, health, dex;
+        displayRed("Vous disposé de "+this.MAX_POINT+" points a répartir sur vos 4 characateristique");
+        str = readInt("STRENGTH : (max = "+this.MAX_STR+") : ",1,this.MAX_STR);
+        dex = readInt("DEXTERITY : (max = "+this.MAX_DEX+") : ",1,this.MAX_DEX);
+        health = readInt("HEALTH : (max = "+this.MAX_HEALTH+") : 3*",1,this.MAX_HEALTH);
+        def = readInt("DEFENCE : (max = "+this.MAX_DEF+") : ",1,this.MAX_DEF);
+        pointAttribuer=str+dex+health+def;
+        while(pointAttribuer!=this.MAX_POINT){
+            displayRed("Il vous reste "+(this.MAX_POINT-pointAttribuer)+"points a attribuer");
+            str = readInt("STRENGTH : (max = "+this.MAX_STR+", actuel = "+str+") : ",1,this.MAX_STR);
+            dex = readInt("DEXTERITY : (max = "+this.MAX_DEX+", actuel = "+dex+") : ",1,this.MAX_DEX);
+            health = readInt("HEALTH : (max = "+this.MAX_HEALTH+", actuel = "+health+") : 3*",1,this.MAX_HEALTH);
+            def = readInt("DEFENCE : (max = "+this.MAX_DEF+", actuel = "+def+") : ",1,this.MAX_DEF);
+            pointAttribuer=str+dex+health+def;
+        }
+        initCharacteristic(str,dex,health,def);
+    }
     
     public void initCharacteristic(int s, int d, int h, int def)
     {
@@ -213,7 +234,15 @@ public class Character {
         return this.characs.get(c);
     }
     
-    public String afficherCaracteristiques(){
+    public void setMax(int health,int def,int str,int dext, int point){
+        this.MAX_HEALTH=health;
+        this.MAX_DEF=def;
+        this.MAX_STR=str;
+        this.MAX_DEX=dext;
+        this.MAX_POINT=point;
+    }
+    
+    public String putCaracteristics(){
         String s;
         s="--------------------------------Caracteristic de "+this.name+"----------------------------------";
         s+="\n\tLevel : "+this.level;
@@ -223,5 +252,21 @@ public class Character {
         s=s+"\n\tDEXTERITY : "+getCharacteristicValue(DEXTERITY);
         return s;
     }
-
+    
+    public void increaseLvl() {
+        this.level++;
+        this.characs.put(Characteristic.STRENGTH, (this.characs.get(Characteristic.STRENGTH)+(this.MAX_STR/5)));
+        this.characs.put(Characteristic.DEXTERITY, this.characs.get(Characteristic.DEXTERITY)+(this.MAX_DEX/5));
+        this.characs.put(Characteristic.HEALTH, this.characs.get(Characteristic.HEALTH)+(this.MAX_HEALTH/5));
+        this.characs.put(Characteristic.DEFENCE, this.characs.get(Characteristic.DEFENCE)+(this.MAX_DEF/5));
+    }
+    
+    //Initialisaton d'un personnage ennemie appellé boss caracteristique max
+    public void initCharacteristicBoss(){
+        initCharacteristic(this.MAX_STR, this.MAX_DEX, this.MAX_HEALTH, this.MAX_DEF);
+    }
+    
 }
+
+
+

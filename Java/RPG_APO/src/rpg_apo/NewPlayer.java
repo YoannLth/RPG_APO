@@ -38,8 +38,9 @@ public class NewPlayer extends Event {
                     playableCharacter = new Highbrow(pCharacterName,CharacterType.HUMAN);
                     break;
         }
+        playableCharacter.initCharacterPlayer();
         displayRed(playableCharacter.getClassDesc());
-        displayRed(playableCharacter.afficherCaracteristiques());
+        displayRed(playableCharacter.putCaracteristics());
         
         
         

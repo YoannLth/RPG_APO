@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Yoann/Desktop/RPG_APO/RPG_APO/Java/RPG_APO/src/rpg_apo/Character.java</file>
-            <file>file:/C:/Users/Yoann/Desktop/RPG_APO/RPG_APO/Java/RPG_APO/src/rpg_apo/Characteristic.java</file>
-            <file>file:/C:/Users/Yoann/Desktop/RPG_APO/RPG_APO/Java/RPG_APO/src/rpg_apo/RPG_APO.java</file>
-            <file>file:/C:/Users/Yoann/Desktop/RPG_APO/RPG_APO/Java/RPG_APO/src/rpg_apo/NewFight.java</file>
-            <file>file:/C:/Users/Yoann/Desktop/RPG_APO/RPG_APO/Java/RPG_APO/src/view/Game.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/RPG/RPG_APO/Java/RPG_APO/src/rpg_apo/NewPlayer.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/RPG/RPG_APO/Java/RPG_APO/src/rpg_apo/Character.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/RPG/RPG_APO/Java/RPG_APO/src/rpg_apo/Highbrow.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/RPG/RPG_APO/Java/RPG_APO/src/rpg_apo/Boxer.java</file>
+            <file>file:/C:/Users/Matthieu/Documents/GitHub/RPG/RPG_APO/Java/RPG_APO/src/rpg_apo/MaleNurse.java</file>
         </group>
     </open-files>
 </project-private>
